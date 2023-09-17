@@ -35,7 +35,7 @@ publist = {
         
     #},
     "journal":{
-        "file": "publications.bib",
+        "file": "pubs_website.bib",
         "venuekey" : "journal",
         "venue-pretext" : "",
         "collection" : {"name":"publications",
@@ -46,7 +46,19 @@ publist = {
 html_escape_table = {
     "&": "&amp;",
     '"': "&quot;",
-    "'": "&apos;"
+    "'": "&apos;",
+    "á": "&aacute;",
+    "é": "&eacute;",
+    "í": "&iacute;",
+    "ó": "&oacute;",
+    "ú": "&uacute;",
+    "Á": "&Aacute;",
+    "É": "&Eacute;",
+    "Í": "&Iacute;",
+    "Ó": "&Oacute;",
+    "Ú": "&Uacute;",
+    "ñ": "&ntilde;",
+    "Ñ": "&Ntilde;",
     }
 
 def html_escape(text):
