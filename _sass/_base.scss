@@ -52,7 +52,8 @@ small, .small {
 }
 
 p {
-  margin-bottom: 1.3em;
+  margin-bottom: 0.3em;
+  margin-top: 0.3em;
 }
 
 u,
@@ -60,7 +61,7 @@ ins {
   text-decoration: none;
   border-bottom: 1px solid $text-color;
   a {
-    color: inherit;
+    //color: inherit;
   }
 }
 
