@@ -24,6 +24,10 @@ group :jekyll_plugins do
   gem "jekyll-feed"
   gem 'jekyll-sitemap'
   gem 'hawkins'
+  gem "jekyll-target-blank"
+  gem "jekyll-remote-theme"
 end
 
 gem "webrick", "~> 1.8"
+
+gem 'font-awesome-sass', '~> 4.4.0'
