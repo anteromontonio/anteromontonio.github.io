@@ -51,6 +51,7 @@ staticman:
 atom_feed:
   path                   : # blank (default) uses feed.xml
 
+#read_more: "enabled"
 # SEO Related
 google_site_verification : 
 bing_site_verification   :
@@ -225,11 +226,10 @@ defaults:
       path: ""
       type: publications
     values:
-      layout: single
+      layout: publication
       author_profile: true
       share: true
-      comments: true
-  ## _portfolio
+      comments: false
   #- scope:
       #path: ""
       #type: portfolio
@@ -261,13 +261,13 @@ timezone: Europe/Belgrade # http://en.wikipedia.org/wiki/List_of_tz_database_tim
 
 
 # Plugins
-gems:
+plugins:
   - jekyll-paginate
   # - jekyll-sitemap
   - jekyll-gist
   - jekyll-feed
   - jekyll-redirect-from
-  #- jekyll-target-blank
+  - jekyll-target-blank
 
 # mimic GitHub Pages with --safe
 whitelist:

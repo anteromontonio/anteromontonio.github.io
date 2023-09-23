@@ -11,7 +11,7 @@ redirect_from:
 
 Education
 ======
-* B.S. in Phisics and Mathematics, _University of Michoacán (UMSNH)_, 2013.
+* B.S. in Physics and Mathematics, _University of Michoacán (UMSNH)_, 2013.
 * M.S. in Mathematics, _National Autonomous University of Mexico (UNAM)_, 2015
 * Ph.D in Mathematics, _National Autonomous University of Mexico (UNAM)_, 2019
 
@@ -38,9 +38,45 @@ Skills
 
 Publications
 ======
-  <ul>{% for post in site.publications %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
+## Research papers
+<ol>
+{% for post in site.publications reversed %}
+  {% if post.type == 'research' %}
+    {% include publication-single-cv.html %}
+  {% endif %}
+{% endfor %}
+</ol>
+
+## Preprints
+<ol>
+{% for post in site.publications  %}
+  {% if post.type == 'preprint' %}
+    {% include publication-single-cv.html %}
+  {% endif %}
+{% endfor %}
+</ol>
+
+## Outreach papers
+<ol>
+{% for post in site.publications reversed %}
+  {% if post.type == 'outreach' %}
+    {% include publication-single-cv.html %}
+  {% endif %}
+{% endfor %}
+</ol>
+
+## Theses
+<ol>
+{% for post in site.publications  %}
+  {% if post.type == 'thesis' %}
+    {% include publication-single-cv.html %}
+  {% endif %}
+{% endfor %}
+</ol>
+<!--
+  <ol>{% for post in site.publications %}
+    {% include publication-single-cv.html %}
+  {% endfor %}</ol>-->
   
 Talks
 ======

@@ -16,7 +16,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  margin: 2em 0 0.5em;
+  margin: 1em 0 0.5em;
   line-height: 1.2;
   font-family: $header-font-family;
   font-weight: bold;
@@ -121,6 +121,7 @@ a {
 
 tt, code, kbd, samp, pre {
   font-family: $monospace;
+  white-space : pre-wrap !important;
 }
 
 pre {
@@ -139,7 +140,7 @@ td > code {
   border: 1px solid $lighter-gray;
   border-radius: $border-radius;
   box-shadow: $box-shadow;
-
+  white-space : pre-wrap !important;
   &:before, &:after {
     letter-spacing: -0.2em;
     content: "\00a0"; /* non-breaking space*/
