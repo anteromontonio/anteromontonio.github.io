@@ -41,9 +41,11 @@
           Published in {{ post.journal }}, {{ post.date | default: "1900-01-01" | date: "%Y" }}.
     {% elsif post.type == 'preprint' %}
           {{ post.journal }},  2023+.
+    {% elsif post.type == 'thesis' %}
+          {{ post.journal }}, {{ post.date | default: "1900-01-01" | date: "%Y" }}.
     {% endif %}
     {%if post.paperurl%}
-          <a href="{{post.paperurl}}" > Access paper here</a>
+          <a href="{{post.paperurl}}" > Access publication here</a>
     {%endif%}
       </p>
 

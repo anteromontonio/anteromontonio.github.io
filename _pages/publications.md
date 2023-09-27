@@ -18,29 +18,37 @@ If you don't have access to any of them, you can always [write me an email](mail
 {% include base_path %}
 
 ## Research papers
+<ol reversed>
 {% for post in site.publications reversed %}
   {% if post.type == 'research' %}
-    {% include publication.html %}
+    <li>{% include publication.html %}</li>
   {% endif %}
 {% endfor %}
+</ol>
 
 ## Preprints
+<ul>
 {% for post in site.publications  %}
   {% if post.type == 'preprint' %}
-    {% include publication.html %}
+    <li>{% include publication.html %}</li>
   {% endif %}
 {% endfor %}
+</ul>
 
 ## Outreach papers
+<ol>
 {% for post in site.publications reversed %}
   {% if post.type == 'outreach' %}
-    {% include publication.html %}
+    <li>{% include publication.html %}</li>
   {% endif %}
 {% endfor %}
+</ol>
 
 ## Theses
-{% for post in site.publications  %}
+<ol reversed>
+{% for post in site.publications reversed %}
   {% if post.type == 'thesis' %}
-    {% include publication.html %}
+    <li>{% include publication.html %}</li>
   {% endif %}
 {% endfor %}
+</ol>

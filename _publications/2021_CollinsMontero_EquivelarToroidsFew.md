@@ -4,8 +4,8 @@ collection: publications
 permalink: /publication/2021_CollinsMontero_EquivelarToroidsFew
 date: 2021-01-01
 author: 'J. Collins, A. Montero.'
-citation: 'J. Collins, A. Montero. Equivelar Toroids with Few Flag-Orbits, Discrete \& Computational Geometry (2021). https://doi.org/10.1007/s00454-020-00230-y.'
-journal: 'Discrete \& Computational Geometry'
+citation: 'J. Collins, A. Montero. Equivelar Toroids with Few Flag-Orbits, Discrete \&amp; Computational Geometry (2021). https://doi.org/10.1007/s00454-020-00230-y.'
+journal: 'Discrete \&amp; Computational Geometry'
 paperurl: 'https://doi.org/10.1007/s00454-020-00230-y'
 type: 'research'
 --- 

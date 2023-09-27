@@ -47,7 +47,7 @@ for bib_key in bibdata.entries:
   fields = entry.fields
   try:
 
-    if "research" in fields["keywords"] or "outreach" in fields["keywords"]:
+    if bib_type in ["article"]:
 
       #fix the pub date
       year="1900"
@@ -140,7 +140,7 @@ for bib_key in bibdata.entries:
       print(f'SUCESSFULLY PARSED {bib_key}')
 
     #here finishes the processing of articles
-    if "preparation" in fields["keywords"]:
+    if bib_type in ["unpublished"]:
 
       #fix the pub date
       year=str(today.year)
@@ -247,7 +247,7 @@ for bib_key in bibdata.entries:
 
 
     #here it finishes the processing of preprints
-    if "thesis" in fields["keywords"]:
+    if bib_type in ["mastersthesis","phdthesis"]:
 
       #fix the pub date
       year=str(today.year)
@@ -287,7 +287,7 @@ for bib_key in bibdata.entries:
       #journal
       journal=""
       if "type" in fields.keys() or "school" in fields.keys():
-        journal = html_escape(fields["type"]) + ", " + html_escape(fields["school"]) + "."
+        journal = html_escape(fields["type"].replace("{", "").replace("}","").replace("\\","")) + ", " + html_escape(fields["school"]) + "."
 
 
       #note
@@ -328,14 +328,14 @@ for bib_key in bibdata.entries:
 
       ##Markdown description for individual page
       if len(paperurl) > 0:
-        md += f"\n[Download it here]({paperurl})"+"{:target=\"_blank\"}\n"
-      else:
-        md +="\nPreprint not available yet.\n"
+        md += f"\n[See it here]({paperurl})"+"{:target=\"_blank\"}\n"
+
+
+      md += "\n[Download it here]({{ site.url }}/files/theses/"+bib_key+".pdf)"+"{:target=\"_blank\"}\n"
 
       if len(abstract) > 0:
         md += "\n**Abstract**: " + str(abstract)
-      else:
-        md +="\nAbstract not available."
+
 
 
       md += "\n\nBibtex:\n"

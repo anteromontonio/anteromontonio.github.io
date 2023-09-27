@@ -10,9 +10,10 @@ journal: 'Master&apos;s thesis, UNAM-UMSNH.'
 type: 'thesis'
 --- 
 
-[Download it here](http://132.248.9.195/ptd2015/septiembre/0735016/Index.html){:target="_blank"}
+[See it here](http://132.248.9.195/ptd2015/septiembre/0735016/Index.html){:target="_blank"}
 
-Abstract not available.
+[Download it here]({{ site.url }}/files/theses/Montero_2015_RealizacionesRegularesDe_Thesis.pdf){:target="_blank"}
+
 
 Bibtex:
 ``` 
