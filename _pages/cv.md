@@ -1,6 +1,6 @@
 ---
 layout: archive
-title: "CV"
+title: "Curriculum Vitae"
 permalink: /cv/
 author_profile: true
 redirect_from:
@@ -9,37 +9,37 @@ redirect_from:
 
 {% include base_path %}
 
-Education
-======
-* B.S. in Physics and Mathematics, _University of Michoacán (UMSNH)_, 2013.
-* M.S. in Mathematics, _National Autonomous University of Mexico (UNAM)_, 2015
-* Ph.D in Mathematics, _National Autonomous University of Mexico (UNAM)_, 2019
+## Education
 
-Work experience
-======
-* Summer 2015: Research Assistant
-  * Github University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
+* B.S. in Physics and Mathematics, _University of Michoacán (UMSNH)_, 2013.
+* M.S. in Mathematics, _National Autonomous University of Mexico (UNAM)_, 2015.
+* Ph.D in Mathematics, _National Autonomous University of Mexico (UNAM)_, 2019.
+
+## Work experience
+
+* April 2022 - June 2024: _Znanstveni sodelavec (Research associate, postdoctoral)_
+  * Fakulteta za Matematiko in Fisiko, Univerza v Ljubljani (Faculty of Mathematics and Physics, University of Ljubljana).
+  <!-- * Duties included: Tagging issues -->
+  * Supervisor: profr. dr. Primož Potočnik
 
 * Fall 2015: Research Assistant
   * Github University
   * Duties included: Merging pull requests
   * Supervisor: Professor Hub
   
-Skills
-======
+<!-- ## Skills
+
 * Skill 1
 * Skill 2
   * Sub-skill 2.1
   * Sub-skill 2.2
   * Sub-skill 2.3
-* Skill 3
+* Skill 3 -->
 
-Publications
-======
-## Research papers
-<ol>
+## Publications
+
+### Research papers
+<ol reversed>
 {% for post in site.publications reversed %}
   {% if post.type == 'research' %}
     {% include publication-single-cv.html %}
@@ -47,16 +47,16 @@ Publications
 {% endfor %}
 </ol>
 
-## Preprints
-<ol>
+### Preprints
+<ul>
 {% for post in site.publications  %}
   {% if post.type == 'preprint' %}
     {% include publication-single-cv.html %}
   {% endif %}
 {% endfor %}
-</ol>
+</ul>
 
-## Outreach papers
+### Outreach papers
 <ol>
 {% for post in site.publications reversed %}
   {% if post.type == 'outreach' %}
@@ -65,8 +65,8 @@ Publications
 {% endfor %}
 </ol>
 
-## Theses
-<ol>
+### Theses
+<ol reversed>
 {% for post in site.publications  %}
   {% if post.type == 'thesis' %}
     {% include publication-single-cv.html %}
@@ -78,18 +78,18 @@ Publications
     {% include publication-single-cv.html %}
   {% endfor %}</ol>-->
   
-Talks
-======
+## Talks
+
   <ul>{% for post in site.talks %}
     {% include archive-single-talk-cv.html %}
   {% endfor %}</ul>
   
-Teaching
-======
+## Teaching
+
   <ul>{% for post in site.teaching %}
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
   
-Service and leadership
-======
-* Currently signed in to 43 different slack teams
+## Academic Service
+
+

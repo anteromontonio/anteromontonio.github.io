@@ -26,8 +26,11 @@
         <li><i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> {{ author.location }}</li>
       {% endif %}
       {% if author.employer %}
-        <li><i class="ai ai-fw ai-archive" aria-hidden="true"></i> {{ author.employer }}</li>
+        <li><a href="{{ author.employer_url }}"><i class="ai ai-fw ai-archive" aria-hidden="true"></i> {{ author.employer }}</a></li>
       {% endif %}
+      <!-- {% if author.employer2 %}
+        <li><a href="{{ author.employer2_url }}"> <i class="fas fa-fw icon-sign-blank" aria-hidden="true"></i>{{ author.employer2 }}</a></li>
+      {% endif %} -->
       {% if author.uri %}
         <li><a href="{{ author.uri }}"><i class="fas fa-fw fa-link" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].website_label | default: "Website" }}</a></li>
       {% endif %}

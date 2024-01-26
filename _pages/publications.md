@@ -21,7 +21,9 @@ If you don't have access to any of them, you can always [write me an email](mail
 <ol reversed>
 {% for post in site.publications reversed %}
   {% if post.type == 'research' %}
-    <li>{% include publication.html %}</li>
+    <li>
+    {% include publication.html %}
+    </li>
   {% endif %}
 {% endfor %}
 </ol>
