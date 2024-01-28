@@ -41,7 +41,7 @@
         <i class="fa fa-calendar fa-fw" aria-hidden="false"></i> {{ post.date | date: '%B %d, %Y' }}
       {% endif %}
       {% if post.slides %}
-        <i class="fa fa-file-pdf fa-fw" aria-hidden="false"></i> <a href="{{site.url}}{{post.slides}}">Slides</a>
+        <i class="fa fa-file-pdf fa-fw" aria-hidden="false"></i> <a href="{{site.url}}{{post.slides}}" target="_blank">Slides</a>
       {% endif %}
     </p>
     {% if post.venue%}<p class="archive__item-excerpt" itemprop="description">{{post.type}} in the {{post.conference}} at {{ post.venue }},  {{post.location}} 
