@@ -1,8 +1,8 @@
 ---
 title: "Cayley extensions of maniplexes"
 collection: publications 
-permalink: /publication/2023_CunninghamMochanMontero_CayleyExtensionsManiplexes
-date: 2023-01-01
+permalink: /publication/2024_CunninghamMochanMontero_CayleyExtensionsManiplexes
+date: 2024-01-01
 author: 'G. Cunningham, E. Moch&aacute;n, A. Montero.'
 paperurl: 'https://arxiv.org/abs/2305.11843'
 citation: 'G. Cunningham, E. Moch&aacute;n, A. Montero. Cayley extensions of maniplexes (preprint). https://arxiv.org/abs/2305.11843.'
@@ -18,7 +18,7 @@ Bibtex:
 ``` 
  @Unpublished{CunninghamMochanMontero_CayleyExtensionsManiplexes_preprint,
     author = "Cunningham, Gabe and Mochán, Elías and Montero, Antonio",
-    date = "2023",
+    date = "2024",
     title = "Cayley extensions of maniplexes",
     note = "In preparation",
     url = "https://arxiv.org/abs/2305.11843",

@@ -4,7 +4,7 @@ collection: talks
 type: "Contributed talk"
 permalink: /talks/1103_vnl2011_trianglesProb
 venue: "Universidad Autónoma del Estado de Hidalgo"
-location: Pachuga, Hgo. Mexico
+location: Pachuca, Hgo. Mexico
 conference: 26th Colloquium "Victor Neumann-Lara" of graph theory, combinatorics and its applications
 slides: /slides/1103_vnl2011_trianglesProb.pdf
 conf_type: National

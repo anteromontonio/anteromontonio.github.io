@@ -10,10 +10,9 @@ journal: 'Undergraduate thesis, UMSNH.'
 type: 'thesis'
 --- 
 
-[See it here](http://bibliotecavirtual.dgb.umich.mx:8083/xmlui/handle/DGB_UMICH/11935){:target="_blank"}
+[Download it here](http://bibliotecavirtual.dgb.umich.mx:8083/xmlui/handle/DGB_UMICH/11935){:target="_blank"}
 
-[Download it here]({{ site.url }}/files/theses/Montero_2013_PoliedrosRegularesEn_Thesis.pdf){:target="_blank"}
-
+Abstract not available.
 
 Bibtex:
 ``` 

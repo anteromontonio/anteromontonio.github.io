@@ -13,9 +13,9 @@ In this website you will fin most of my academic interests/products.
 
 In the [Publications](/publications/) tab you will find a list of my publications. 
 In the [Talks](/talks/) section you have a list of most of the talks that I have given as well as the slides of most of them. 
-You can also see a map of were the talks were given!
-The [CV](/cv/) tab is a web version of my CV.
-Finally in my [Blog](/year-archive/) you will as many entries as I can write, potentially many of them having little or nothing to to with my academic job.
+You can also see a [map](/talkmap/) of were the talks were given!
+<!-- The [CV](/cv/) tab is a web version of my CV. -->
+<!-- Finally in my [Blog](/year-archive/) you will as many entries as I can write, potentially many of them having little or nothing to to with my academic job. -->
 
 Finally, because some of you might be interested, pdf-versions containing lots of the information in this website:
 
