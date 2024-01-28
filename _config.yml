@@ -151,6 +151,8 @@ exclude:
   - README
   - tmp
   - markdown_generator
+  - vendor/
+
 #  - assets
 keep_files:
   - .git
