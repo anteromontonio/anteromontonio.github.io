@@ -17,7 +17,7 @@ You can also see a [map](/talkmap/) of were the talks were given!
 <!-- The [CV](/cv/) tab is a web version of my CV. -->
 <!-- Finally in my [Blog](/year-archive/) you will as many entries as I can write, potentially many of them having little or nothing to to with my academic job. -->
 
-Finally, because some of you might be interested, pdf-versions containing lots of the information in this website:
+Finally, because some of you might be interested, pdf-versions containing lots of the information on this website:
 
 - [CV (en, 22.10.2023)](/files/montero_cv.pdf){:target="_blank"}
 - [Research Statement (en, 22.10.2023)](/files/montero_researchStatement.pdf){:target="_blank"}
