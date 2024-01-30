@@ -12,7 +12,7 @@ type: 'preprint'
 
 [Preprint here](https://arxiv.org/abs/2305.11843){:target="_blank"}
 
-**Abstract**: We use voltage graph to explore different constuctions of extensions of polytopes. In particular, given a polytope $\mathcal{K}$, we build a polytope $\mathcal{U}$ such that any extension of $\mathcal{K}$ is a quotient of $\mathcal{U}$
+**Abstract**: A map on a surface whose automorphism group has a subgroup acting regularly on its vertices is called a Cayley map. Here we generalize that notion to maniplexes and polytopes. We define $\calM$ to be a \emph{Cayley extension} of $\calK$ if the facets of $\calM$ are isomorphic to $\calK$ and if some subgroup of the automorphism group of $\calM$ acts regularly on the facets of $\calM$. We show that many natural extensions in the literature on maniplexes and polytopes are in fact Cayley extensions. We also describe several universal Cayley extensions. Finally, we examine the automorphism group and symmetry type graph of Cayley extensions.
 
 Bibtex:
 ``` 
@@ -22,7 +22,7 @@ Bibtex:
     title = "Cayley extensions of maniplexes",
     note = "In preparation",
     url = "https://arxiv.org/abs/2305.11843",
-    abstract = "We use voltage graph to explore different constuctions of extensions of polytopes. In particular, given a polytope $\mathcal{K}$, we build a polytope $\mathcal{U}$ such that any extension of $\mathcal{K}$ is a quotient of $\mathcal{U}$",
+    abstract = "A map on a surface whose automorphism group has a subgroup acting regularly on its vertices is called a Cayley map. Here we generalize that notion to maniplexes and polytopes. We define $\calM$ to be a \emph{Cayley extension} of $\calK$ if the facets of $\calM$ are isomorphic to $\calK$ and if some subgroup of the automorphism group of $\calM$ acts regularly on the facets of $\calM$. We show that many natural extensions in the literature on maniplexes and polytopes are in fact Cayley extensions. We also describe several universal Cayley extensions. Finally, we examine the automorphism group and symmetry type graph of Cayley extensions.",
     keywords = "Maniplexes, maps, abstract polytopes. "
 }
 ```

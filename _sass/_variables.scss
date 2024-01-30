@@ -70,7 +70,7 @@ $code-background-color-dark : mix(#000, $background-color, 20%);
 $text-color                 : #eaeaea;
 $border-color               : mix(#fff, $background-color, 20%);
 
-$primary-color              : #7cacf8;
+$primary-color              : #9ac4ec;
 $success-color              : #a9d9b0;
 $warning-color              : #ffaa00;
 $danger-color               : #ff6f71;
@@ -106,7 +106,7 @@ $link-color-visited         : mix(#000, $link-color, 10%) !default;
 $masthead-link-color        : $primary-color !default;
 $masthead-link-color-hover  : mix(#000, $primary-color, 25%) !default;
 $navicon-link-color-hover   : mix(#fff, $primary-color, 75%) !default;
-
+$pagetitle-color                   : mix(#fff, $primary-color, 85%);
 
 /*
    Breakpoints

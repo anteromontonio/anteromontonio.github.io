@@ -7,7 +7,7 @@ author_profile: true
 
 
 
-<p style="text-decoration:underline;"><a href="/talkmap.html">See a map of all the places I've given a talk!</a></p>
+<p> Click <a href="/talkmap.html"> here </a> to see a map of all the places I've given a talk!</p>
 
 
 

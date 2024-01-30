@@ -8,12 +8,13 @@ location: Morelia, Mich. Mexico
 conference: 16th Summer school in mathematics CCM - UNAM
 slides: /slides/1606_esver2016_toroids.pdf
 conf_type: National
-date: "2016-06-29"
+highlighted: yes
 ---
 
 Invited speaker in the 16th Summer school in mathematics CCM - UNAM
 
 Centro de Ciencias Matemáticas, UNAM Morelia
+
 Morelia, Mich. Mexico
 
-[Slides]({{ site.url }}/slides/1606_esver2016_toroids.pdf){:target='_blank'}
+<i class="fa fa-file-pdf fa-fw" aria-hidden="false"></i>[Slides]({{ site.url }}/slides/1606_esver2016_toroids.pdf){:target='_blank'}

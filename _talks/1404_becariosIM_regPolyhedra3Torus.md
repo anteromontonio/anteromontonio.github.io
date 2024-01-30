@@ -7,10 +7,10 @@ venue: "Institute of Mathematics UNAM"
 location: Mexico City, Mexico
 conference: Graduate students seminar IM UNAM
 conf_type: Seminar
-date: "2014-04-01"
 ---
 
 Talk by invitation in the Graduate students seminar IM UNAM
 
 Institute of Mathematics UNAM
+
 Mexico City, Mexico

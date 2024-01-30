@@ -10,7 +10,7 @@ type: 'preprint'
 --- 
 Preprint not available yet.
 
-**Abstract**: It is known that if $\Gamma$ is a finite connected cubic or 4-valent vertex- and edge- transitive graph, then either $\Gamma$ is part of a well-understood family of graphs, or every non-identity automorphism of Γ fixes a relatively small amount of vertices. On the other side of the spectrum , in this paper we classify vertex transitive graphs that admit an automorphism fixing all but a few vertices.
+**Abstract**: It is known that if $\Gamma$ is a finite connected cubic or 4-valent vertex- and edge- transitive graph, then either $\Gamma$ is part of a well-understood family of graphs, or every non-identity automorphism of $\Gamma$ fixes a relatively small amount of vertices. On the other side of the expectrum, in this paper we classify vertex transitive graphs that admit an automorphism fixing all but a few vertices.
 
 Bibtex:
 ``` 
@@ -19,7 +19,7 @@ Bibtex:
     date = "2024",
     title = "Vertex transitive graphs with small motion",
     note = "In preparation",
-    abstract = "It is known that if $\Gamma$ is a finite connected cubic or 4-valent vertex- and edge- transitive graph, then either $\Gamma$ is part of a well-understood family of graphs, or every non-identity automorphism of Γ fixes a relatively small amount of vertices. On the other side of the expectrum, in this paper we classify vertex transitive graphs that admit an automorphism fixing all but a few vertices.",
+    abstract = "It is known that if $\Gamma$ is a finite connected cubic or 4-valent vertex- and edge- transitive graph, then either $\Gamma$ is part of a well-understood family of graphs, or every non-identity automorphism of $\Gamma$ fixes a relatively small amount of vertices. On the other side of the expectrum, in this paper we classify vertex transitive graphs that admit an automorphism fixing all but a few vertices.",
     keywords = ""
 }
 ```

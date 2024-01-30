@@ -11,21 +11,45 @@ redirect_from:
 
 ## Education
 
-* B.S. in Physics and Mathematics, _University of Michoacán (UMSNH)_, 2013.
-* M.S. in Mathematics, _National Autonomous University of Mexico (UNAM)_, 2015.
-* Ph.D in Mathematics, _National Autonomous University of Mexico (UNAM)_, 2019.
+- B.S. in Physics and Mathematics (with honours).
+  <p class="page__meta" style="margin-top:0"> 
+    <i class="ai ai-fw ai-archive" aria-hidden="true"></i>Faculty of physics and mathematics, University of Michoacan (UMSNH), Mexico.
+    <i class="fa fa-solid fa-fw fa-calendar" aria-hidden="true"></i> 2013.
+    <i class="fa fa-solid fa-fw fa-book" aria-hidden="true"></i> <a href="/publication/2013_Montero_PoliedrosRegularesEn"> Thesis. </a>
+  </p>
+- M.S. in Mathematics (with honours).
+  <p class="page__meta" style="margin-top:0"> 
+    <i class="ai ai-fw ai-archive" aria-hidden="true"></i> National Autonomous University of Mexico (UNAM) Mexico.
+    <i class="fa fa-solid fa-fw fa-calendar" aria-hidden="true"></i> 2015.
+    <i class="fa fa-solid fa-fw fa-book" aria-hidden="true"></i> <a href="/publication/2015_Montero_RealizacionesRegularesDe"> Thesis. </a>
+  </p>
+- Ph.D in Mathematics (with honours).
+  <p class="page__meta" style="margin-top:0"> 
+    <i class="ai ai-fw ai-archive" aria-hidden="true"></i> National Autonomous University of Mexico (UNAM) Mexico.
+    <i class="fa fa-solid fa-fw fa-calendar" aria-hidden="true"></i> 2019.
+    <i class="fa fa-solid fa-fw fa-book" aria-hidden="true"></i> <a href="/publication/2019_Montero_ChiralExtensionsToroids"> Thesis. </a>
+  </p>
 
 ## Work experience
+<ul>
+{% for job in site.data.jobs reversed %}
+<li> {{ job.position }}
+  <p class="page__meta" style="margin-top:0"> 
+    <i class="fa fa-solid fa-fw fa-calendar" aria-hidden="true"></i> {{ job.period }}
+    <i class="ai ai-fw ai-archive" aria-hidden="true"></i> {{ job.institution }}
+    <i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> {{ job.location }} 
+  </p>  
+  {% if job.notes %}
+  <p class="page__meta" style="margin-top:0"> 
+    {{ job.notes }}
+  </p>
+  {% endif %}
+  </li>
+{% endfor %}
+</ul>
 
-* April 2022 - June 2024: _Znanstveni sodelavec (Research associate, postdoctoral)_
-  * Fakulteta za Matematiko in Fisiko, Univerza v Ljubljani (Faculty of Mathematics and Physics, University of Ljubljana).
-  <!-- * Duties included: Tagging issues -->
-  * Supervisor: profr. dr. Primož Potočnik
 
-* Fall 2015: Research Assistant
-  * Github University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
+
   
 <!-- ## Skills
 
@@ -42,7 +66,7 @@ redirect_from:
 <ol reversed>
 {% for post in site.publications reversed %}
   {% if post.type == 'research' %}
-    {% include publication-single-cv.html %}
+    <li>{% include publication.html %}</li>
   {% endif %}
 {% endfor %}
 </ol>
@@ -51,7 +75,7 @@ redirect_from:
 <ul>
 {% for post in site.publications  %}
   {% if post.type == 'preprint' %}
-    {% include publication-single-cv.html %}
+      <li>{% include publication.html %}</li>
   {% endif %}
 {% endfor %}
 </ul>
@@ -60,36 +84,27 @@ redirect_from:
 <ol>
 {% for post in site.publications reversed %}
   {% if post.type == 'outreach' %}
-    {% include publication-single-cv.html %}
+    <li>{% include publication.html %}</li>
   {% endif %}
 {% endfor %}
 </ol>
 
-### Theses
-<ol reversed>
-{% for post in site.publications  %}
-  {% if post.type == 'thesis' %}
-    {% include publication-single-cv.html %}
-  {% endif %}
-{% endfor %}
-</ol>
-<!--
-  <ol>{% for post in site.publications %}
-    {% include publication-single-cv.html %}
-  {% endfor %}</ol>-->
   
-## Talks
+## Talks (a selection of)
+The full list of talks could be accessed [here](/talks).
 
   <ul>{% for post in site.talks %}
-    {% include archive-single-talk-cv.html %}
+    {% if post.highlighted %}
+    {% include archive-single-talk.html %}
+    {% endif %}
   {% endfor %}</ul>
   
-## Teaching
+<!-- ## Teaching
 
   <ul>{% for post in site.teaching %}
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
   
-## Academic Service
+## Academic Service -->
 
 

@@ -8,14 +8,15 @@ location: Cuernavaca, Mor. Mexico
 conference: 2nd Summer school of symmetries of combinatorial structures
 slides: /slides/1707_esvec2017_twoToK.pdf
 conf_type: National
-date: "2017-07-26"
+highlighted: yes
 ---
 
 Invited speaker in the 2nd Summer school of symmetries of combinatorial structures
 
 Unidad Cuernavaca del Instituto de Matemáticas, UNAM
+
 Cuernavaca, Mor. Mexico
 
 [Conference website](https://matmor.unam.mx/simetrias2017/)
 
-[Slides]({{ site.url }}/slides/1707_esvec2017_twoToK.pdf){:target='_blank'}
+<i class="fa fa-file-pdf fa-fw" aria-hidden="false"></i>[Slides]({{ site.url }}/slides/1707_esvec2017_twoToK.pdf){:target='_blank'}

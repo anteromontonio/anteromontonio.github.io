@@ -5,15 +5,16 @@ type: "Talk by invitation"
 permalink: /talks/1908_tomandoCiencia_whyPureMath
 venue: "Bar Giraluna"
 location: Morelia, Mich., Mexico
-conference: Tomando ciencia
+conference: Cycle "Tomando ciencia"
 slides: /slides/1908_tomandoCiencia_whyPureMath.pdf
 conf_type: Local
-date: "2019-08-10"
+highlighted: yes
 ---
 
-Talk by invitation in the Tomando ciencia
+Talk by invitation in the Cycle "Tomando ciencia"
 
 Bar Giraluna
+
 Morelia, Mich., Mexico
 
-[Slides]({{ site.url }}/slides/1908_tomandoCiencia_whyPureMath.pdf){:target='_blank'}
+<i class="fa fa-file-pdf fa-fw" aria-hidden="false"></i>[Slides]({{ site.url }}/slides/1908_tomandoCiencia_whyPureMath.pdf){:target='_blank'}

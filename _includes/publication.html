@@ -35,7 +35,7 @@
     </h3>
 
 
-      <p>
+      <p class="archive__item-excerpt">
       {{ post.author }}
     {% if post.type == 'research' %}
           Published in {{ post.journal }}, {{ post.date | default: "1900-01-01" | date: "%Y" }}.
@@ -44,10 +44,12 @@
     {% elsif post.type == 'thesis' %}
           {{ post.journal }}, {{ post.date | default: "1900-01-01" | date: "%Y" }}.
     {% endif %}
-    {%if post.paperurl%}
-          <a href="{{post.paperurl}}" > Access publication here</a>
-    {%endif%}
       </p>
+    {%if post.paperurl%}
+      <p class="page__meta">
+          <a href="{{post.paperurl}}" > <i class="fa fa-duotone fa-fw fa-link"></i>Access publication here</a>
+      </p>
+    {%endif%}
 
 
 

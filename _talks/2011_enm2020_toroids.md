@@ -5,15 +5,16 @@ type: "Invited speaker"
 permalink: /talks/2011_enm2020_toroids
 venue: "University of Pamplona"
 location: Pamplona, Colombia
-conference: Encuentro Nororiental de Matemáticas 2020
+conference: Encuentro Nororiental de Matemáticas 2020 (online)
 slides: /slides/2011_enm2020_toroids.pdf
 conf_type: International
-date: "2020-11-18"
+highlighted: yes
 ---
 
-Invited speaker in the Encuentro Nororiental de Matemáticas 2020
+Invited speaker in the Encuentro Nororiental de Matemáticas 2020 (online)
 
 University of Pamplona
+
 Pamplona, Colombia
 
-[Slides]({{ site.url }}/slides/2011_enm2020_toroids.pdf){:target='_blank'}
+<i class="fa fa-file-pdf fa-fw" aria-hidden="false"></i>[Slides]({{ site.url }}/slides/2011_enm2020_toroids.pdf){:target='_blank'}

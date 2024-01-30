@@ -8,12 +8,12 @@ location: Morelia, Mich. Mexico
 conference: Discrete math seminar FisMat UMSNH
 slides: /slides/1211_dmFisMat_regPolyhedra3Torus.pdf
 conf_type: Seminar
-date: "2012-11-10"
 ---
 
 Contributed talk in the Discrete math seminar FisMat UMSNH
 
 Faculty of Physics and Mathematics, UMSNH
+
 Morelia, Mich. Mexico
 
-[Slides]({{ site.url }}/slides/1211_dmFisMat_regPolyhedra3Torus.pdf){:target='_blank'}
+<i class="fa fa-file-pdf fa-fw" aria-hidden="false"></i>[Slides]({{ site.url }}/slides/1211_dmFisMat_regPolyhedra3Torus.pdf){:target='_blank'}
