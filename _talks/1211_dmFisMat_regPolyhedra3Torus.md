@@ -8,6 +8,7 @@ location: Morelia, Mich. Mexico
 conference: Discrete math seminar FisMat UMSNH
 slides: /slides/1211_dmFisMat_regPolyhedra3Torus.pdf
 conf_type: Seminar
+date: "2012-11-10"
 ---
 
 Contributed talk in the Discrete math seminar FisMat UMSNH

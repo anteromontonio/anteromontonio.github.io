@@ -8,6 +8,7 @@ location: Aguascalientes, Ags. Mexico
 conference: 49th National Conference of the Mexican Mathematical Society
 slides: /slides/1610_smm2017_twoToK.pdf
 conf_type: National
+date: "2016-10-25"
 ---
 
 Contributed talk in the 49th National Conference of the Mexican Mathematical Society

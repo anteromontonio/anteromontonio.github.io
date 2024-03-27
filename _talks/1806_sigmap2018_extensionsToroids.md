@@ -8,6 +8,7 @@ location: Morelia, Mich. Mexico
 conference: 6th Workshop Symmetries in Graphs Maps and Polytopes
 slides: /slides/1806_sigmap2018_extensionsToroids.pdf
 conf_type: International
+date: "2018-06-26"
 ---
 
 Contributed talk in the 6th Workshop Symmetries in Graphs Maps and Polytopes

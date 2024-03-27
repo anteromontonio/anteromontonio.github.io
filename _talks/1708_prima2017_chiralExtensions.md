@@ -8,6 +8,7 @@ location: Oaxaca, Oax. Mexico
 conference: 3rd Conference of the Pacific Rim Mathematical Association
 slides: /slides/1708_prima2017_chiralExtensions.pdf
 conf_type: International
+date: "2017-08-14"
 ---
 
 Talk by invitation in the 3rd Conference of the Pacific Rim Mathematical Association

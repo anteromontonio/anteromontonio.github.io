@@ -8,6 +8,7 @@ location: Queenstown, New Zealand
 conference: Conference Symmetries and Covers of Discrete Objects
 slides: /slides/1602_scdo2016_toroids.pdf
 conf_type: International
+date: "2016-02-16"
 ---
 
 Contributed talk in the Conference Symmetries and Covers of Discrete Objects

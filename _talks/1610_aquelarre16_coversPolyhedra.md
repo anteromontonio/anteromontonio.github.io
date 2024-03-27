@@ -8,6 +8,7 @@ location: Mexico City, Mexico
 conference: Aquelarre Matemático 2016
 slides: /slides/1610_aquelarre16_coversPolyhedra.pdf
 conf_type: Local
+date: "2016-10-11"
 ---
 
 Contributed talk in the Aquelarre Matemático 2016

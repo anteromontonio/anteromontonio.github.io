@@ -7,6 +7,7 @@ venue: "Faculty of Mathematics and Physics, University of Ljubljana"
 location: Ljubljana, Slovenia
 conference: Seminar Dicrete Mathematics UL FMF
 conf_type: Seminar
+date: "2022-11-15"
 ---
 
 Talk by invitation in the Seminar Dicrete Mathematics UL FMF

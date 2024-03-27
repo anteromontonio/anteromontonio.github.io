@@ -8,6 +8,7 @@ location: La Habana, Cuba
 conference: 33rd Colloquium “Victor Neumann-Lara” of graph theory, combinatorics and its applications
 slides: /slides/1803_vnl2018_extensionsToroids.pdf
 conf_type: National
+date: "2018-03-05"
 ---
 
 Contributed talk in the 33rd Colloquium “Victor Neumann-Lara” of graph theory, combinatorics and its applications

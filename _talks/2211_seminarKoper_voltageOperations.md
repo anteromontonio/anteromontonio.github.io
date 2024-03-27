@@ -8,6 +8,7 @@ location: Koper, Slovenia
 conference: Mathematics research seminar
 slides: /slides/2211_seminarKoper_voltageOperations.pdf
 conf_type: Seminar
+date: "2022-11-14"
 ---
 
 Talk by invitation in the Mathematics research seminar

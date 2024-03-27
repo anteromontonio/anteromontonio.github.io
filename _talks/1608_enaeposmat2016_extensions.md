@@ -8,6 +8,7 @@ location: Cuernavaca, Mor. Mexico
 conference: 2nd national meeting of graduate students of mathematics
 slides: /slides/1608_enaeposmat2016_extensions.pdf
 conf_type: National
+date: "2016-08-18"
 ---
 
 Contributed talk in the 2nd national meeting of graduate students of mathematics

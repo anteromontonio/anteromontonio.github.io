@@ -8,6 +8,7 @@ location: Pachuca, Hgo. Mexico
 conference: 26th Colloquium "Victor Neumann-Lara" of graph theory, combinatorics and its applications
 slides: /slides/1103_vnl2011_trianglesProb.pdf
 conf_type: National
+date: "2011-03-06"
 ---
 
 Contributed talk in the 26th Colloquium "Victor Neumann-Lara" of graph theory, combinatorics and its applications

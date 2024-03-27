@@ -8,6 +8,7 @@ location: Villahermosa, Tab. Mexico
 conference: 51th National Conference of the Mexican Mathematical Society
 slides: /slides/1810_smm2018_extensionsToroids.pdf
 conf_type: National
+date: "2018-10-23"
 ---
 
 Contributed talk in the 51th National Conference of the Mexican Mathematical Society

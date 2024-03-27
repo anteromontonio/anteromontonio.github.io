@@ -8,6 +8,7 @@ location: Kranjska Gora, Slovenia
 conference: 10th Slovenian Conference on Graph Theory
 slides: /slides/2306_10SiCGT_cayleyExtensions.pdf
 conf_type: International
+date: "2023-06-20"
 ---
 
 Contributed talk in the 10th Slovenian Conference on Graph Theory

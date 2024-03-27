@@ -8,6 +8,7 @@ location: Mérida, Yuc. Mexico
 conference: 46th National Conference of the Mexican Mathematical Society
 slides: /slides/1310_smm2013_regPolyhedra3Torus.pdf
 conf_type: National
+date: "2013-10-28"
 ---
 
 Contributed talk in the 46th National Conference of the Mexican Mathematical Society

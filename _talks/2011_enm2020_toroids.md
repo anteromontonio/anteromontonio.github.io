@@ -9,6 +9,7 @@ conference: Encuentro Nororiental de Matemáticas 2020 (online)
 slides: /slides/2011_enm2020_toroids.pdf
 conf_type: International
 highlighted: yes
+date: "2020-11-18"
 ---
 
 Invited speaker in the Encuentro Nororiental de Matemáticas 2020 (online)

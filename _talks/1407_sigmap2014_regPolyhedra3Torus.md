@@ -9,6 +9,7 @@ conference: 5th Workshop Symmetries in Graphs Maps and Polytopes (SIGMAP)
 slides: /slides/1407_sigmap2014_regPolyhedra3Torus.pdf
 conf_type: International
 highlighted: yes
+date: "2014-07-07"
 ---
 
 Contributed talk in the 5th Workshop Symmetries in Graphs Maps and Polytopes (SIGMAP)

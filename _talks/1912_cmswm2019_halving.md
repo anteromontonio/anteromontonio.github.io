@@ -8,6 +8,7 @@ location: Toronto, ON., Canada
 conference: CMS Winter meeting 2019
 slides: /slides/1912_cmswm2019_halving.pdf
 conf_type: International
+date: "2019-12-07"
 ---
 
 Talk by invitation in the CMS Winter meeting 2019

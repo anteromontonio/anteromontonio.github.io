@@ -8,6 +8,7 @@ location: Bled, Slovenia
 conference: 9th Slovenian Conference on Graph Theory
 slides: /slides/1906_9SiCGT_toroidalPolyhedra.pdf
 conf_type: International
+date: "2019-06-27"
 ---
 
 Contributed talk in the 9th Slovenian Conference on Graph Theory

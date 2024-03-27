@@ -9,6 +9,7 @@ conference: 16th Summer school in mathematics CCM - UNAM
 slides: /slides/1606_esver2016_toroids.pdf
 conf_type: National
 highlighted: yes
+date: "2016-06-29"
 ---
 
 Invited speaker in the 16th Summer school in mathematics CCM - UNAM

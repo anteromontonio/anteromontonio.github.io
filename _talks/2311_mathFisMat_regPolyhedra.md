@@ -8,6 +8,7 @@ location: Morelia, Mich. Mexico
 conference: Math seminar FisMat UMSNH
 slides: /slides/2311_mathFisMat_regPolyhedra.pdf
 conf_type: Seminar
+date: "2023-11-12"
 ---
 
 Talk by invitation in the Math seminar FisMat UMSNH

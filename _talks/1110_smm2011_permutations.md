@@ -8,6 +8,7 @@ location: San Luis Potosí, SLP. Mexico
 conference: 44th National Conference of the Mexican Mathematical Society
 slides: /slides/1110_smm2011_permutations.pdf
 conf_type: National
+date: "2011-10-12"
 ---
 
 Contributed talk in the 44th National Conference of the Mexican Mathematical Society

@@ -7,6 +7,7 @@ venue: "Centro de Ciencias Matemáticas, UNAM Morelia"
 location: Morelia, Mich. Mexico
 conference: Graduate students seminar CCM
 conf_type: Seminar
+date: "2015-08-18"
 ---
 
 Contributed talk in the Graduate students seminar CCM

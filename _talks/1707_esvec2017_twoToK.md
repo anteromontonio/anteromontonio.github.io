@@ -9,6 +9,7 @@ conference: 2nd Summer school of symmetries of combinatorial structures
 slides: /slides/1707_esvec2017_twoToK.pdf
 conf_type: National
 highlighted: yes
+date: "2017-07-26"
 ---
 
 Invited speaker in the 2nd Summer school of symmetries of combinatorial structures

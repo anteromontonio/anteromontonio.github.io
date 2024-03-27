@@ -8,6 +8,7 @@ location: Mexico City, Mexico
 conference: Aquelarre Matemático 2015
 slides: /slides/1510_aquelarre15_toroids.pdf
 conf_type: Local
+date: "2015-10-16"
 ---
 
 Contributed talk in the Aquelarre Matemático 2015

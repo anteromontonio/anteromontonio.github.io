@@ -8,6 +8,7 @@ location: Guanajuato, Gto. Mexico
 conference: Graduate students seminar CIMAT
 slides: /slides/1711_becariosCimat_toroids.pdf
 conf_type: Seminar
+date: "2017-11-10"
 ---
 
 Talk by invitation in the Graduate students seminar CIMAT

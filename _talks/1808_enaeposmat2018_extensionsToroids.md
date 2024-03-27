@@ -8,6 +8,7 @@ location: Morelia, Mich. Mexico
 conference: 3rd national meeting of graduate students of mathematics
 slides: /slides/1808_enaeposmat2018_extensionsToroids.pdf
 conf_type: National
+date: "2018-08-29"
 ---
 
 Contributed talk in the 3rd national meeting of graduate students of mathematics

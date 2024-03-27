@@ -6,6 +6,8 @@ permalink: /talks/2103_agtiw_extensions
 conference: Algebraic graph theory international webminar (online)
 slides: /slides/2103_agtiw_extensions.pdf
 conf_type: Seminar
+highlighted: yes
+date: "2021-03-02"
 ---
 
 Talk by invitation in the Algebraic graph theory international webminar (online)

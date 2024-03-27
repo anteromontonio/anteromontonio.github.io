@@ -9,6 +9,7 @@ conference: Cycle "Tomando ciencia"
 slides: /slides/1908_tomandoCiencia_whyPureMath.pdf
 conf_type: Local
 highlighted: yes
+date: "2019-08-10"
 ---
 
 Talk by invitation in the Cycle "Tomando ciencia"
