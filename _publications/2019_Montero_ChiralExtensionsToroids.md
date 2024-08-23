@@ -5,8 +5,8 @@ permalink: /publication/2019_Montero_ChiralExtensionsToroids
 date: 2019-01-01
 author: 'A. Montero.'
 paperurl: 'http://132.248.9.195/ptd2019/agosto/0794572/Index.html'
-citation: 'A. Montero. Chiral extensions of toroids, Ph.D. Thesis, UNAM-UMSNH., 2019. '
-journal: 'Ph.D. Thesis, UNAM-UMSNH.'
+citation: 'A. Montero. Chiral extensions of toroids, Ph.{D}. {T}hesis, UNAM-UMSNH., 2019. '
+journal: 'Ph.{D}. {T}hesis, UNAM-UMSNH.'
 type: 'thesis'
 --- 
 
