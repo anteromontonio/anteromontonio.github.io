@@ -1,97 +1,208 @@
 - title: General Information
   type: map
   contents:
-    - name: Full Name
-      value: Albert Einstein
-    - name: Date of Birth
-      value: 14th March 1879
-    - name: Languages
-      value: English, German
+    - name: Name
+      value: Antonio Montero.
+    - name: Date of birth
+      value: 3 December, 1990.
+    - name: Place of birth
+      value: Morelia, Mexico.
+    - name: Nationality
+      value: Mexican.
+
+- title: Work experience
+  type: time_table
+  contents:
+    - title: Asistent (Teaching assistant)
+      institution: Faculty of education, University of Ljubljana (UL-PEF)
+      location: Ljubljana, Slovenia.
+      year: 2024 - now
+      maindescription:
+        Teaching assistant in a program of education in mathematics, computer science, and physics. 
+        # - Description 2.
+        # - title: Description 3.
+        #   contents:
+        #     - Sub-description 1.
+        #     - Sub-description 2.
+    - title: Znanstveni sodelavec (Reseach associate, postdocotral) 
+      location: Ljubljana, Slovenia.
+      institution: Faculty of mathematics and Physics, University of Ljubljana (UL-FMF).
+      year: 2022 - now
+      description:
+        - Research.
+        - Teaching in an undergraduate and a graduate program in mathematics.
+
+    - title: Becario postdoctoral (Postdoctoral fellow)
+      institution: Institute of Mathematics, National Autonomous University of Mexico (UNAM).
+      location: Mexico City, Mexico
+      year: 2020-2022
+      description:
+        - Research.
+        - Teaching in an undergraduate and a graduate program in mathematics.
+
+    - title: Postdoctoral fellow
+      institution: Department of Mathematics and Statistics, York University.
+      location: Toronto ON. Canada
+      year: 2019-2002
+      description:
+        - Research
+        - Teaching in an undergraduate program.
+
+    - title: Ayudante de profesor (Teaching assistant).
+      institution: National school of higher studies (ENES), UNAM Morelia.
+      location: Morelia, Mexico
+      year: 2015 - 2019
+      maindescription: Teaching in a undergraduate computer-science oriented program.
 
 - title: Education
   type: time_table
   contents:
-    - title: PhD
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1905
-      description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Federal teaching diploma
-      institution: Eidgenössische Technische Hochschule, Zurich, Switzerland
-      year: 1900
-      description:
-        - Description 1.
-        - Description 2.
+    - title: Ph.D. (Mathematics)
+      institution: National Autonomous University of Mexico (UNAM)
+      department: Centro de Ciencias Matemáticas
+      location: Morelia, Mexico
+      year: 2019
+      maindescription: Graduated with the thesis "Chiral extensions of toroids"
 
-- title: Experience
-  type: time_table
-  contents:
-    - title: Professor of Theoretical Physics
-      institution: Institute for Advanced Study, Princeton University
-      year: 1933 - 1955
-      description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Visiting Professor
-      institution: California Institute of Technology, Pasadena, California, US
-      year: 1933
-      description:
-        - Description 1.
-        - Description 2.
+    - title: M.Sc. (Mathematics)
+      institution: National Autonomous University of Mexico (UNAM)
+      department: Centro de Ciencias Matemáticas
+      location: Morelia, Mexico
+      year: 2015
+      maindescription: Graduated with the thesis "Realizaciones regulares de poliedros en el 3-toro"
 
-    - title: Director
-      institution: Kaiser Wilhelm Institute for Physics, Berlin, Germany.
-      year: 1917-1933
+    - title: B.Sc. (Physics and Mathematics)
+      institution: University of Michoacan (UMSNH)
+      department: Faculty of physics and mathematics
+      location: Morelia, Mexico
+      year: 2013
+      maindescription: Graduated with the thesis "Poliedros regulares en el 3-toro"
+        
 
-    - title: Professor of Theoretical Physics
-      institution: Karl-Ferdinand University, Prague, Czechoslovakia
-      year: 1911 - 1917
-      description:
-
-    - title: Associate Professor of Theoretical Physics
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1909 - 1911
-
-- title: Open Source Projects
-  type: time_table
-  contents:
-    - title: <a href="https://github.com/alshedivat/al-folio">al-folio</a>
-      year: 2015-now
-      description: A beautiful, simple, clean, and responsive Jekyll theme for academics.
-
-- title: Honors and Awards
-  type: time_table
-  contents:
-    - year: 1921
-      items:
-        - Nobel Prize in Physics
-        - Matteucci Medal
-    - year: 2029
-      items:
-        - Max Planck Medal
+# - title: Open Source Projects
+#   type: time_table
+#   contents:
+#     - title: <a href="https://github.com/alshedivat/al-folio">al-folio</a>
+#       year: 2015-now
+#       description: A beautiful, simple, clean, and responsive Jekyll theme for academics.
 
 - title: Academic Interests
   type: nested_list
   contents:
-    - title: Topic 1.
+    - title: Combinatorial constructions of polytopes/maniplexes.
+      icon: fa-solid fa-cube
       items:
-        - Description 1.
-        - Description 2.
-    - title: Topic 2.
+        - Constructions with prescribed symmetry type graph.
+        - Constructions with prescribed local combinatorics (Scläfli symbol).
+        - Extensions of abstract polytopes.
+    
+    - title: Datasets of highly symmetric polytopes/maniplexes
+      icon: fa-solid fa-database
       items:
-        - Description 1.
-        - Description 2.
+        - Datasets of non-rotary maniplexes.
+        - Datasets of non-faithful maniplexes.
 
-- title: Other Interests
-  type: list
+    - title: Use of computational tools in math
+      icon: fa-solid fa-file
+      items:
+        - Document creation with LaTeX
+        - Computational tools to create teaching material.
+
+
+- title: Honors, awards, appointments
+  type: time_table
   contents:
-    - <u>Hobbies:</u> Hobby 1, Hobby 2, etc.
+    - title: Candidato a investigador nacional (National research candidate)
+      department: National Council of Humanities, Science and Technology (CONAHCyT)
+      location: Mexico
+      year: 2021 - 2024
+
+    - title: Best student talk award
+      department: 8th PhD Summer School in Discrete Mathematics
+      year: 2018
+      location: Rogla, Slovenia
+   
+    - title: Award "Padre de la patria"
+      department: University of Michoacan (UMSNH)
+      year: 2012
+      location: Morelia, Mexico
+      maindescription: Award given to the best student of each year.
+
+    - title: Award "Padre de la patria"
+      department: University of Michoacan (UMSNH)
+      year: 2011
+      location: Morelia, Mexico
+      maindescription: Award given to the best student of each year.
+
+
+
+- title: Computational skills
+  type: map
+  contents:
+    - name: Programming languages
+      value: Python, SageMath, GAP.
+    - name: Productivity
+      value: Git, Notion.
+    - name: Content creation
+      value: LaTeX, Inskcape, GeoGebra, Markdown, Jekyll.
+
+  # - title: Other Interests
+  #   type: list_groups
+  #   contents:
+  #     - items:
+  #         - name: Nombre 1  
+  #           level: Nivel 1
+  #           school: la escuelita 1
+  #           time: el tiempo 1
+  #           link: google.com
+  #         - name: Nombre 2  
+  #           level: Level 2
+  #           school: la escuelita 2
+  #           time: el tiempo 2
+  #           link: google.com
+  #           linkname: sabe
+
+- title: Languages
+  type: languages
+  contents:
+    - language: Spanish
+      fluency: Native speaker
+    - language: English  
+      fluency: C1 (2014)
+    - language: Slovene  
+      fluency: A1 
+
+- title: Other interests
+  type: certificates
+  contents: 
+    - name: Coffee
+      # date: 2019-01-01
+      issuer: Coffee nerd, home barista
+      url: https://www.instagram.com/justacoffeenerd/
+    - name: Music
+      # date: 2014-01-01
+      issuer: Amateur multi instrumentalist
+      # url: 
+
+
+
+
+# - title: Certificates
+#   type: certificates
+#   contents: 
+#     - name: Ser la mera reata
+#       date: 2018-01-01
+#       issuer: La escuelita
+#       url: http://google.com 
+#     - name: Ser la mera reata
+#       date: 2014-01-01
+#       issuer: La escuelita
+#       url: http://google.com 
+#     - name: Ser la mera reata
+#       date: 2019-01-01
+#       issuer: La escuelita
+#       url: http://google.com 
+#     - name: Ser la mera reata
+#       date: 2024-01-01
+#       issuer: La escuelita
+#       url: http://google.com 

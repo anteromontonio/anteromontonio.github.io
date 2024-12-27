@@ -5,42 +5,63 @@
 @use "sass:color";
 
 :root {
-  --global-bg-color: #{$white-color};
-  --global-code-bg-color: #{$code-bg-color-light};
-  --global-text-color: #{$black-color};
-  --global-text-color-light: #{$grey-color};
-  --global-theme-color: #{$purple-color};
-  --global-hover-color: #{$purple-color};
-  --global-hover-text-color: #{$white-color};
-  --global-footer-bg-color: #{$grey-color-dark};
-  --global-footer-text-color: #{$grey-color-light};
-  --global-footer-link-color: #{$white-color};
-  --global-distill-app-color: #{$grey-color};
-  --global-divider-color: rgba(0, 0, 0, 0.1);
-  --global-card-bg-color: #{$white-color};
-  --global-highlight-color: #{$red-color-dark};
+  --global-bg-color: #{$nlb-main};
+  --global-code-bg-color: #{$nlb-second};
+  --global-text-color: #{$nlf-main};
+  --global-text-color-light: #{$nlf-gray};
+  --global-theme-color: #{$nlf-blue};
+  --global-theme-color-bg: #{$nlb-blue};
+  --global-hover-color: #{$nlf-orange};
+  --global-hover-text-color: #{$nlb-main};
+  --global-footer-bg-color: #{$ndb-main};
+  --global-footer-text-color: #{$ndf-main};
+  --global-footer-link-color: #{$ndf-blue};
+  --global-distill-app-color: #{$nlf-gray};
+  --global-divider-color: #{$ndf-gray};
+  --global-card-bg-color: #{$nlb-main};
+  --global-highlight-color: #{$nlb-red};
   --global-back-to-top-bg-color: rgba(
     #{color.channel($black-color, "red", $space: rgb)},
     #{color.channel($black-color, "green", $space: rgb)},
     #{color.channel($black-color, "blue", $space: rgb)},
     0.4
   );
-  --global-back-to-top-text-color: #{$white-color};
-  --global-newsletter-bg-color: #{$white-color};
-  --global-newsletter-text-color: #{$black-color};
+  --global-back-to-top-text-color: #{$ndf-main};
+  --global-newsletter-bg-color: #{$ndf-main};
+  --global-newsletter-text-color: #{$nlf-main};
 
-  --global-tip-block: #42b983;
-  --global-tip-block-bg: #e2f5ec;
-  --global-tip-block-text: #215d42;
-  --global-tip-block-title: #359469;
-  --global-warning-block: #e7c000;
-  --global-warning-block-bg: #fff8d8;
-  --global-warning-block-text: #6b5900;
-  --global-warning-block-title: #b29400;
-  --global-danger-block: #c00;
-  --global-danger-block-bg: #ffe0e0;
-  --global-danger-block-text: #600;
-  --global-danger-block-title: #c00;
+  --global-tip-block: #{$nlf-green};
+  --global-tip-block-bg: #{$nlb-green};
+  --global-tip-block-text: #{$ndb-green};
+  --global-tip-block-title: #{$nlf-green};
+  --global-warning-block: #{$nlf-yellow};
+  --global-warning-block-bg: #{nlb-yellow};
+  --global-warning-block-text: #{$ndb-yellow};
+  --global-warning-block-title: #{$nlf-yellow};
+  --global-danger-block: #{$nlf-red};
+  --global-danger-block-bg: #{$nlb-red};
+  --global-danger-block-text: #{$ndb-red};
+  --global-danger-block-title: #{$nlf-red};
+  --green: #{$nlf-green};
+  --grey: #{$nlf-gray};
+  --gray: #{$nlf-gray};
+  --brown: #{$nlf-brown};
+  --orange: #{$nlf-orange};
+  --yellow: #{$nlf-yellow};
+  --blue: #{$nlf-blue};
+  --purple: #{$nlf-purple};
+  --pink: #{$nlf-pink};
+  --red: #{$nlf-red};
+  --green-bg: #{$nlb-green};
+  --grey-bg: #{$nlb-gray};
+  --gray-bg: #{$nlb-gray};
+  --brown-bg: #{$nlb-brown};
+  --orange-bg: #{$nlb-orange};
+  --yellow-bg: #{$nlb-yellow};
+  --blue-bg: #{$nlb-blue};
+  --purple-bg: #{$nlb-purple};
+  --pink-bg: #{$nlb-pink};
+  --red-bg: #{$nlb-red};
 
   #light-toggle-system {
     padding-left: 10px;
@@ -76,41 +97,64 @@
 }
 
 html[data-theme="dark"] {
-  --global-bg-color: #{$grey-color-dark};
-  --global-code-bg-color: #{$code-bg-color-dark};
-  --global-text-color: #{$grey-color-light};
-  --global-text-color-light: #{$grey-color};
-  --global-theme-color: #{$cyan-color};
-  --global-hover-color: #{$cyan-color};
-  --global-hover-text-color: #{$white-color};
-  --global-footer-bg-color: #{$grey-color-light};
-  --global-footer-text-color: #{$grey-color-dark};
-  --global-footer-link-color: #{$black-color};
-  --global-distill-app-color: #{$grey-color-light};
-  --global-divider-color: #424246;
-  --global-card-bg-color: #{$grey-900};
+  --global-bg-color: #{$ndb-main};
+  --global-code-bg-color: #{$ndb-hover};
+  --global-text-color: #{$ndf-main};
+  --global-text-color-light: #{$ndf-gray};
+  --global-theme-color: #{$ndf-blue};
+  --global-theme-color-bg: #{$ndf-blue};
+  --global-hover-color: #{$ndf-orange};
+  --global-hover-text-color: #{$ndb-main};
+  --global-footer-bg-color: #{$ndb-main};
+  --global-footer-text-color: #{$ndf-main};
+  --global-footer-link-color: #{$ndf-blue};
+  --global-distill-app-color: #{$ndf-gray};
+  --global-divider-color: #{$nlf-gray};
+  --global-card-bg-color: #{$ndb-gray};
+  --global-highlight-color: #{$ndb-red};
   --global-back-to-top-bg-color: rgba(
     #{color.channel($white-color, "red", $space: rgb)},
     #{color.channel($white-color, "green", $space: rgb)},
     #{color.channel($white-color, "blue", $space: rgb)},
     0.5
   );
-  --global-back-to-top-text-color: #{$black-color};
-  --global-newsletter-bg-color: #{$grey-color-light};
-  --global-newsletter-text-color: #{$grey-color-dark};
+  --global-back-to-top-text-color: #{$ndf-main};
+  --global-newsletter-bg-color: #{$nlb-gray};
+  --global-newsletter-text-color: #{$nlf-gray};
 
-  --global-tip-block: #42b983;
-  --global-tip-block-bg: #e2f5ec;
-  --global-tip-block-text: #215d42;
-  --global-tip-block-title: #359469;
-  --global-warning-block: #e7c000;
-  --global-warning-block-bg: #fff8d8;
-  --global-warning-block-text: #6b5900;
-  --global-warning-block-title: #b29400;
-  --global-danger-block: #c00;
-  --global-danger-block-bg: #ffe0e0;
-  --global-danger-block-text: #600;
-  --global-danger-block-title: #c00;
+  --global-tip-block: #{$ndf-green};
+  --global-tip-block-bg: #{$ndb-green};
+  --global-tip-block-text: #{$nlb-green};
+  --global-tip-block-title: #{$ndf-green};
+  --global-warning-block: #{$ndf-yellow};
+  --global-warning-block-bg: #{$ndb-yellow};
+  --global-warning-block-text: #{$nlb-yellow};
+  --global-warning-block-title: #{$ndf-yellow};
+  --global-danger-block: #{$ndf-red};
+  --global-danger-block-bg: #{$ndb-red};
+  --global-danger-block-text: #{$nlb-red};
+  --global-danger-block-title: #{$ndf-red};
+  --green: #{$ndf-green};
+  --grey: #{$ndf-gray};
+  --gray: #{$ndf-gray};
+  --brown: #{$ndf-brown};
+  --orange: #{$ndf-orange};
+  --yellow: #{$ndf-yellow};
+  --blue: #{$ndf-blue};
+  --purple: #{$ndf-purple};
+  --pink: #{$ndf-pink};
+  --red: #{$ndf-red};
+  --green-bg: #{$ndb-green};
+  --grey-bg: #{$ndb-gray};
+  --gray-bg: #{$ndb-gray};
+  --brown-bg: #{$ndb-brown};
+  --orange-bg: #{$ndb-orange};
+  --yellow-bg: #{$ndb-yellow};
+  --blue-bg: #{$ndb-blue};
+  --purple-bg: #{$ndb-purple};
+  --pink-bg: #{$ndb-pink};
+  --red-bg: #{$ndb-red};
+
 
   .only-light {
     display: none;
