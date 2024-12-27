@@ -1,34 +1,29 @@
-"adams":
-  - firstname: ["Edwin", "E.", "E. P.", "Edwin Plimpton"]
-    url: https://en.wikipedia.org/wiki/Edwin_Plimpton_Adams
+"collins":
+  - firstname: ["José", "J"]
+    url: https://www.linkedin.com/in/jose-collins-castro/
 
-"podolsky":
-  - firstname: ["Boris", "B.", "B. Y.", "Boris Yakovlevich"]
-    url: https://en.wikipedia.org/wiki/Boris_Podolsky
+"cunningham":
+  - firstname: ["Gabe", "G.", "Gabriel"]
+    url: http://www.gabrielcunningham.com/
 
-"rosen":
-  - firstname: ["Nathan", "N."]
-    url: https://en.wikipedia.org/wiki/Nathan_Rosen
+"hubard":
+  - firstname: ["Isabel", "I",]
+    url: https://sites.google.com/im.unam.mx/isahubard
 
-"bach":
-  - firstname: ["Johann Sebastian", "J. S."]
-    url: https://en.wikipedia.org/wiki/Johann_Sebastian_Bach
+"mochan":
+  - firstname: ["Elias", "Elías", "E.", "Jaime Elías", "J. E."]
+    url: https://eliasmochan.wordpress.com/
 
-  - firstname: ["Carl Philipp Emanuel", "C. P. E."]
-    url: https://en.wikipedia.org/wiki/Carl_Philipp_Emanuel_Bach
+"potocnik":
+  - firstname: ["Primoz", "Primož", "P.",]
+    url: "https://primoz.potocnik.xyz/"
 
-"przibram":
-  - firstname: ["Karl"]
-    url: https://link.springer.com/article/10.1007/s00016-019-00242-z
+"toledo":
+  - firstname: ["Micael", "M.", ]
+    url: "https://mathscinet.ams.org/mathscinet/MRAuthorID/1107875"
 
-"schrodinger":
-  - firstname: ["Erwin"]
-    url: https://en.wikipedia.org/wiki/Erwin_Schr%C3%B6dinger
+"weiss":
+  - firstname: ["Asia", "Asia Ivić", "A.", "A.I.", "Asia I."]
+    url: https://mathscinet.ams.org/mathscinet/MRAuthorID/181555
 
-"lorentz":
-  - firstname: ["Hendrik Antoon"]
-    url: https://en.wikipedia.org/wiki/Hendrik_Lorentz
-
-"planck":
-  - firstname: ["Max"]
-    url: https://en.wikipedia.org/wiki/Max_Planck
+ 

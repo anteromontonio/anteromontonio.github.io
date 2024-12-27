@@ -1,9 +1,40 @@
-"AJP":
-  url: https://aapt.scitation.org/journal/ajp
-  color: "#00369f"
+"JCTA-A":
+  url: https://www.sciencedirect.com/journal/journal-of-combinatorial-theory-series-a
 
-"PhysRev":
-  url: https://journals.aps.org/
+"Combinatorica":
+  url: https://link.springer.com/journal/493
 
-"Vision":
-  color: "#009f36"
+"DCG":
+  url: "https://link.springer.com/journal/454"
+
+"DM":
+  url: "https://www.sciencedirect.com/journal/discrete-mathematics"
+
+"JACO":
+  url: "https://link.springer.com/journal/10801"
+
+"ADAM":
+  url: "https://adam-journal.eu/index.php/ADAM/index"
+
+"Adv. Geom.":
+  url: "https://www.degruyter.com/journal/key/advg/html"
+
+
+"arXiv":
+  url: "https://arxiv.org/a/montero_a_1.html"
+  color: "var(--red)"
+
+"B.Sc.":
+  color: "#979A9B"
+  url: "http://bibliotecavirtual.dgb.umich.mx:8083/xmlui/handle/DGB_UMICH/11935"
+
+"M.Sc.":
+  color: "#979A9B"
+  url: "http://132.248.9.195/ptd2015/septiembre/0735016/Index.html}"
+
+"Ph.D.":
+  color: "#979A9B"
+  url: "http://132.248.9.195/ptd2019/agosto/0794572/Index.html"
+
+"Outreach":
+  color: "var(--green)"

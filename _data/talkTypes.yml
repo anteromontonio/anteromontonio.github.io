@@ -1,0 +1,8 @@
+"Contributed":
+  color: "var(--blue)"
+
+"By invitation":
+  color: "var(--green)"
+
+"Invited speaker":
+  color: "var(--red)"

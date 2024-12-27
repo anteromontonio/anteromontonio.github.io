@@ -7,13 +7,15 @@ layout: default
       <h1 class="post-title">
         {{ page.title }}
         {% if page.cv_pdf %}
+          {% for file in page.cv_pdf %}
           <a
-            href="{{ page.cv_pdf | prepend: 'assets/pdf/' | relative_url}}"
+            href="{{ file | prepend: 'assets/pdf/' | relative_url}}"
             target="_blank"
             rel="noopener noreferrer"
             class="float-right"
-            ><i class="fa-solid fa-file-pdf"></i
+            title="{{ file }}"><i class="fa-solid fa-file-pdf" style="padding: 5px;font-size: smaller;"></i
           ></a>
+          {% endfor %}
         {% endif %}
       </h1>
       {% if page.description %}
@@ -38,6 +40,10 @@ layout: default
                 {% include cv/time_table.liquid %}
               {% elsif entry.type == 'list_groups' %}
                 {% include cv/list_groups.liquid %}
+              {% elsif entry.type == 'certificates' %}
+                {% include cv/certificates.liquid %}
+              {% elsif entry.type == 'languages' %}
+                {% include cv/languages.liquid %}
               {% else %}
                 {{ entry.contents }}
               {% endif %}
