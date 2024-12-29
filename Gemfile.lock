@@ -148,6 +148,11 @@ GEM
       jekyll (>= 3.5)
       json-minify (~> 0.0.3)
       uglifier (~> 4.1)
+    jekyll-notion (2.4.1)
+      jekyll (>= 3.7, < 5.0)
+      notion-ruby-client (~> 1.0)
+      notion_to_md (~> 2.2)
+      vcr (~> 6.2)
     jekyll-paginate-v2 (3.0.0)
       jekyll (>= 3.0, < 5.0)
     jekyll-regex-replace (1.1.0)
@@ -263,6 +268,8 @@ GEM
     unicode-display_width (2.6.0)
     unicode_utils (1.4.0)
     uri (1.0.2)
+    vcr (6.3.1)
+      base64
     webrick (1.9.1)
 
 PLATFORMS
@@ -297,6 +304,7 @@ DEPENDENCIES
   jekyll-jupyter-notebook
   jekyll-link-attributes
   jekyll-minifier
+  jekyll-notion
   jekyll-paginate-v2
   jekyll-regex-replace
   jekyll-scholar
