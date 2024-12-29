@@ -137,6 +137,19 @@ newsletter:
   enabled: false
   endpoint: # your loops endpoint (e.g., https://app.loops.so/api/newsletter-form/YOUR-ENDPOINT)
   # https://loops.so/docs/forms/custom-form
+# -----------------------------------------------------------------------------
+# Notion
+# -----------------------------------------------------------------------------
+notion:
+  fetch_mode: true
+  databases:
+    - id: 16b3fad2c0938054ae4bea7c35b93783
+      collection: pages
+      # filter: { "property": "Status", "select": { "equals": "published" } }
+    - id: 16b3fad2c093808db0e6d00d60e424d7
+      collection: news
+      # filter: { "property": "Status", "select": { "equals": "published" } }
+
 
 # -----------------------------------------------------------------------------
 # Collections
@@ -201,6 +214,8 @@ exclude:
   - README.md
   - readme_preview/
   - vendor
+  - posts_archive
+  - projects_archive
 keep_files:
   - CNAME
   - .nojekyll
@@ -223,6 +238,8 @@ plugins:
   - jekyll-toc
   - jekyll-twitter-plugin
   - jemoji
+  - jekyll-fetch-notion
+
 
 # Sitemap settings
 defaults:
