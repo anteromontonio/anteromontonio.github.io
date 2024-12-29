@@ -1,7 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (8.0.0.1)
+    activesupport (7.2.2.1)
       base64
       benchmark (>= 0.3)
       bigdecimal
@@ -13,7 +13,6 @@ GEM
       minitest (>= 5.1)
       securerandom (>= 0.3)
       tzinfo (~> 2.0, >= 2.0.5)
-      uri (>= 0.13.1)
     addressable (2.8.7)
       public_suffix (>= 2.0.2, < 7.0)
     base64 (0.2.0)
@@ -22,6 +21,8 @@ GEM
       latex-decode (~> 0.0)
       racc (~> 1.7)
     bigdecimal (3.1.8)
+    callee (0.3.6)
+      dry-initializer (>= 2.5)
     citeproc (1.0.10)
       namae (~> 1.0)
     citeproc-ruby (1.1.14)
@@ -45,11 +46,23 @@ GEM
     csv (3.3.0)
     deep_merge (1.2.2)
     drb (2.2.1)
+    dry-initializer (3.1.1)
     em-websocket (0.5.3)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0)
     eventmachine (1.2.7)
     execjs (2.10.0)
+    faraday (2.12.2)
+      faraday-net_http (>= 2.0, < 3.5)
+      json
+      logger
+    faraday-mashify (0.1.1)
+      faraday (~> 2.0)
+      hashie
+    faraday-multipart (1.1.0)
+      multipart-post (~> 2.0)
+    faraday-net_http (3.4.0)
+      net-http (>= 0.5.0)
     fast-stemmer (1.0.2)
     feedjira (3.2.3)
       loofah (>= 2.3.1, < 3)
@@ -84,6 +97,7 @@ GEM
     google-protobuf (4.29.1-x86_64-linux)
       bigdecimal
       rake (>= 13)
+    hashie (5.0.0)
     html-pipeline (2.14.3)
       activesupport (>= 2)
       nokogiri (>= 1.4)
@@ -116,6 +130,10 @@ GEM
     jekyll-email-protect (1.1.0)
     jekyll-feed (0.17.0)
       jekyll (>= 3.7, < 5.0)
+    jekyll-fetch-notion (0.1.0)
+      jekyll (>= 3.7, < 5.0)
+      notion-ruby-client (~> 1.0)
+      notion_to_md (~> 2.2)
     jekyll-get-json (1.0.0)
       deep_merge (~> 1.2)
       jekyll (>= 3.0)
@@ -176,8 +194,11 @@ GEM
     minitest (5.25.4)
     multi_xml (0.7.1)
       bigdecimal (~> 3.1)
+    multipart-post (2.4.1)
     namae (1.2.0)
       racc (~> 1.7)
+    net-http (0.6.0)
+      uri
     nokogiri (1.17.1-aarch64-linux)
       racc (~> 1.4)
     nokogiri (1.17.1-arm-linux)
@@ -190,6 +211,16 @@ GEM
       racc (~> 1.4)
     nokogiri (1.17.1-x86_64-linux)
       racc (~> 1.4)
+    notion-ruby-client (1.2.2)
+      faraday (>= 2.0)
+      faraday-mashify (>= 0.1.1)
+      faraday-multipart (>= 1.0.4)
+      hashie (~> 5)
+    notion_to_md (2.5.0)
+      activesupport (~> 7)
+      callee (~> 0.3.6)
+      notion-ruby-client (~> 1)
+    observer (0.1.2)
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
     public_suffix (6.0.1)
@@ -260,6 +291,7 @@ DEPENDENCIES
   jekyll-archives
   jekyll-email-protect
   jekyll-feed
+  jekyll-fetch-notion
   jekyll-get-json
   jekyll-imagemagick
   jekyll-jupyter-notebook
@@ -273,6 +305,7 @@ DEPENDENCIES
   jekyll-toc
   jekyll-twitter-plugin
   jemoji
+  observer
   unicode_utils
   webrick
 
