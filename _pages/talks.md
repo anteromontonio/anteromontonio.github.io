@@ -16,9 +16,6 @@ Numbers:
 - Number of talks by invitation (in conferences where all the talks were by invitation): {{ site.data.talks | where: "type", "By invitation"  | size }}.
 - Number of contributed talks: {{ site.data.talks | where: "type", "Contributed"  | size }}.
 
-
-
-
 <div>
 {% include talks_search.liquid %}
 </div>
@@ -29,14 +26,15 @@ Numbers:
 {% tab talks by-year %}
 
 <div class="publications">
-{% for talk in site.data.talks reversed %}
+{% assign talksOrderedByYear = site.data.talks | sort: 'date' %}
+{% for talk in talksOrderedByYear reversed %}
   {% assign currentdate = talk.date | date: "%Y" %}
-  {% if currentdate != date %}
-    {% unless forloop.first %}</ol>{% endunless %}
-    <h2 class="bibliography" >{{ currentdate }}</h2>
-    <ol class="bibliography">
-    {% assign date = currentdate %}
-  {% endif %}
+    {% if currentdate != date %}
+      {% unless forloop.first %}</ol>{% endunless %}
+      <h2 class="bibliography" >{{ talk.date | date: '%Y' }}</h2>
+      <ol class="bibliography">
+      {% assign date = currentdate %}
+    {% endif %}
     <li>
       {% include talk.liquid %}
     </li>
@@ -53,9 +51,9 @@ Numbers:
 
 <div class="publications">
   <h2 class="bibliography" > International audience</h2>
-    {% for talk in site.data.talks reversed  %}
+    {% for talk in talksOrderedByYear reversed  %}
       {% if talk.conf_type == "International" %}
-        {% unless forloop.first %}</ol>{% endunless %}
+        <!-- {% unless forloop.first %}</ol>{% endunless %} -->
         <ol class="bibliography">
         <li>
           {% include talk.liquid %}
@@ -76,7 +74,7 @@ Numbers:
   {% endfor %}
   <h2 class="bibliography" > Local audience / seminars</h2>
     {% for talk in site.data.talks reversed  %}
-      {% if (talk.conf_type == "Local") or (talk.conf_type == "Seminar")  %}
+      {% if talk.conf_type == "Local" or talk.conf_type == "Seminar"  %}
         <!-- {% unless forloop.first %}</ol>{% endunless %} -->
         <ol class="bibliography">
         <li>
