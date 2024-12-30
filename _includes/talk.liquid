@@ -56,7 +56,7 @@
         {% if talk.abstract %}
           <a class="abstract btn btn-sm z-depth-0" role="button">abstract</a>
         {% endif %}
-        {% if talk.slides == "Yes" %}
+        {% if talk.slides %}
           <a href="{{ talk.id | prepend: '/assets/slides/' | relative_url | append: '.pdf' }}" class="btn btn-sm z-depth-0" role="button" target="_blank">SLIDES</a>   
         {% endif %}
       </div>
