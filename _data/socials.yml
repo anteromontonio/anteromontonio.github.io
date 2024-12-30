@@ -7,7 +7,7 @@
 # bluesky_url: # your bluesky URL
 # dblp_url: # your DBLP profile url
  email: antonio.montero@fmf.uni-lj.si # your email address
- email_alt: antonio.montero@pef.uni-lj.si # alternative email (added to social.liquid)
+#  email_alt: antonio.montero@pef.uni-lj.si # alternative email (added to social.liquid)
  orcid_id: 0000-0002-3293-8517 # your ORCID ID
  scholar_userid: GEJHkg0AAAAJ # your Google Scholar ID
  arxiv: montero_a_1

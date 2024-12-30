@@ -66,7 +66,7 @@ Numbers:
   <h2 class="bibliography" > National audience</h2>
     {% for talk in site.data.talks reversed  %}
       {% if talk.conf_type == "National" %}
-        {% unless forloop.first %}</ol>{% endunless %}
+        <!-- {% unless forloop.first %}</ol>{% endunless %} -->
         <ol class="bibliography">
         <li>
           {% include talk.liquid %}

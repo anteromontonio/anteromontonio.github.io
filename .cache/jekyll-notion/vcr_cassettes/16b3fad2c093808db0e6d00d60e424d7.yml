@@ -1,0 +1,232 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.notion.com/v1/databases/16b3fad2c093808db0e6d00d60e424d7/query
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - Notion Ruby Client/1.2.2
+      Authorization:
+      - Bearer <NOTION_TOKEN>
+      Notion-Version:
+      - '2022-02-22'
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Mon, 30 Dec 2024 11:20:07 GMT
+      content-type:
+      - application/json; charset=utf-8
+      transfer-encoding:
+      - chunked
+      connection:
+      - keep-alive
+      cf-ray:
+      - 8fa1a3836ea75aa5-VIE
+      cf-cache-status:
+      - DYNAMIC
+      content-encoding:
+      - gzip
+      etag:
+      - W/"c2c-WDxdh0JAqt+XDFTwXsaZkHC0BT0"
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      vary:
+      - Accept-Encoding
+      content-security-policy:
+      - default-src 'none'
+      referrer-policy:
+      - strict-origin-when-cross-origin
+      x-content-type-options:
+      - nosniff
+      x-dns-prefetch-control:
+      - 'off'
+      x-download-options:
+      - noopen
+      x-frame-options:
+      - SAMEORIGIN
+      x-notion-request-id:
+      - aa23b69a-b497-480e-86f5-ac94848da04c
+      x-permitted-cross-domain-policies:
+      - none
+      x-xss-protection:
+      - '0'
+      set-cookie:
+      - __cf_bm=rWHvHrYTxyCZxbRryug3QQ6r1bdmct3mpKLBd_RKAhw-1735557607-1.0.1.1-78Gyiy5Hy5gskYWQlqizBw6SFkqU6CgNYv6bAWjx2q_106mNlSvAegmudba49C9sfMKv.wEHCfsPBuCxmf_ztA;
+        path=/; expires=Mon, 30-Dec-24 11:50:07 GMT; domain=.notion.com; HttpOnly;
+        Secure; SameSite=None, _cfuvid=BQqgwTkc021Ld79H2Z2A0a4fYAmyWkHFahOJMR8ffzA-1735557607856-0.0.1.1-604800000;
+        path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None
+      server:
+      - cloudflare
+      alt-svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: UTF-8
+      string: "{\"object\":\"list\",\"results\":[{\"object\":\"page\",\"id\":\"16b3fad2-c093-8072-89f0-c9969f74ad12\",\"created_time\":\"2024-12-29T22:01:00.000Z\",\"last_edited_time\":\"2024-12-29T22:03:00.000Z\",\"created_by\":{\"object\":\"user\",\"id\":\"e32d7e93-d8af-4a76-8a0d-ef8e9910cae3\"},\"last_edited_by\":{\"object\":\"user\",\"id\":\"e32d7e93-d8af-4a76-8a0d-ef8e9910cae3\"},\"cover\":null,\"icon\":null,\"parent\":{\"type\":\"database_id\",\"database_id\":\"16b3fad2-c093-808d-b0e6-d00d60e424d7\"},\"archived\":false,\"in_trash\":false,\"properties\":{\"related_posts\":{\"id\":\"ja%7B_\",\"type\":\"rich_text\",\"rich_text\":[]},\"layout\":{\"id\":\"qFaE\",\"type\":\"rich_text\",\"rich_text\":[{\"type\":\"text\",\"text\":{\"content\":\"post\",\"link\":null},\"annotations\":{\"bold\":false,\"italic\":false,\"strikethrough\":false,\"underline\":false,\"code\":false,\"color\":\"default\"},\"plain_text\":\"post\",\"href\":null}]},\"date\":{\"id\":\"uzqH\",\"type\":\"date\",\"date\":{\"start\":\"2024-12-29T21:52:00.000+01:00\",\"end\":null,\"time_zone\":null}},\"Name\":{\"id\":\"title\",\"type\":\"title\",\"title\":[{\"type\":\"text\",\"text\":{\"content\":\"\U0001F37E\U0001F37E Our
+        paper “Chiral extensions of regular toroids” was published.\",\"link\":null},\"annotations\":{\"bold\":false,\"italic\":false,\"strikethrough\":false,\"underline\":false,\"code\":false,\"color\":\"default\"},\"plain_text\":\"\U0001F37E\U0001F37E Our
+        paper “Chiral extensions of regular toroids” was published.\",\"href\":null}]}},\"url\":\"https://www.notion.so/Our-paper-Chiral-extensions-of-regular-toroids-was-published-16b3fad2c093807289f0c9969f74ad12\",\"public_url\":\"https://anteromontonio.notion.site/Our-paper-Chiral-extensions-of-regular-toroids-was-published-16b3fad2c093807289f0c9969f74ad12\"},{\"object\":\"page\",\"id\":\"16b3fad2-c093-8028-9d03-fee9fe3e07a2\",\"created_time\":\"2024-12-29T19:33:00.000Z\",\"last_edited_time\":\"2024-12-29T21:53:00.000Z\",\"created_by\":{\"object\":\"user\",\"id\":\"e32d7e93-d8af-4a76-8a0d-ef8e9910cae3\"},\"last_edited_by\":{\"object\":\"user\",\"id\":\"e32d7e93-d8af-4a76-8a0d-ef8e9910cae3\"},\"cover\":null,\"icon\":null,\"parent\":{\"type\":\"database_id\",\"database_id\":\"16b3fad2-c093-808d-b0e6-d00d60e424d7\"},\"archived\":false,\"in_trash\":false,\"properties\":{\"related_posts\":{\"id\":\"ja%7B_\",\"type\":\"rich_text\",\"rich_text\":[]},\"layout\":{\"id\":\"qFaE\",\"type\":\"rich_text\",\"rich_text\":[{\"type\":\"text\",\"text\":{\"content\":\"post\",\"link\":null},\"annotations\":{\"bold\":false,\"italic\":false,\"strikethrough\":false,\"underline\":false,\"code\":false,\"color\":\"default\"},\"plain_text\":\"post\",\"href\":null}]},\"date\":{\"id\":\"uzqH\",\"type\":\"date\",\"date\":{\"start\":\"2024-12-29\",\"end\":null,\"time_zone\":null}},\"Name\":{\"id\":\"title\",\"type\":\"title\",\"title\":[{\"type\":\"text\",\"text\":{\"content\":\"\U0001F389 The
+        website is on and public\",\"link\":null},\"annotations\":{\"bold\":false,\"italic\":false,\"strikethrough\":false,\"underline\":false,\"code\":false,\"color\":\"default\"},\"plain_text\":\"\U0001F389 The
+        website is on and public\",\"href\":null}]}},\"url\":\"https://www.notion.so/The-website-is-on-and-public-16b3fad2c09380289d03fee9fe3e07a2\",\"public_url\":\"https://anteromontonio.notion.site/The-website-is-on-and-public-16b3fad2c09380289d03fee9fe3e07a2\"}],\"next_cursor\":null,\"has_more\":false,\"type\":\"page_or_database\",\"page_or_database\":{},\"request_id\":\"aa23b69a-b497-480e-86f5-ac94848da04c\"}"
+  recorded_at: Mon, 30 Dec 2024 11:20:07 GMT
+- request:
+    method: get
+    uri: https://api.notion.com/v1/blocks/16b3fad2-c093-8072-89f0-c9969f74ad12/children
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - Notion Ruby Client/1.2.2
+      Authorization:
+      - Bearer <NOTION_TOKEN>
+      Notion-Version:
+      - '2022-02-22'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Mon, 30 Dec 2024 11:20:08 GMT
+      content-type:
+      - application/json; charset=utf-8
+      transfer-encoding:
+      - chunked
+      connection:
+      - keep-alive
+      cf-ray:
+      - 8fa1a389efed3264-VIE
+      cf-cache-status:
+      - DYNAMIC
+      content-encoding:
+      - gzip
+      etag:
+      - W/"50a-1ZxRANYhGeqQ7ZhC8dy5n52nymI"
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      vary:
+      - Accept-Encoding
+      content-security-policy:
+      - default-src 'none'
+      referrer-policy:
+      - strict-origin-when-cross-origin
+      x-content-type-options:
+      - nosniff
+      x-dns-prefetch-control:
+      - 'off'
+      x-download-options:
+      - noopen
+      x-frame-options:
+      - SAMEORIGIN
+      x-notion-request-id:
+      - ad74d5fd-0154-4b51-954e-5add1e140a02
+      x-permitted-cross-domain-policies:
+      - none
+      x-xss-protection:
+      - '0'
+      set-cookie:
+      - __cf_bm=pb9Zw_LHvJIkY25mafjAgG0R4RqGh34_z7KHxUM54wE-1735557608-1.0.1.1-ptmOutAvGZhfJFodFkEdckFTQ1lx9QHeT.VyXB2VVzCPkhmYZgN7JZL0GoXvy8mo3r2Vg3ZvbggheD14vBI0Gg;
+        path=/; expires=Mon, 30-Dec-24 11:50:08 GMT; domain=.notion.com; HttpOnly;
+        Secure; SameSite=None, _cfuvid=M.kHATPsZcu36aoIZ9Zgn5az27OfNazfbRIn2ajaGpo-1735557608223-0.0.1.1-604800000;
+        path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None
+      server:
+      - cloudflare
+      alt-svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: UTF-8
+      string: '{"object":"list","results":[{"object":"block","id":"16b3fad2-c093-80d6-ab0d-d5f4352bef59","parent":{"type":"page_id","page_id":"16b3fad2-c093-8072-89f0-c9969f74ad12"},"created_time":"2024-12-29T22:01:00.000Z","last_edited_time":"2024-12-29T22:03:00.000Z","created_by":{"object":"user","id":"e32d7e93-d8af-4a76-8a0d-ef8e9910cae3"},"last_edited_by":{"object":"user","id":"e32d7e93-d8af-4a76-8a0d-ef8e9910cae3"},"has_children":false,"archived":false,"in_trash":false,"type":"paragraph","paragraph":{"rich_text":[{"type":"text","text":{"content":"This
+        paper is the result of many years of work alongside with Micael Toledo. In
+        there, we prove that for every n, all but finitely many regular cubical tessellations  of
+        the n-dimensional torus are facets of a chiral polytope.","link":null},"annotations":{"bold":false,"italic":false,"strikethrough":false,"underline":false,"code":false,"color":"default"},"plain_text":"This
+        paper is the result of many years of work alongside with Micael Toledo. In
+        there, we prove that for every n, all but finitely many regular cubical tessellations  of
+        the n-dimensional torus are facets of a chiral polytope.","href":null}],"color":"default"}}],"next_cursor":null,"has_more":false,"type":"block","block":{},"request_id":"ad74d5fd-0154-4b51-954e-5add1e140a02"}'
+  recorded_at: Mon, 30 Dec 2024 11:20:08 GMT
+- request:
+    method: get
+    uri: https://api.notion.com/v1/blocks/16b3fad2-c093-8028-9d03-fee9fe3e07a2/children
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - Notion Ruby Client/1.2.2
+      Authorization:
+      - Bearer <NOTION_TOKEN>
+      Notion-Version:
+      - '2022-02-22'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Mon, 30 Dec 2024 11:20:08 GMT
+      content-type:
+      - application/json; charset=utf-8
+      transfer-encoding:
+      - chunked
+      connection:
+      - keep-alive
+      cf-ray:
+      - 8fa1a38c5f195bb7-VIE
+      cf-cache-status:
+      - DYNAMIC
+      content-encoding:
+      - gzip
+      etag:
+      - W/"45c-ogCfsh3X0PFFiE0Rtvg07zD9CMI"
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      vary:
+      - Accept-Encoding
+      content-security-policy:
+      - default-src 'none'
+      referrer-policy:
+      - strict-origin-when-cross-origin
+      x-content-type-options:
+      - nosniff
+      x-dns-prefetch-control:
+      - 'off'
+      x-download-options:
+      - noopen
+      x-frame-options:
+      - SAMEORIGIN
+      x-notion-request-id:
+      - 8d0a148f-0569-46b9-8a78-d91e6191b156
+      x-permitted-cross-domain-policies:
+      - none
+      x-xss-protection:
+      - '0'
+      set-cookie:
+      - __cf_bm=oKkyPhDHYHStx.eni2dmuJzb8wvx3AxoA55VH6SuYXA-1735557608-1.0.1.1-xuMv4qwf5D1JtyAkrIyynfTeMxrLADkem5CfQl6tz2ONOajWN8MeSwlC01JxRmU2sxFmebXkZ5yHEMZn2wIl6Q;
+        path=/; expires=Mon, 30-Dec-24 11:50:08 GMT; domain=.notion.com; HttpOnly;
+        Secure; SameSite=None, _cfuvid=9Q_WyJq1LJHTuxQH.R243gvZwXubdW1gKDc9Cs96YWs-1735557608696-0.0.1.1-604800000;
+        path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None
+      server:
+      - cloudflare
+      alt-svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: UTF-8
+      string: "{\"object\":\"list\",\"results\":[{\"object\":\"block\",\"id\":\"16b3fad2-c093-8054-93c1-fc289fd19fa6\",\"parent\":{\"type\":\"page_id\",\"page_id\":\"16b3fad2-c093-8028-9d03-fee9fe3e07a2\"},\"created_time\":\"2024-12-29T19:33:00.000Z\",\"last_edited_time\":\"2024-12-29T21:53:00.000Z\",\"created_by\":{\"object\":\"user\",\"id\":\"e32d7e93-d8af-4a76-8a0d-ef8e9910cae3\"},\"last_edited_by\":{\"object\":\"user\",\"id\":\"e32d7e93-d8af-4a76-8a0d-ef8e9910cae3\"},\"has_children\":false,\"archived\":false,\"in_trash\":false,\"type\":\"paragraph\",\"paragraph\":{\"rich_text\":[{\"type\":\"text\",\"text\":{\"content\":\"I
+        am (re) launching my personal website today. So far it only has basic academic
+        information, but in my opinion, it looks very pretty \U0001F929.\",\"link\":null},\"annotations\":{\"bold\":false,\"italic\":false,\"strikethrough\":false,\"underline\":false,\"code\":false,\"color\":\"default\"},\"plain_text\":\"I
+        am (re) launching my personal website today. So far it only has basic academic
+        information, but in my opinion, it looks very pretty \U0001F929.\",\"href\":null}],\"color\":\"default\"}}],\"next_cursor\":null,\"has_more\":false,\"type\":\"block\",\"block\":{},\"request_id\":\"8d0a148f-0569-46b9-8a78-d91e6191b156\"}"
+  recorded_at: Mon, 30 Dec 2024 11:20:08 GMT
+recorded_with: VCR 6.3.1
