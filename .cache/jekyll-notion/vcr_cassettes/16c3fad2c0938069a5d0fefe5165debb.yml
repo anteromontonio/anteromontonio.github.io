@@ -1,0 +1,307 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.notion.com/v1/databases/16c3fad2c0938069a5d0fefe5165debb/query
+    body:
+      encoding: UTF-8
+      string: '{"filter":{"property":"status","select":{"equals":"published"}}}'
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - Notion Ruby Client/1.2.2
+      Authorization:
+      - Bearer <NOTION_TOKEN>
+      Notion-Version:
+      - '2022-02-22'
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Mon, 30 Dec 2024 13:58:34 GMT
+      content-type:
+      - application/json; charset=utf-8
+      transfer-encoding:
+      - chunked
+      connection:
+      - keep-alive
+      cf-ray:
+      - 8fa28ba138535b2d-VIE
+      cf-cache-status:
+      - DYNAMIC
+      content-encoding:
+      - gzip
+      etag:
+      - W/"709-4m2Vd+zgCjWyUbJwUQ/iTb8oNLM"
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      vary:
+      - Accept-Encoding
+      content-security-policy:
+      - default-src 'none'
+      referrer-policy:
+      - strict-origin-when-cross-origin
+      x-content-type-options:
+      - nosniff
+      x-dns-prefetch-control:
+      - 'off'
+      x-download-options:
+      - noopen
+      x-frame-options:
+      - SAMEORIGIN
+      x-notion-request-id:
+      - 3bf5b8b3-f6c1-4146-9a47-3e1c9c4f1d66
+      x-permitted-cross-domain-policies:
+      - none
+      x-xss-protection:
+      - '0'
+      set-cookie:
+      - __cf_bm=33wiOAweOCQO4J0ff5BbUhcUlGpLfPR8AzpHwZOqGB4-1735567114-1.0.1.1-_N_IbVdcPOpHp4jZ5WU8Hdoouh5aQ0eA9PT83AnxFpskXrzIJl5fJypW_T3.Qq1YHz.QtSiv9_QLXjuI9BRD.A;
+        path=/; expires=Mon, 30-Dec-24 14:28:34 GMT; domain=.notion.com; HttpOnly;
+        Secure; SameSite=None, _cfuvid=uYYzuBE3u8Jsf2ro5SnWuA7XpwOsLgIbtpinGyjXLYU-1735567114708-0.0.1.1-604800000;
+        path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None
+      server:
+      - cloudflare
+      alt-svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: UTF-8
+      string: "{\"object\":\"list\",\"results\":[{\"object\":\"page\",\"id\":\"16c3fad2-c093-8096-87b2-c5573a0fc985\",\"created_time\":\"2024-12-30T13:35:00.000Z\",\"last_edited_time\":\"2024-12-30T13:57:00.000Z\",\"created_by\":{\"object\":\"user\",\"id\":\"e32d7e93-d8af-4a76-8a0d-ef8e9910cae3\"},\"last_edited_by\":{\"object\":\"user\",\"id\":\"e32d7e93-d8af-4a76-8a0d-ef8e9910cae3\"},\"cover\":null,\"icon\":{\"type\":\"emoji\",\"emoji\":\"\U0001F4DD\"},\"parent\":{\"type\":\"database_id\",\"database_id\":\"16c3fad2-c093-8069-a5d0-fefe5165debb\"},\"archived\":false,\"in_trash\":false,\"properties\":{\"Date\":{\"id\":\"A%60%3Cc\",\"type\":\"date\",\"date\":{\"start\":\"2024-12-30\",\"end\":null,\"time_zone\":null}},\"status\":{\"id\":\"HmLe\",\"type\":\"select\",\"select\":{\"id\":\"62b12078-b5fe-48b4-a169-1d998c33d9eb\",\"name\":\"published\",\"color\":\"green\"}},\"Tags\":{\"id\":\"S%3Cyx\",\"type\":\"multi_select\",\"multi_select\":[{\"id\":\"bca0cebc-8929-4012-b361-ab29a998cba3\",\"name\":\"test
+        posts\",\"color\":\"yellow\"}]},\"layout\":{\"id\":\"Ugq%7C\",\"type\":\"rich_text\",\"rich_text\":[{\"type\":\"text\",\"text\":{\"content\":\"post\",\"link\":null},\"annotations\":{\"bold\":false,\"italic\":false,\"strikethrough\":false,\"underline\":false,\"code\":false,\"color\":\"default\"},\"plain_text\":\"post\",\"href\":null}]},\"Publish\":{\"id\":\"a%7C%3BS\",\"type\":\"button\",\"button\":{}},\"Name\":{\"id\":\"title\",\"type\":\"title\",\"title\":[{\"type\":\"text\",\"text\":{\"content\":\"Welcome
+        to my blog\",\"link\":null},\"annotations\":{\"bold\":false,\"italic\":false,\"strikethrough\":false,\"underline\":false,\"code\":false,\"color\":\"default\"},\"plain_text\":\"Welcome
+        to my blog\",\"href\":null}]}},\"url\":\"https://www.notion.so/Welcome-to-my-blog-16c3fad2c093809687b2c5573a0fc985\",\"public_url\":\"https://anteromontonio.notion.site/Welcome-to-my-blog-16c3fad2c093809687b2c5573a0fc985\"}],\"next_cursor\":null,\"has_more\":false,\"type\":\"page_or_database\",\"page_or_database\":{},\"request_id\":\"3bf5b8b3-f6c1-4146-9a47-3e1c9c4f1d66\"}"
+  recorded_at: Mon, 30 Dec 2024 13:58:34 GMT
+- request:
+    method: get
+    uri: https://api.notion.com/v1/blocks/16c3fad2-c093-8096-87b2-c5573a0fc985/children
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - Notion Ruby Client/1.2.2
+      Authorization:
+      - Bearer <NOTION_TOKEN>
+      Notion-Version:
+      - '2022-02-22'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Mon, 30 Dec 2024 13:58:35 GMT
+      content-type:
+      - application/json; charset=utf-8
+      transfer-encoding:
+      - chunked
+      connection:
+      - keep-alive
+      cf-ray:
+      - 8fa28ba3e9115aef-VIE
+      cf-cache-status:
+      - DYNAMIC
+      content-encoding:
+      - gzip
+      etag:
+      - W/"755-HARIVRakxTzTZqDBz4MkKjaUvdg"
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      vary:
+      - Accept-Encoding
+      content-security-policy:
+      - default-src 'none'
+      referrer-policy:
+      - strict-origin-when-cross-origin
+      x-content-type-options:
+      - nosniff
+      x-dns-prefetch-control:
+      - 'off'
+      x-download-options:
+      - noopen
+      x-frame-options:
+      - SAMEORIGIN
+      x-notion-request-id:
+      - 46da9f3a-f34c-41fd-9e4d-f65372ef4311
+      x-permitted-cross-domain-policies:
+      - none
+      x-xss-protection:
+      - '0'
+      set-cookie:
+      - __cf_bm=dk68zDGhjtmgiExg7Fgp1lGO5CtkTkAT1oRPMuWXbfQ-1735567115-1.0.1.1-HmumO9V7A6LTR3RNYFRdYtL7SSx1lSIEEMhBsatzXkbHbta20dHpD0cLUN619lBLN3t9NRozU5Je1H8vvqOq9w;
+        path=/; expires=Mon, 30-Dec-24 14:28:35 GMT; domain=.notion.com; HttpOnly;
+        Secure; SameSite=None, _cfuvid=hj0nbK6WvwrMdQtXOHPuepkg_UeddcfgRvN_qp6Ghu0-1735567115254-0.0.1.1-604800000;
+        path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None
+      server:
+      - cloudflare
+      alt-svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: UTF-8
+      string: '{"object":"list","results":[{"object":"block","id":"16c3fad2-c093-8077-b4d5-d1e89139b49d","parent":{"type":"page_id","page_id":"16c3fad2-c093-8096-87b2-c5573a0fc985"},"created_time":"2024-12-30T13:35:00.000Z","last_edited_time":"2024-12-30T13:35:00.000Z","created_by":{"object":"user","id":"e32d7e93-d8af-4a76-8a0d-ef8e9910cae3"},"last_edited_by":{"object":"user","id":"e32d7e93-d8af-4a76-8a0d-ef8e9910cae3"},"has_children":false,"archived":false,"in_trash":false,"type":"paragraph","paragraph":{"rich_text":[{"type":"text","text":{"content":"This
+        is my first post on my blog. ","link":null},"annotations":{"bold":false,"italic":false,"strikethrough":false,"underline":false,"code":false,"color":"default"},"plain_text":"This
+        is my first post on my blog. ","href":null}],"color":"default"}},{"object":"block","id":"16c3fad2-c093-80d3-8ba6-e95ecef11c4e","parent":{"type":"page_id","page_id":"16c3fad2-c093-8096-87b2-c5573a0fc985"},"created_time":"2024-12-30T13:35:00.000Z","last_edited_time":"2024-12-30T13:37:00.000Z","created_by":{"object":"user","id":"e32d7e93-d8af-4a76-8a0d-ef8e9910cae3"},"last_edited_by":{"object":"user","id":"e32d7e93-d8af-4a76-8a0d-ef8e9910cae3"},"has_children":false,"archived":false,"in_trash":false,"type":"paragraph","paragraph":{"rich_text":[{"type":"text","text":{"content":"So
+        far, I am just only using it to test if the set up works, but if it does,
+        it should allow me to be able to share some thoughts in here.","link":null},"annotations":{"bold":false,"italic":false,"strikethrough":false,"underline":false,"code":false,"color":"default"},"plain_text":"So
+        far, I am just only using it to test if the set up works, but if it does,
+        it should allow me to be able to share some thoughts in here.","href":null}],"color":"default"}}],"next_cursor":null,"has_more":false,"type":"block","block":{},"request_id":"46da9f3a-f34c-41fd-9e4d-f65372ef4311"}'
+  recorded_at: Mon, 30 Dec 2024 13:58:35 GMT
+- request:
+    method: get
+    uri: https://api.notion.com/v1/pages/16c3fad2-c093-8096-87b2-c5573a0fc985
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - Notion Ruby Client/1.2.2
+      Authorization:
+      - Bearer <NOTION_TOKEN>
+      Notion-Version:
+      - '2022-02-22'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Mon, 30 Dec 2024 13:58:35 GMT
+      content-type:
+      - application/json; charset=utf-8
+      transfer-encoding:
+      - chunked
+      connection:
+      - keep-alive
+      cf-ray:
+      - 8fa28ba7392f5b9f-VIE
+      cf-cache-status:
+      - DYNAMIC
+      content-encoding:
+      - gzip
+      etag:
+      - W/"697-7yw+YNqM7M9MStE+Nw9kzYylgvA"
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      vary:
+      - Accept-Encoding
+      content-security-policy:
+      - default-src 'none'
+      referrer-policy:
+      - strict-origin-when-cross-origin
+      x-content-type-options:
+      - nosniff
+      x-dns-prefetch-control:
+      - 'off'
+      x-download-options:
+      - noopen
+      x-frame-options:
+      - SAMEORIGIN
+      x-notion-request-id:
+      - 4ac2ae17-ee16-44c1-ad66-a4ed3b9a25eb
+      x-permitted-cross-domain-policies:
+      - none
+      x-xss-protection:
+      - '0'
+      set-cookie:
+      - __cf_bm=nf8h9Bj_nDzvT7E8bDgTE.5ZrpwKPbc5qiVsrdKTJSY-1735567115-1.0.1.1-bMTeRqCdGCwPusDpz9Glgo.3j391mfi_6ZUwyiy4E4F9GwJ28qoYpGmJDSoQSGUWQzQzozuP6x8ft05dXdqmhQ;
+        path=/; expires=Mon, 30-Dec-24 14:28:35 GMT; domain=.notion.com; HttpOnly;
+        Secure; SameSite=None, _cfuvid=iqB2B.noNvYdSZvuuLaXkexery5pTJWWBEO2aQa3epY-1735567115681-0.0.1.1-604800000;
+        path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None
+      server:
+      - cloudflare
+      alt-svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: UTF-8
+      string: "{\"object\":\"page\",\"id\":\"16c3fad2-c093-8096-87b2-c5573a0fc985\",\"created_time\":\"2024-12-30T13:35:00.000Z\",\"last_edited_time\":\"2024-12-30T13:57:00.000Z\",\"created_by\":{\"object\":\"user\",\"id\":\"e32d7e93-d8af-4a76-8a0d-ef8e9910cae3\"},\"last_edited_by\":{\"object\":\"user\",\"id\":\"e32d7e93-d8af-4a76-8a0d-ef8e9910cae3\"},\"cover\":null,\"icon\":{\"type\":\"emoji\",\"emoji\":\"\U0001F4DD\"},\"parent\":{\"type\":\"database_id\",\"database_id\":\"16c3fad2-c093-8069-a5d0-fefe5165debb\"},\"archived\":false,\"in_trash\":false,\"properties\":{\"Date\":{\"id\":\"A%60%3Cc\",\"type\":\"date\",\"date\":{\"start\":\"2024-12-30\",\"end\":null,\"time_zone\":null}},\"status\":{\"id\":\"HmLe\",\"type\":\"select\",\"select\":{\"id\":\"62b12078-b5fe-48b4-a169-1d998c33d9eb\",\"name\":\"published\",\"color\":\"green\"}},\"Tags\":{\"id\":\"S%3Cyx\",\"type\":\"multi_select\",\"multi_select\":[{\"id\":\"bca0cebc-8929-4012-b361-ab29a998cba3\",\"name\":\"test
+        posts\",\"color\":\"yellow\"}]},\"layout\":{\"id\":\"Ugq%7C\",\"type\":\"rich_text\",\"rich_text\":[{\"type\":\"text\",\"text\":{\"content\":\"post\",\"link\":null},\"annotations\":{\"bold\":false,\"italic\":false,\"strikethrough\":false,\"underline\":false,\"code\":false,\"color\":\"default\"},\"plain_text\":\"post\",\"href\":null}]},\"Publish\":{\"id\":\"a%7C%3BS\",\"type\":\"button\",\"button\":{}},\"Name\":{\"id\":\"title\",\"type\":\"title\",\"title\":[{\"type\":\"text\",\"text\":{\"content\":\"Welcome
+        to my blog\",\"link\":null},\"annotations\":{\"bold\":false,\"italic\":false,\"strikethrough\":false,\"underline\":false,\"code\":false,\"color\":\"default\"},\"plain_text\":\"Welcome
+        to my blog\",\"href\":null}]}},\"url\":\"https://www.notion.so/Welcome-to-my-blog-16c3fad2c093809687b2c5573a0fc985\",\"public_url\":\"https://anteromontonio.notion.site/Welcome-to-my-blog-16c3fad2c093809687b2c5573a0fc985\",\"request_id\":\"4ac2ae17-ee16-44c1-ad66-a4ed3b9a25eb\"}"
+  recorded_at: Mon, 30 Dec 2024 13:58:35 GMT
+- request:
+    method: get
+    uri: https://api.notion.com/v1/blocks/16c3fad2-c093-8096-87b2-c5573a0fc985/children
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - Notion Ruby Client/1.2.2
+      Authorization:
+      - Bearer <NOTION_TOKEN>
+      Notion-Version:
+      - '2022-02-22'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Mon, 30 Dec 2024 13:58:36 GMT
+      content-type:
+      - application/json; charset=utf-8
+      transfer-encoding:
+      - chunked
+      connection:
+      - keep-alive
+      cf-ray:
+      - 8fa28baa1b18c2d4-VIE
+      cf-cache-status:
+      - DYNAMIC
+      content-encoding:
+      - gzip
+      etag:
+      - W/"755-RQDbTSq2UcmYXSru8+8tJbK+LtA"
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      vary:
+      - Accept-Encoding
+      content-security-policy:
+      - default-src 'none'
+      referrer-policy:
+      - strict-origin-when-cross-origin
+      x-content-type-options:
+      - nosniff
+      x-dns-prefetch-control:
+      - 'off'
+      x-download-options:
+      - noopen
+      x-frame-options:
+      - SAMEORIGIN
+      x-notion-request-id:
+      - e5937472-958f-45d9-88d8-1155f7aa6d4b
+      x-permitted-cross-domain-policies:
+      - none
+      x-xss-protection:
+      - '0'
+      set-cookie:
+      - __cf_bm=jQKkCUhsxAS3ZoJfW6Ts9ywAhKV5sB.iy03LwmG2QF8-1735567116-1.0.1.1-V2XzhwcCtEq34.0uBfn5WZeKzzB7k7XrKIiKWPjly5JJFaL4nK9.k6mvANh0ehVRQck5XI6iXydQrIMTrcClNA;
+        path=/; expires=Mon, 30-Dec-24 14:28:36 GMT; domain=.notion.com; HttpOnly;
+        Secure; SameSite=None, _cfuvid=dRyT30FVlMiMVCgNiJQbjo6touAWNEvN4yXM9Ga.8EY-1735567116164-0.0.1.1-604800000;
+        path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None
+      server:
+      - cloudflare
+      alt-svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: UTF-8
+      string: '{"object":"list","results":[{"object":"block","id":"16c3fad2-c093-8077-b4d5-d1e89139b49d","parent":{"type":"page_id","page_id":"16c3fad2-c093-8096-87b2-c5573a0fc985"},"created_time":"2024-12-30T13:35:00.000Z","last_edited_time":"2024-12-30T13:35:00.000Z","created_by":{"object":"user","id":"e32d7e93-d8af-4a76-8a0d-ef8e9910cae3"},"last_edited_by":{"object":"user","id":"e32d7e93-d8af-4a76-8a0d-ef8e9910cae3"},"has_children":false,"archived":false,"in_trash":false,"type":"paragraph","paragraph":{"rich_text":[{"type":"text","text":{"content":"This
+        is my first post on my blog. ","link":null},"annotations":{"bold":false,"italic":false,"strikethrough":false,"underline":false,"code":false,"color":"default"},"plain_text":"This
+        is my first post on my blog. ","href":null}],"color":"default"}},{"object":"block","id":"16c3fad2-c093-80d3-8ba6-e95ecef11c4e","parent":{"type":"page_id","page_id":"16c3fad2-c093-8096-87b2-c5573a0fc985"},"created_time":"2024-12-30T13:35:00.000Z","last_edited_time":"2024-12-30T13:37:00.000Z","created_by":{"object":"user","id":"e32d7e93-d8af-4a76-8a0d-ef8e9910cae3"},"last_edited_by":{"object":"user","id":"e32d7e93-d8af-4a76-8a0d-ef8e9910cae3"},"has_children":false,"archived":false,"in_trash":false,"type":"paragraph","paragraph":{"rich_text":[{"type":"text","text":{"content":"So
+        far, I am just only using it to test if the set up works, but if it does,
+        it should allow me to be able to share some thoughts in here.","link":null},"annotations":{"bold":false,"italic":false,"strikethrough":false,"underline":false,"code":false,"color":"default"},"plain_text":"So
+        far, I am just only using it to test if the set up works, but if it does,
+        it should allow me to be able to share some thoughts in here.","href":null}],"color":"default"}}],"next_cursor":null,"has_more":false,"type":"block","block":{},"request_id":"e5937472-958f-45d9-88d8-1155f7aa6d4b"}'
+  recorded_at: Mon, 30 Dec 2024 13:58:36 GMT
+recorded_with: VCR 6.3.1

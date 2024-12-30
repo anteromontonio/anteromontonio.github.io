@@ -13,3 +13,4 @@ vendor
 .idea
 .env
 fetch_notion.sh
+entry_point.sh
