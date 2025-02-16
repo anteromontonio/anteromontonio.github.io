@@ -62,7 +62,7 @@ Numbers:
       {% endif %}
   {% endfor %}
   <h2 class="bibliography" > National audience</h2>
-    {% for talk in site.data.talks reversed  %}
+    {% for talk in talksOrderedByYear reversed  %}
       {% if talk.conf_type == "National" %}
         <!-- {% unless forloop.first %}</ol>{% endunless %} -->
         <ol class="bibliography">
@@ -73,7 +73,7 @@ Numbers:
       {% endif %}
   {% endfor %}
   <h2 class="bibliography" > Local audience / seminars</h2>
-    {% for talk in site.data.talks reversed  %}
+    {% for talk in talksOrderedByYear reversed  %}
       {% if talk.conf_type == "Local" or talk.conf_type == "Seminar"  %}
         <!-- {% unless forloop.first %}</ol>{% endunless %} -->
         <ol class="bibliography">

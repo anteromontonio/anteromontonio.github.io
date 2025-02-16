@@ -221,12 +221,14 @@ exclude:
   - vendor
   - posts_archive
   - projects_archive
+  - entry_point.sh
 keep_files:
   - CNAME
   - .nojekyll
 
 # Plug-ins
 plugins:
+  - jekyll-notion
   - jekyll-archives
   - jekyll-email-protect
   - jekyll-feed
@@ -244,7 +246,6 @@ plugins:
   - jekyll-twitter-plugin
   - jemoji
   # - jekyll-fetch-notion
-  - jekyll-notion
 
 
 # Sitemap settings
@@ -272,15 +273,25 @@ jekyll-minifier:
 # -----------------------------------------------------------------------------
 
 jekyll-archives:
-  enabled: [year, tags,] # enables year, tag and category archives (remove if you need to disable one of them).
+  enabled: [year, tags] # enables year, tag and category archives (remove if you need to disable one of them).
   layouts:
     year: archive-year
     tag: archive-tag
     # category: archive-category
   permalinks:
-    year: '/blog/:year/'
-    tag: '/blog/tag/:name/'
-    # category: "/blog/category/:name/"
+    year: "/blog/:year/"
+    tag: "/blog/tag/:name/"
+#     # category: "/blog/category/:name/"
+
+# jekyll-archives:
+#   enabled: ['year']
+#   layout: archive-year
+#   permalinks:
+#      year: '/blog/:year/'
+
+
+
+
 
 # display_tags: ["formatting", "images", "links", "math", "code", "blockquotes"] # these tags will be displayed on the front page of your blog
 # display_categories: ["external-services"] # these categories will be displayed on the front page of your blog
