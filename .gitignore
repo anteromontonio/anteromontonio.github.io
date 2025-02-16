@@ -14,3 +14,4 @@ vendor
 .env
 fetch_notion.sh
 entry_point.sh
+.cache/*
