@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 group :jekyll_plugins do
     gem 'classifier-reborn'
     gem 'jekyll'
+    gem 'jekyll-notion'
     gem 'jekyll-archives'
     gem 'jekyll-email-protect'
     gem 'jekyll-feed'
@@ -21,7 +22,6 @@ group :jekyll_plugins do
     gem 'unicode_utils'
     gem 'webrick'
     gem 'jekyll-fetch-notion'
-    gem 'jekyll-notion'
     gem 'observer'
 end
 group :other_plugins do
