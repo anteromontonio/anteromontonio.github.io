@@ -144,14 +144,12 @@ notion:
   # fetch_mode: true #notion-fetch
   databases:
     - id: 16c3fad2c0938069a5d0fefe5165debb
-      # collection: posts
+      collection: posts
       filter: { "property": "status", "select": { "equals": "published" } }
     - id: 16b3fad2c0938054ae4bea7c35b93783
       collection: pages
-      # filter: { "property": "Status", "select": { "equals": "published" } }
     - id: 16b3fad2c093808db0e6d00d60e424d7
       collection: news
-      # filter: { "property": "Status", "select": { "equals": "published" } }
     - id: 1683fad2c09380ef850dfbe8b2f57158
       data: talks
 
@@ -325,7 +323,7 @@ scholar:
   group_by: type, year
   group_order: descending
 
-# Display diffeent badges withs stats for your publications
+# Display diffeent badges with stats for your publications
 # Customize badge behavior in _layouts/bib.liquid
 enable_publication_badges:
   altmetric: true # Altmetric badge (Customization options: https://badge-docs.altmetric.com/index.html)
