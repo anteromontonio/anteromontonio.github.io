@@ -93,7 +93,7 @@
       icon: fa-solid fa-cube
       items:
         - Constructions with prescribed symmetry type graph.
-        - Constructions with prescribed local combinatorics (Scläfli symbol).
+        - Constructions with prescribed local combinatorics (Schläfli symbol).
         - Extensions of abstract polytopes.
     
     - title: Datasets of highly symmetric polytopes/maniplexes
