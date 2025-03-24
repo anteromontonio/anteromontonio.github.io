@@ -3,7 +3,6 @@ group :jekyll_plugins do
     gem 'classifier-reborn'
     gem 'jekyll'
     gem 'jekyll-notion'
-    gem 'jekyll-archives'
     gem 'jekyll-email-protect'
     gem 'jekyll-feed'
     gem 'jekyll-get-json'
@@ -21,8 +20,9 @@ group :jekyll_plugins do
     gem 'jemoji'
     gem 'unicode_utils'
     gem 'webrick'
-    gem 'jekyll-fetch-notion'
+    # gem 'jekyll-fetch-notion'
     gem 'observer'
+    gem "jekyll-archives", "~> 2.3" # After jekyll-notion
 end
 group :other_plugins do
     gem 'css_parser'

@@ -27,7 +27,7 @@
     0.4
   );
   --global-back-to-top-text-color: #{$ndf-main};
-  --global-newsletter-bg-color: #{$ndf-main};
+  --global-newsletter-bg-color: #{$nlb-second};
   --global-newsletter-text-color: #{$nlf-main};
 
   --global-tip-block: #{$nlf-green};
@@ -119,8 +119,8 @@ html[data-theme="dark"] {
     0.5
   );
   --global-back-to-top-text-color: #{$ndf-main};
-  --global-newsletter-bg-color: #{$nlb-gray};
-  --global-newsletter-text-color: #{$nlf-gray};
+  --global-newsletter-bg-color: #{$ndb-main};
+  --global-newsletter-text-color: #{$ndf-main};
 
   --global-tip-block: #{$ndf-green};
   --global-tip-block-bg: #{$ndb-green};

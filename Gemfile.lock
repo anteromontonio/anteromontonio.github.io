@@ -130,10 +130,6 @@ GEM
     jekyll-email-protect (1.1.0)
     jekyll-feed (0.17.0)
       jekyll (>= 3.7, < 5.0)
-    jekyll-fetch-notion (0.1.0)
-      jekyll (>= 3.7, < 5.0)
-      notion-ruby-client (~> 1.0)
-      notion_to_md (~> 2.2)
     jekyll-get-json (1.0.0)
       deep_merge (~> 1.2)
       jekyll (>= 3.0)
@@ -295,10 +291,9 @@ DEPENDENCIES
   feedjira
   httparty
   jekyll
-  jekyll-archives
+  jekyll-archives (~> 2.3)
   jekyll-email-protect
   jekyll-feed
-  jekyll-fetch-notion
   jekyll-get-json
   jekyll-imagemagick
   jekyll-jupyter-notebook

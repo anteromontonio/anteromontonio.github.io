@@ -87,7 +87,7 @@ bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 # -----------------------------------------------------------------------------
 
 blog_name: Grab a cup?  # blog_name will be displayed in your blog page
-blog_description: My personal (not-necessary-academic) blog.
+blog_description: My personal (not-necessary-academic) blog. Here I (will) write about maths, coffee, music, life or sometimes I just vent. Sometimes in English, sometimes in Spanish.
 permalink: /blog/:year/:title/
 lsi: false # produce an index for related posts
 
@@ -227,7 +227,6 @@ keep_files:
 # Plug-ins
 plugins:
   - jekyll-notion
-  - jekyll-archives
   - jekyll-email-protect
   - jekyll-feed
   - jekyll-get-json
@@ -243,6 +242,7 @@ plugins:
   - jekyll-toc
   - jekyll-twitter-plugin
   - jemoji
+  - jekyll-archives
   # - jekyll-fetch-notion
 
 
