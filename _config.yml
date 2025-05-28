@@ -150,6 +150,7 @@ notion:
       collection: pages
     - id: 16b3fad2c093808db0e6d00d60e424d7
       collection: news
+      sorts: [{"timestamp": "date", "direction": "descending" }]
     - id: 1683fad2c09380ef850dfbe8b2f57158
       data: talks
 
