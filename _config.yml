@@ -153,6 +153,8 @@ notion:
       sorts: [{ "property": "date", "direction": "ascending" }]
     - id: 1683fad2c09380ef850dfbe8b2f57158
       data: talks
+  pages:
+    - id: 16b3fad2c0938052b281c7daacec002f
 
 
 # -----------------------------------------------------------------------------
@@ -168,6 +170,7 @@ collections:
   projects:
     output: false
     permalink: /:collection/:title/
+
 
 announcements:
   enabled: true
