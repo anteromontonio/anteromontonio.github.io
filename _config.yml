@@ -141,20 +141,18 @@ newsletter:
 # Notion
 # -----------------------------------------------------------------------------
 notion:
-  # fetch_mode: true #notion-fetch
   databases:
     - id: 16c3fad2c0938069a5d0fefe5165debb
       collection: posts
       filter: { "property": "status", "select": { "equals": "published" } }
-    - id: 16b3fad2c0938054ae4bea7c35b93783
-      collection: pages
+    # - id: 16b3fad2c0938054ae4bea7c35b93783
+    #   collection: pages
     - id: 16b3fad2c093808db0e6d00d60e424d7
       collection: news
       sorts: [{ "property": "date", "direction": "ascending" }]
     - id: 1683fad2c09380ef850dfbe8b2f57158
       data: talks
-  pages:
-    - id: 16b3fad2c0938052b281c7daacec002f
+    
 
 
 # -----------------------------------------------------------------------------
