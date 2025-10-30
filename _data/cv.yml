@@ -62,21 +62,21 @@
       department: Centro de Ciencias Matemáticas
       location: Morelia, Mexico
       year: 2019
-      maindescription: Graduated with the thesis <a href="https://anteromontonio.github.io/publications/#Montero2019_ChiralExtensionsToroids_PhDThesis">"Chiral extensions of toroids"</a>
+      maindescription: Graduated with the thesis <a href="https://anteromontonio.github.io/publications/#PhDThesis">"Chiral extensions of toroids"</a>
 
     - title: M.Sc. (Mathematics)
       institution: National Autonomous University of Mexico (UNAM)
       department: Centro de Ciencias Matemáticas
       location: Morelia, Mexico
       year: 2015
-      maindescription: Graduated with the thesis <a href="https://anteromontonio.github.io/publications/#Montero2015_RealizacionesRegularesDe">"Realizaciones regulares de poliedros en el 3-toro</a>"
+      maindescription: Graduated with the thesis <a href="https://anteromontonio.github.io/publications/#MScThesis">"Realizaciones regulares de poliedros en el 3-toro"</a>
 
     - title: B.Sc. (Physics and Mathematics)
       institution: University of Michoacan (UMSNH)
       department: Faculty of physics and mathematics
       location: Morelia, Mexico
       year: 2013
-      maindescription: Graduated with the thesis <a href="https://anteromontonio.github.io/publications/#Montero2013_PoliedrosRegularesEn">"Poliedros regulares en el 3-toro"<a>
+      maindescription: Graduated with the thesis <a href="https://anteromontonio.github.io/publications/#BScThesis">"Poliedros regulares en el 3-toro"</a>
         
 
 # - title: Open Source Projects
@@ -112,6 +112,11 @@
 - title: Honors, awards, appointments
   type: time_table
   contents:
+    - title: Docent (Assistant professor)
+      department: University of Ljubljana
+      location: Slovenia
+      year: 2024 - 2029
+
     - title: Candidato a investigador nacional (National research candidate)
       department: National Council of Humanities, Science and Technology (CONAHCyT)
       location: Mexico
