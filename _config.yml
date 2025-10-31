@@ -330,7 +330,7 @@ scholar:
 enable_publication_badges:
   altmetric: false # Altmetric badge (Customization options: https://badge-docs.altmetric.com/index.html)
   dimensions: false # Dimensions badge (Customization options: https://badge.dimensions.ai/)
-  google_scholar: false # Google Scholar badge (https://scholar.google.com/intl/en/scholar/citations.html)
+  google_scholar: true # Google Scholar badge (https://scholar.google.com/intl/en/scholar/citations.html) #modified so that implements google_scholar_crawler (https://github.com/jiaye-wu/GH-ScholarBot) --This also implies changes in _layouts/bib.liquid
   inspirehep: false # Inspire HEP badge (https://help.inspirehep.net/knowledge-base/citation-metrics/)
 
 # Filter out certain bibtex entry keywords used internally from the bib output
@@ -677,5 +677,5 @@ jsonresume:
 
 ##___##
 # Google badge settings
-repository: "anteromontonio/GH-ScholarBot" # change the first section to your GitHub user name.
-google_scholar_stats_use_cdn: false # true: use CDN, delay might occur. false: use GitHub.com.
+repository: "anteromontonio/anteromontonio.github.io" # change the first section to your GitHub user name.
+google_scholar_stats_use_cdn: true # true: use CDN, delay might occur. false: use GitHub.com.
