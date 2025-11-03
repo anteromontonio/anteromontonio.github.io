@@ -12,7 +12,7 @@
   --global-theme-color: #{$nlf-blue};
   --global-theme-color-bg: #{$nlb-blue};
   --global-hover-color: #{$nlf-orange};
-  --global-hover-text-color: #{$nlb-main};
+  --global-hover-text-color: #{$nlf-blue};
   --global-footer-bg-color: #{$ndb-main};
   --global-footer-text-color: #{$ndf-main};
   --global-footer-link-color: #{$ndf-blue};
@@ -104,7 +104,7 @@ html[data-theme="dark"] {
   --global-theme-color: #{$ndf-blue};
   --global-theme-color-bg: #{$ndf-blue};
   --global-hover-color: #{$ndf-orange};
-  --global-hover-text-color: #{$ndb-main};
+  --global-hover-text-color: #{$ndf-blue};
   --global-footer-bg-color: #{$ndb-main};
   --global-footer-text-color: #{$ndf-main};
   --global-footer-link-color: #{$ndf-blue};
