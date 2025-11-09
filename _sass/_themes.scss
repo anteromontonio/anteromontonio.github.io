@@ -110,7 +110,7 @@ html[data-theme="dark"] {
   --global-footer-link-color: #{$ndf-blue};
   --global-distill-app-color: #{$ndf-gray};
   --global-divider-color: #{$nlf-gray};
-  --global-card-bg-color: #{$ndb-gray};
+  --global-card-bg-color: #{$ndb-second};
   --global-highlight-color: #{$ndb-red};
   --global-back-to-top-bg-color: rgba(
     #{color.channel($white-color, "red", $space: rgb)},

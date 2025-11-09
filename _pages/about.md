@@ -9,10 +9,18 @@ profile:
   image: tero_cafe_small.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
-    <p>Faculty of Mathematics and Physics</p>
-    <p>University of Ljubljana</p>
-    <p>Jadranska 19, 1000 Ljubljana</p>
-    <p>Slovenia</p>
+    <div class='card hoverable mt-2 p-2 '>
+    <p><a href='https://www.fmf.uni-lj.si/en/' target='_blank'> Faculty of Mathematics and Physics</a> </p>
+    <p><a href='https://www.uni-lj.si/en/university' target='_blank'>University of Ljubljana </a></p>
+    <a href='https://maps.app.goo.gl/nD85HpPG4VYQbUmZ8' target='_blank'>Jadranska 19, 1000 Ljubljana,
+    Slovenia</a>
+    </div>
+    <div class='card hpverable mt-2 p-2'>
+    <p><a href='https://www.pef.uni-lj.si/en/home-page/' target='_blank'>Faculty of Education</a></p>
+    <p><a href='https://www.uni-lj.si/en/university' target='_blank'>University of Ljubljana </a></p>
+    <a href='https://maps.app.goo.gl/xHv3fG4MfRnqsx9o8' target='_blank'>Kardeljeva ploščad 16, 1000 Ljubljana, 
+    Slovenija</a>
+    </div>
 
 news: true # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
