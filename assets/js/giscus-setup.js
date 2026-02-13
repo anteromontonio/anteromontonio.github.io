@@ -18,7 +18,7 @@ function determineGiscusTheme() {
 
   let giscusAttributes = {
     src: "https://giscus.app/client.js",
-    "data-repo": "anteromontonio/website_multilang",
+    "data-repo": "anteromontonio/anteromontonio.github.io",
     "data-repo-id": "",
     "data-category": "Comments",
     "data-category-id": "",
