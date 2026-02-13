@@ -8,7 +8,7 @@ layout: default
     <header class="post-header">
       <h1 class="post-title">
         {{ page.title }}
-        {% if page.cv_pdf %}
+        {% comment %} {% if page.cv_pdf %}
           <a
             {% if page.cv_pdf contains '://' %}
               href="{{ page.cv_pdf }}"
@@ -21,10 +21,21 @@ layout: default
           >
             <i class="fa-solid fa-file-pdf"></i>
           </a>
-        {% endif %}
+        {% endif %} {% endcomment %}
       </h1>
       {% if page.description %}
         <p class="post-description">{{ page.description }}</p>
+      {% endif %}
+      {% if page.cv_pdf %}
+        <div class="links">
+          {% for file in page.cv_pdf %}
+            <a
+            href="{{ file | prepend: 'assets/pdf/' | relative_url}}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btncv btn-md z-depth-0" role="button" target="_blank"><i class="fa-solid fa-file-pdf"></i> {{ file | split: "_" |slice: 1 }} ({{ site.active_lang }}) </a>
+          {% endfor %}
+        </div>
       {% endif %}
     </header>
 
@@ -45,6 +56,11 @@ layout: default
                 {% include cv/time_table.liquid %}
               {% elsif entry.type == 'list_groups' %}
                 {% include cv/list_groups.liquid %}
+                {% elsif entry.type == 'certificates' %}
+                  {% include cv/certificates.liquid %}
+                {% elsif entry.type == 'languages' %}
+                  {% include cv/languages.liquid %}
+                {% else %}
               {% else %}
                 {{ entry.contents }}
               {% endif %}
