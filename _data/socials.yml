@@ -53,9 +53,9 @@ rss_icon: true # comment this line to hide the RSS icon
 # wikidata_id: # your wikidata id
 # wikipedia_id: # your wikipedia id (Case sensitive)
 # work_url: # work page URL
- # your X handle
+# your X handle
 # zotero_username: # your zotero username
 # custom_social: # can be any name here other than the ones already defined above
-  # logo: https://mathscinet.ams.org/mathscinet/fe/assets/img/msn-logo-30.1c1211b9.svg # can be png, svg, jpg
-  # title: MathSciNet
-  # url: https://mathscinet.ams.org/mathscinet/author?authorId=1293226
+# logo: https://mathscinet.ams.org/mathscinet/fe/assets/img/msn-logo-30.1c1211b9.svg # can be png, svg, jpg
+# title: MathSciNet
+# url: https://mathscinet.ams.org/mathscinet/author?authorId=1293226

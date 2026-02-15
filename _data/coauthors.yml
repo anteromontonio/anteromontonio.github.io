@@ -7,23 +7,21 @@
     url: http://www.gabrielcunningham.com/
 
 "hubard":
-  - firstname: ["Isabel", "I",]
+  - firstname: ["Isabel", "I"]
     url: https://sites.google.com/im.unam.mx/isahubard
 
 "mochan":
-  - firstname: ["Elias", "Elías", "E.", "Jaime Elías", "J. E.",]
+  - firstname: ["Elias", "Elías", "E.", "Jaime Elías", "J. E."]
     url: https://eliasmochan.wordpress.com/
 
 "potocnik":
-  - firstname: ["Primoz", "Primož", "P.",]
+  - firstname: ["Primoz", "Primož", "P."]
     url: "https://primoz.potocnik.xyz/"
 
 "toledo":
-  - firstname: ["Micael", "M.", ]
+  - firstname: ["Micael", "M."]
     url: "https://mathscinet.ams.org/mathscinet/MRAuthorID/1107875"
 
 "weiss":
   - firstname: ["Asia", "Asia Ivić", "A.", "A.I.", "Asia I."]
     url: https://mathscinet.ams.org/mathscinet/MRAuthorID/181555
-
- 

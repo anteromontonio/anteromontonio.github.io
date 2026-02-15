@@ -1,6 +1,6 @@
 ---
 layout: post
-date: 2025-10-29 
+date: 2025-10-29
 inline: false
 related_posts: false
 title: :slovenia: I am giving a public talk in Kranj, Slovenia.

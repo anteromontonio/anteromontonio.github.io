@@ -8,7 +8,6 @@ nav_order: 4
 tabs: true
 ---
 
-
 Numbers:
 
 - Total number of talks: {{ site.data.talks | size }}.
@@ -19,7 +18,6 @@ Numbers:
 <div>
 {% include talks_search.liquid %}
 </div>
-
 
 {% tabs talks %}
 
@@ -47,7 +45,6 @@ Numbers:
 {% endtab %}
 
 {% tab talks By conference-type %}
-
 
 <div class="publications">
   <h2 class="bibliography" > International audience</h2>

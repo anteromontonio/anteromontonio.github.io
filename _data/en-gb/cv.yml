@@ -18,13 +18,13 @@
       location: Ljubljana, Slovenia.
       year: 2024 - now
       maindescription:
-        Teaching assistant in a program of education in mathematics, computer science, and physics. 
+        Teaching assistant in a program of education in mathematics, computer science, and physics.
         # - Description 2.
         # - title: Description 3.
         #   contents:
         #     - Sub-description 1.
         #     - Sub-description 2.
-    - title: Znanstveni sodelavec (Reseach associate, postdocotral) 
+    - title: Znanstveni sodelavec (Reseach associate, postdocotral)
       location: Ljubljana, Slovenia.
       institution: Faculty of mathematics and Physics, University of Ljubljana (UL-FMF).
       year: 2022 - now
@@ -77,7 +77,6 @@
       location: Morelia, Mexico
       year: 2013
       maindescription: Graduated with honours with the thesis <a href="https://anteromontonio.github.io/publications/#bscthesis">"Poliedros regulares en el 3-toro"</a>
-        
 
 # - title: Open Source Projects
 #   type: time_table
@@ -95,7 +94,7 @@
         - Constructions with prescribed symmetry type graph.
         - Constructions with prescribed local combinatorics (Schläfli symbol).
         - Extensions of abstract polytopes.
-    
+
     - title: Datasets of highly symmetric polytopes/maniplexes
       icon: fa-solid fa-database
       items:
@@ -107,7 +106,6 @@
       items:
         - Document creation with LaTeX
         - Computational tools to create teaching material.
-
 
 - title: Honors, awards, appointments
   type: time_table
@@ -126,7 +124,7 @@
       institution: 8th PhD Summer School in Discrete Mathematics
       year: 2018
       location: Rogla, Slovenia
-   
+
     - title: Award "Padre de la patria"
       institution: University of Michoacan (UMSNH)
       year: 2012
@@ -138,8 +136,6 @@
       year: 2011
       location: Morelia, Mexico
       maindescription: Award given to the best student of each year.
-
-
 
 - title: Computational skills
   type: map
@@ -155,12 +151,12 @@
   #   type: list_groups
   #   contents:
   #     - items:
-  #         - name: Nombre 1  
+  #         - name: Nombre 1
   #           level: Nivel 1
   #           school: la escuelita 1
   #           time: el tiempo 1
   #           link: google.com
-  #         - name: Nombre 2  
+  #         - name: Nombre 2
   #           level: Level 2
   #           school: la escuelita 2
   #           time: el tiempo 2
@@ -172,14 +168,14 @@
   contents:
     - language: Spanish
       fluency: Native speaker
-    - language: English  
+    - language: English
       fluency: C1 (2014)
-    - language: Slovene  
-      fluency: A1 
+    - language: Slovene
+      fluency: A1
 
 - title: Other interests
   type: certificates
-  contents: 
+  contents:
     - name: Coffee
       # date: 2019-01-01
       issuer: Coffee nerd, home barista
@@ -187,8 +183,4 @@
     - name: Music
       # date: 2014-01-01
       issuer: Amateur multi instrumentalist
-      # url: 
-
-
-
-
+      # url:

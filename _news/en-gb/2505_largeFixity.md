@@ -1,6 +1,6 @@
 ---
 layout: post
-date: 2025-05-23 
+date: 2025-05-23
 inline: false
 related_posts: false
 title: :champagne: Our paper “Vertex-transitive graphs with small motion and transitive permutation groups with small minimal degree" was published
