@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://anteromontonio.github.io/multi-language-al-folio/sitemap.xml
+Sitemap: https://anteromontonio.github.io/sitemap.xml
