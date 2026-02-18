@@ -263,13 +263,6 @@ ninja.data = [{
             window.location.href = "/es-mx" + updatedUrl;
           },
         },{
-          id: 'lang-si',
-          title: 'si',
-          section: 'Languages',
-          handler: () => {
-            window.location.href = "/si" + updatedUrl;
-          },
-        },{
       id: 'light-theme',
       title: 'Change theme to light',
       description: 'Change the theme of the site to Light',

@@ -1,4 +1,0 @@
-User-agent: *
-Disallow:
-
-Sitemap: https://anteromontonio.github.io/sitemap.xml
