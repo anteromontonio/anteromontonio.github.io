@@ -1,164 +1,206 @@
 archive:
-  prefix: um arquivo de
-  category_suffix: desta categoria
-  tag_suffix: com este marcador
-  year_suffix: deste ano
+  prefix: una colección de
+  category_suffix: en esta categoría
+  tag_suffix: con esta etiqueta
+  year_suffix: de este año
+  lang_suffix: en este idioma
 bibliography:
-  abstract: Abs
+  abstract: Res
   awarded: Premiado
   blog: Blog
-  book_prefix: Em
+  book_prefix: en
   code: Código
-  last_author_prefix: e
+  last_author_prefix: y
   poster: Poster
-  slides: Slides
-  supp: Supl
-  video: Vídeo
-  website: Site
+  slides: Diapositivas
+  supp: Supp
+  video: Video
+  website: Website
 blog:
   navigation_title: blog
 categories:
-  fun: diversão
-  work: trabalho
+  fun: cotorreo
+  work: trabajo
 citation:
-  bibtex: "ou como uma citação em BibTeX:"
-  introduction: "Se você achou isso útil, por favor cite como:"
+  bibtex: "o como una entrada BibTeX:"
+  introduction: "Si encontraste esto útil, por favor cítalo así:"
 collections:
-  books: livros
-  posts: postagens
-contact_note: Você pode até adicionar uma pequena observação sobre qual dessas é a melhor maneira de entrar em contato com você.
+  books: libros
+  posts: posts
+contact_note: La forma más confiable de contactarme es por correo electrónico, pero también puedes intentarlo via redes sociales.
 cv:
-  address: Endereço
+  address: Dirección
   area: Área
-  awarder: Premiado por
-  awards: Prêmios
-  basics: Informações gerais
+  awarder: Otorgado por
+  awards: Premios
+  basics: Información general
   certificates: Certificados
-  city: Cidade
-  countryCode: Código do país
+  city: Ciudad
+  countryCode: Código de país
   courses: Cursos
-  date: Data
-  education: Educação
+  date: Fecha
+  education: Educación
   email: Email
-  endDate: Data de término
-  fluency: Fluência
-  highlights: Destaques
-  image: Imagem
-  institution: Instituição
-  interests: Interesses
-  issuer: Emissor
-  keywords: Palavras chave
-  label: Título
+  endDate: Fecha de finalización
+  fluency: Fluidez
+  highlights: Highlights
+  image: Imagen
+  institution: Institución
+  interests: Intereses
+  issuer: Emisor
+  keywords: Keywords
+  label: Etiqueta
   language: Idioma
   languages: Idiomas
-  level: Nível
-  location: Localização
-  name: Nome
-  network: Rede
-  organization: Organização
-  phone: Telefone
-  position: Posição
+  level: Nivel
+  location: Lugar
+  name: Nombre
+  network: Red
+  organization: Organización
+  phone: Teléfono
+  position: Posición
   postalCode: Código postal
   present: Presente
-  profiles: Perfis
-  projects: Projetos
-  publications: Publicações
-  publisher: Editora
-  reference: Referência
-  references: Referências
-  region: Região
-  releaseDate: Data de lançamento
-  score: Pontuação
+  profiles: Perfiles
+  projects: Proyectos
+  publications: Publicaciones
+  publisher: Editorial
+  reference: Referencia
+  references: Referencias
+  region: Región
+  releaseDate: Fecha de publicación
+  score: Puntuación
   skills: Habilidades
-  startDate: Data de início
-  studyType: Tipo de estudo
-  summary: Resumo
-  table_of_contents: Tópicos
+  startDate: Fecha de inicio
+  studyType: Tipo de estudio
+  summary: Resumen
+  table_of_contents: Índice
   title: Título
   url: Url
-  username: Usuário
-  volunteer: Voluntário
-  work: Trabalho
+  username: Nombre de usuario
+  volunteer: Voluntario
+  work: Trabajo
 footer:
-  copyright: Direitos autorais
-  last_updated: "Última atualização:"
+  copyright: Copyright
+  last_updated: "Última actualización:"
 footer_text: > # the ">" symbol means to ignore newlines until "titles:"
-  Desenvolvido em <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> com o tema <a href="https://github.com/george-gca/multi-language-al-folio">multi-language-al-folio</a>.
-  Hospedado por <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
-  Fotos do <a href="https://unsplash.com" target="_blank">Unsplash</a>.
-latest_posts: últimas postagens
+  Sitio web construido usando <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> con el tema <a href="https://github.com/george-gca/multi-language-al-folio">multi-language-al-folio</a>.
+  Publicado a través de <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
+latest_posts: últimos posts
 months:
   long:
-    january: Janeiro
-    february: Fevereiro
-    march: Março
-    april: Abril
-    may: Maio
-    june: Junho
-    july: Julho
+    january: Enero
+    february: Febrero
+    march: Marzo
+    april:  Abril
+    may: Mayo
+    june: Junio
+    july: Julio
     august: Agosto
-    september: Setembro
-    october: Outubro
-    november: Novembro
-    december: Dezembro
+    september: Septiembre
+    october: Octubre
+    november: Noviembre
+    december: Diciembre
   short:
-    january: Jan
-    february: Fev
+    january: Ene
+    february: Feb
     march: Mar
     april: Abr
-    may: Mai
+    may: May
     june: Jun
     july: Jul
     august: Ago
-    september: Set
-    october: Out
+    september: Sep
+    october: Oct
     november: Nov
-    december: Dez
-news: novidades
+    december: Dic
+news: Noticias
 newsletter:
-  back: Voltar
-  error: "Oops! Algo deu errado, por favor tente novamente."
-  subscribe: inscrever-se
-  subscribed: "Você se inscreveu com sucesso na newsletter."
-  subscribe_to_receive: "Inscreva-se para ser notificado de futuros artigos:"
-  too_many_signups: "Muitas inscrições, por favor tente novamente em breve"
-  wait: "Por favor, aguarde..."
-no_news: Nenhuma novidade no momento...
-no_posts: "Nenhuma postagem até agora..."
+  back: Regresar
+  error: "Ay caramba! Hubo un error al procesar tu solicitud. Por favor, inténtalo de nuevo."
+  subscribe: Suscribirse
+  subscribed: "Te has suscrito exitosamente a mi newsletter."
+  subscribe_to_receive: "Suscríbete para recibir notificaciones de futuros artículos:"
+  too_many_signups: "Demasiadas solicitudes, por favor inténtalo de nuevo en un momento"
+  wait: "Por favor espera..."
+no_news: "¡Nada nuevo por ahora!"
+no_posts: "No hay posts por ahora..."
 pagination:
   page: página
 post:
-  created_in: Criado em
+  created_in: Creado en
   created_by: por
-  last_updated: última atualização em
-references: Referências
+  last_updated: última actualización en
+references: Referencias
 related_posts:
-  description: "Aqui estão alguns artigos relacionados que você pode gostar de ler:"
-  title: Gostou de Ler este Artigo?
+  description: "Si te gustó este artículo, es posible que también te interesen los siguientes:"
+  title: Te gustó esto?
 search:
   dark_theme:
-    description: Muda o tema do site para escuro
-    title: Muda o tema para escuro
-  dropdown: Outras opções
-  email: Enviar um email
+    description: Cambiar el tema del sitio a oscuro
+    title: Cambiar tema a oscuro
+  dropdown: Dropdown
+  email: Enviar un correo
   footer:
-    close: para fechar
-    navigate: para navegar
-    parent: voltar um nível
-    select: para selecionar
+    close: cerrar
+    navigate: navegar
+    parent: mover al padre
+    select: seleccionar
   languages: Idiomas
   light_theme:
-    description: Muda o tema do site para claro
-    title: Muda o tema para claro
-  navigation: Menu de navegação
-  news: Novidades
-  placeholder: Digite para iniciar a busca
-  posts: Postagens
-  projects: Projetos
-  socials: Redes sociais
+    description: Cambiar el tema del sitio a claro
+    title: Cambiar tema a claro
+  navigation: Menú de navegación
+  news: Noticias
+  placeholder: Escribe para buscar
+  posts: Posts
+  projects: Proyectos
+  socials: Redes sociales
   system_theme:
-    description: Muda o tema do site para o padrão do sistema
-    title: Usa o tema padrão do sistema
+    description: Usar el tema del sistema operativo
+    title: Usar tema del sistema operativo
   theme: Tema
-selected_publications: publicações selecionadas
-site_description: Um tema simples para acadêmicos. Baseado no design do [*folio](https://github.com/bogoli/-folio).
+selected_publications: Publicaciones seleccionadas
+site_description: Un sitio diseñado para académicos; basado en [*folio](https://github.com/bogoli/-folio).
+conferences:
+  dmfa25: Ciclo “Poljudnih predavanj iz matematike,fizike in  astronomije” (Pláticas públicas de matemáticas, física y astronomía).
+  gems25: Congreso “Graphs Embeddings and Maps on Surfaces 2025” (GEMS 2025).
+  sodo24: Congreso “Symmetries of Discrete Objects” (SODO).
+  mathFisMat: Seminario de matemáticas FisMat UMSNH.
+  sicgt23: 10º congreso esloveno de teoría de gráficas (SiCGT).
+  seminarFamnit: Seminario de investigación en matemáticas (UP-FAMNIT).
+  dmFMF: Seminario de matemáticas discretas (UL FMF).
+  coloquioIM: Coloquio del Instituto de Matemáticas (IM-UNAM).
+  agtiw: Seminario internacional de teoría algebraica de gráficas (AGTIW).
+  enormat: Encuentro Nororiental de Matemáticas (Universidad de Pamplona).
+  cmswm19: CMS Winter Meeting 2019.
+  tomandoCiencia: Ciclo "Tomando Ciencia".
+  sicgt19: 9º congreso esloveno de teoría de gráficas (SiCGT).
+  smm18: 50º Congreso Nacional de la Sociedad Matemática Mexicana (SMM).
+  enaeposmat18: 3er Encuentro nacional de estudiantes de posgrado de matemáticas.
+  roglaphd18: 8th PhD Summer School in Discrete Mathematics.
+  sigmap18: 6º congreso "Symmetries in Graphs, Maps and Polytopes" (SIGMAP).
+  vnl18: 33º Coloquio “Victor Neumann-Lara” de teoría de gráficas, combinatoria y sus aplicaciones.
+  becariosCimat: Seminario de estudiantes de posgrado CIMAT.
+  prima17: 3er Congreso de la Pacific Rim Mathematical Association (PRIMA).
+  evsec17: 2a Escuela de verano en simetrías de estructuras combinatorias (EVSEC).
+  cgtPeF: Seminario de combinatoria y teoría de grupos (UL-PEF)
+  smm16: 49º Congreso Nacional de la Sociedad Matemática Mexicana (SMM).
+  aquelarre16: Ciclo "Aquelarre Matemático 2016".
+  enaeposmat16: 2º Encuentro nacional de estudiantes de posgrado de matemáticas.
+  esverCCM16: 16º Escuela de verano en matemáticas CCM - UNAM.
+  scdo16: Congreso “Symmetries and Covers of Discrete Objects” (SCDO).
+  aquelarre15: Ciclo "Aquelarre Matemático 2015".
+  becariosCCM: Seminario de becarios CCM - UNAM.
+  degMat15: Ciclo "Degustaciones Matemáticas 2015"
+  sigmap14: 5º congreso "Symmetries in Graphs, Maps and Polytopes" (SIGMAP).
+  becariosIM: Seminario de becarios IM-UNAM.
+  smm13: 46º Congreso Nacional de la Sociedad Matemática Mexicana (SMM).
+  vnl13: 28º Coloquio “Victor Neumann-Lara” de teoría de gráficas, combinatoria y sus aplicaciones.
+  dmFisMat: Seminario de matemáticas discretas FisMat UMSNH.
+  smm12: 45º Congreso Nacional de la Sociedad Matemática Mexicana (SMM).
+  vnl12: 27º Coloquio “Victor Neumann-Lara” de teoría de gráficas, combinatoria y sus aplicaciones.
+talkTypes:
+  Contributed: Por solicitud
+  Invited speaker: Ponente invitado
+  By invitation: Por invitación

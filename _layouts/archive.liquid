@@ -24,6 +24,13 @@ layout: default
         {{ site.data[site.active_lang].strings.collections[page.collection_name] }}
         {{ site.data[site.active_lang].strings.archive.tag_suffix }}
       </p>
+    {% elsif page.type == 'language' %}
+      <h1 class="post-title"><i class="fa-solid fa-language fa-sm"></i> <span class="fi fi-{{ page.title | split: "-" | last }}"></span> ({{ page.title }})</h1>
+      <p class="post-description">
+        {{ site.data[site.active_lang].strings.archive.prefix }}
+        {{ site.data[site.active_lang].strings.collections[page.collection_name] }}
+        {{ site.data[site.active_lang].strings.archive.lang_suffix }}
+      </p>
     {% endif %}
   </header>
 

@@ -3,6 +3,7 @@ archive:
   category_suffix: in this category
   tag_suffix: with this tag
   year_suffix: from this year
+  lang_suffix: in this language
 bibliography:
   abstract: Abs
   awarded: Awarded
@@ -85,7 +86,6 @@ footer:
 footer_text: > # the ">" symbol means to ignore newlines until "titles:"
   Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/george-gca/multi-language-al-folio">multi-language-al-folio</a> theme.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
-  Photos from <a href="https://unsplash.com" target="_blank">Unsplash</a>.
 latest_posts: latest posts
 months:
   long:
@@ -162,3 +162,45 @@ search:
   theme: Theme
 selected_publications: Selected publications
 site_description: A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+conferences:
+  dmfa25: Cycle “Poljudnih predavanj iz matematike,fizike in  astronomije” (Popular lectures in mathematics, physics and astronomy).
+  gems25: Workshop “Graphs Embeddings and Maps on Surfaces 2025” (GEMS 2025).
+  sodo24: Conference “Symmetries of Discrete Objects” (SODO).
+  mathFisMat: Math seminar FisMat UMSNH.
+  sicgt23: 10th Slovenian Conference on Graph Theory (SiCGT).
+  seminarFamnit: Mathematics research seminar (UP-FAMNIT).
+  dmFMF: Discrete Mathematics Seminar (UL FMF).
+  coloquioIM: Colloquium of the Institute of Mathematics (IM-UNAM).
+  agtiw: Algebraic Graph Theory International Webminar.
+  enormat: Encuentro Nororiental de Matemáticas (University of Pamplona).
+  cmswm19: CMS Winter Meeting 2019.
+  tomandoCiencia: Cycle "Tomando Ciencia".
+  sicgt19: 9th Slovenian Conference on Graph Theory (SiCGT).
+  smm18: 51th National Conferences of the Mexican Mathematical Society (SMM).
+  enaeposmat18: 3rd National meeting of graduate students of mathematics.
+  roglaphd18: 8th PhD Summer School in Discrete Mathematics.
+  sigmap18: 6th Workshop "Symmetries in Graphs, Maps and Polytopes" (SIGMAP).
+  vnl18: 33rd Colloquium “Victor Neumann-Lara” of graph theory, combinatorics and its applications.
+  becariosCimat: Graduate students seminar CIMAT
+  prima17: 3rd Conference of the Pacific Rim Mathematical Association (PRIMA).
+  evsec17: 2nd Summer school of symmetries of combinatorial structures.
+  cgtPeF: Seminar of Combinatorics and Group Theory, (UL- PEF).
+  smm16: 49th National Conferences of the Mexican Mathematical Society (SMM)
+  aquelarre16: Cycle "Aquelarre Matemático 2016".
+  enaeposmat16: 2nd national meeting of graduate students of mathematics.
+  esverCCM16: 16th Summer school in mathematics CCM - UNAM.
+  scdo16: Conference “Symmetries and Covers of Discrete Objects” (SCDO).
+  aquelarre15: Cycle "Aquelarre Matemático 2015".
+  becariosCCM: Graduate students seminar CCM - UNAM.
+  degMat15: Cycle "Degustaciones Matemáticas 2015"
+  sigmap14: 5th Workshop "Symmetries in Graphs, Maps and Polytopes" (SIGMAP)
+  becariosIM: Graduate students seminar IM-UNAM.
+  smm13: 46th National Conferences of the Mexican Mathematical Society (SMM).
+  vnl13: 28th Colloquium “Victor Neumann-Lara” of graph theory, combinatorics and its applications.
+  dmFisMat: Discrete math seminar FisMat UMSNH
+  smm12: 45th National Conferences of the Mexican Mathematical Society (SMM).
+  vnl12: 27th Colloquium “Victor Neumann-Lara” of graph theory, combinatorics and its applications.
+talkTypes:
+  Contributed: Contributed
+  Invited speaker: Invited speaker
+  By invitation: By invitation

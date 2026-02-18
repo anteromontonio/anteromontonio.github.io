@@ -279,10 +279,11 @@ terser:
 
 jekyll-archives:
   posts:
-    enabled: [year, tags] # enables year, tag and category archives (remove if you need to disable one of them).
+    enabled: [year, tags, language] # enables year, tag and category archives (remove if you need to disable one of them).
     permalinks:
       year: "/blog/:year/"
       tags: "/blog/:type/:name/"
+      language: "/blog/:type/:name/"
       # categories: "/blog/:type/:name/"
   books:
     enabled: [year, tags, categories] # enables year, tag and category archives (remove if you need to disable one of them).
@@ -382,7 +383,7 @@ external_links:
 # Jekyll Polyglot
 # -----------------------------------------------------------------------------
 
-languages: ["en-gb", "es-mx", "si"]
+languages: ["en-gb", "es-mx"]
 default_lang: "en-gb"
 exclude_from_localization: ["assets"]
 lang_from_path: true

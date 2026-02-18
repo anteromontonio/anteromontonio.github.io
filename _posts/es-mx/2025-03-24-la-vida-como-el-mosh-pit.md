@@ -3,6 +3,7 @@ layout: post
 title: La vida como el mosh pit
 date: 2025-03-24
 tags: mentalHealth
+language: es-mx
 ---
 
 Un poquito antes de que terminara el año 2024 iba pedaleando por uno vecindario residencial de la ciudad donde vivo (Ljubljana). Ljubljana es una ciudad muy pequeña y una vez que uno sale del centro, muy pronto se vuelve un pueblito. Este vecindario por el que pedaleaba es atravesado por las vías del tren y yo iba justo por calle que va al ladito de la vía. Era invierno y había nevado unos pocos días antes así que el panorama lucía entre mojado y blanco.

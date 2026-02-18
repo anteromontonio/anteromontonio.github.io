@@ -3,6 +3,7 @@ layout: post
 title: Tres ideas de colores
 date: 2025-05-11
 tags: mentalHealth
+language: es-mx
 ---
 
 You can read the English version of this post [here](https://anteromontonio.github.io/blog/2025/three-colourful-ideas).

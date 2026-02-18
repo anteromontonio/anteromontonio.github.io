@@ -122,6 +122,7 @@ pagination:
     {% assign year = post.date | date: "%Y" %}
     {% assign tags = post.tags | join: "" %}
     {% assign categories = post.categories | join: "" %}
+    {% assign language = post.language | join: "" %}
 
     <li>
 
@@ -170,6 +171,17 @@ pagination:
             {% for category in post.categories %}
             <a href="{{ category | slugify | prepend: '/blog/category/' | relative_url }}">
               <i class="fa-solid fa-tag fa-sm"></i> {{ category }}</a>
+              {% unless forloop.last %}
+                &nbsp;
+              {% endunless %}
+              {% endfor %}
+          {% endif %}
+
+          {% if language != "" %}
+          &nbsp; &middot; &nbsp;
+            {% for category in post.language %}
+            <a href="{{ category | slugify | prepend: '/blog/language/' | relative_url }}">
+              <i class="fa-solid fa-language fa-sm"></i> <span class="fi fi-{{ language | split: "-" | last }}"></span> </a>
               {% unless forloop.last %}
                 &nbsp;
               {% endunless %}

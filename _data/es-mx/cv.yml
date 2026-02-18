@@ -1,101 +1,187 @@
-- title: Informações Gerais
+- title: Informacieon personal
   type: map
   contents:
-    - name: Nome Completo
-      value: Albert Einstein
-    - name: Data de Nascimento
-      value: 14 de março de 1879
-    - name: Idiomas
-      value: Inglês, Alemão
+    - name: Nombre
+      value: Antonio Montero.
+    - name: Fecha de nacimiento
+      value: 3 de diciembre de 1990.
+    - name: Lugar de nacimiento
+      value: Morelia, México.
+    - name: Nacionalidad
+      value: Mexicana.
 
-- title: Educação
+- title: Experiencia laboral
   type: time_table
   contents:
-    - title: PhD
-      institution: University of Zurich, Zurique, Suíça
-      year: 1905
+    - title: Asistent (ayudante de profesor)
+      institution: Facultad de educación, Universidad de Ljubljana (UL-PEF)
+      location: Ljubljana, Eslovenia.
+      year: 2024 - ahora
+      maindescription:
+        Ayudante de profesor en un programa de educación en matemáticas, ciencias de la computación y física.
+        # - Description 2.
+        # - title: Description 3.
+        #   contents:
+        #     - Sub-description 1.
+        #     - Sub-description 2.
+    - title: Znanstveni sodelavec (Investigador asociado, postdoctoral)
+      location: Ljubljana, Eslovenia.
+      institution: Facultad de matemáticas y física, Universidad de Ljubljana (UL-FMF).
+      year: 2022 - ahora
       description:
-        - Descrição 1.
-        - Descrição 2.
-        - title: Descrição 3.
-          contents:
-            - Sub-descrição 1.
-            - Sub-descrição 2.
-    - title: Diploma de ensino federal
-      institution: Eidgenössische Technische Hochschule, Zurique, Suíça
-      year: 1900
-      description:
-        - Descrição 1.
-        - Descrição 2.
+        - Investigación.
+        - Docencia en un programa de licenciatura y posgrado en matemáticas.
 
-- title: Experiência
+    - title: Becario postdoctoral 
+      institution: Instituto de Matemáticas, Universidad Nacional Autónoma de México (UNAM).
+      location: Ciudad de México, México
+      year: 2020-2022
+      description:
+        - Investigación.
+        - Docencia en un programa de licenciatura y posgrado en matemáticas.
+
+    - title: Postdoctoral fellow (Investigador postdoctoral)
+      institution: Departamento de Matemáticas y Estadística, Universidad de York.
+      location: Toronto ON. Canadá
+      year: 2019-2020
+      description:
+        - Investigación
+        - Docencia en un programa de licenciatura.
+
+    - title: Ayudante de profesor 
+      institution: Escuela nacional de estudios superiores (ENES), UNAM Morelia.
+      location: Morelia, México
+      year: 2015 - 2019
+      maindescription: Docencia en un programa de licenciatura orientado a ciencias de la computación.
+
+- title: Educación
   type: time_table
   contents:
-    - title: Professor de Física Teórica
-      institution: Institute for Advanced Study, Princeton University
-      year: 1933 - 1955
-      description:
-        - Descrição 1.
-        - Descrição 2.
-        - title: Descrição 3.
-          contents:
-            - Sub-descrição 1.
-            - Sub-descrição 2.
-    - title: Professor Visitante
-      institution: California Institute of Technology, Pasadena, Califórnia, EUA
-      year: 1933
-      description:
-        - Descrição 1.
-        - Descrição 2.
+    - title: Doctorado en ciencias (Mathematics)
+      institution: Universidad Nacional Autónoma de México (UNAM)
+      department: Centro de Ciencias Matemáticas
+      location: Morelia, México
+      year: 2019
+      maindescription: Graduado con mención honorífica con la tesis <a href="https://anteromontonio.github.io/publications/#phdthesis">"Chiral extensions of toroids"</a>
 
-    - title: Diretor
-      institution: Kaiser Wilhelm Institute for Physics, Berlim, Alemanha.
-      year: 1917-1933
+    - title: Maestría en ciencias (Mathematics)
+      institution: Universidad Nacional Autónoma de México (UNAM)
+      department: Centro de Ciencias Matemáticas
+      location: Morelia, México
+      year: 2015
+      maindescription: Graduado con mención honorífica con la tesis <a href="https://anteromontonio.github.io/publications/#mscthesis">"Realizaciones regulares de poliedros en el 3-toro"</a>
 
-    - title: Professor de Física Teórica
-      institution: Karl-Ferdinand University, Praga, Tchecoslováquia
-      year: 1911 - 1917
-      description:
+    - title: Licenciatura en ciencias físico-matemáticas
+      institution: Universidad Michoacana de San Nicolás de Hidalgo (UMSNH)
+      department: Facultad de ciencias físico-matemáticas
+      location: Morelia, México
+      year: 2013
+      maindescription: Graduado con mención honorífica con la tesis <a href="https://anteromontonio.github.io/publications/#bscthesis">"Poliedros regulares en el 3-toro"</a>
 
-    - title: Professor Associado de Física Teórica
-      institution: University of Zurich, Zurique, Suíça
-      year: 1909 - 1911
+# - title: Open Source Projects
+#   type: time_table
+#   contents:
+#     - title: <a href="https://github.com/alshedivat/al-folio">al-folio</a>
+#       year: 2015-now
+#       description: A beautiful, simple, clean, and responsive Jekyll theme for academics.
 
-- title: Projetos de Código Aberto
-  type: time_table
-  contents:
-    - title: <a href="https://github.com/george-gca/multi-language-al-folio">multi-language-al-folio</a>
-      year: 2023-atual
-      description: Uma variação do tema al-folio com suporte a múltiplos idiomas.
-
-    - title: <a href="https://github.com/alshedivat/al-folio">al-folio</a>
-      year: 2015-atual
-      description: Um tema Jekyll bonito, simples, limpo e responsivo para acadêmicos.
-
-- title: Honrarias e Prêmios
-  type: time_table
-  contents:
-    - year: 1921
-      items:
-        - Prêmio Nobel de Física
-        - Medalha Matteucci
-    - year: 2029
-      items:
-        - Medalha Max Planck
-
-- title: Interesses Acadêmicos
+- title: Interéses de investigación
   type: nested_list
   contents:
-    - title: Tópico 1.
+    - title: Construcciones combinatorias de politopos abstractos.
+      icon: fa-solid fa-cube
       items:
-        - Descrição 1.
-        - Descrição 2.
-    - title: Tópico 2.
-      items:
-        - Descrição 1.
-        - Descrição 2.
+        - Construcciones con tipo de simetría prescrito.
+        - Construcciones con combinatorial local prescrita (Símbolo de Schl\"afli).
+        - Extensiones de politopos abstractos.
 
-- title: Outros Interesses
-  type: list
+    - title: Bases de datos de politopos/maniplexes.
+      icon: fa-solid fa-database
+      items:
+        - Bases de datos de politopos abstractos áltamente simétricos
+        - Bases de datos de politopos abstractos/maniplexes con tipo de simetría prescrito.
+
+    - title: Uso de herramientas computacionales en matemáticas.
+      icon: fa-solid fa-file
+      items:
+        - Creación de documentos en LaTeX.
+        - Diseño de material didáctico con herramientas computacionales.
+
+- title: Reconocimientos, premios y nombramientos
+  type: time_table
   contents:
-    - <u>Hobbies:</u> Hobby 1, Hobby 2, etc.
+    - title: Docent (Profesor asistente)
+      institution: Universidad de Ljubljana
+      location: Eslovenia
+      year: 2024 - 2029
+
+    - title: Candidato a investigador nacional 
+      institution: Consejo Nacional de Ciencia y Tecnología (CONACYT)
+      location: Méico
+      year: 2021 - 2024
+
+    - title: Mejor charla por un estudiante
+      institution: 8th PhD Summer School in Discrete Mathematics
+      year: 2018
+      location: Rogla, Eslovenia
+
+    - title: Premio "Padre de la patria"
+      institution: Universidad Michoacana de San Nicolás de Hidalgo (UMSNH)
+      year: 2012
+      location: Morelia, México
+      maindescription: Premio al mejor estudiante de cada año.
+
+    - title: Premio "Padre de la patria"
+      institution: Universidad Michoacana de San Nicolás de Hidalgo (UMSNH)
+      year: 2011
+      location: Morelia, México
+      maindescription: Premio al mejor estudiante de cada año.
+
+
+- title: Habilidades computacionales
+  type: map
+  contents:
+    - name: Lenguajes de programación
+      value: Python, SageMath, GAP.
+    - name: Productividad
+      value: Git, Notion.
+    - name: Creación de contenido digital
+      value: LaTeX, Inskcape, GeoGebra, Markdown, Jekyll.
+
+  # - title: Other Interests
+  #   type: list_groups
+  #   contents:
+  #     - items:
+  #         - name: Nombre 1
+  #           level: Nivel 1
+  #           school: la escuelita 1
+  #           time: el tiempo 1
+  #           link: google.com
+  #         - name: Nombre 2
+  #           level: Level 2
+  #           school: la escuelita 2
+  #           time: el tiempo 2
+  #           link: google.com
+  #           linkname: sabe
+
+- title: Idiomas  
+  type: languages
+  contents:
+    - language: Español
+      fluency: Hablante nativo
+    - language: Inglés
+      fluency: C1 (2014)
+    - language: Esloveno
+      fluency: A1
+
+- title: Otros intereses
+  type: certificates
+  contents:
+    - name: Café
+      # date: 2019-01-01
+      issuer: Coffee nerd, barista amateur
+      url: https://www.instagram.com/justacoffeenerd/
+    - name: Música
+      # date: 2014-01-01
+      issuer: Multiinstrumentista amateur.
+      # url:

@@ -2,11 +2,11 @@
 page_id: blog
 layout: default
 permalink: /blog/
-title: blog
-blog_name: al-folio em português brasileiro
-description: um tema simples para acadêmicos
+title: Blog
+blog_name: Cafecito?
+description: Mi blog personal (no-necesariamente-académico). Aquí escribo sobre matemáticas, café, música, vida o a veces solo desahogo. A veces en 🇬🇧 inglés, a veces en 🇲🇽 español y espero que algún día también en 🇸🇮 esloveno.
 nav: true
-nav_order: 1
+nav_order: 3
 pagination:
   enabled: true
   collection: posts
@@ -32,7 +32,7 @@ pagination:
   </div>
   {% endif %}
 
-{% if site.display_tags or site.display_categories %}
+{% if site.display_tags and site.display_tags.size > 0 or site.display_categories and site.display_categories.size > 0 %}
 
   <div class="tag-category-list">
     <ul class="p-0 m-0">
@@ -87,8 +87,8 @@ pagination:
                     {% assign year = post.date | date: "%Y" %}
 
                     <p class="post-meta">
-                      Leitura de {{ read_time }} min &nbsp; &middot; &nbsp;
-                      <a href="{{ year | prepend: '/blog/' | prepend: site.baseurl}}">
+                      Lectura de {{ read_time }} min &nbsp; &middot; &nbsp;
+                      <a href="{{ year | prepend: '/blog/' | relative_url }}">
                         <i class="fa-solid fa-calendar fa-sm"></i> {{ year }} </a>
                     </p>
                   </div>
@@ -122,6 +122,7 @@ pagination:
     {% assign year = post.date | date: "%Y" %}
     {% assign tags = post.tags | join: "" %}
     {% assign categories = post.categories | join: "" %}
+    {% assign language = post.language | join: "" %}
 
     <li>
 
@@ -144,29 +145,46 @@ pagination:
       </h3>
       <p>{{ post.description }}</p>
       <p class="post-meta">
-        Leitura de {{ read_time }} min &nbsp; &middot; &nbsp;
+        Lectura de {{ read_time }} min &nbsp; &middot; &nbsp;
         {% include date_format.liquid format="long" date=post.date %}
         {% if post.external_source %}
         &nbsp; &middot; &nbsp; {{ post.external_source }}
         {% endif %}
       </p>
       <p class="post-tags">
-        <a href="{{ year | prepend: '/blog/' | prepend: site.baseurl}}">
+        <a href="{{ year | prepend: '/blog/' | relative_url }}">
           <i class="fa-solid fa-calendar fa-sm"></i> {{ year }} </a>
 
           {% if tags != "" %}
           &nbsp; &middot; &nbsp;
             {% for tag in post.tags %}
-            <a href="{{ tag | slugify | prepend: '/blog/tag/' | prepend: site.baseurl}}">
-              <i class="fa-solid fa-hashtag fa-sm"></i> {{ tag }}</a> &nbsp;
+            <a href="{{ tag | slugify | prepend: '/blog/tag/' | relative_url }}">
+              <i class="fa-solid fa-hashtag fa-sm"></i> {{ tag }}</a>
+              {% unless forloop.last %}
+                &nbsp;
+              {% endunless %}
               {% endfor %}
           {% endif %}
 
           {% if categories != "" %}
           &nbsp; &middot; &nbsp;
             {% for category in post.categories %}
-            <a href="{{ category | slugify | prepend: '/blog/category/' | prepend: site.baseurl}}">
-              <i class="fa-solid fa-tag fa-sm"></i> {{ category }}</a> &nbsp;
+            <a href="{{ category | slugify | prepend: '/blog/category/' | relative_url }}">
+              <i class="fa-solid fa-tag fa-sm"></i> {{ category }}</a>
+              {% unless forloop.last %}
+                &nbsp;
+              {% endunless %}
+              {% endfor %}
+          {% endif %}
+
+          {% if language != "" %}
+          &nbsp; &middot; &nbsp;
+            {% for category in post.language %}
+            <a href="{{ category | slugify | prepend: '/blog/language/' | relative_url }}">
+              <i class="fa-solid fa-language fa-sm"></i> <span class="fi fi-{{ language | split: "-" | last }}"></span> </a>
+              {% unless forloop.last %}
+                &nbsp;
+              {% endunless %}
               {% endfor %}
           {% endif %}
     </p>

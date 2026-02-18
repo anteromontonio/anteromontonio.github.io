@@ -14,7 +14,7 @@
             {% endif -%}
           >
             <div style="color: #ffffff">
-              {{- talk.type -}}
+              {{- site.data[site.active_lang].strings.talkTypes[talk.type] -}}
             </div>
           </abbr>
         {% else %}
@@ -28,17 +28,21 @@
       <!-- Title -->
       <div class="title">{{ talk.title }}</div>
       <!-- Conference -->
+    {% capture conf %}{{ talk.conf_short }}{% endcapture %}
       <div class="periodical">
         {% if talk.conf_url %}
-          <a href="{{ talk.conf_url }}" target="_blank"> {{ talk.conference }} </a>
+          <a href="{{ talk.conf_url }}" target="_blank"> {{ site.data[site.active_lang].strings.conferences[conf] }} </a>
         {% else %}
-          {{ talk.conference }}
+        {{ site.data[site.active_lang].strings.conferences[conf] }}
         {% endif %}
       </div>
       <!-- Location and date -->
       <div class="periodical">
         {% if talk.location %}
           <i class="fa-solid fa-location-dot"></i>
+          {% if talk.venue %}
+            {{ talk.venue | append: ', ' }}
+          {% endif %}
           {{ talk.location }}.
         {% elsif talk.conference contains 'online' %}
           <i class="fa-solid fa-location-dot"></i>
@@ -59,7 +63,7 @@
             class="btn btn-sm z-depth-0"
             role="button"
             target="_blank"
-            >SLIDES</a
+            >{{ site.data[site.active_lang]strings.bibliography.slides }}</a
           >
         {% endif %}
       </div>

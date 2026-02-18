@@ -257,7 +257,7 @@
       {% endif %}
       {% if entry.slides %}
         {% if entry.slides contains '://' %}
-          <a href="{{ entry.slides }}" class="btn btn-sm z-depth-0" role="button">Slides</a>
+          <a href="{{ entry.slides }}" class="btn btn-sm z-depth-0" role="button">{{ strings.bibliography.slides }}</a>
         {% else %}
           <a href="{{ entry.slides | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">Slides</a>
         {% endif %}
@@ -348,7 +348,7 @@
               {% endif %}
 
               <img
-                src="https://img.shields.io/badge/scholar-{{ citation_count }}-4285F4?logo=googlescholar&labelColor=beige"
+                src="https://img.shields.io/badge/scholar-{{ citation_count }}-4285F4?logo=googlescholar&style=plastic&label=Citations"
                 alt="{{ citation_count }} Google Scholar citations"
               >
             </a>
@@ -356,6 +356,7 @@
             {% comment %}
               <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user={{ site.data.socials.scholar_userid }}&citation_for_view={{ site.data.socials.scholar_userid }}:{{ entry.google_scholar_id }}">
               <img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fanteromontonio%2Fanteromontonio.github.io%40google-scholar-stats%2Fgs_data.json&query=%24%5B'publications'%5D%5B'{{ site.data.socials.scholar_userid }}%3A{{ entry.google_scholar_id }}'%5D%5B'num_citations'%5D&style=plastic&logo=google%20scholar&label=Citations%3A">
+              https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fanteromontonio%2Fanteromontonio.github.io%2Frefs%2Fheads%2Fmain%2F_data%2Fcitations.yml&query=%24.papers%5B%{{ site.data.socials.scholar }}%3A9yKSN-GCB0IC%22%5D.citations&style=plastic&logo=google-scholar&label=Citations
               </a>
             {% endcomment %}
           {% endif %}

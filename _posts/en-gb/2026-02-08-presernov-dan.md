@@ -3,6 +3,7 @@ layout: post
 title: Prešernov dan
 date: 2026-02-08
 tags: mentalHealth
+language: en-gb
 ---
 
 It is Tuesday afternoon, 8 February 2022, Prešeren’s Day (slo. _Prešernov dan_). I have already lived in Slovenia for four weeks, and it is one of the few sunny days I have had so far. I am sitting on a bench next to the University Library building, clinging to the eduroam wifi connection provided by it. It is about to get dark, as it does when you live in a country with a real winter. This is the saddest day I remember in the last few years.

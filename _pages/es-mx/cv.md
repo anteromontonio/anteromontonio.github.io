@@ -2,11 +2,11 @@
 page_id: cv
 layout: cv
 permalink: /cv/
-title: cv
+title: CV
 nav: true
 nav_order: 5
-cv_pdf: example_pdf.pdf
-description: Esta é uma descrição da página. Você pode modificá-la em '_pages/cv.md'. Também pode alterar ou remover o botão no topo de download de pdf.
+cv_pdf: Montero_CV_ES.pdf
+description: Esta es una versión corta de mi CV que incluye información que no está en otro lugar de este sitio web.
 toc:
-  sidebar: left
+  sidebar: right
 ---
