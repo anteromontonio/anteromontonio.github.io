@@ -15,31 +15,38 @@ const ninja = document.querySelector('ninja-keys');
 // add the home and posts menu items
 ninja.data = [{
     id: "nav-about",
-    title: "About",
+    title: "about",
     section: "Navigation menu",
     handler: () => {
       window.location.href = "/";
     },
-  },{id: "nav-publications",
+  },{id: "nav-blog",
+          title: "blog",
+          description: "a simple whitespace theme for academics",
+          section: "Navigation menu",
+          handler: () => {
+            window.location.href = "/blog/";
+          },
+        },{id: "nav-publications",
           title: "Publications",
           description: "All my publications group by type and listed in inverse chronological order.",
           section: "Navigation menu",
           handler: () => {
             window.location.href = "/publications/";
           },
-        },{id: "nav-cv",
-          title: "CV",
-          description: "This is a short version of my CV that includes information that is not elsewhere on this website.",
+        },{id: "nav-projects",
+          title: "projects",
+          description: "A growing collection of your cool projects.",
           section: "Navigation menu",
           handler: () => {
-            window.location.href = "/cv/";
+            window.location.href = "/projects/";
           },
-        },{id: "nav-blog",
-          title: "Blog",
-          description: "My personal (not-necessary-academic) blog. Here I (will) write about maths, coffee, music, life or sometimes I just vent. Sometimes in 🇬🇧 English, sometimes in 🇲🇽 Spanish and hopefully some day in 🇸🇮 Slovene.",
+        },{id: "nav-repositories",
+          title: "repositories",
+          description: "Edit the `_data/repositories.yml` and change the `github_users` and `github_repos` lists to include your own GitHub profile and repositories.",
           section: "Navigation menu",
           handler: () => {
-            window.location.href = "/blog/";
+            window.location.href = "/repositories/";
           },
         },{id: "nav-talks",
           title: "Talks",
@@ -47,6 +54,27 @@ ninja.data = [{
           section: "Navigation menu",
           handler: () => {
             window.location.href = "/talks/";
+          },
+        },{id: "nav-cv",
+          title: "cv",
+          description: "This is a description of the page. You can modify it in &#39;_pages/cv.md&#39;. You can also change or remove the top pdf download button.",
+          section: "Navigation menu",
+          handler: () => {
+            window.location.href = "/cv/";
+          },
+        },{id: "nav-teaching",
+          title: "teaching",
+          description: "Materials for courses you taught. Replace this text with your description.",
+          section: "Navigation menu",
+          handler: () => {
+            window.location.href = "/teaching/";
+          },
+        },{id: "nav-people",
+          title: "people",
+          description: "members of the lab or group",
+          section: "Navigation menu",
+          handler: () => {
+            window.location.href = "/people/";
           },
         },{id: "post-prešernov-dan",
         
@@ -133,6 +161,11 @@ ninja.data = [{
           description: "",
           section: "News",handler: () => {
               window.location.href = "/news/2510_kranj/";
+            },},{id: "news-slovenia-i-am-giving-talk-at-ul-pef-as-part-of-the-celebration-of-the-international-day-of-mathematics-pi-day",
+          title: ':slovenia: I am giving talk at UL-PEF as part of the celebration of the...',
+          description: "",
+          section: "News",handler: () => {
+              window.location.href = "/news/2602_talkPEF/";
             },},{id: "projects-project-1",
           title: 'project 1',
           description: "with background image",

@@ -29,7 +29,7 @@ ninja.data = [{
           },
         },{id: "nav-blog",
           title: "Blog",
-          description: "Mi blog personal (no-necesariamente-académico). Aquí escribo sobre matemáticas, café, música, vida o a veces solo desahogo. A veces en 🇬🇧 inglés, a veces en 🇲🇽 español y espero que algún día también en 🇸🇮 esloveno.",
+          description: "Mi blog personal (no-necesariamente-académico). Aquí escribo sobre matemáticas, café, música, vida o a veces nomás hago berrinche. A veces en 🇬🇧 inglés, a veces en 🇲🇽 español y espero que algún día también en 🇸🇮 esloveno.",
           section: "Menú de navegación",
           handler: () => {
             window.location.href = "/es-mx/blog/";
@@ -133,6 +133,11 @@ ninja.data = [{
           description: "",
           section: "Noticias",handler: () => {
               window.location.href = "/es-mx/news/2510_kranj/";
+            },},{id: "news-slovenia-i-am-giving-talk-at-ul-pef-as-part-of-the-celebration-of-the-international-day-of-mathematics-pi-day",
+          title: ':slovenia: I am giving talk at UL-PEF as part of the celebration of the...',
+          description: "",
+          section: "Noticias",handler: () => {
+              window.location.href = "/es-mx/news/2602_talkPEF/";
             },},{id: "projects-projeto-1",
           title: 'projeto 1',
           description: "com imagem de fundo",
