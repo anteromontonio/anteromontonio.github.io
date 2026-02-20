@@ -204,3 +204,56 @@ talkTypes:
   Contributed: Contributed
   Invited speaker: Invited speaker
   By invitation: By invitation
+locations:
+  aguascalientesMX: Aguascalientes, Ags. MEX 🇲🇽
+  aucklandNZ: Auckland, NZL 🇳🇿
+  bledSI: Bled, SVN 🇸🇮
+  cuernavacaMX: Cuernavaca, Mor. MEX 🇲🇽
+  guanajuatoMX: Guanajuato, Gto. MEX 🇲🇽
+  habanaCU: Havana, CUB 🇨🇺
+  koperSI: Koper, SVN 🇸🇮
+  kranjSI: Kranj, SVN 🇸🇮
+  kranjskaGoraSI: Kranjska Gora, SVN 🇸🇮
+  ljubljanaSI: Ljubljana, SVN 🇸🇮
+  meridaMX: Merida, Yuc. MEX 🇲🇽
+  mexicoMX: Mexico City, MEX 🇲🇽
+  moreliaMX: Morelia, Mich. MEX 🇲🇽
+  oaxacaMX: Oaxaca, Oax. MEX 🇲🇽
+  pachucaMX: Pachuca, Hgo. MEX 🇲🇽
+  pamplonaCO: Pamplona, COL 🇨🇴
+  queenstownNZ: Queenstown, NZL 🇳🇿
+  roglaSI: Rogla, SVN 🇸🇮
+  slpMX: San Luis Potosi, SLP. MEX 🇲🇽
+  torontoCA: Toronto, ON. CAN 🇨🇦
+  trencianskeTepliceSK: Trenčianske Teplice, SVK 🇸🇰
+  villahermosaMX: Villahermosa, Tab. MEX 🇲🇽
+  westMalvernGB: West Malvern, GBR 🇬🇧
+venues:
+  ccmUNAM: Centro de Ciencias Matemáticas, UNAM
+  cimat: Centro de Investigación en Matemáticas (CIMAT)
+  clavijero: Clavijero Palace
+  elimCF: Elim Conference Centre
+  famnitUP: FAMNIT, University of Primorska
+  fcUNAM: Faculty of Sciences, UNAM
+  fismatUMSNH: Faculty of Mathematics and Physics, UMSNH
+  fmfUL: Faculty of Mathematics and Physics, University of Ljubljana
+  giraluna: Pub Giraluna
+  imUNAM: Institute of Mathematics, UNAM
+  hotelChelsea: Chelsea Hotel
+  hotelPlanja: Hotel Planja
+  hotelKompas: Hotel Kompas
+  hotelRydges: Rydges Lake Resort
+  hotelSlovakia: Hotel Slovakia
+  itOax: Instituto tecnólogico de Oaxaca
+  mestnaKnjg: City Library
+  online: Online
+  onlinePamplona: Online for the University of Pamplona
+  pefUL: Faculty of Education, University of Ljubljana
+  uaAgs: University of Aguascalientes
+  uaeh: Autonomous University of the State of Hidalgo
+  uaslp: Autonomous University of San Luis Potosí
+  uAuck: University of Auckland
+  ucimUNAM: Unidad Cuernavaca del Instituto de Matemáticas, UNAM
+  ujat: Juárez Autonomous University of Tabasco
+  uHabana: University of Havana
+  uaYuc: Autonomous University of Yucatan

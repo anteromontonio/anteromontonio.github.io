@@ -41,9 +41,10 @@
         {% if talk.location %}
           <i class="fa-solid fa-location-dot"></i>
           {% if talk.venue %}
-            {{ talk.venue | append: ', ' }}
+            {{ site.data[site.active_lang]strings.venues[talk.venue] | append: ', ' }}
           {% endif %}
-          {{ talk.location }}.
+          {{ site.data[site.active_lang]strings.locations[talk.location]  }}.
+          {% comment %} {{ talk.location }}. {% endcomment %}
         {% elsif talk.conference contains 'online' %}
           <i class="fa-solid fa-location-dot"></i>
           Online.

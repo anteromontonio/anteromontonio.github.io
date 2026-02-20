@@ -9,14 +9,15 @@
   Here, add language specific date formats
 {% endcomment %}
 
-{%- if site.active_lang == 'en-us' -%}
-  {{ month }}
-  {{ day }}, {{ year }}
-{%- elsif site.active_lang == 'fr-ca' -%}
+{%- if site.active_lang == 'en-gb' -%}
   {{ day }}
-  {{ month }}, {{ year }}
-{%- elsif site.active_lang == 'pt-br' -%}
-  {{ day }} de {{ month }}, {{ year }}
+  {{ month }},
+  {{ year }}
+{%- elsif site.active_lang == 'es-mx' -%}
+  {{ day }} de
+  {{ month }} de {{ year }}
+{%- elsif site.active_lang == 'si' -%}
+  {{ day }}. {{ month }} {{ year }}
 {%- else -%}
   {{ day }}
   {{ month }}

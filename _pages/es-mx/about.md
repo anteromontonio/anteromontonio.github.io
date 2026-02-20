@@ -30,7 +30,8 @@ social: true # includes social icons at the bottom of the page
 ---
 
 La cita de arriba es del matemático mexicano Guillermo Moreno (a quien nunca he conocido).
-Soy otro matemático mexicano que actualmente vive en Ljubljana, Eslovenia. Trabajo como profesor asistente en la [Facultad de Matemáticas y Física](https://www.fmf.uni-lj.si/en/) de la [Universidad de Ljubljana](https://www.uni-lj.si/en/university) y en la [Facultad de Educación](https://www.pef.uni-lj.si/en/home-page/) de la misma universidad.
+
+Yo soy otro matemático mexicano que actualmente vive en Ljubljana, Eslovenia. Trabajo como profesor asistente en la [Facultad de Matemáticas y Física](https://www.fmf.uni-lj.si/en/) de la [Universidad de Ljubljana](https://www.uni-lj.si/en/university) y en la [Facultad de Educación](https://www.pef.uni-lj.si/en/home-page/) de la misma universidad.
 
 Mis intereses de investigación están alrededor de las propiedades de simetría de objetos discretos, como poliedros, politopos, mapas en superficies, gráficas y sus generalizaciones. Como consecuencia, he desarrollado cierta atracción por objetos combinatorios y geométricos chulos. También me interesa el uso de tecnologías para crear contenido matemático para investigación, enseñanza o simplemente como parte de la vida académica (este sitio web es un ejemplo de ello).
 
