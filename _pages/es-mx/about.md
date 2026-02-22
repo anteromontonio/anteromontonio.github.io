@@ -20,7 +20,7 @@ profile:
      <p><a href='https://www.pef.uni-lj.si/en/home-page/' target='_blank'>Facultad de Educación</a></p>
      <p><a href='https://www.uni-lj.si/en/university' target='_blank'>Universidad de Ljubljana </a></p>
      <a href='https://maps.app.goo.gl/xHv3fG4MfRnqsx9o8' target='_blank'>Kardeljeva ploščad 16, 1000 Ljubljana, 
-     Slovenija</a>
+     Eslovenia</a>
      </div>
 
 news: false # includes a list of news items
