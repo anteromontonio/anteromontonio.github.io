@@ -15,38 +15,31 @@ const ninja = document.querySelector('ninja-keys');
 // add the home and posts menu items
 ninja.data = [{
     id: "nav-about",
-    title: "about",
+    title: "About",
     section: "Navigation menu",
     handler: () => {
       window.location.href = "/";
     },
-  },{id: "nav-blog",
-          title: "blog",
-          description: "a simple whitespace theme for academics",
-          section: "Navigation menu",
-          handler: () => {
-            window.location.href = "/blog/";
-          },
-        },{id: "nav-publications",
+  },{id: "nav-publications",
           title: "Publications",
           description: "All my publications group by type and listed in inverse chronological order.",
           section: "Navigation menu",
           handler: () => {
             window.location.href = "/publications/";
           },
-        },{id: "nav-projects",
-          title: "projects",
-          description: "A growing collection of your cool projects.",
+        },{id: "nav-cv",
+          title: "CV",
+          description: "This is a short version of my CV that includes information that is not elsewhere on this website.",
           section: "Navigation menu",
           handler: () => {
-            window.location.href = "/projects/";
+            window.location.href = "/cv/";
           },
-        },{id: "nav-repositories",
-          title: "repositories",
-          description: "Edit the `_data/repositories.yml` and change the `github_users` and `github_repos` lists to include your own GitHub profile and repositories.",
+        },{id: "nav-blog",
+          title: "Blog",
+          description: "My personal (not-necessary-academic) blog. Here I (will) write about maths, coffee, music, life or sometimes I just vent. Sometimes in 🇬🇧 English, sometimes in 🇲🇽 Spanish and hopefully some day in 🇸🇮 Slovene.",
           section: "Navigation menu",
           handler: () => {
-            window.location.href = "/repositories/";
+            window.location.href = "/blog/";
           },
         },{id: "nav-talks",
           title: "Talks",
@@ -54,27 +47,6 @@ ninja.data = [{
           section: "Navigation menu",
           handler: () => {
             window.location.href = "/talks/";
-          },
-        },{id: "nav-cv",
-          title: "cv",
-          description: "This is a description of the page. You can modify it in &#39;_pages/cv.md&#39;. You can also change or remove the top pdf download button.",
-          section: "Navigation menu",
-          handler: () => {
-            window.location.href = "/cv/";
-          },
-        },{id: "nav-teaching",
-          title: "teaching",
-          description: "Materials for courses you taught. Replace this text with your description.",
-          section: "Navigation menu",
-          handler: () => {
-            window.location.href = "/teaching/";
-          },
-        },{id: "nav-people",
-          title: "people",
-          description: "members of the lab or group",
-          section: "Navigation menu",
-          handler: () => {
-            window.location.href = "/people/";
           },
         },{id: "post-prešernov-dan",
         
