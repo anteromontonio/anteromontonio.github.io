@@ -56,7 +56,7 @@
       </div>
       <div class="links">
         {% if talk.abstract %}
-          <a class="abstract btn btn-sm z-depth-0" role="button">abstract</a>
+          <a class="abstract btn btn-sm z-depth-0" role="button">{{ site.data[site.active_lang]strings.bibliography.abstract }}</a>
         {% endif %}
         {% if talk.slides == 'Yes' %}
           <a

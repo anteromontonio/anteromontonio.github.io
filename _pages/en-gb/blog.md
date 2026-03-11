@@ -4,7 +4,7 @@ layout: default
 permalink: /blog/
 title: Blog
 blog_name: Grab a cup?
-description: My personal (not-necessary-academic) blog. Here I (will) write about maths, coffee, music, life or sometimes I just vent. Sometimes in 🇬🇧 English, sometimes in 🇲🇽 Spanish and hopefully some day in 🇸🇮 Slovene.
+description: My personal (not-necessary-academic) blog. Here I write about maths, coffee, music, life or sometimes I just vent. Sometimes in 🇬🇧 English, sometimes in 🇲🇽 Spanish and hopefully some day in 🇸🇮 Slovene.
 nav: true
 nav_order: 3
 pagination:
