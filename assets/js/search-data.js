@@ -29,14 +29,14 @@ ninja.data = [{
           },
         },{id: "nav-cv",
           title: "CV",
-          description: "This is a short version of my CV that includes information that is not elsewhere on this website.",
+          description: "This is a short version of my CV that includes information that is not elsewhere on this website. You can also find pdf versions of my CV and other relevant academic documents.",
           section: "Navigation menu",
           handler: () => {
             window.location.href = "/cv/";
           },
         },{id: "nav-blog",
           title: "Blog",
-          description: "My personal (not-necessary-academic) blog. Here I (will) write about maths, coffee, music, life or sometimes I just vent. Sometimes in 🇬🇧 English, sometimes in 🇲🇽 Spanish and hopefully some day in 🇸🇮 Slovene.",
+          description: "My personal (not-necessary-academic) blog. Here I write about maths, coffee, music, life or sometimes I just vent. Sometimes in 🇬🇧 English, sometimes in 🇲🇽 Spanish and hopefully some day in 🇸🇮 Slovene.",
           section: "Navigation menu",
           handler: () => {
             window.location.href = "/blog/";
