@@ -23,8 +23,9 @@
       {% endif %}
     </div>
 
-    <!-- Entry key key -->
     <div id="{{ talk.my_id }}" class="{% if site.enable_publication_thumbnails %}col-sm-8{% else %}col-sm-10{% endif %}">
+      <!-- Entry key key -->
+      <div class="hidden">{{ talk.my_id }}</div>
       <!-- Title -->
       <div class="title">{{ talk.title }}</div>
       <!-- Conference -->
