@@ -163,6 +163,7 @@ search:
 selected_publications: Publicaciones seleccionadas
 site_description: Un sitio diseñado para académicos; basado en [*folio](https://github.com/bogoli/-folio).
 conferences:
+  mesecMatPEF: Ciclo "Mesec matematike na PEF" (Mes de las matemáticas en PEF).
   dmfa25: Ciclo “Poljudnih predavanj iz matematike,fizike in  astronomije” (Pláticas públicas de matemáticas, física y astronomía).
   gems25: Congreso “Graphs Embeddings and Maps on Surfaces 2025” (GEMS 2025).
   sodo24: Congreso “Symmetries of Discrete Objects” (SODO).
