@@ -4,7 +4,7 @@ permalink: /talks/
 title: Talks
 description: The list of all the talks that I have given.
 nav: true
-nav_order: 4
+nav_order: 3 
 tabs: true
 ---
 

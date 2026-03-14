@@ -6,7 +6,7 @@ title: Blog
 blog_name: Cafecito?
 description: Mi blog personal (no-necesariamente-académico). Aquí escribo sobre matemáticas, café, música, vida o a veces nomás hago berrinche. A veces en 🇬🇧 inglés, a veces en 🇲🇽 español y espero que algún día también en 🇸🇮 esloveno.
 nav: true
-nav_order: 3
+nav_order: 5
 pagination:
   enabled: true
   collection: posts

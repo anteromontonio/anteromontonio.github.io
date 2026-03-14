@@ -6,7 +6,7 @@ title: Blog
 blog_name: Grab a cup?
 description: My personal (not-necessary-academic) blog. Here I write about maths, coffee, music, life or sometimes I just vent. Sometimes in 🇬🇧 English, sometimes in 🇲🇽 Spanish and hopefully some day in 🇸🇮 Slovene.
 nav: true
-nav_order: 3
+nav_order: 5
 pagination:
   enabled: true
   collection: posts
