@@ -27,12 +27,12 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/es-mx/publications/";
           },
-        },{id: "nav-blog",
-          title: "Blog",
-          description: "Mi blog personal (no-necesariamente-académico). Aquí escribo sobre matemáticas, café, música, vida o a veces nomás hago berrinche. A veces en 🇬🇧 inglés, a veces en 🇲🇽 español y espero que algún día también en 🇸🇮 esloveno.",
+        },{id: "nav-cv",
+          title: "CV",
+          description: "Esta es una versión corta de mi CV que incluye información que no está en otro lugar de este sitio web. Aquí también puedes encontrar versiones en pdf de mi CV y otros documentos académicos relevantes.",
           section: "Menú de navegación",
           handler: () => {
-            window.location.href = "/es-mx/blog/";
+            window.location.href = "/es-mx/cv/";
           },
         },{id: "nav-pláticas",
           title: "Pláticas",
@@ -41,12 +41,12 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/es-mx/talks/";
           },
-        },{id: "nav-cv",
-          title: "CV",
-          description: "Esta es una versión corta de mi CV que incluye información que no está en otro lugar de este sitio web. Aquí también puedes encontrar versiones en pdf de mi CV y otros documentos académicos relevantes.",
+        },{id: "nav-blog",
+          title: "Blog",
+          description: "Mi blog personal (no-necesariamente-académico). Aquí escribo sobre matemáticas, café, música, vida o a veces nomás hago berrinche. A veces en 🇬🇧 inglés, a veces en 🇲🇽 español y espero que algún día también en 🇸🇮 esloveno.",
           section: "Menú de navegación",
           handler: () => {
-            window.location.href = "/es-mx/cv/";
+            window.location.href = "/es-mx/blog/";
           },
         },{id: "post-prešernov-dan",
         

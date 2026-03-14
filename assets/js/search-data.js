@@ -22,7 +22,7 @@ ninja.data = [{
     },
   },{id: "nav-publications",
           title: "Publications",
-          description: "All my publications group by type and listed in inverse chronological order.",
+          description: "All my publications grouped by type and listed in inverse chronological order.",
           section: "Navigation menu",
           handler: () => {
             window.location.href = "/publications/";
@@ -34,19 +34,19 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/cv/";
           },
-        },{id: "nav-blog",
-          title: "Blog",
-          description: "My personal (not-necessary-academic) blog. Here I write about maths, coffee, music, life or sometimes I just vent. Sometimes in 🇬🇧 English, sometimes in 🇲🇽 Spanish and hopefully some day in 🇸🇮 Slovene.",
-          section: "Navigation menu",
-          handler: () => {
-            window.location.href = "/blog/";
-          },
         },{id: "nav-talks",
           title: "Talks",
           description: "The list of all the talks that I have given.",
           section: "Navigation menu",
           handler: () => {
             window.location.href = "/talks/";
+          },
+        },{id: "nav-blog",
+          title: "Blog",
+          description: "My personal (not-necessary-academic) blog. Here I write about maths, coffee, music, life or sometimes I just vent. Sometimes in 🇬🇧 English, sometimes in 🇲🇽 Spanish and hopefully some day in 🇸🇮 Slovene.",
+          section: "Navigation menu",
+          handler: () => {
+            window.location.href = "/blog/";
           },
         },{id: "post-prešernov-dan",
         
