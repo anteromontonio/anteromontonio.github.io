@@ -141,10 +141,14 @@ ninja.data = [{
             },},{id: "news-",
           title: '',
           description: "",
-          section: "Noticias",},{id: "news-",
+          section: "Noticias",handler: () => {
+              window.location.href = "/es-mx/news/2605_csd11/";
+            },},{id: "news-",
           title: '',
           description: "",
-          section: "Noticias",},{id: "projects-projeto-1",
+          section: "Noticias",handler: () => {
+              window.location.href = "/es-mx/news/2605_mathLearn/";
+            },},{id: "projects-projeto-1",
           title: 'projeto 1',
           description: "com imagem de fundo",
           section: "Proyectos",handler: () => {
