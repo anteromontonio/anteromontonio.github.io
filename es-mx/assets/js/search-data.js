@@ -138,16 +138,17 @@ ninja.data = [{
           description: "",
           section: "Noticias",handler: () => {
               window.location.href = "/es-mx/news/2602_talkPEF/";
-            },},{id: "news-",
-          title: '',
+            },},{id: "news-slovenia-i-attended-the-conference-computers-in-scientific-discoveries-11-in-kranjska-gora-where-i-gave-a-talk-on-faithfulness-on-maniplexes",
+          title: ':slovenia: I attended the conference Computers in Scientific Discoveries 11 in Kranjska Gora,...',
+          description: "",
+          section: "Noticias",},{id: "news-ireland-i-am-attending-the-mathlearn-workshop-where-some-topics-on-machine-learning-and-pure-mathematics-will-be-lectured-the-workshop-will-take-place-in-galway-ireland",
+          title: ':ireland: I am attending the MathLearn workshop where some topics on Machine Learning...',
+          description: "",
+          section: "Noticias",},{id: "news-slovenia-i-am-giving-a-talk-in-the-cycle-quot-matematični-pregovori-quot-mathematical-conversations-at-the-university-of-ljubljana-on-may-20-2026",
+          title: ':slovenia: I am giving a talk in the cycle &amp;quot;Matematični pregovori&amp;quot; (Mathematical Conversations) at...',
           description: "",
           section: "Noticias",handler: () => {
-              window.location.href = "/es-mx/news/2605_csd11/";
-            },},{id: "news-",
-          title: '',
-          description: "",
-          section: "Noticias",handler: () => {
-              window.location.href = "/es-mx/news/2605_mathLearn/";
+              window.location.href = "/es-mx/news/2605_matematicniPregovori/";
             },},{id: "projects-projeto-1",
           title: 'projeto 1',
           description: "com imagem de fundo",
