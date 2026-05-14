@@ -138,7 +138,13 @@ ninja.data = [{
           description: "",
           section: "Noticias",handler: () => {
               window.location.href = "/es-mx/news/2602_talkPEF/";
-            },},{id: "projects-projeto-1",
+            },},{id: "news-",
+          title: '',
+          description: "",
+          section: "Noticias",},{id: "news-",
+          title: '',
+          description: "",
+          section: "Noticias",},{id: "projects-projeto-1",
           title: 'projeto 1',
           description: "com imagem de fundo",
           section: "Proyectos",handler: () => {
