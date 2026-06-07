@@ -20,7 +20,7 @@ You can read the English version of this post [here](https://anteromontonio.gith
 Para esta entrada voy a suponer que tú, querido lector, escribes artículos en colaboración con otras personas. Más concretamente, voy a suponer que lo haces en LaTeX. Si no es tu caso, quizá todavía le saques algo de provecho, pero la entrada está pensada sobre todo para quienes escriben documentos con la siguiente configuración:
 - Tienes un servicio en la nube (Dropbox, Google Drive, OneDrive, iCloud) instalado en tu computadora, y lo usas para guardar, sincronizar y compartir tus archivos. Para esta entrada voy a hablar del que yo uso: FlyingCloud.[^1]
 - Escribes tus artículos en LaTeX y tienes una carpeta en la nube que compartes con tus colaboradores.
-- Editas tus archivos localmente, con programas como Texmaker, TeXstudio, etc. Si usas Overleaf, más adelante tengo una sección especial para ti. 
+- Editas tus archivos localmente, con programas como Texmaker, TeXstudio, etc. Si usas Overleaf, de todas maneras creo que deberías aprender a usar git y usar Overleaf como remoto; puedes ver como en la [documentación de Overleaf](https://docs.overleaf.com/integrations-and-add-ons/git-integration-and-github-synchronization/git-integration).
 
 Si encajas en esa descripción, lo más probable es que te hayas topado con (al menos) una de estas situaciones:
 - Te suenan los siguientes nombres: `paper.tex`, `paper_1.tex`, `paper_1_afterRevisionsByTero.tex`, `paper_final.tex`, `paper_final_final.tex`, etc.

@@ -11,7 +11,7 @@ toc:
   sidebar: left
 mermaid:
   enabled: true
-  zoomable: false
+  zoomable: true
 ---
 Si prefieres leer esta entrada en español, da clic [aquí](https://anteromontonio.github.io/blog/2026/git-para-matematicos).
 
@@ -20,7 +20,7 @@ Si prefieres leer esta entrada en español, da clic [aquí](https://anteromonton
 For the purpose of this blogpost I am going to assume that you, beloved reader, write papers collaboratively with other people. More precisely, I am going to assume that you do it using LaTeX. If you don't, you might still get something out of this blogpost, but it is mostly intended for people who somehow write documents using the following set up:
 - You have a cloud service (e.g., Dropbox, Google Drive, OneDrive, iCloud) installed on your computer that you use to save, sync and share your files. For the purpose of this post, I am going to talk about the one that I personally use: FlyingCloud.[^1]
 - You write your papers in LaTeX, and you have a folder in your cloud service that you share with your collaborators.
-- You edit your files locally, using programs like Texmaker, TeXstudio, etc. If you use Overleaf, I have a special section for you later on. 
+- You edit your files locally, using programs like Texmaker, TeXstudio, etc. If you use Overleaf, I still think that you should learn git and use overleaf as a remote, more on this [in the overleaf documentation](https://docs.overleaf.com/integrations-and-add-ons/git-integration-and-github-synchronization/git-integration).
 
 If you fit the description above, most likely you have faced (at least) one of the following situations:
 - You recognise the following names: `paper.tex`, `paper_1.tex`, `paper_1_afterRevisionsByTero.tex`, `paper_final.tex`, `paper_final_final.tex`, etc.
