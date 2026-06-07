@@ -48,7 +48,29 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/es-mx/blog/";
           },
-        },{id: "post-prešernov-dan",
+        },{id: "post-git-para-matemáticos",
+        
+          title: "Git para matemáticos",
+        
+        description: "",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/es-mx/blog/2026/git-para-matematicos/";
+          
+        },
+      },{id: "post-git-for-mathematicians",
+        
+          title: "Git for mathematicians",
+        
+        description: "",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/es-mx/blog/2026/git-for-mathematicians/";
+          
+        },
+      },{id: "post-prešernov-dan",
         
           title: "Prešernov dan",
         
