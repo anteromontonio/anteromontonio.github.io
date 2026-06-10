@@ -11,8 +11,8 @@
   --global-text-color-light: #{$nlf-gray};
   --global-theme-color: #{$nlf-blue};
   --global-theme-color-bg: #{$nlb-blue};
-  --global-hover-color: #{$nlf-orange};
-  --global-hover-text-color: #{$nlf-blue};
+  --global-hover-color: #{$nlf-badge};
+  --global-hover-text-color: #{$nlf-badge};
   --global-footer-bg-color: #{$ndb-main};
   --global-footer-text-color: #{$ndf-main};
   --global-footer-link-color: #{$ndf-blue};
@@ -29,6 +29,7 @@
   --global-back-to-top-text-color: #{$ndf-main};
   --global-newsletter-bg-color: #{$nlb-second};
   --global-newsletter-text-color: #{$nlf-main};
+  --global-badge-color: #{$nlf-badge};
 
   --global-tip-block: #{$nlf-green};
   --global-tip-block-bg: #{$nlb-green};
@@ -48,7 +49,7 @@
   --brown: #{$nlf-brown};
   --orange: #{$nlf-orange};
   --yellow: #{$nlf-yellow};
-  --blue: #{$nlf-blue};
+  --blue: #{$nlf-badge};
   --purple: #{$nlf-purple};
   --pink: #{$nlf-pink};
   --red: #{$nlf-red};
@@ -121,6 +122,7 @@ html[data-theme="dark"] {
   --global-back-to-top-text-color: #{$ndf-main};
   --global-newsletter-bg-color: #{$ndb-main};
   --global-newsletter-text-color: #{$ndf-main};
+  --global-badge-color: #{$ndf-blue};
 
   --global-tip-block: #{$ndf-green};
   --global-tip-block-bg: #{$ndb-green};
