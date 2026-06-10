@@ -324,5 +324,5 @@ I really hope that this blogpost turns git into something less scary than it see
 If you want to dig deeper into how to use git, I suggest the following:
 
 - [Git Will Finally Make Sense After This](https://www.youtube.com/watch?v=Ala6PHlYjmw) – A YouTube video that explains git in a very beginner-friendly way; you can see the influence of its approach in this blogpost.
-- [Git for mathematicians](https://g4m.code4math.org/g4m.html) – A book by [Steven Clontz](https://clontz.org/) that explains git for mathematicians. It is very well written and it is a great resource to learn git in depth. It is also free online.
-- The Software Carpentry notes on git, which are available in [English](https://swcarpentry.github.io/git-novice) and in [Spanish](https://swcarpentry.github.io/git-novice-es/) (and maybe in other languages, I am not sure). They are very well written and they are a great resource to learn git in depth. They are also free online.
+- [Git for mathematicians](https://g4m.code4math.org/g4m.html) – A book by [Steven Clontz](https://clontz.org/) that explains git for mathematicians. It is very well written, and it is a great resource to learn git in depth. It is also free online.
+- The Software Carpentry notes on git, which are available in [English](https://swcarpentry.github.io/git-novice) and in [Spanish](https://swcarpentry.github.io/git-novice-es/) (and maybe in other languages, I am not sure). They are intended to be for completely beginners and available completely free online.
