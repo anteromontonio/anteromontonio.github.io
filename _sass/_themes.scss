@@ -17,7 +17,7 @@
   --global-footer-text-color: #{$ndf-main};
   --global-footer-link-color: #{$ndf-blue};
   --global-distill-app-color: #{$nlf-gray};
-  --global-divider-color: #{$ndf-gray};
+  --global-divider-color: #{$light-divider};
   --global-card-bg-color: #{$nlb-main};
   --global-highlight-color: #{$nlb-red};
   --global-back-to-top-bg-color: rgba(
@@ -109,7 +109,7 @@ html[data-theme="dark"] {
   --global-footer-text-color: #{$ndf-main};
   --global-footer-link-color: #{$ndf-blue};
   --global-distill-app-color: #{$ndf-gray};
-  --global-divider-color: #{$nlf-gray};
+  --global-divider-color: #{$dark-divider};
   --global-card-bg-color: #{$ndb-second};
   --global-highlight-color: #{$ndb-red};
   --global-back-to-top-bg-color: rgba(

@@ -4,6 +4,8 @@ title: Three colourful ideas
 date: 2025-05-11
 tags: mentalHealth
 language: en-gb
+giscus_comments: true
+
 ---
 
 Puedes leer la versión en español de esta entrada [aquí](https://anteromontonio.github.io/blog/2025/tres-ideas-de-colores).

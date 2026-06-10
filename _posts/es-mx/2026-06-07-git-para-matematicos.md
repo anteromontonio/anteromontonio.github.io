@@ -12,6 +12,8 @@ toc:
 mermaid:
   enabled: true
   zoomable: false
+giscus_comments: true
+last_updated: 2026-06-10
 ---
 You can read the English version of this post [here](https://anteromontonio.github.io/blog/2026/git-for-mathematicians).
 
@@ -44,7 +46,7 @@ En pocas palabras, git es un sistema de control de versiones que creó Linus Tor
 
 Una pregunta natural cuando le presento git a alguien es: "¿y para qué quiero git? Si ya tengo un servicio en la nube que me deja compartir archivos y tener historial de versiones". Si los problemas del inicio no te convencen, déjame darte una razón sentimental: así como tu mamá usaba esa cámara vieja para tomarte fotos de niño, y tú guardas esas fotos como recuerdo de tu infancia, git es una herramienta que te deja guardar la historia de tus proyectos. Pero es mucho más, porque (a diferencia de la cámara de tu mamá) también te deja regresar en el tiempo y cambiar cosas del pasado, dándote control total sobre tus proyectos. 
 
-Voy a usar una serie de workflows para ir presentando, poco a poco, los conceptos básicos de git y cómo usarlos.
+Te podría dar una lista de razones más concretas, pero creo que lo mejor es mostrarte cómo funciona git en la práctica, y que tú mismo veas por qué es tan útil. Voy a usar una serie de workflows para ir presentando, poco a poco, los conceptos básicos de git y cómo usarlos. Los workflows están ordenados del más simple al más complejo y sugiero que adoptes uno (todo bien si es el primero), te vuelvas familiar con git y poco a poco vayas añadiendo capas de complejidad a tu workflow (siguiendo alguno de los que yo describo o mejor! adaptando a tus necesidades). Lo importante es que empieces a usar git a las de ya!
 
 ### Workflow 1: el solitario.
 La situación es de lo más básica: tienes una computadora personal donde guardas tu trabajo y no colaboras con nadie. Aquí hasta un servicio en la nube suena excesivo (solo lo usarías para respaldar tus archivos en línea), pero es un escenario bastante simple para empezar a explicar los conceptos de git. 
@@ -134,7 +136,7 @@ La palabra `origin` es solo el nombre que le das a tu repositorio remoto; puedes
 ```bash
 git push origin main
 ```
-Esto le dice a git que suba tus commits al remoto `origin` y al branch llamado `main`. De los branches hablamos más adelante; por ahora basta con suponer que `main` es el branch por defecto donde quieres guardar tus commits. Puedes configurar git para que 'rastree' el remoto y no tener que escribir `origin main` cada vez, con
+Esto le dice a git que suba tus commits al remoto `origin` y al branch llamado `main`. De las branches hablamos más adelante; por ahora basta con suponer que `main` es la branch por defecto donde quieres guardar tus commits. Puedes configurar git para que 'rastree' el remoto y no tener que escribir `origin main` cada vez, con
 ```bash
 git push -u origin main
 ```
@@ -158,39 +160,40 @@ Una vez que tienes un repositorio local en la laptop y otro en el escritorio, am
 2. Te pasas a la otra computadora (laptop) y haces `git pull` para traer los cambios que hiciste en el escritorio. Trabajas en la laptop, haces `git add` y `git commit` para tomar la foto, y luego `git push` para subirla a la nube.
 3. Regresas al escritorio y haces `git pull` para traer los cambios que hiciste en la laptop. 
 
-Algo importante: **el push y el pull los tienes que hacer a mano**. A diferencia de FlyingCloud, git no sube tus archivos a la nube solo; lo tienes que hacer tú corriendo los comandos. Y eso en realidad es bueno, porque te da más control sobre tus archivos y evita líos de sincronización. Además te obliga a pensar en qué momento quieres subir tus cambios y en qué momento quieres bajar los de la nube, algo que importa mucho a la hora de colaborar (ya llegaremos a eso).
+Algo importante: **el push y el pull los tienes que hacer a mano**. A diferencia de FlyingCloud, git no sube tus archivos a la nube solo; lo tienes que hacer tú corriendo los comandos. Y eso en realidad es bueno, porque te da más control sobre tus archivos y evita líos de sincronización. Además te obliga a pensar en qué momento quieres subir tus cambios y en qué momento quieres bajar los de la nube, algo que importa mucho a la hora de colaborar (ya llegaremos a eso). También es importante mencionar que git funciona sin conexión. A diferencia de FlyingCloud, puedes trabajar completamente sin internet y de forma local; solo necesitas unos segundos de conexión cuando haces push o pull.
 
 Ni falta decir que, si solo trabajas en un único dispositivo, puedes adaptar fácilmente este workflow para tener el respaldo en línea que da FlyingCloud: simplemente haces push de tus commits al remoto de vez en cuando (yo lo hago al cerrar el día). Aquí vale la pena aclarar que git y los remotos son geniales para respaldar, pero no tanto para tener acceso sincronizado desde todos lados. Yo todavía conservo una carpeta de FlyingCloud para los proyectos, donde pongo archivos a los que quiero llegar desde donde sea (laptop y celular) pero de los que no me interesa llevar historia, por ejemplo PDFs o notas a mano. En efecto, git es buenísimo para llevar la historia de archivos de código (como tus `.tex`), pero no tanto para archivos binarios, es decir, los que se generan a partir de tu código (como los `.pdf`). Para LaTeX en concreto, te recomiendo herramientas como [latexdiff](https://ctan.org/pkg/latexdiff), que te deja comparar dos versiones de un archivo de LaTeX y ver las diferencias. latexdiff se lleva de maravilla con git, y quizá otro día te muestre cómo. 
 
 ### Workflow 3: el solitario distraído
 La situación es la misma que antes, pero más apegada a la realidad. Como git no sincroniza solo, se te puede pasar hacer push de tus cambios, y entonces llegas a la otra computadora y no ves lo que hiciste. Es algo muy común y, aunque es un poco molesto (por eso hay que ser disciplinado e intencional al usar git), también tiene su lado bueno. Por ejemplo, es casi imposible que tú o tus colaboradores borren un archivo por accidente, porque tendrías que borrarlo *y además* hacer push de ese borrado; y aun cuando hagas pull después, si el archivo no se borró en la otra computadora, ahí va a seguir.
 
-Si te encuentras en la situación de arriba (se te olvidó hacer push y no ves tus cambios en la otra computadora) tengo malas y buenas noticias. La mala es que vas a tener que volver a la computadora donde hiciste los cambios y subirlos a la nube. No hay forma sencilla de traer esos archivos desde la otra máquina si no los transfieres o les haces push al remoto a propósito. La buena es que no perdiste nada de trabajo: tus archivos siguen en tu computadora tal como los dejaste, y los puedes subir a la nube cuando quieras. Pero aquí surge un problema natural: ¿qué pasa si quieres trabajar en un archivo que tiene cambios sin sincronizar en la otra computadora? La respuesta son los **branches**, que es quizá la característica más poderosa de git. 
+Si te encuentras en la situación de arriba (se te olvidó hacer push y no ves tus cambios en la otra computadora) tengo malas y buenas noticias. La mala es que vas a tener que volver a la computadora donde hiciste los cambios y subirlos a la nube. No hay forma sencilla de traer esos archivos desde la otra máquina si no los transfieres o les haces push al remoto a propósito. La buena es que no perdiste nada de trabajo: tus archivos siguen en tu computadora tal como los dejaste, y los puedes subir a la nube cuando quieras. Pero aquí surge un problema natural: ¿qué pasa si quieres trabajar en un archivo que tiene cambios sin sincronizar en la otra computadora? La respuesta son las **branches**, que es quizá la característica más poderosa de git. 
 
-Un branch es como un universo paralelo de tu proyecto: te permite tener distintas versiones que evolucionan por separado y luego unirlas cuando quieras. Voy a tratar de no ponerme demasiado técnico, pero puedes pensar en un branch como un marco de color que le pones a tus fotos del álbum y que se va moviendo de una foto a otra. Por defecto tienes un branch llamado `main` (o `master` en repositorios más viejos), y todos tus commits caen ahí; es decir, tienes un solo marco, y cada vez que haces un commit nuevo el marco se mueve a ese commit nuevo (normalmente desde su padre). Ahora bien, si quieres trabajar en un archivo que tiene cambios sin sincronizar en la otra computadora, puedes crear un branch nuevo y trabajar en él. Así tienes dos versiones distintas del proyecto (una en `main` y otra en el branch nuevo) que luego unes cuando quieras. Un branch nuevo se crea con
+Git admite líneas de tiempo paralelas para tu proyecto. Volviendo a la analogía del álbum de fotos, es como si el espacio-tiempo se dividiera en un punto y de repente hubiera dos versiones distintas de ti, cada una con su propio álbum. Cada álbum crece de forma independiente y en el futuro puedes unirlos si quieres. Las branches son exactamente la forma en que git gestiona esas distintas líneas de tiempo. Voy a tratar de no ponerme demasiado técnico, pero puedes pensar en una branch como un marco de color que le pones a tus fotos del álbum y que se va moviendo de una foto a otra. Por defecto tienes una branch llamada `main` (o `master` en repositorios más viejos), y todos tus commits caen ahí; es decir, tienes un solo marco, y cada vez que haces un commit nuevo el marco se mueve a ese commit nuevo (normalmente desde su padre). Ahora bien, si quieres trabajar en un archivo que tiene cambios sin sincronizar en la otra computadora, puedes crear una branch nueva y trabajar en ella. Así tienes dos versiones distintas del proyecto (una en `main` y otra en la branch nueva) que luego unes cuando quieras. Una branch nueva se crea con
 ```bash
 git switch -c desktop
 ```
-Esto crea un branch nuevo llamado `desktop` y se cambia a él. Ahora tienes un marco de color nuevo, `desktop`, y puedes trabajar en tus archivos y hacer commits en ese branch, moviendo el marco cada vez (mientras que el marco de `main` se queda en el mismo commit). Cuando hagas push de tus cambios, tienes que indicar el branch, por ejemplo
+Esto crea una branch nueva llamada `desktop` y se cambia a ella. Ahora tienes un marco de color nuevo, `desktop`, y puedes trabajar en tus archivos y hacer commits en esa branch, moviendo el marco cada vez (mientras que el marco de `main` se queda en el mismo commit). Debo mencionar que **las líneas de tiempo existen independientemente de las branches**; las branches son solo la forma en que git sabe sobre qué línea de tiempo seguir construyendo la historia del proyecto. En palabras más sencillas: las líneas de tiempo son todas las fotos que en algún momento tuvieron el marco de color, no los marcos en sí. Esto importa porque en git es práctica común crear y borrar branches. Cuando borras una branch no borras la historia ni la línea de tiempo; solo te deshaces del (bastante barato) marco de color.
+Volviendo a donde estábamos, cuando hagas push de tus cambios a la nube tienes que indicar la branch, por ejemplo
 ```bash
 git push origin desktop
 ```
-Luego, cuando vuelvas a la laptop y quieras traer los cambios que hiciste en el escritorio, tienes que hacer pull de ese branch, por ejemplo
+Luego, cuando vuelvas a la laptop y quieras traer los cambios que hiciste en el escritorio, tienes que hacer pull de esa branch, por ejemplo
 ```bash
 git pull origin desktop
 ```
-Esto trae los cambios del branch `desktop` y los integra a tu repositorio local. Ahora en la laptop tienes dos branches (`main` y `desktop`) y te puedes mover entre ellos con
+Esto trae los cambios de la branch `desktop` y los integra a tu repositorio local. Ahora en la laptop tienes dos branches (`main` y `desktop`) y te puedes mover entre ellas con
 ```bash
-git switch <nombre del branch al que te quieres cambiar>
+git switch <nombre de la branch a la que te quieres cambiar>
 ```
-y al hacerlo obtienes la versión de los archivos que está en cada branch (¡funciona como magia!). Lo más seguro es que no quieras tener dos líneas de tiempo de tu proyecto por mucho tiempo; cuando estés listo, puedes hacer un **merge** de los branches. Hacer merge es tomar los cambios de un branch y aplicarlos a otro. Se hace con
+y al hacerlo obtienes la versión de los archivos que está en cada branch (¡funciona como magia!). Lo más seguro es que no quieras tener dos líneas de tiempo de tu proyecto por mucho tiempo; cuando estés listo, puedes hacer un **merge** de las branches. Hacer merge es tomar los cambios de una branch y aplicarlos a otra. Se hace con
 ```bash
 git switch main   # para asegurarnos de que estamos parados en main
 git merge desktop # integramos los cambios de desktop a main
 ```
-Esto toma los cambios del branch `desktop` y los aplica al branch `main`.
+Esto toma los cambios de la branch `desktop` y los aplica a la branch `main`.
 
-Visualmente, crear un branch, trabajar en él y hacerle merge de regreso se ve así:
+Visualmente, crear una branch, trabajar en ella y hacerle merge de regreso se ve así:
 
 ```mermaid
 gitGraph
@@ -198,36 +201,39 @@ gitGraph
     branch desktop
     checkout desktop
     commit id: "trabajo A"
-    commit id: "trabajo B"
     checkout main
-    merge desktop
+    commit id: "trabajo B"
+    checkout desktop
+    commit id: "trabajo C"
+    checkout main
+    merge desktop id: "merge commit"
     commit id: "seguir adelante"
 ```
 
 Si las líneas de tiempo son compatibles, es decir, si los cambios que hiciste en `desktop` *no* contradicen los que hiciste en `main`, git hará el merge automáticamente y volverás a tener una sola línea de tiempo (esto es lo más común). Pero si los cambios de `desktop` *sí* contradicen los de `main`, git no podrá hacer el merge solo y te pedirá resolver el conflicto a mano. Es un poco más latoso, pero nada del otro mundo: solo tienes que abrir los archivos en conflicto y buscar los **marcadores de conflicto**. Se ven así:
 ```
 <<<<<<< HEAD # esto es, donde estás trabajando 
-cambios que hiciste en el branch main
-======= # esta es la separación entre los dos branches
-cambios que hiciste en el branch desktop
+cambios que hiciste en la branch main
+======= # esta es la separación entre las dos branches
+cambios que hiciste en la branch desktop
 >>>>>>>
 ```
-Ahí decides con qué cambios te quedas. Una vez resueltos los conflictos, haces stage de los cambios y commit como siempre. Esto crea un commit nuevo en `main` con dos padres: el último commit de `main` y el último de `desktop`. A eso se le llama un merge commit, y es el punto donde se juntan los dos branches. Después de esto puedes borrar el branch `desktop` si quieres, ya que todos sus cambios están ahora en `main`. Se hace con
+Ahí decides con qué cambios te quedas. Una vez resueltos los conflictos, haces stage de los cambios y commit como siempre. Esto crea un commit nuevo en `main` con dos padres: el último commit de `main` y el último de `desktop`. A eso se le llama un merge commit, y es el punto donde se juntan los dos branches. Después de esto puedes borrar la branch `desktop` si quieres, ya que todos sus cambios están ahora en `main`. Se hace con
 ```bash
 git branch -d desktop
 ```
-Borrar un branch no borra archivos; solo te deshaces del marco de color. 
+Borrar una branch no borra archivos; solo te deshaces del marco de color. 
 
 Sé que a estas alturas debes traer dolor de cabeza, así que voy a ordenar todo lo de arriba con un workflow simple, que de hecho es el que uso en casi todos mis proyectos y que suele evitar conflictos. Va así:
 
 1. Vas a tener tres branches: `desktop`, `laptop` y `main`. 
-2. Nunca vas a trabajar estando en `main`, pero ese va a ser el branch más al día; así que lo primero antes de empezar es `git switch main` (para asegurarte de estar en `main`) y luego `git pull` para traer lo más reciente. 
-3. Vas a trabajar en `desktop` (o `laptop`) según dónde estés, así que primero te mueves a ese branch: `git switch desktop`. 
+2. Nunca vas a trabajar estando en `main`, pero esa va a ser la branch más al día; así que lo primero antes de empezar es `git switch main` (para asegurarte de estar en `main`) y luego `git pull` para traer lo más reciente. 
+3. Vas a trabajar en `desktop` (o `laptop`) según dónde estés, así que primero te mueves a esa branch: `git switch desktop`. 
 4. Ahora traes lo más reciente de `main`: `git merge main` (esto importa, porque te evita conflictos más adelante).
 5. Trabajas, haces add y commit, las veces que haga falta. 
 6. Al terminar, regresas a `main` y le haces merge a la sesión de trabajo de `desktop`: `git switch main` y luego `git merge desktop`.
 7. Haces push de los cambios a la nube: `git push`.
-8. Cuando vuelvas a la laptop, repites los mismos pasos pero con el branch `laptop`.
+8. Cuando vuelvas a la laptop, repites los mismos pasos pero con la branch `laptop`.
 
 Aquí está ese mismo ciclo disciplinado en forma de diagrama (lo muestro para `desktop`; del lado de la laptop es idéntico, con `laptop` en lugar de `desktop`):
 
@@ -241,18 +247,18 @@ flowchart TD
     F --> A
 ```
 
-Fíjate que el branch `desktop` nunca llega a la laptop, ni viceversa; esto es a propósito y ayuda mucho a evitar conflictos, aunque no es estrictamente necesario. Puedes tener un solo branch para ambas computadoras (que es lo que yo suelo hacer, y a ese branch lo llamo `dev-tero`) y le haces merge a `main` al terminar. Claro que para esto hay que volverse disciplinado.
+Fíjate que la branch `desktop` nunca llega a la laptop, ni viceversa; esto es a propósito y ayuda mucho a evitar conflictos, aunque no es estrictamente necesario. Puedes tener una sola branch para ambas computadoras (que es lo que yo suelo hacer, y a esa branch la llamo `dev-tero`) y le haces merge a `main` al terminar. Claro que para esto hay que volverse disciplinado.
 
 ### Workflow 4: el colaborador
-En el workflow anterior es casi irrelevante que quien trabaja en la laptop y quien trabaja en el escritorio sean la misma persona. Lo único que importa es asegurarse de que el branch `main` no lo actualice quien está frente a la laptop mientras tú trabajas en el escritorio. Este workflow se adapta fácilmente para colaborar con otras personas, siempre que todos acuerden que `main` es el branch más al día y que nunca van a trabajar estando en `main`. Va así:
+En el workflow anterior es casi irrelevante que quien trabaja en la laptop y quien trabaja en el escritorio sean la misma persona. Lo único que importa es asegurarse de que la branch `main` no la actualice quien está frente a la laptop mientras tú trabajas en el escritorio. Este workflow se adapta fácilmente para colaborar con otras personas, siempre que todos acuerden que `main` es la branch más al día y que nunca van a trabajar estando en `main`. Va así:
 
-1. Cada colaborador tendrá su propio branch personal, por ejemplo `tero`, `alice`, `bob`, etc., y normalmente no llegarán al remoto (aunque podrían).
+1. Cada colaborador tendrá su propia branch personal, por ejemplo `tero`, `alice`, `bob`, etc., y normalmente no llegarán al remoto (aunque podrían).
 2. Antes de empezar, cada colaborador se cambia a `main` y hace pull de lo más reciente: `git switch main` y luego `git pull`.
 3. Cada colaborador se cambia a su branch personal: `git switch tero` (o `git switch alice`, o `git switch bob`).
 4. Cada colaborador le hace merge a lo más reciente de `main`: `git merge main`.
 5. Cada colaborador trabaja, hace add y commit las veces que haga falta.
 6. Al terminar, el colaborador regresa a `main` y **vuelve a hacer pull** para traer los cambios más recientes que otros colaboradores hayan subido mientras él trabajaba: `git switch main` y luego `git pull`.
-7. Ahora vuelve a su branch personal y le hace merge a los cambios de `main`: `git switch tero` y luego `git merge main`. Si salen conflictos, se resuelven en el branch personal, dejando `main` limpio.
+7. Ahora vuelve a su branch personal y le hace merge a los cambios de `main`: `git switch tero` y luego `git merge main`. Si salen conflictos, se resuelven en la branch personal, dejando `main` limpio.
 8. Una vez resueltos los conflictos (si los hubo), el colaborador regresa a `main`, hace pull de nuevo para asegurarse de tener lo más reciente, y luego le hace merge a su branch personal: `git switch main`, `git pull` y luego `git merge tero`. Este paso debería salir casi sin conflictos, porque `tero` y una versión (quizá un poco vieja) de `main` ya están de acuerdo, así que git sabrá cómo resolver el merge.
 9. Por último, el colaborador hace push de los cambios a la nube: `git push`.
 
@@ -276,7 +282,7 @@ Este workflow es un poco más enredado, pero es muy útil cuando tienes muchos c
 
 Hay un repositorio central, mantenido y propiedad de *El Dictador*, muchas veces alojado en un servicio en la nube de git. Digamos que quieres colaborar en ese proyecto; lo haces siguiendo estos pasos:
 1. Haces un **fork** del repositorio. Esto quiere decir que creas una copia que ahora es tuya: la puedes modificar, romper y hacer con ella lo que quieras, y no afecta al repositorio original. El primer paso para armar este sitio fue hacer un fork del [repositorio multi-idioma de al-folio](https://github.com/george-gca/multi-language-al-folio). 
-2. Trabajas en ese repositorio —desde casa, desde la laptop, como quieras— pero manteniendo un branch personal (distinto de `main`) como tu branch más al día. Es decir, tendrás un branch, digamos `mi-branch-personal`, que hará el papel de `main` de los workflows anteriores (y puedes tener varios otros branches si quieres).
+2. Trabajas en ese repositorio —desde casa, desde la laptop, como quieras— pero manteniendo una branch personal (distinta de `main`) como tu branch más al día. Es decir, tendrás una branch, digamos `mi-branch-personal`, que hará el papel de `main` de los workflows anteriores (y puedes tener varios otros branches si quieres).
 3. Cuando tengas cambios que quieras que El Dictador vea y, ojalá, incluya en el proyecto principal, abres un [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request). O sea, le avisas a El Dictador que hiciste un fork de su repositorio, que trabajaste en él, y que quieres que tome los cambios que hiciste en tu fork. 
 4. Como git lleva la cuenta de los cambios, El Dictador podrá revisar lo que hiciste y decidir si lo incorpora al repositorio principal y cómo. Si decide incorporarlo, le hace merge a tu pull request y los cambios de tu fork quedan integrados en el repositorio principal. Si decide que no, simplemente cierra el pull request y no pasa nada.
 5. Si lo lograste, ya puedes actualizar tu fork (por si quieres seguir trabajando en ese repositorio) así:

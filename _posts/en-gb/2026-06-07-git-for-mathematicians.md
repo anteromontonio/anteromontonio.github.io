@@ -11,7 +11,9 @@ toc:
   sidebar: left
 mermaid:
   enabled: true
-  zoomable: true
+  zoomable: false
+giscus_comments: true
+last_updated: 2026-06-10
 ---
 Si prefieres leer esta entrada en español, da clic [aquí](https://anteromontonio.github.io/blog/2026/git-para-matematicos).
 
@@ -44,7 +46,7 @@ In short, git is a version control system created by Linus Torvalds (the guy who
 
 A natural question when I introduce git to people is: "why do I need git? I already have a cloud service that allows me to share files and have version history". If the problems described at the beginning of this blogpost are not enough reasons for you, let me give you an emotional one: just the same way your mom used that old camera to take pictures of you when you were a kid, and you keep those pictures as a memory of your childhood, git is a tool that allows you to keep a history of your projects. But it is much more, because (unlike your mom's camera) it also allows you to go back in time and change things in the past, giving you full control over your projects. 
 
-I will use a series of workflows to slowly introduce the basic concepts of git and how to use them.
+I could give you several reasons why git is better than a cloud service, but I think that the best way to understand it is to see how it works in practice and let you discover them on your own. So, I will use a series of workflows to slowly introduce the basic concepts of git and how to use them. The workflows are ordered from the simplest to the more complex. I suggest you start using one where you feel comfortable (nothing wrong if it's the first one), you get familiar using git and slowly you add layers of complexity, either by following to the next one I propose or even better! by creating your own workflows that fit your specific needs and preferences. The important thing is that you start using git  as soon as possible.
 
 ### Workflow 1: the loner.
 The setup is very basic: you have a personal computer where you keep your work and you do not collaborate with anyone. In this case, even a cloud service sounds like overkill (because you only use it to back up your files online). However, the setup is simple enough to start explaining git concepts. 
@@ -158,7 +160,7 @@ Once you have a local repository on your laptop and a local repository on your d
 2. You move to your other computer (laptop) and you do `git pull` to get the changes that you made on your desktop. You work on your laptop, you do `git add` and `git commit` to take a picture of your project, and then you do `git push` to upload this picture to the cloud.
 3. You move back to your desktop and you do `git pull` to get the changes that you made on your laptop. 
 
-It is important to say that **you have to push and pull manually**. Unlike FlyingCloud, git does not automatically sync your files to the cloud; you have to do it manually by running the commands. This is actually a good thing because it gives you more control over your files and it prevents syncing issues. Moreover, it forces you to think about when you want to upload your changes to the cloud and when you want to get the changes from the cloud, which is important for collaboration (we will talk about this later on).
+It is important to say that **you have to push and pull manually**. Unlike FlyingCloud, git does not automatically sync your files to the cloud; you have to do it manually by running the commands. This is actually a good thing because it gives you more control over your files and it prevents syncing issues. Moreover, it forces you to think about when you want to upload your changes to the cloud and when you want to get the changes from the cloud, which is important for collaboration (we will talk about this later on). It is also important to mention that git works offline. Unlike FlyingCloud, you can work completely offline and locally, you only need internet for a few seconds when you do push and pull. 
 
 Needless to say, if you only work on a single device, you can easily adapt this workflow to get the online backup that FlyingCloud provides. You just manually push your commits to the remote once in a while (I do it after a day of work). This is a good point to mention that git and git remotes are great for backup but not really for everywhere-access synchronisation. I still have a FlyingCloud folder for projects where I put files that I want to have access to everywhere (my laptop and my phone) but I do not want to keep a history of, for example, PDFs or handwritten notes. Indeed, git is great for keeping the history of code files (like your `.tex` files), but not so much for keeping the history of binary files, that is, files that are generated from your code (like `.pdf`s). For LaTeX specifically, I suggest you use tools like [latexdiff](https://ctan.org/pkg/latexdiff), which allows you to compare two versions of a LaTeX file and see the differences between them. Latexdiff integrates wonderfully with git, and maybe another day I will show you how. 
 
@@ -167,11 +169,14 @@ The setup is the same as before but closer to reality. Since git does not sync a
 
 If you are in the situation I described above (you forgot to push your changes and you don't see them on your other computer) I have bad news and good news for you. The bad news is that you have to go back to the computer where you made the changes and push them to the cloud. There is no simple way to get your files from the other computer if you do not intentionally transfer or push them into the remote. The good news is that you have not lost any work: your files are still on your computer just as you left them, and you can get them to the cloud whenever you want. But there is a natural problem in this situation: what if you want to work on a file that has unsynced changes on the other computer? The answer to this is **branches**, which is arguably git's most powerful feature. 
 
-Branches are like parallel universes for your project: they allow you to have different versions of your project that can evolve independently and then be merged together when you want. I will try not to get too technical, but you can think of a branch as a coloured frame that you put around your pictures in the album, and that moves from one picture to another. By default, you have a branch called `main` (or `master` in older repositories), and all your commits are in that branch; that is, you have only one frame, and whenever you create a new commit, the frame moves to this new commit (usually from its parent). Now, if you want to work on a file that has unsynced changes on the other computer, you can create a new branch and work on that branch. This way, you can have two different versions of your project (one on the `main` branch and one on the new branch) and then merge them together when you want. You can create a new branch by running the command
+Git supports parallel timelines for your project. Coming back to the photo album analogy, it is as if the spacetime splits at a given point and sudently there are two different versions of you each of you with your own photo album. Each of this albums grow independently and in the future you can merge them together if you want. Branches is exactly the way git admins these different timelines.
+I will try not to get too technical, but you can think of a branch as a coloured frame that you put around your pictures in the album, and that moves from one picture to another. By default, you have a branch called `main` (or `master` in older repositories), and all your commits are in that branch; that is, you have only one frame, and whenever you create a new commit, the frame moves to this new commit (usually from its parent). Now, if you want to work on a file that has unsynced changes on the other computer, you can create a new branch and work on that branch. This way, you can have two different versions of your project (one on the `main` branch and one on the new branch) and then merge them together when you want. You can create a new branch by running the command
 ```bash
 git switch -c desktop
 ```
-This will create a new branch called `desktop` and it will switch to that branch. Now you have a new coloured frame, `desktop`, and you can work on your files and create commits on that branch, moving the coloured frame each time (but the frame on `main` will stay on the same commit). When you push your changes to the cloud, you need to specify the branch you want to push, for example
+This will create a new branch called `desktop` and it will switch to that branch. Now you have a new coloured frame, `desktop`, and you can work on your files and create commits on that branch, moving the coloured frame each time (but the frame on `main` will stay on the same commit). I should mention that the **timelines exist regardless of the branches**, the branches are just the way git knows over which timeline keep building the project history. In mundane words: the timelines are all the pictures that at some point had the coloured frame on them, not the frames themselves. This is important because it is a common practice in git to create and delete branches. When you delete a branch you do not delete the history or the timeline, you just get rid of the (rather cheap) coloured frame.
+
+Coming back at were we were, when you push your changes to the cloud, you need to specify the branch you want to push, for example
 ```bash
 git push origin desktop
 ```
@@ -198,9 +203,12 @@ gitGraph
     branch desktop
     checkout desktop
     commit id: "work A"
+		checkout main
     commit id: "work B"
+    checkout desktop
+    commit id: "work C"
     checkout main
-    merge desktop
+    merge desktop id: "merge commit"
     commit id: "carry on"
 ```
 
@@ -212,7 +220,7 @@ changes that you made in the main branch
 changes that you made in the desktop branch
 >>>>>>>
 ```
-Now you need to decide which changes you want to keep. After you have solved the conflicts, you need to stage the changes and commit them as usual. This effectively creates a new commit on the `main` branch that has two parents: the last commit on the `main` branch and the last commit on the `desktop` branch. This is what is called a merge commit, and it is the point where the two branches merge together. After this, you can delete the `desktop` branch if you want, since all its changes are now on the `main` branch. You can do this by running the command
+Now you need to decide which changes you want to keep. After you have solved the conflicts, you **need to stage the changes and commit them as usual**. This effectively creates a new commit on the `main` branch that has two parents: the last commit on the `main` branch and the last commit on the `desktop` branch. This is what is called a merge commit, and it is the point where the two branches merge together. After this, you can delete the `desktop` branch if you want, since all its changes are now on the `main` branch. You can do this by running the command
 ```bash
 git branch -d desktop
 ```
@@ -222,9 +230,9 @@ I know that you must have a headache at this point, so I will clean up what I ju
 
 1. You will have three branches: `desktop`, `laptop` and `main`. 
 2. You will never work while on `main`, but this will be the most up-to-date branch, so the first thing that you do before starting to work is `git switch main` (to make sure you are on `main`) and then `git pull` to get the most recent changes. 
-3. You will work on `desktop` (or `laptop`) depending on where you are, so you first move to this branch: `git switch desktop`. 
+3. You will work on `desktop` (or `laptop`) depending on where you are, so now you need to move to this branch: `git switch desktop`. 
 4. Now you bring in the most recent changes from `main`: `git merge main` (this is important because it will prevent conflicts later on).
-5. You work, add and commit, as many times as necessary. 
+5. You work, stage changes and commit, as many times as necessary. 
 6. When you are done, you switch back to `main` and you merge the working session on `desktop`: `git switch main` and then `git merge desktop`.
 7. You push the changes to the cloud: `git push`.
 8. When you are back on your laptop you repeat the same steps but using the branch `laptop`.
@@ -252,7 +260,7 @@ In the previous workflow, it is almost irrelevant that the person working on the
 4. Each collaborator will merge the most recent changes from `main`: `git merge main`.
 5. Each collaborator will work, add and commit, as many times as necessary.
 6. When a collaborator is done, they will switch back to `main` and **pull again** to get the most recent changes that other collaborators might have pushed while they were working: `git switch main` and then `git pull`.
-7. Now they switch back to their personal branch and merge the changes from `main`: `git switch tero` and then `git merge main`. If conflicts arise, they are resolved on the personal branch, leaving `main` clean.
+7. Now they switch back to their personal branch and merge the changes from `main`: `git switch tero` and then `git merge main`. If conflicts arise, they should be resolved on the personal branch, leaving `main` clean.
 8. Once conflicts are resolved (if any), the collaborator switches back to `main`, pulls again to make sure they have the most recent changes, and then merges their personal branch into `main`: `git switch main`, `git pull` and then `git merge tero`. This process should be mostly conflict-free because `tero` and a (potentially) slightly old version of `main` already agree, so git will know how to handle the merge.
 9. Finally, the collaborator pushes the changes to the cloud: `git push`.
 

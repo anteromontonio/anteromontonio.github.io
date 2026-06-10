@@ -18,6 +18,9 @@ bibliography:
   website: Website
 blog:
   navigation_title: blog
+  posts_in_current_lang: Posts in English
+  posts_in_other_langs: Posts in other languages
+  read_time_label: "N min read"
 categories:
   fun: fun
   work: work

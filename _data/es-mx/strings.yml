@@ -18,6 +18,9 @@ bibliography:
   website: Website
 blog:
   navigation_title: blog
+  posts_in_current_lang: Entradas en español
+  posts_in_other_langs: Entradas en otros idiomas
+  read_time_label: "Lectura de N min"
 categories:
   fun: cotorreo
   work: trabajo
