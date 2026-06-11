@@ -19,9 +19,9 @@ function determineGiscusTheme() {
   let giscusAttributes = {
     src: "https://giscus.app/client.js",
     "data-repo": "anteromontonio/anteromontonio.github.io",
-    "data-repo-id": "",
-    "data-category": "Comments",
-    "data-category-id": "",
+    "data-repo-id": "R_kgDORNGZhQ",
+    "data-category": "General",
+    "data-category-id": "DIC_kwDORNGZhc4C-5YG",
     "data-mapping": "title",
     "data-strict": "1",
     "data-reactions-enabled": "1",
