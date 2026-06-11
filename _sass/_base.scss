@@ -918,13 +918,16 @@ h2.bibliography {
 // Rouge Color Customization
 figure.highlight {
   margin: 0 0 1rem;
-
-  // Responsive code block container
+  border-radius: 6px;
+  overflow: hidden;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 
   pre {
-    // Ensure code blocks can scroll horizontally
+    background-color: var(--global-code-bg-color) !important;
+    border-radius: 0;
+    margin-bottom: 0;
+    padding: 0.75rem 1rem;
     white-space: pre;
     word-wrap: normal;
     overflow-x: auto;
@@ -933,12 +936,10 @@ figure.highlight {
 }
 
 pre {
-  color: var(--global-theme-color);
+  color: var(--global-text-color);
   background-color: var(--global-code-bg-color);
   border-radius: 6px;
-  padding: 6px 12px;
-
-  // Responsive behavior for code blocks
+  padding: 0.75rem 1rem;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   white-space: pre;
@@ -951,16 +952,16 @@ pre {
     margin-bottom: 0;
     padding: 0;
     white-space: inherit;
+    color: inherit;
   }
 }
 
 code {
-  color: var(--global-theme-color);
+  color: var(--global-text-color);
   background-color: var(--global-code-bg-color);
   border-radius: 3px;
-  padding: 3px 3px;
-
-  // Inline code should wrap
+  padding: 0.1em 0.35em;
+  font-size: 0.875em;
   white-space: normal;
   word-wrap: break-word;
 }
