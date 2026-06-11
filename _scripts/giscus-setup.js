@@ -2,6 +2,9 @@
 permalink: /assets/js/giscus-setup.js
 ---
 
+window.giscusLightTheme = "{{ site.url }}{{ site.baseurl }}/assets/css/giscus-light.css";
+window.giscusDarkTheme = "{{ site.url }}{{ site.baseurl }}/assets/css/giscus-dark.css";
+
 function determineGiscusTheme() {
   {% if site.enable_darkmode %}
     let theme =
@@ -9,13 +12,13 @@ function determineGiscusTheme() {
       document.documentElement.getAttribute("data-theme") ||
       "system";
 
-    if (theme === "dark") return "{{ site.giscus.dark_theme }}";
-    if (theme === "light") return "{{ site.giscus.light_theme }}";
+    if (theme === "dark") return window.giscusDarkTheme;
+    if (theme === "light") return window.giscusLightTheme;
 
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    return prefersDark ? "{{ site.giscus.dark_theme }}" : "{{ site.giscus.light_theme }}";
+    return prefersDark ? window.giscusDarkTheme : window.giscusLightTheme;
   {% else %}
-    return "{{ site.giscus.light_theme }}";
+    return window.giscusLightTheme;
   {% endif %}
 }
 
