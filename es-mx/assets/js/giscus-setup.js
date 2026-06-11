@@ -1,3 +1,6 @@
+window.giscusLightTheme = "https://anteromontonio.github.io/assets/css/giscus-light.css";
+window.giscusDarkTheme = "https://anteromontonio.github.io/assets/css/giscus-dark.css";
+
 function determineGiscusTheme() {
   
     let theme =
@@ -5,11 +8,11 @@ function determineGiscusTheme() {
       document.documentElement.getAttribute("data-theme") ||
       "system";
 
-    if (theme === "dark") return "dark";
-    if (theme === "light") return "light";
+    if (theme === "dark") return window.giscusDarkTheme;
+    if (theme === "light") return window.giscusLightTheme;
 
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    return prefersDark ? "dark" : "light";
+    return prefersDark ? window.giscusDarkTheme : window.giscusLightTheme;
   
 }
 
