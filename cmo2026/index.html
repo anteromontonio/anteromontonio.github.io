@@ -154,6 +154,24 @@
     .section-head h2 { margin: 0; font-size: 17px; }
     .muted { color: var(--ink-soft); font-size: 13px; }
 
+    /* ---------- Arrivals / Departures toggle ---------- */
+    .tabs { display: flex; gap: 8px; margin: 0 2px 14px; }
+    .tab {
+      flex: 1;
+      background: var(--accent);
+      color: var(--ink-soft);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 14px;
+    }
+    .tab:hover:not(.active) { background: #e2e8f0; }
+    .tab.active {
+      background: var(--brand);
+      color: #fff;
+      border-color: var(--brand);
+    }
+
     /* ---------- Time-window groups ---------- */
     .group { margin-bottom: 22px; }
     .group-head {
@@ -236,6 +254,13 @@
       white-space: nowrap;
     }
     .chip b { color: var(--ink-soft); font-weight: 600; }
+    .chip.chip-active {
+      background: #eff6ff;
+      border-color: #bfdbfe;
+      color: var(--brand-dark);
+      font-weight: 600;
+    }
+    .chip.chip-active b { color: var(--brand); }
     .entry .meta {
       margin-top: 9px;
       font-size: 13px;
@@ -397,7 +422,7 @@
 
         <div class="row">
           <div class="field">
-            <label for="f-flight">Flight number</label>
+            <label for="f-flight">Arrival flight</label>
             <input id="f-flight" type="text" maxlength="16" placeholder="LH1234" />
           </div>
           <div class="field">
@@ -406,9 +431,15 @@
           </div>
         </div>
 
-        <div class="field">
-          <label for="f-departure">Departure (return flight)</label>
-          <input id="f-departure" type="datetime-local" />
+        <div class="row">
+          <div class="field">
+            <label for="f-dep-flight">Departure flight</label>
+            <input id="f-dep-flight" type="text" maxlength="16" placeholder="LH4321" />
+          </div>
+          <div class="field">
+            <label for="f-departure">Departure (return)</label>
+            <input id="f-departure" type="datetime-local" />
+          </div>
         </div>
 
         <div class="field">
@@ -427,8 +458,13 @@
       <button class="btn-ghost" id="refreshBtn" style="padding:6px 12px;font-size:12.5px;">Refresh now</button>
     </div>
 
+    <div class="tabs" id="viewTabs">
+      <button type="button" class="tab active" data-view="arrival">🛬 Arrivals</button>
+      <button type="button" class="tab" data-view="departure">🛫 Departures</button>
+    </div>
+
     <div class="section-head">
-      <h2>Arrivals</h2>
+      <h2 id="listTitle">Arrivals</h2>
       <span class="muted" id="totalCount"></span>
     </div>
 
@@ -496,6 +532,7 @@ let entries = [];                          // latest DECRYPTED entries (each inc
 let cryptoKey = null;                      // derived AES-GCM key (in memory only)
 let saltB64 = null;                        // base64 salt the current key was derived from
 let refreshTimer = null;
+let view = "arrival";                      // active list view: "arrival" | "departure"
 
 /* ---------- Tiny helpers ---------- */
 const $ = (id) => document.getElementById(id);
@@ -651,11 +688,61 @@ async function decryptEntries(rec) {
 /* ============================================================
    Render
    ============================================================ */
+// Sort entries that have a valid time in `field`, then chunk them into time windows.
+function groupByField(field) {
+  const valid = entries
+    .filter((e) => e && e.id && parseDT(e[field]))
+    .sort((a, b) => parseDT(a[field]) - parseDT(b[field]));
+
+  const groups = [];
+  let current = null;
+  for (const e of valid) {
+    const win = windowFor(parseDT(e[field]));
+    if (!current || current.key !== win.key) {
+      current = { key: win.key, label: win.label, items: [] };
+      groups.push(current);
+    }
+    current.items.push(e);
+  }
+  return { valid, groups };
+}
+
+// Build one entry card. The time chip matching the active view is highlighted.
+function entryCardHTML(e) {
+  const mine = isMine(e.id);
+  const arr = parseDT(e.arrival);
+  const dep = parseDT(e.departure);
+  let html = '<div class="entry' + (mine ? ' mine' : '') + '">';
+  html +=   '<div class="entry-top">';
+  html +=     '<div class="name">' + esc(e.name || "Anonymous") +
+                (mine ? '<span class="badge-you">You</span>' : '') + '</div>';
+  if (mine) {
+    html +=   '<button class="btn-del" data-del="' + esc(e.id) + '">Delete</button>';
+  }
+  html +=   '</div>';
+
+  html +=   '<div class="times">';
+  if (arr) html += '<span class="chip' + (view === "arrival" ? " chip-active" : "") + '"><b>Arr</b> ' + esc(fmtDayTime(arr)) +
+                     (e.flight ? ' · ✈ ' + esc(e.flight) : '') + '</span>';
+  if (dep) html += '<span class="chip' + (view === "departure" ? " chip-active" : "") + '"><b>Dep</b> ' + esc(fmtDayTime(dep)) +
+                     (e.depFlight ? ' · ✈ ' + esc(e.depFlight) : '') + '</span>';
+  html +=   '</div>';
+
+  if (e.email) {
+    html += '<div class="meta">✉ <a href="mailto:' + esc(e.email) + '">' + esc(e.email) + '</a></div>';
+  }
+  if (e.note) {
+    html += '<div class="note">📝 ' + esc(e.note) + '</div>';
+  }
+  html += '</div>';
+  return html;
+}
+
 function render() {
   const list = $("list");
-  const valid = entries
-    .filter((e) => e && e.id && parseDT(e.arrival))
-    .sort((a, b) => parseDT(a.arrival) - parseDT(b.arrival));
+  const field = view === "departure" ? "departure" : "arrival";
+  const word = view === "departure" ? "departure" : "arrival";
+  const { valid, groups } = groupByField(field);
 
   $("totalCount").textContent = valid.length
     ? valid.length + (valid.length === 1 ? " person" : " people")
@@ -663,20 +750,8 @@ function render() {
 
   if (!valid.length) {
     list.innerHTML =
-      '<div class="empty"><span class="big">🧳</span>No entries yet.<br>Be the first to add your arrival above.</div>';
+      '<div class="empty"><span class="big">🧳</span>No ' + word + ' times yet.<br>Add yours above.</div>';
     return;
-  }
-
-  // Group into windows
-  const groups = [];
-  let current = null;
-  for (const e of valid) {
-    const win = windowFor(parseDT(e.arrival));
-    if (!current || current.key !== win.key) {
-      current = { key: win.key, label: win.label, items: [] };
-      groups.push(current);
-    }
-    current.items.push(e);
   }
 
   let html = "";
@@ -688,34 +763,7 @@ function render() {
               ' <span class="count">(' + g.items.length + ')</span>' +
               (shareable ? '<span class="share-hint">🤝 ' + g.items.length + ' can share</span>' : '') +
             '</div>';
-
-    for (const e of g.items) {
-      const mine = isMine(e.id);
-      const arr = parseDT(e.arrival);
-      const dep = parseDT(e.departure);
-      html += '<div class="entry' + (mine ? ' mine' : '') + '">';
-      html +=   '<div class="entry-top">';
-      html +=     '<div class="name">' + esc(e.name || "Anonymous") +
-                    (mine ? '<span class="badge-you">You</span>' : '') + '</div>';
-      if (mine) {
-        html +=   '<button class="btn-del" data-del="' + esc(e.id) + '">Delete</button>';
-      }
-      html +=   '</div>';
-
-      html +=   '<div class="times">';
-      html +=     '<span class="chip"><b>Arr</b> ' + esc(fmtDayTime(arr)) + '</span>';
-      if (dep) html += '<span class="chip"><b>Dep</b> ' + esc(fmtDayTime(dep)) + '</span>';
-      if (e.flight) html += '<span class="chip"><b>✈</b> ' + esc(e.flight) + '</span>';
-      html +=   '</div>';
-
-      if (e.email) {
-        html += '<div class="meta">✉ <a href="mailto:' + esc(e.email) + '">' + esc(e.email) + '</a></div>';
-      }
-      if (e.note) {
-        html += '<div class="note">📝 ' + esc(e.note) + '</div>';
-      }
-      html += '</div>';
-    }
+    for (const e of g.items) html += entryCardHTML(e);
     html += '</div>';
   }
   list.innerHTML = html;
@@ -765,6 +813,7 @@ async function addEntry(ev) {
   const name = $("f-name").value.trim();
   const email = $("f-email").value.trim();
   const flight = $("f-flight").value.trim();
+  const depFlight = $("f-dep-flight").value.trim();
   const arrival = $("f-arrival").value;
   const departure = $("f-departure").value;
   const note = $("f-note").value.trim();
@@ -779,7 +828,7 @@ async function addEntry(ev) {
   }
 
   const id = makeId();
-  const payload = { name, email, flight, arrival, departure: departure || "", note, created: new Date().toISOString() };
+  const payload = { name, email, flight, depFlight, arrival, departure: departure || "", note, created: new Date().toISOString() };
 
   const btn = $("addBtn");
   btn.disabled = true;
@@ -908,6 +957,16 @@ $("lockForm").addEventListener("submit", async (ev) => {
 
 $("entryForm").addEventListener("submit", addEntry);
 $("refreshBtn").addEventListener("click", () => refresh(false));
+
+// Arrivals / Departures view toggle
+document.querySelectorAll("#viewTabs .tab").forEach((tab) => {
+  tab.addEventListener("click", () => {
+    view = tab.getAttribute("data-view");
+    document.querySelectorAll("#viewTabs .tab").forEach((t) => t.classList.toggle("active", t === tab));
+    $("listTitle").textContent = view === "departure" ? "Departures" : "Arrivals";
+    render();
+  });
+});
 
 // Resume an unlocked session (password kept only in sessionStorage, cleared when the tab closes)
 (async function init() {
