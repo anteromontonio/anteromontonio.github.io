@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(python3 -)",
-      "Bash(node --check check.js)"
+      "Bash(node --check check.js)",
+      "Bash(curl -s -o /tmp/binresp.txt -w 'HTTP %{http_code}\\\\n' https://api.jsonbin.io/v3/b/6a3e5cfaf5f4af5e2933bcc2/latest -H 'X-Access-Key: $2a$10$sf/esGAW7TXaRowPUWgf9OGnMaX8vbBf6J2zclyzxQvmx98LGZNVG')",
+      "Bash(curl *)"
     ]
   }
 }
