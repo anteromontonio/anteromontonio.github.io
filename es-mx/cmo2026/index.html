@@ -473,7 +473,7 @@
     </div>
 
     <footer class="app">
-      Auto-refreshes every 30s · grouped in 30-minute windows<br />
+      Auto-refreshes every 10m · grouped in 60-minute windows<br />
       Details are encrypted in your browser before upload · only you can delete entries you added from this device.
     </footer>
   </section>
@@ -510,8 +510,8 @@ const JSONBIN_BIN_ID   = "6a3e5cfaf5f4af5e2933bcc2";    // The ID of your privat
    To change the password later: empty the bin (set its content to {}) and
    re-bootstrap with a new password. */
 
-const REFRESH_MS = 30000;          // Auto-refresh interval (30 seconds)
-const WINDOW_MIN = 30;             // Grouping window size in minutes
+const REFRESH_MS = 600000;          // Auto-refresh interval (30 seconds)
+const WINDOW_MIN = 60;             // Grouping window size in minutes
 const PBKDF2_ITERATIONS = 200000;  // Key-derivation cost
 const VERIFIER_MARKER = "taxi-share-v1"; // Plaintext token used to validate the password
 /* ============================================================ */
