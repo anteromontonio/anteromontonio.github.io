@@ -1,0 +1,18 @@
+\usetikzlibrary{arrows.meta,positioning,calc}
+\definecolor{ink}{HTML}{6B7280}
+\definecolor{boxink}{HTML}{1F2937}
+\definecolor{acc}{HTML}{3B82F6}
+\definecolor{acc2}{HTML}{F59E0B}
+\definecolor{acc3}{HTML}{0D9488}
+\definecolor{acc4}{HTML}{8B5CF6}
+\begin{tikzpicture}[font=\small,text=ink,draw=ink,>={Stealth[length=2mm]},
+  repo/.style={rounded corners, draw=acc3, fill=acc3!15, text=boxink, align=center, minimum height=13mm, minimum width=40mm, inner sep=2mm},
+  comp/.style={rounded corners, draw=acc, fill=acc!12, text=boxink, align=center, minimum height=12mm, minimum width=28mm, inner sep=2mm}]
+  \node[repo] (o) at (0,0) {\textbf{origin}\\repositorio remoto\\(GitHub / GitLab / \ldots)};
+  \node[comp] (d) at (-3.4,-3.2) {Escritorio\\repositorio local};
+  \node[comp] (l) at (3.4,-3.2) {Laptop\\repositorio local};
+  \draw[->,thick] (d.north) to[bend left=18] node[above left,font=\scriptsize,inner sep=1pt]{push} (o.west);
+  \draw[->,thick] (o.west) to[bend left=18] node[below right,font=\scriptsize,inner sep=1pt]{pull} (d.north);
+  \draw[->,thick] (l.north) to[bend right=18] node[above right,font=\scriptsize,inner sep=1pt]{push} (o.east);
+  \draw[->,thick] (o.east) to[bend right=18] node[below left,font=\scriptsize,inner sep=1pt]{pull} (l.north);
+\end{tikzpicture}

@@ -9,24 +9,25 @@ tags:
 language: es-mx
 toc:
   sidebar: left
-mermaid:
-  enabled: true
-  zoomable: false
+tikzjax: true
 giscus_comments: true
 last_updated: 2026-06-10
 ---
+
 You can read the English version of this post [here](https://anteromontonio.github.io/blog/2026/git-for-mathematicians).
 
-### Motivación 
+### Motivación
 
 Para esta entrada voy a suponer que tú, querido lector, escribes artículos en colaboración con otras personas. Más concretamente, voy a suponer que lo haces en LaTeX. Si no es tu caso, quizá todavía le saques algo de provecho, pero la entrada está pensada sobre todo para quienes escriben documentos con la siguiente configuración:
+
 - Tienes un servicio en la nube (Dropbox, Google Drive, OneDrive, iCloud) instalado en tu computadora, y lo usas para guardar, sincronizar y compartir tus archivos. Para esta entrada voy a hablar del que yo uso: FlyingCloud.[^1]
 - Escribes tus artículos en LaTeX y tienes una carpeta en la nube que compartes con tus colaboradores.
 - Editas tus archivos localmente, con programas como Texmaker, TeXstudio, etc. Si usas Overleaf, de todas maneras creo que deberías aprender a usar git y usar Overleaf como remoto; puedes ver como en la [documentación de Overleaf](https://docs.overleaf.com/integrations-and-add-ons/git-integration-and-github-synchronization/git-integration).
 
 Si encajas en esa descripción, lo más probable es que te hayas topado con (al menos) una de estas situaciones:
+
 - Te suenan los siguientes nombres: `paper.tex`, `paper_1.tex`, `paper_1_afterRevisionsByTero.tex`, `paper_final.tex`, `paper_final_final.tex`, etc.
-- Vives haciendo copias de respaldo de tus archivos por si algo sale mal. 
+- Vives haciendo copias de respaldo de tus archivos por si algo sale mal.
 - Estás trabajando en un archivo y tu colega está trabajando en el mismo archivo al mismo tiempo, y eso provoca un conflicto que tienes que resolver a mano. Con FlyingCloud esto pasa muchísimo.
 - Alguno de tus colegas (o tú mismo) borra un archivo sin querer, y te toca recuperarlo de la papelera del servicio en la nube o rezarle a tu dios informático favorito para que haya un respaldo.
 - Llevas rato actualizando un archivo, pero tu colega no ve los cambios por algún problema de sincronización de FlyingCloud.
@@ -37,19 +38,22 @@ Todo esto sale, en el fondo, de dos problemas: la **sincronización entre varias
 [^1]: Es un servicio en la nube hipotético que me inventé, porque esta entrada no es un reclamo contra nadie en particular; todos sufren de los problemas que comento aquí.
 
 ### Preliminares
+
 **Aclaraciones:**
+
 1. Esto no es un tutorial de git. No voy a explicar a fondo cómo se usa, sino más bien pasearte por las ideas principales para desmitificarlo y quitarle el mayor ruido posible. El costo de esto es que quizá no sea tan preciso como podría; así que, usuarios experimentados de git, perdónenme. Si quieres profundizar, al final dejo una sección de lecturas recomendadas.
 2. La entrada está escrita usando la línea de comandos, pero eso no es indispensable para usar git: hay varios entornos gráficos para trabajar con él, y los menciono al final. Lo importante es que te quedes con las ideas y los conceptos para moverte en git, no con los comandos concretos.
-3. Voy a dar por hecho que tienes git instalado. Si usas Linux o macOS, lo más seguro es que ya venga; si usas Windows, lo puedes instalar desde [aquí](https://git-scm.com/download/win). 
+3. Voy a dar por hecho que tienes git instalado. Si usas Linux o macOS, lo más seguro es que ya venga; si usas Windows, lo puedes instalar desde [aquí](https://git-scm.com/download/win).
 
 En pocas palabras, git es un sistema de control de versiones que creó Linus Torvalds (el tipo que creó Linux) en 2005. No es el único, pero sí es por mucho el más popular y prácticamente un estándar en el mundo del desarrollo de software. No hace falta que programes a destajo ni que desarrolles software para sacarle provecho: desde el punto de vista de git, escribir artículos en LaTeX no es tan distinto de escribir software en un lenguaje de programación muy complicado.
 
-Una pregunta natural cuando le presento git a alguien es: "¿y para qué quiero git? Si ya tengo un servicio en la nube que me deja compartir archivos y tener historial de versiones". Si los problemas del inicio no te convencen, déjame darte una razón sentimental: así como tu mamá usaba esa cámara vieja para tomarte fotos de niño, y tú guardas esas fotos como recuerdo de tu infancia, git es una herramienta que te deja guardar la historia de tus proyectos. Pero es mucho más, porque (a diferencia de la cámara de tu mamá) también te deja regresar en el tiempo y cambiar cosas del pasado, dándote control total sobre tus proyectos. 
+Una pregunta natural cuando le presento git a alguien es: "¿y para qué quiero git? Si ya tengo un servicio en la nube que me deja compartir archivos y tener historial de versiones". Si los problemas del inicio no te convencen, déjame darte una razón sentimental: así como tu mamá usaba esa cámara vieja para tomarte fotos de niño, y tú guardas esas fotos como recuerdo de tu infancia, git es una herramienta que te deja guardar la historia de tus proyectos. Pero es mucho más, porque (a diferencia de la cámara de tu mamá) también te deja regresar en el tiempo y cambiar cosas del pasado, dándote control total sobre tus proyectos.
 
 Te podría dar una lista de razones más concretas, pero creo que lo mejor es mostrarte cómo funciona git en la práctica, y que tú mismo veas por qué es tan útil. Voy a usar una serie de workflows para ir presentando, poco a poco, los conceptos básicos de git y cómo usarlos. Los workflows están ordenados del más simple al más complejo y sugiero que adoptes uno (todo bien si es el primero), te vuelvas familiar con git y poco a poco vayas añadiendo capas de complejidad a tu workflow (siguiendo alguno de los que yo describo o mejor! adaptando a tus necesidades). Lo importante es que empieces a usar git a las de ya!
 
 ### Workflow 1: el solitario.
-La situación es de lo más básica: tienes una computadora personal donde guardas tu trabajo y no colaboras con nadie. Aquí hasta un servicio en la nube suena excesivo (solo lo usarías para respaldar tus archivos en línea), pero es un escenario bastante simple para empezar a explicar los conceptos de git. 
+
+La situación es de lo más básica: tienes una computadora personal donde guardas tu trabajo y no colaboras con nadie. Aquí hasta un servicio en la nube suena excesivo (solo lo usarías para respaldar tus archivos en línea), pero es un escenario bastante simple para empezar a explicar los conceptos de git.
 
 Hay dos conceptos relevantes para esta situación: el **repositorio** y el **commit**. Para casi todo, un repositorio no es más que un sinónimo de proyecto, pero una mejor forma de entenderlo es pensar en tu proyecto como un ser vivo que crece y cambia, y en el repositorio como el álbum de fotos del que hablaba antes. Cada cierto tiempo necesitas ponerle fotos a ese álbum, y esas fotos son justamente los commits. Para ser un poco más precisos, un commit es una instantánea que registra el estado de tu proyecto en un momento dado. Git no copia todos los archivos: lo que hace es llevar la cuenta de los cambios que les vas haciendo, y eso te permite regresar en el tiempo y ver cómo fue evolucionando tu proyecto.
 
@@ -57,13 +61,9 @@ Cada commit trae algo de metadatos, como la fecha y quién lo creó. Además, ca
 
 A grandes rasgos, la historia de tu proyecto se ve como una cadena de fotos, cada una apuntando a la anterior:
 
-```mermaid
-gitGraph
-    commit id: "borrador inicial"
-    commit id: "agrega introducción"
-    commit id: "corrige prueba Thm 2"
-    commit id: "pule el resumen"
-```
+<div class="tikz-figure"><!-- tikz:git-es-1 -->
+<svg xmlns="http://www.w3.org/2000/svg" width="462.818" height="63.037" viewBox="-72 -72 347.113 47.278"><g stroke="#6b7280" stroke-miterlimit="10" stroke-width=".4"><g fill="#cee0fd" stroke="#3b82f6"><path d="M7.23-63.534a8.536 8.536 0 1 0-17.071 0 8.536 8.536 0 0 0 17.072 0Zm-8.535 0"/></g><g fill="#cee0fd" stroke="#3b82f6"><path d="M92.589-63.534a8.536 8.536 0 1 0-17.072 0 8.536 8.536 0 0 0 17.072 0Zm-8.536 0"/></g><g fill="#cee0fd" stroke="#3b82f6"><path d="M177.947-63.534a8.536 8.536 0 1 0-17.071 0 8.536 8.536 0 0 0 17.071 0Zm-8.536 0"/></g><g fill="#cee0fd" stroke="#3b82f6"><path d="M263.305-63.534a8.536 8.536 0 1 0-17.071 0 8.536 8.536 0 0 0 17.071 0Zm-8.536 0"/></g><g fill="#3b82f6" stroke="#3b82f6" stroke-width=".8"><path fill="none" d="M75.317-63.534H10.942"/><path d="m8.57-63.534 3.26 1.235-1.088-1.235 1.087-1.236Z"/></g><g fill="#3b82f6" stroke="#3b82f6" stroke-width=".8"><path fill="none" d="M160.675-63.534H96.301"/><path d="m93.928-63.534 3.26 1.235-1.087-1.235 1.087-1.236Z"/></g><g fill="#3b82f6" stroke="#3b82f6" stroke-width=".8"><path fill="none" d="M246.034-63.534h-64.375"/><path d="m179.286-63.534 3.26 1.235-1.087-1.235 1.087-1.236Z"/></g><g fill="#6b7280" stroke="none" font-family="cmr9" font-size="9"><text x="-1.305" y="-74.534" transform="translate(-17.632 35.21)">b</text><text x="4.091" y="-74.534" transform="translate(-17.632 35.21)">orrador</text><text x="4.25" y="-63.534" transform="translate(-17.632 35.21)">inicial</text></g><g fill="#6b7280" stroke="none" font-family="cmr9" font-size="9"><text x="10.769" y="-74.534" transform="translate(60.167 32.834)">agrega</text><text x="-1.305" y="-63.534" transform="translate(60.167 32.834)">in</text><text x="6.146" y="-63.534" transform="translate(60.167 32.834)">tro</text><text x="18.243" y="-63.534" transform="translate(60.167 32.834)">ducci¶</text><text x="39.313" y="-63.534" transform="translate(60.167 32.834)">on</text></g><g fill="#6b7280" stroke="none" font-family="cmr9" font-size="9"><text x="-1.305" y="-74.534" transform="translate(141.647 35.21)">corrige</text><text x="29.059" y="-74.534" transform="translate(141.647 35.21)">prueba</text><text x="14.146" y="-63.534" transform="translate(141.647 35.21)">Thm</text><text x="36.757" y="-63.534" transform="translate(141.647 35.21)">2</text></g><g fill="#6b7280" stroke="none" font-family="cmr9" font-size="9"><text x="2.071" y="-74.534" transform="translate(239.334 35.21)">pule</text><text x="22.116" y="-74.534" transform="translate(239.334 35.21)">el</text><text x="-1.305" y="-63.534" transform="translate(239.334 35.21)">resumen</text></g></g></svg>
+</div>
 
 Ahora sí, vamos a lo práctico. Lo más seguro es que tu proyecto viva en una carpeta de tu computadora. Para activar git en ese proyecto, hay que inicializar un repositorio en esa carpeta. En la línea de comandos esto se hace con
 
@@ -74,182 +74,184 @@ git init
 Esto crea una carpeta oculta `.git` dentro de tu carpeta principal, con toda la configuración de git. No tienes que preocuparte por ella; git se encarga de su contenido. Eso sí, es importante que **no la toques tú mismo** (ni a través de FlyingCloud), porque podrías arruinar tu repositorio.
 
 Cada vez que quieras tomar una foto, tienes que dar dos pasos. Por ahora no te preocupes por lo que hace cada uno; piénsalos como un solo proceso que necesita dos comandos.
+
 1. Hacer **stage** de tus cambios. Esto le dice a git qué archivos quieres incluir en la foto. Se hace con
-	```bash
-	git add <lista de archivos>
-	```
-	En la práctica casi siempre quiero incluir todos los archivos nuevos y todos los modificados, así que simplemente corro
-	```bash
-	git add .
-	```
+   ```bash
+   git add <lista de archivos>
+   ```
+   En la práctica casi siempre quiero incluir todos los archivos nuevos y todos los modificados, así que simplemente corro
+   ```bash
+   git add .
+   ```
 2. Tomar la foto. Este es el paso del commit, donde de verdad tomas la foto y la guardas en el álbum. Se hace con
-	```bash
-	git commit -m "un mensaje describiendo los cambios"
-	```
-	El mensaje importa porque te deja recordar qué cambiaste en ese commit, y es útil cuando quieres regresar en el tiempo y revisar la historia del proyecto.
+   ```bash
+   git commit -m "un mensaje describiendo los cambios"
+   ```
+   El mensaje importa porque te deja recordar qué cambiaste en ese commit, y es útil cuando quieres regresar en el tiempo y revisar la historia del proyecto.
 
 Así que el ciclo básico de trabajo con git se ve así:
 
-```mermaid
-flowchart LR
-    A["Trabajas en tus archivos"] --> B["git add .<br/>(stage de los cambios)"]
-    B --> C["git commit -m '...'<br/>(tomar la foto)"]
-    C --> A
-```
+<div class="tikz-figure"><!-- tikz:git-es-2 -->
+<svg xmlns="http://www.w3.org/2000/svg" width="504.067" height="121.597" viewBox="-72 -72 378.051 91.198"><g stroke="#6b7280" stroke-miterlimit="10" stroke-width=".4"><g fill="#e8f0fe" stroke="#3b82f6"><path d="M36.328-71.32H-18.07a4 4 0 0 0-4 4v23.476a4 4 0 0 0 4 4h54.398a4 4 0 0 0 4-4V-67.32a4 4 0 0 0-4-4ZM-22.07-39.844"/><g fill="#1f2937" stroke="none" font-family="cmr9" font-size="9"><text x="9.281" y="-66.582" transform="translate(-24.086 8.625)">T</text><text x="15.191" y="-66.582" transform="translate(-24.086 8.625)">raba</text><text x="33.712" y="-66.582" transform="translate(-24.086 8.625)">jas</text><text x="47.895" y="-66.582" transform="translate(-24.086 8.625)">en</text><text x="9.129" y="-55.582" transform="translate(-24.086 8.625)">tus</text><text x="24.597" y="-55.582" transform="translate(-24.086 8.625)">arc</text><text x="36.694" y="-55.582" transform="translate(-24.086 8.625)">hiv</text><text x="49.027" y="-55.582" transform="translate(-24.086 8.625)">os</text></g></g><g fill="#e8f0fe" stroke="#3b82f6"><path d="M168.727-72.07H73.181a4 4 0 0 0-4 4v24.976a4 4 0 0 0 4 4h95.546a4 4 0 0 0 4-4V-68.07a4 4 0 0 0-4-4ZM69.181-39.094"/><g fill="#1f2937" stroke="none" font-size="9"><text x="32.527" y="-66.582" font-family="cmtt9" transform="translate(67.165 7.125)">git</text><text x="51.427" y="-66.582" font-family="cmtt9" transform="translate(67.165 7.125)">add</text><text x="70.326" y="-66.582" font-family="cmtt9" transform="translate(67.165 7.125)">.</text><text x="9.129" y="-55.582" font-family="cmr9" transform="translate(67.165 7.125)">(stage</text><text x="36.42" y="-55.582" font-family="cmr9" transform="translate(67.165 7.125)">de</text><text x="48.757" y="-55.582" font-family="cmr9" transform="translate(67.165 7.125)">los</text><text x="62.683" y="-55.582" font-family="cmr9" transform="translate(67.165 7.125)">cam</text><text x="78.87" y="-55.582" font-family="cmr9" transform="translate(67.165 7.125)">bios)</text></g></g><g fill="#e8f0fe" stroke="#3b82f6"><path d="M301.58-72.07h-96a4 4 0 0 0-4 4v24.976a4 4 0 0 0 4 4h96a4 4 0 0 0 4-4V-68.07a4 4 0 0 0-4-4Zm-100 32.976"/><g fill="#1f2937" stroke="none" font-size="9"><text x="9.129" y="-66.582" font-family="cmtt9" transform="translate(199.564 7.125)">git</text><text x="28.029" y="-66.582" font-family="cmtt9" transform="translate(199.564 7.125)">commit</text><text x="61.103" y="-66.582" font-family="cmtt9" transform="translate(199.564 7.125)">-m</text><text x="75.278" y="-66.582" font-family="cmtt9" transform="translate(199.564 7.125)">&apos;...&apos;</text><text x="23.815" y="-55.582" font-family="cmr9" transform="translate(199.564 7.125)">(tomar</text><text x="54.669" y="-55.582" font-family="cmr9" transform="translate(199.564 7.125)">la</text><text x="64.947" y="-55.582" font-family="cmr9" transform="translate(199.564 7.125)">foto)</text></g></g><g stroke-width=".8"><path fill="none" d="M40.528-55.582H65.47"/><path d="m67.842-55.582-3.26-1.235 1.087 1.235-1.087 1.236Z"/></g><g stroke-width=".8"><path fill="none" d="M172.927-55.582h24.941"/><path d="m200.241-55.582-3.26-1.235 1.087 1.235-1.087 1.236Z"/></g><g stroke-width=".8"><path fill="none" d="M253.58-38.894c0 57.422-244.451 56.672-244.451 2.762"/><path d="m9.129-38.504-1.235 3.26 1.235-1.088 1.235 1.087Z"/><g fill="#6b7280" stroke="none" font-family="cmr7" font-size="7"><text x="9.129" y="-55.582" transform="translate(110.535 67.82)">rep</text><text x="20.442" y="-55.582" transform="translate(110.535 67.82)">etir</text></g></g></g></svg>
+</div>
 
-Si soy completamente honesto, en realidad tengo un solo comando predefinido que hace los dos pasos de un jalón. 
+Si soy completamente honesto, en realidad tengo un solo comando predefinido que hace los dos pasos de un jalón.
 
 ¿Cada cuánto conviene correr estos comandos? Cada que quieras. Yo suelo hacerlo al terminar cada sesión de trabajo, muchas veces una o dos al día. Ten en cuenta que si no lo haces y simplemente apagas la computadora, no pierdes ningún cambio: si nada sale mal, tus archivos siguen ahí tal como los dejaste. Lo único que pasa es que no queda esa foto en el álbum.
 
 El workflow es muy simple:
+
 1. Trabajas.
 2. Haces `git add <lista de archivos>` para hacer stage de los cambios que quieres incluir en el commit.
 3. Haces `git commit -m "un mensaje describiendo los cambios"` para tomar la foto y guardarla en el álbum.
 
-En casi cualquier interfaz gráfica de git vas a encontrar un botón grandote que dice "commit", porque commit es la acción que más se usa. También vas a ver un botón grande de "*push*" o "*sync*", pero de eso hablamos más adelante.
+En casi cualquier interfaz gráfica de git vas a encontrar un botón grandote que dice "commit", porque commit es la acción que más se usa. También vas a ver un botón grande de "_push_" o "_sync_", pero de eso hablamos más adelante.
 
 ### Workflow 2: el solitario con dos computadoras.
+
 La situación hipotética es esta: tienes dos computadoras, por ejemplo una de escritorio y una laptop, y quieres trabajar en el mismo proyecto desde las dos. Es algo muy común; de hecho, así era como yo trabajaba cuando aprendí a usar git, en el último año del doctorado. Para la mayoría, el servicio en la nube es la solución: trabajas un rato en la laptop, FlyingCloud sube los archivos a la nube, luego te pasas al escritorio y FlyingCloud baja los archivos de la nube al escritorio. Pero, como ya dije, esta configuración tiene muchos problemas. Git ofrece una solución mucho mejor, y se llama **repositorios remotos**.
 
-Un repositorio remoto es una copia de tu álbum que vive en otro lado (muchas veces en la nube). Por cada uno de tus *repositorios locales* (los que están en tus computadoras) puedes tener todos los repositorios remotos que quieras, pero para este workflow vamos a suponer que tienes uno solo, alojado en un servicio en la nube de git como [GitHub](https://github.com/), [GitLab](https://gitlab.com/), [Bitbucket](https://bitbucket.org/), etc. Todos funcionan más o menos igual: creas una cuenta y dentro de ella creas un repositorio nuevo. No voy a entrar en el detalle de cómo hacerlo, pero suele ser muy directo. Lo más probable es que tu repositorio en línea quede vacío y con una url asociada; por ejemplo, la de este sitio es `https://github.com/anteromontonio/anteromontonio.github.io`.
+Un repositorio remoto es una copia de tu álbum que vive en otro lado (muchas veces en la nube). Por cada uno de tus _repositorios locales_ (los que están en tus computadoras) puedes tener todos los repositorios remotos que quieras, pero para este workflow vamos a suponer que tienes uno solo, alojado en un servicio en la nube de git como [GitHub](https://github.com/), [GitLab](https://gitlab.com/), [Bitbucket](https://bitbucket.org/), etc. Todos funcionan más o menos igual: creas una cuenta y dentro de ella creas un repositorio nuevo. No voy a entrar en el detalle de cómo hacerlo, pero suele ser muy directo. Lo más probable es que tu repositorio en línea quede vacío y con una url asociada; por ejemplo, la de este sitio es `https://github.com/anteromontonio/anteromontonio.github.io`.
 
-La cosa queda como un centro con dos computadoras alrededor: tus dos *repositorios locales* se comunican entre sí únicamente a través del *repositorio remoto* que está en medio.
+La cosa queda como un centro con dos computadoras alrededor: tus dos _repositorios locales_ se comunican entre sí únicamente a través del _repositorio remoto_ que está en medio.
 
-```mermaid
-flowchart TB
-    R[("origin<br/>repositorio remoto<br/>GitHub / GitLab / …")]
-    D["🖥️ Escritorio<br/>repositorio local"]
-    L["💻 Laptop<br/>repositorio local"]
-    D -- "git push" --> R
-    R -- "git pull" --> D
-    L -- "git push" --> R
-    R -- "git pull" --> L
-```
+<div class="tikz-figure"><!-- tikz:git-es-3 -->
+<svg xmlns="http://www.w3.org/2000/svg" width="431.395" height="172.614" viewBox="-72 -72 323.546 129.461"><g stroke="#6b7280" stroke-miterlimit="10" stroke-width=".4"><g fill="#dbefee" stroke="#0d9488"><path d="M167.408-72.07H61.598a4 4 0 0 0-4 4v33.881a4 4 0 0 0 4 4h105.81a4 4 0 0 0 4-4V-68.07a4 4 0 0 0-4-4ZM57.598-30.189"/><g fill="#1f2937" stroke="none" font-size="9"><text x="151.424" y="-73.129" font-family="cmbx9" transform="translate(-50.36 13)">origin</text><text x="127.674" y="-62.129" font-family="cmr9" transform="translate(-50.36 13)">rep</text><text x="140.802" y="-62.129" font-family="cmr9" transform="translate(-50.36 13)">ositorio</text><text x="173.763" y="-62.129" font-family="cmr9" transform="translate(-50.36 13)">remoto</text><text x="114.503" y="-51.129" font-family="cmr9" transform="translate(-50.36 13)">(GitHub</text><text x="151.822" y="-51.129" font-family="cmr9" transform="translate(-50.36 13)">/</text><text x="159.53" y="-51.129" font-family="cmr9" transform="translate(-50.36 13)">GitLab</text><text x="191.583" y="-51.129" font-family="cmr9" transform="translate(-50.36 13)">/</text><text x="199.291" y="-51.129" font-family="cmr9" transform="translate(-50.36 13)">.</text><text x="203.402" y="-51.129" font-family="cmr9" transform="translate(-50.36 13)">.</text><text x="207.513" y="-51.129" font-family="cmr9" transform="translate(-50.36 13)">.</text><text x="211.625" y="-51.129" font-family="cmr9" transform="translate(-50.36 13)">)</text></g></g><g fill="#e8f0fe" stroke="#3b82f6"><path d="M53.598 22.848H-18.07a4 4 0 0 0-4 4V52.99a4 4 0 0 0 4 4h71.668a4 4 0 0 0 4-4V26.848a4 4 0 0 0-4-4ZM-22.07 56.99"/><g fill="#1f2937" stroke="none" font-family="cmr9" font-size="9"><text x="127.288" y="-62.129" transform="translate(-129.162 98.749)">Escritorio</text><text x="114.503" y="-51.129" transform="translate(-129.162 98.749)">rep</text><text x="127.631" y="-51.129" transform="translate(-129.162 98.749)">ositorio</text><text x="160.592" y="-51.129" transform="translate(-129.162 98.749)">lo</text><text x="168.044" y="-51.129" transform="translate(-129.162 98.749)">cal</text></g></g><g fill="#e8f0fe" stroke="#3b82f6"><path d="M247.076 22.848h-71.668a4 4 0 0 0-4 4V52.99a4 4 0 0 0 4 4h71.668a4 4 0 0 0 4-4V26.848a4 4 0 0 0-4-4ZM171.408 56.99"/><g fill="#1f2937" stroke="none" font-family="cmr9" font-size="9"><text x="132.473" y="-62.129" transform="translate(64.316 98.749)">Laptop</text><text x="114.503" y="-51.129" transform="translate(64.316 98.749)">rep</text><text x="127.631" y="-51.129" transform="translate(64.316 98.749)">ositorio</text><text x="160.592" y="-51.129" transform="translate(64.316 98.749)">lo</text><text x="168.044" y="-51.129" transform="translate(64.316 98.749)">cal</text></g></g><g stroke-width=".8"><path fill="none" d="M17.764 22.648C23.583-9.547 33.766-28.504 54.86-48.701"/><path stroke-width=".7999520000000001" d="m56.575-50.342-3.209 1.362 1.64.14.069 1.645Z"/><text x="114.503" y="-51.129" fill="#6b7280" stroke="none" font-family="cmr7" font-size="7" transform="translate(-101.42 30.54)">push</text></g><g stroke-width=".8"><path fill="none" d="M57.397-51.13C51.58-18.934 41.395.023 20.3 20.22"/><path stroke-width=".7999520000000001" d="m18.587 21.86 3.208-1.362-1.64-.14-.069-1.645Z"/><text x="114.503" y="-51.129" fill="#6b7280" stroke="none" font-family="cmr7" font-size="7" transform="translate(-68.843 46.738)">pull</text></g><g stroke-width=".8"><path fill="none" d="M211.242 22.648c-5.819-32.195-16.003-51.152-37.097-71.349"/><path stroke-width=".7999520000000001" d="m172.431-50.342 1.5 3.147.07-1.644 1.639-.14Z"/><text x="114.503" y="-51.129" fill="#6b7280" stroke="none" font-family="cmr7" font-size="7" transform="translate(85.002 30.54)">push</text></g><g stroke-width=".8"><path fill="none" d="M171.608-51.13c5.82 32.195 16.003 51.152 37.098 71.349"/><path stroke-width=".7999520000000001" d="m210.42 21.86-1.5-3.147-.07 1.644-1.64.14Z"/><text x="114.503" y="-51.129" fill="#6b7280" stroke="none" font-family="cmr7" font-size="7" transform="translate(55.482 46.738)">pull</text></g></g></svg>
+</div>
 
 Trabajas, digamos en la oficina (escritorio), das los dos pasos para tomar la foto (stage y commit), pero ahora quieres subir esa foto a la nube para poder verla luego desde la laptop. Esa acción se llama hacer un **push**, y hace justo eso: sube tus commits locales al repositorio remoto.
 
 La primera vez tienes que decirle a git dónde está tu repositorio remoto. Eso se hace con
+
 ```bash
 git remote add origin <url de tu repositorio remoto>
 ```
+
 La palabra `origin` es solo el nombre que le das a tu repositorio remoto; puedes ponerle el que quieras, pero `origin` es el nombre estándar para el remoto principal. Después de esto, ya puedes hacer push de tus commits al remoto con
+
 ```bash
 git push origin main
 ```
+
 Esto le dice a git que suba tus commits al remoto `origin` y al branch llamado `main`. De las branches hablamos más adelante; por ahora basta con suponer que `main` es la branch por defecto donde quieres guardar tus commits. Puedes configurar git para que 'rastree' el remoto y no tener que escribir `origin main` cada vez, con
+
 ```bash
 git push -u origin main
 ```
+
 Después de esto te basta con correr `git push` y git ya sabrá a dónde subir tus commits.
 
 Ahora te pasas a la laptop y quieres tener ahí tu proyecto. Primero hay que traerlo a la laptop; esto se llama hacer un **clone**, y es la forma estándar de bajarte repositorios de la nube a tu computadora. Se hace con
+
 ```bash
 git clone <url de tu repositorio remoto>
 ```
+
 Esto crea una carpeta nueva en tu computadora, con el mismo nombre que el repositorio, y copia ahí todos los archivos del remoto. Ten en cuenta que un clone es, literalmente, copiar un repositorio (tuyo o de alguien más). A partir de ahí trabajas y, cuando estés listo, haces `git add` y `git commit` como antes, y para subir tus cambios a la nube haces `git push` como antes. Fíjate que, si clonaste un repositorio, este ya sabe a dónde hacer push (al lugar de donde lo clonaste). Si el repositorio no es tuyo, entonces GitHub (o el servicio que uses) no te dejará hacer push, o te pedirá autenticarte.
 
 Cuando regresas a la oficina, quieres traer al escritorio los cambios que hiciste en la laptop. Esa acción se llama hacer un **pull**, y hace justo eso: baja los commits del remoto a tu repositorio local. Se hace con
+
 ```bash
 git pull origin main
 ```
+
 Lo más probable es que git ya sepa de dónde hacer pull, así que te basta con `git pull` y git traerá los cambios del remoto y los integrará con tu repositorio local.
 
 Una vez que tienes un repositorio local en la laptop y otro en el escritorio, ambos configurados para rastrear el remoto (siguiendo los pasos de arriba), el workflow queda así:
 
 1. Trabajas en una de tus computadoras (digamos el escritorio), haces `git add` y `git commit` para tomar la foto del proyecto, y luego `git push` para subirla a la nube.
 2. Te pasas a la otra computadora (laptop) y haces `git pull` para traer los cambios que hiciste en el escritorio. Trabajas en la laptop, haces `git add` y `git commit` para tomar la foto, y luego `git push` para subirla a la nube.
-3. Regresas al escritorio y haces `git pull` para traer los cambios que hiciste en la laptop. 
+3. Regresas al escritorio y haces `git pull` para traer los cambios que hiciste en la laptop.
 
 Algo importante: **el push y el pull los tienes que hacer a mano**. A diferencia de FlyingCloud, git no sube tus archivos a la nube solo; lo tienes que hacer tú corriendo los comandos. Y eso en realidad es bueno, porque te da más control sobre tus archivos y evita líos de sincronización. Además te obliga a pensar en qué momento quieres subir tus cambios y en qué momento quieres bajar los de la nube, algo que importa mucho a la hora de colaborar (ya llegaremos a eso). También es importante mencionar que git funciona sin conexión. A diferencia de FlyingCloud, puedes trabajar completamente sin internet y de forma local; solo necesitas unos segundos de conexión cuando haces push o pull.
 
-Ni falta decir que, si solo trabajas en un único dispositivo, puedes adaptar fácilmente este workflow para tener el respaldo en línea que da FlyingCloud: simplemente haces push de tus commits al remoto de vez en cuando (yo lo hago al cerrar el día). Aquí vale la pena aclarar que git y los remotos son geniales para respaldar, pero no tanto para tener acceso sincronizado desde todos lados. Yo todavía conservo una carpeta de FlyingCloud para los proyectos, donde pongo archivos a los que quiero llegar desde donde sea (laptop y celular) pero de los que no me interesa llevar historia, por ejemplo PDFs o notas a mano. En efecto, git es buenísimo para llevar la historia de archivos de código (como tus `.tex`), pero no tanto para archivos binarios, es decir, los que se generan a partir de tu código (como los `.pdf`). Para LaTeX en concreto, te recomiendo herramientas como [latexdiff](https://ctan.org/pkg/latexdiff), que te deja comparar dos versiones de un archivo de LaTeX y ver las diferencias. latexdiff se lleva de maravilla con git, y quizá otro día te muestre cómo. 
+Ni falta decir que, si solo trabajas en un único dispositivo, puedes adaptar fácilmente este workflow para tener el respaldo en línea que da FlyingCloud: simplemente haces push de tus commits al remoto de vez en cuando (yo lo hago al cerrar el día). Aquí vale la pena aclarar que git y los remotos son geniales para respaldar, pero no tanto para tener acceso sincronizado desde todos lados. Yo todavía conservo una carpeta de FlyingCloud para los proyectos, donde pongo archivos a los que quiero llegar desde donde sea (laptop y celular) pero de los que no me interesa llevar historia, por ejemplo PDFs o notas a mano. En efecto, git es buenísimo para llevar la historia de archivos de código (como tus `.tex`), pero no tanto para archivos binarios, es decir, los que se generan a partir de tu código (como los `.pdf`). Para LaTeX en concreto, te recomiendo herramientas como [latexdiff](https://ctan.org/pkg/latexdiff), que te deja comparar dos versiones de un archivo de LaTeX y ver las diferencias. latexdiff se lleva de maravilla con git, y quizá otro día te muestre cómo.
 
 ### Workflow 3: el solitario distraído
-La situación es la misma que antes, pero más apegada a la realidad. Como git no sincroniza solo, se te puede pasar hacer push de tus cambios, y entonces llegas a la otra computadora y no ves lo que hiciste. Es algo muy común y, aunque es un poco molesto (por eso hay que ser disciplinado e intencional al usar git), también tiene su lado bueno. Por ejemplo, es casi imposible que tú o tus colaboradores borren un archivo por accidente, porque tendrías que borrarlo *y además* hacer push de ese borrado; y aun cuando hagas pull después, si el archivo no se borró en la otra computadora, ahí va a seguir.
 
-Si te encuentras en la situación de arriba (se te olvidó hacer push y no ves tus cambios en la otra computadora) tengo malas y buenas noticias. La mala es que vas a tener que volver a la computadora donde hiciste los cambios y subirlos a la nube. No hay forma sencilla de traer esos archivos desde la otra máquina si no los transfieres o les haces push al remoto a propósito. La buena es que no perdiste nada de trabajo: tus archivos siguen en tu computadora tal como los dejaste, y los puedes subir a la nube cuando quieras. Pero aquí surge un problema natural: ¿qué pasa si quieres trabajar en un archivo que tiene cambios sin sincronizar en la otra computadora? La respuesta son las **branches**, que es quizá la característica más poderosa de git. 
+La situación es la misma que antes, pero más apegada a la realidad. Como git no sincroniza solo, se te puede pasar hacer push de tus cambios, y entonces llegas a la otra computadora y no ves lo que hiciste. Es algo muy común y, aunque es un poco molesto (por eso hay que ser disciplinado e intencional al usar git), también tiene su lado bueno. Por ejemplo, es casi imposible que tú o tus colaboradores borren un archivo por accidente, porque tendrías que borrarlo _y además_ hacer push de ese borrado; y aun cuando hagas pull después, si el archivo no se borró en la otra computadora, ahí va a seguir.
+
+Si te encuentras en la situación de arriba (se te olvidó hacer push y no ves tus cambios en la otra computadora) tengo malas y buenas noticias. La mala es que vas a tener que volver a la computadora donde hiciste los cambios y subirlos a la nube. No hay forma sencilla de traer esos archivos desde la otra máquina si no los transfieres o les haces push al remoto a propósito. La buena es que no perdiste nada de trabajo: tus archivos siguen en tu computadora tal como los dejaste, y los puedes subir a la nube cuando quieras. Pero aquí surge un problema natural: ¿qué pasa si quieres trabajar en un archivo que tiene cambios sin sincronizar en la otra computadora? La respuesta son las **branches**, que es quizá la característica más poderosa de git.
 
 Git admite líneas de tiempo paralelas para tu proyecto. Volviendo a la analogía del álbum de fotos, es como si el espacio-tiempo se dividiera en un punto y de repente hubiera dos versiones distintas de ti, cada una con su propio álbum. Cada álbum crece de forma independiente y en el futuro puedes unirlos si quieres. Las branches son exactamente la forma en que git gestiona esas distintas líneas de tiempo. Voy a tratar de no ponerme demasiado técnico, pero puedes pensar en una branch como un marco de color que le pones a tus fotos del álbum y que se va moviendo de una foto a otra. Por defecto tienes una branch llamada `main` (o `master` en repositorios más viejos), y todos tus commits caen ahí; es decir, tienes un solo marco, y cada vez que haces un commit nuevo el marco se mueve a ese commit nuevo (normalmente desde su padre). Ahora bien, si quieres trabajar en un archivo que tiene cambios sin sincronizar en la otra computadora, puedes crear una branch nueva y trabajar en ella. Así tienes dos versiones distintas del proyecto (una en `main` y otra en la branch nueva) que luego unes cuando quieras. Una branch nueva se crea con
+
 ```bash
 git switch -c desktop
 ```
+
 Esto crea una branch nueva llamada `desktop` y se cambia a ella. Ahora tienes un marco de color nuevo, `desktop`, y puedes trabajar en tus archivos y hacer commits en esa branch, moviendo el marco cada vez (mientras que el marco de `main` se queda en el mismo commit). Debo mencionar que **las líneas de tiempo existen independientemente de las branches**; las branches son solo la forma en que git sabe sobre qué línea de tiempo seguir construyendo la historia del proyecto. En palabras más sencillas: las líneas de tiempo son todas las fotos que en algún momento tuvieron el marco de color, no los marcos en sí. Esto importa porque en git es práctica común crear y borrar branches. Cuando borras una branch no borras la historia ni la línea de tiempo; solo te deshaces del (bastante barato) marco de color.
 Volviendo a donde estábamos, cuando hagas push de tus cambios a la nube tienes que indicar la branch, por ejemplo
+
 ```bash
 git push origin desktop
 ```
+
 Luego, cuando vuelvas a la laptop y quieras traer los cambios que hiciste en el escritorio, tienes que hacer pull de esa branch, por ejemplo
+
 ```bash
 git pull origin desktop
 ```
+
 Esto trae los cambios de la branch `desktop` y los integra a tu repositorio local. Ahora en la laptop tienes dos branches (`main` y `desktop`) y te puedes mover entre ellas con
+
 ```bash
 git switch <nombre de la branch a la que te quieres cambiar>
 ```
+
 y al hacerlo obtienes la versión de los archivos que está en cada branch (¡funciona como magia!). Lo más seguro es que no quieras tener dos líneas de tiempo de tu proyecto por mucho tiempo; cuando estés listo, puedes hacer un **merge** de las branches. Hacer merge es tomar los cambios de una branch y aplicarlos a otra. Se hace con
+
 ```bash
 git switch main   # para asegurarnos de que estamos parados en main
 git merge desktop # integramos los cambios de desktop a main
 ```
+
 Esto toma los cambios de la branch `desktop` y los aplica a la branch `main`.
 
 Visualmente, crear una branch, trabajar en ella y hacerle merge de regreso se ve así:
 
-```mermaid
-gitGraph
-    commit id: "inicio común"
-    branch desktop
-    checkout desktop
-    commit id: "trabajo A"
-    checkout main
-    commit id: "trabajo B"
-    checkout desktop
-    commit id: "trabajo C"
-    checkout main
-    merge desktop id: "merge commit"
-    commit id: "seguir adelante"
-```
+<div class="tikz-figure"><!-- tikz:git-es-4 -->
+<svg xmlns="http://www.w3.org/2000/svg" width="441.039" height="131.338" viewBox="-72 -72 330.78 98.504"><g stroke="#6b7280" stroke-miterlimit="10" stroke-width=".4"><text x="35.772" y="-4.922" fill="#3b82f6" stroke="none" font-family="cmtt8" font-size="8" transform="translate(-48.334 2.444)">main</text><text x="35.772" y="-4.922" fill="#f59e0b" stroke="none" font-family="cmtt8" font-size="8" transform="translate(-54.709 -41.124)">desktop</text><g fill="#cee0fd" stroke="#3b82f6"><path d="M44.308-4.922a8.536 8.536 0 1 0-17.072 0 8.536 8.536 0 0 0 17.072 0Zm-8.536 0"/></g><g fill="#fce2b6" stroke="#f59e0b"><path d="M101.213-47.6a8.536 8.536 0 1 0-17.071 0 8.536 8.536 0 0 0 17.071 0Zm-8.536 0"/></g><g fill="#cee0fd" stroke="#3b82f6"><path d="M129.666-4.922a8.536 8.536 0 1 0-17.072 0 8.536 8.536 0 0 0 17.072 0Zm-8.536 0"/></g><g fill="#fce2b6" stroke="#f59e0b"><path d="M169.5-47.6a8.536 8.536 0 1 0-17.072 0 8.536 8.536 0 0 0 17.071 0Zm-8.536 0"/></g><g fill="#cee0fd" stroke="#3b82f6"><path d="M209.334-4.922a8.536 8.536 0 1 0-17.072 0 8.536 8.536 0 0 0 17.072 0Zm-8.536 0"/></g><g fill="#cee0fd" stroke="#3b82f6"><path d="M249.167-4.922a8.536 8.536 0 1 0-17.071 0 8.536 8.536 0 0 0 17.071 0Zm-8.536 0"/></g><g fill="#3b82f6" stroke="#3b82f6" stroke-width=".8"><path fill="none" d="M112.394-4.922H48.02"/><path d="m45.647-4.922 3.26 1.236-1.088-1.236 1.087-1.235Z"/></g><g fill="#f59e0b" stroke="#f59e0b" stroke-width=".8"><path fill="none" d="m85.689-42.36-40.12 30.09"/><path stroke-width=".799976" d="m43.671-10.847 3.35-.967-1.611-.336.128-1.64Z"/></g><g fill="#f59e0b" stroke="#f59e0b" stroke-width=".8"><path fill="none" d="M152.228-47.6h-47.303"/><path d="m102.552-47.6 3.26 1.235-1.087-1.236 1.087-1.235Z"/></g><g fill="#3b82f6" stroke="#3b82f6" stroke-width=".8"><path fill="none" d="M192.062-4.922h-58.684"/><path d="m131.005-4.922 3.26 1.236-1.087-1.236 1.087-1.235Z"/></g><g fill="#f59e0b" stroke="#f59e0b" stroke-width=".8"><path fill="none" d="m194.837-11.308-25.517-27.34"/><path stroke-width=".799984" d="m167.701-40.382 1.321 3.226.162-1.637 1.645-.049Z"/></g><g fill="#3b82f6" stroke="#3b82f6" stroke-width=".8"><path fill="none" d="M231.896-4.922h-18.85"/><path d="m210.673-4.922 3.26 1.236-1.088-1.236 1.087-1.235Z"/></g><g fill="#6b7280" stroke="none" font-family="cmr7" font-size="7"><text x="37.869" y="-12.922" transform="translate(-11.472 27.822)">inicio</text><text x="35.772" y="-4.922" transform="translate(-11.472 27.822)">com</text><text x="50.098" y="-4.922" transform="translate(-11.472 27.822)">¶</text><text x="49.883" y="-4.922" transform="translate(-11.472 27.822)">un</text></g><g fill="#6b7280" stroke="none" font-family="cmr7" font-size="7"><text x="35.772" y="-4.922" transform="translate(39.84 -59.154)">traba</text><text x="54.841" y="-4.922" transform="translate(39.84 -59.154)">jo</text><text x="64.001" y="-4.922" transform="translate(39.84 -59.154)">A</text></g><g fill="#6b7280" stroke="none" font-family="cmr7" font-size="7"><text x="35.772" y="-4.922" transform="translate(68.448 19.975)">traba</text><text x="54.841" y="-4.922" transform="translate(68.448 19.975)">jo</text><text x="64.001" y="-4.922" transform="translate(68.448 19.975)">B</text></g><g fill="#6b7280" stroke="none" font-family="cmr7" font-size="7"><text x="35.772" y="-4.922" transform="translate(108.223 -59.154)">traba</text><text x="54.841" y="-4.922" transform="translate(108.223 -59.154)">jo</text><text x="64.001" y="-4.922" transform="translate(108.223 -59.154)">C</text></g><g fill="#6b7280" stroke="none" font-family="cmr7" font-size="7"><text x="38.411" y="-12.922" transform="translate(151.991 26.128)">merge</text><text x="35.772" y="-4.922" transform="translate(151.991 26.128)">commit</text></g><g fill="#6b7280" stroke="none" font-family="cmr7" font-size="7"><text x="40.059" y="-12.922" transform="translate(190.314 27.822)">seguir</text><text x="35.772" y="-4.922" transform="translate(190.314 27.822)">adelan</text><text x="58.182" y="-4.922" transform="translate(190.314 27.822)">te</text></g></g></svg>
+</div>
 
-Si las líneas de tiempo son compatibles, es decir, si los cambios que hiciste en `desktop` *no* contradicen los que hiciste en `main`, git hará el merge automáticamente y volverás a tener una sola línea de tiempo (esto es lo más común). Pero si los cambios de `desktop` *sí* contradicen los de `main`, git no podrá hacer el merge solo y te pedirá resolver el conflicto a mano. Es un poco más latoso, pero nada del otro mundo: solo tienes que abrir los archivos en conflicto y buscar los **marcadores de conflicto**. Se ven así:
+Si las líneas de tiempo son compatibles, es decir, si los cambios que hiciste en `desktop` _no_ contradicen los que hiciste en `main`, git hará el merge automáticamente y volverás a tener una sola línea de tiempo (esto es lo más común). Pero si los cambios de `desktop` _sí_ contradicen los de `main`, git no podrá hacer el merge solo y te pedirá resolver el conflicto a mano. Es un poco más latoso, pero nada del otro mundo: solo tienes que abrir los archivos en conflicto y buscar los **marcadores de conflicto**. Se ven así:
+
 ```
-<<<<<<< HEAD # esto es, donde estás trabajando 
+<<<<<<< HEAD # esto es, donde estás trabajando
 cambios que hiciste en la branch main
 ======= # esta es la separación entre las dos branches
 cambios que hiciste en la branch desktop
 >>>>>>>
 ```
+
 Ahí decides con qué cambios te quedas. Una vez resueltos los conflictos, haces stage de los cambios y commit como siempre. Esto crea un commit nuevo en `main` con dos padres: el último commit de `main` y el último de `desktop`. A eso se le llama un merge commit, y es el punto donde se juntan los dos branches. Después de esto puedes borrar la branch `desktop` si quieres, ya que todos sus cambios están ahora en `main`. Se hace con
+
 ```bash
 git branch -d desktop
 ```
-Borrar una branch no borra archivos; solo te deshaces del marco de color. 
+
+Borrar una branch no borra archivos; solo te deshaces del marco de color.
 
 Sé que a estas alturas debes traer dolor de cabeza, así que voy a ordenar todo lo de arriba con un workflow simple, que de hecho es el que uso en casi todos mis proyectos y que suele evitar conflictos. Va así:
 
-1. Vas a tener tres branches: `desktop`, `laptop` y `main`. 
-2. Nunca vas a trabajar estando en `main`, pero esa va a ser la branch más al día; así que lo primero antes de empezar es `git switch main` (para asegurarte de estar en `main`) y luego `git pull` para traer lo más reciente. 
-3. Vas a trabajar en `desktop` (o `laptop`) según dónde estés, así que primero te mueves a esa branch: `git switch desktop`. 
+1. Vas a tener tres branches: `desktop`, `laptop` y `main`.
+2. Nunca vas a trabajar estando en `main`, pero esa va a ser la branch más al día; así que lo primero antes de empezar es `git switch main` (para asegurarte de estar en `main`) y luego `git pull` para traer lo más reciente.
+3. Vas a trabajar en `desktop` (o `laptop`) según dónde estés, así que primero te mueves a esa branch: `git switch desktop`.
 4. Ahora traes lo más reciente de `main`: `git merge main` (esto importa, porque te evita conflictos más adelante).
-5. Trabajas, haces add y commit, las veces que haga falta. 
+5. Trabajas, haces add y commit, las veces que haga falta.
 6. Al terminar, regresas a `main` y le haces merge a la sesión de trabajo de `desktop`: `git switch main` y luego `git merge desktop`.
 7. Haces push de los cambios a la nube: `git push`.
 8. Cuando vuelvas a la laptop, repites los mismos pasos pero con la branch `laptop`.
 
 Aquí está ese mismo ciclo disciplinado en forma de diagrama (lo muestro para `desktop`; del lado de la laptop es idéntico, con `laptop` en lugar de `desktop`):
 
-```mermaid
-flowchart TD
-    A["git switch main<br/>git pull"] --> B["git switch desktop"]
-    B --> C["git merge main<br/>(traer lo más reciente)"]
-    C --> D["trabajar · add · commit<br/>(las veces que haga falta)"]
-    D --> E["git switch main<br/>git merge desktop"]
-    E --> F["git push"]
-    F --> A
-```
+<div class="tikz-figure"><!-- tikz:git-es-5 -->
+<svg xmlns="http://www.w3.org/2000/svg" width="444.963" height="346.33" viewBox="-72 -72 333.722 259.747"><g stroke="#6b7280" stroke-miterlimit="10" stroke-width=".4"><g fill="#e8f0fe" stroke="#3b82f6"><path d="M121.884-72.07H-18.07a4 4 0 0 0-4 4v21.881a4 4 0 0 0 4 4h139.954a4 4 0 0 0 4-4V-68.07a4 4 0 0 0-4-4ZM-22.07-42.189"/><g fill="#1f2937" stroke="none" font-family="cmtt9" font-size="9"><text x="86.399" y="-57.129" transform="translate(-68.287 -3.75)">git</text><text x="103.656" y="-57.129" transform="translate(-68.287 -3.75)">switch</text><text x="135.089" y="-57.129" transform="translate(-68.287 -3.75)">main</text><text x="102.115" y="-46.129" transform="translate(-68.287 -3.75)">git</text><text x="119.373" y="-46.129" transform="translate(-68.287 -3.75)">pull</text></g></g><g fill="#e8f0fe" stroke="#3b82f6"><path d="M121.884-24.717H-18.07a4 4 0 0 0-4 4V-3.11a4 4 0 0 0 4 4h139.954a4 4 0 0 0 4-4v-17.607a4 4 0 0 0-4-4ZM-22.07.89"/><g fill="#1f2937" stroke="none" font-family="cmtt9" font-size="9"><text x="79.311" y="-57.129" transform="translate(-68.287 46.966)">git</text><text x="96.569" y="-57.129" transform="translate(-68.287 46.966)">switch</text><text x="128.002" y="-57.129" transform="translate(-68.287 46.966)">desktop</text></g></g><g fill="#e8f0fe" stroke="#3b82f6"><path d="M121.884 18.362H-18.07a4 4 0 0 0-4 4v22.13a4 4 0 0 0 4 4h139.954a4 4 0 0 0 4-4v-22.13a4 4 0 0 0-4-4ZM-22.07 48.492"/><g fill="#1f2937" stroke="none" font-size="9"><text x="88.761" y="-57.129" font-family="cmtt9" transform="translate(-68.287 86.682)">git</text><text x="106.019" y="-57.129" font-family="cmtt9" transform="translate(-68.287 86.682)">merge</text><text x="132.727" y="-57.129" font-family="cmtt9" transform="translate(-68.287 86.682)">main</text><text x="75.037" y="-46.129" font-family="cmr9" transform="translate(-68.287 86.682)">(traer</text><text x="101.29" y="-46.129" font-family="cmr9" transform="translate(-68.287 86.682)">lo</text><text x="111.567" y="-46.129" font-family="cmr9" transform="translate(-68.287 86.682)">m¶</text><text x="119.275" y="-46.129" font-family="cmr9" transform="translate(-68.287 86.682)">as</text><text x="130.632" y="-46.129" font-family="cmr9" transform="translate(-68.287 86.682)">recien</text><text x="154.042" y="-46.129" font-family="cmr9" transform="translate(-68.287 86.682)">te)</text></g></g><g fill="#e8f0fe" stroke="#3b82f6"><path d="M121.884 65.964H-18.07a4 4 0 0 0-4 4v22.882a4 4 0 0 0 4 4h139.954a4 4 0 0 0 4-4V69.964a4 4 0 0 0-4-4ZM-22.07 96.846"/><g fill="#1f2937" stroke="none" font-size="9"><text x="72.254" y="-57.129" font-family="cmr9" transform="translate(-68.287 135.034)">traba</text><text x="94.372" y="-57.129" font-family="cmr9" transform="translate(-68.287 135.034)">jar</text><text x="108.524" y="-57.129" font-family="cmsy9" transform="translate(-68.287 135.034)">¢</text><text x="114.176" y="-57.129" font-family="cmr9" transform="translate(-68.287 135.034)">add</text><text x="132.162" y="-57.129" font-family="cmsy9" transform="translate(-68.287 135.034)">¢</text><text x="137.814" y="-57.129" font-family="cmr9" transform="translate(-68.287 135.034)">commit</text><text x="69.006" y="-46.129" font-family="cmr9" transform="translate(-68.287 135.034)">(las</text><text x="86.529" y="-46.129" font-family="cmr9" transform="translate(-68.287 135.034)">v</text><text x="91.154" y="-46.129" font-family="cmr9" transform="translate(-68.287 135.034)">eces</text><text x="110.226" y="-46.129" font-family="cmr9" transform="translate(-68.287 135.034)">que</text><text x="127.444" y="-46.129" font-family="cmr9" transform="translate(-68.287 135.034)">haga</text><text x="149.541" y="-46.129" font-family="cmr9" transform="translate(-68.287 135.034)">falta)</text></g></g><g fill="#e8f0fe" stroke="#3b82f6"><path d="M121.884 114.317H-18.07a4 4 0 0 0-4 4v21.881a4 4 0 0 0 4 4h139.954a4 4 0 0 0 4-4v-21.88a4 4 0 0 0-4-4ZM-22.07 144.198"/><g fill="#1f2937" stroke="none" font-family="cmtt9" font-size="9"><text x="86.399" y="-57.129" transform="translate(-68.287 182.637)">git</text><text x="103.656" y="-57.129" transform="translate(-68.287 182.637)">switch</text><text x="135.089" y="-57.129" transform="translate(-68.287 182.637)">main</text><text x="81.674" y="-46.129" transform="translate(-68.287 182.637)">git</text><text x="98.931" y="-46.129" transform="translate(-68.287 182.637)">merge</text><text x="125.639" y="-46.129" transform="translate(-68.287 182.637)">desktop</text></g></g><g fill="#e8f0fe" stroke="#3b82f6"><path d="M121.884 161.67H-18.07a4 4 0 0 0-4 4v17.607a4 4 0 0 0 4 4h139.954a4 4 0 0 0 4-4V165.67a4 4 0 0 0-4-4ZM-22.07 187.277"/><g fill="#1f2937" stroke="none" font-family="cmtt9" font-size="9"><text x="102.115" y="-57.129" transform="translate(-68.287 233.353)">git</text><text x="119.373" y="-57.129" transform="translate(-68.287 233.353)">push</text></g></g><g stroke-width=".8"><path fill="none" d="M51.907-41.989v13.56"/><path d="m51.907-26.057 1.235-3.26-1.235 1.088-1.235-1.087Z"/></g><g stroke-width=".8"><path fill="none" d="M51.907 1.09v13.56"/><path d="m51.907 17.023 1.235-3.26-1.235 1.087-1.235-1.087Z"/></g><g stroke-width=".8"><path fill="none" d="M51.907 48.693v13.56"/><path d="m51.907 64.625 1.235-3.26-1.235 1.088-1.235-1.087Z"/></g><g stroke-width=".8"><path fill="none" d="M51.907 97.046v13.56"/><path d="m51.907 112.978 1.235-3.26-1.235 1.087-1.235-1.087Z"/></g><g stroke-width=".8"><path fill="none" d="M51.907 144.398v13.56"/><path d="m51.907 160.33 1.235-3.259-1.235 1.087-1.235-1.087Z"/></g><g stroke-width=".8"><path fill="none" d="M126.084 174.474c99.351 0 99.351-231.603 3.512-231.603"/><path d="m127.223-57.13 3.26 1.236-1.087-1.235 1.087-1.236Z"/><g fill="#6b7280" stroke="none" font-family="cmr7" font-size="7"><text x="51.907" y="-57.129" transform="translate(152.423 117.552)">siguien</text><text x="75.763" y="-57.129" transform="translate(152.423 117.552)">te</text><text x="85.138" y="-57.129" transform="translate(152.423 117.552)">sesi¶</text><text x="97.293" y="-57.129" transform="translate(152.423 117.552)">on</text></g></g></g></svg>
+</div>
 
 Fíjate que la branch `desktop` nunca llega a la laptop, ni viceversa; esto es a propósito y ayuda mucho a evitar conflictos, aunque no es estrictamente necesario. Puedes tener una sola branch para ambas computadoras (que es lo que yo suelo hacer, y a esa branch la llamo `dev-tero`) y le haces merge a `main` al terminar. Claro que para esto hay que volverse disciplinado.
 
 ### Workflow 4: el colaborador
+
 En el workflow anterior es casi irrelevante que quien trabaja en la laptop y quien trabaja en el escritorio sean la misma persona. Lo único que importa es asegurarse de que la branch `main` no la actualice quien está frente a la laptop mientras tú trabajas en el escritorio. Este workflow se adapta fácilmente para colaborar con otras personas, siempre que todos acuerden que `main` es la branch más al día y que nunca van a trabajar estando en `main`. Va así:
 
 1. Cada colaborador tendrá su propia branch personal, por ejemplo `tero`, `alice`, `bob`, etc., y normalmente no llegarán al remoto (aunque podrían).
@@ -262,62 +264,52 @@ En el workflow anterior es casi irrelevante que quien trabaja en la laptop y qui
 8. Una vez resueltos los conflictos (si los hubo), el colaborador regresa a `main`, hace pull de nuevo para asegurarse de tener lo más reciente, y luego le hace merge a su branch personal: `git switch main`, `git pull` y luego `git merge tero`. Este paso debería salir casi sin conflictos, porque `tero` y una versión (quizá un poco vieja) de `main` ya están de acuerdo, así que git sabrá cómo resolver el merge.
 9. Por último, el colaborador hace push de los cambios a la nube: `git push`.
 
-La idea clave es que todo el merge riesgoso pasa en tu branch *personal*, de modo que `main` se mantiene limpio y cada colaborador hace pull antes de hacer push:
+La idea clave es que todo el merge riesgoso pasa en tu branch _personal_, de modo que `main` se mantiene limpio y cada colaborador hace pull antes de hacer push:
 
-```mermaid
-flowchart TD
-    A["git switch main · git pull"] --> B["git switch tero"]
-    B --> C["git merge main"]
-    C --> D["trabajar · add · commit"]
-    D --> E["git switch main · git pull<br/>(traer el trabajo de los colaboradores)"]
-    E --> F["git switch tero · git merge main<br/>(resolver conflictos AQUÍ)"]
-    F --> G["git switch main · git pull<br/>git merge tero"]
-    G --> H["git push"]
-```
+<div class="tikz-figure"><!-- tikz:git-es-6 -->
+<svg xmlns="http://www.w3.org/2000/svg" width="302.409" height="422.263" viewBox="-72 -72 226.807 316.697"><g stroke="#6b7280" stroke-miterlimit="10" stroke-width=".4"><g fill="#f2ecfe" stroke="#8b5cf6"><path d="M150.337-72.07H-18.07a4 4 0 0 0-4 4v14.762a4 4 0 0 0 4 4h168.407a4 4 0 0 0 4-4V-68.07a4 4 0 0 0-4-4ZM-22.07-49.308"/><g fill="#1f2937" stroke="none" font-size="9"><text x="92.405" y="-60.689" font-family="cmtt9" transform="translate(-82.513 1.75)">git</text><text x="109.663" y="-60.689" font-family="cmtt9" transform="translate(-82.513 1.75)">switch</text><text x="141.095" y="-60.689" font-family="cmtt9" transform="translate(-82.513 1.75)">main</text><text x="163.078" y="-60.689" font-family="cmsy9" transform="translate(-82.513 1.75)">¢</text><text x="168.73" y="-60.689" font-family="cmtt9" transform="translate(-82.513 1.75)">git</text><text x="185.988" y="-60.689" font-family="cmtt9" transform="translate(-82.513 1.75)">pull</text></g></g><g fill="#f2ecfe" stroke="#8b5cf6"><path d="M150.337-33.259H-18.07a4 4 0 0 0-4 4v14.762a4 4 0 0 0 4 4h168.407a4 4 0 0 0 4-4v-14.762a4 4 0 0 0-4-4ZM-22.07-10.497"/><g fill="#1f2937" stroke="none" font-family="cmtt9" font-size="9"><text x="114.851" y="-60.689" transform="translate(-82.513 40.561)">git</text><text x="132.109" y="-60.689" transform="translate(-82.513 40.561)">switch</text><text x="163.542" y="-60.689" transform="translate(-82.513 40.561)">tero</text></g></g><g fill="#f2ecfe" stroke="#8b5cf6"><path d="M150.337 5.552H-18.07a4 4 0 0 0-4 4v14.763a4 4 0 0 0 4 4h168.407a4 4 0 0 0 4-4V9.552a4 4 0 0 0-4-4ZM-22.07 28.315"/><g fill="#1f2937" stroke="none" font-family="cmtt9" font-size="9"><text x="117.214" y="-60.689" transform="translate(-82.513 79.372)">git</text><text x="134.472" y="-60.689" transform="translate(-82.513 79.372)">merge</text><text x="161.179" y="-60.689" transform="translate(-82.513 79.372)">main</text></g></g><g fill="#f2ecfe" stroke="#8b5cf6"><path d="M150.337 44.364H-18.07a4 4 0 0 0-4 4v14.762a4 4 0 0 0 4 4h168.407a4 4 0 0 0 4-4V48.364a4 4 0 0 0-4-4ZM-22.07 67.126"/><g fill="#1f2937" stroke="none" font-size="9"><text x="100.706" y="-60.689" font-family="cmr9" transform="translate(-82.513 118.684)">traba</text><text x="122.824" y="-60.689" font-family="cmr9" transform="translate(-82.513 118.684)">jar</text><text x="136.977" y="-60.689" font-family="cmsy9" transform="translate(-82.513 118.684)">¢</text><text x="142.629" y="-60.689" font-family="cmr9" transform="translate(-82.513 118.684)">add</text><text x="160.615" y="-60.689" font-family="cmsy9" transform="translate(-82.513 118.684)">¢</text><text x="166.267" y="-60.689" font-family="cmr9" transform="translate(-82.513 118.684)">commit</text></g></g><g fill="#f2ecfe" stroke="#8b5cf6"><path d="M150.337 83.175H-18.07a4 4 0 0 0-4 4v22.13a4 4 0 0 0 4 4h168.407a4 4 0 0 0 4-4v-22.13a4 4 0 0 0-4-4Zm-172.407 30.13"/><g fill="#1f2937" stroke="none" font-size="9"><text x="92.405" y="-60.689" font-family="cmtt9" transform="translate(-82.513 155.054)">git</text><text x="109.663" y="-60.689" font-family="cmtt9" transform="translate(-82.513 155.054)">switch</text><text x="141.095" y="-60.689" font-family="cmtt9" transform="translate(-82.513 155.054)">main</text><text x="163.078" y="-60.689" font-family="cmsy9" transform="translate(-82.513 155.054)">¢</text><text x="168.73" y="-60.689" font-family="cmtt9" transform="translate(-82.513 155.054)">git</text><text x="185.988" y="-60.689" font-family="cmtt9" transform="translate(-82.513 155.054)">pull</text><text x="71.711" y="-49.689" font-family="cmr9" transform="translate(-82.513 155.054)">(traer</text><text x="97.964" y="-49.689" font-family="cmr9" transform="translate(-82.513 155.054)">el</text><text x="107.731" y="-49.689" font-family="cmr9" transform="translate(-82.513 155.054)">traba</text><text x="129.849" y="-49.689" font-family="cmr9" transform="translate(-82.513 155.054)">jo</text><text x="140.383" y="-49.689" font-family="cmr9" transform="translate(-82.513 155.054)">de</text><text x="152.72" y="-49.689" font-family="cmr9" transform="translate(-82.513 155.054)">los</text><text x="166.646" y="-49.689" font-family="cmr9" transform="translate(-82.513 155.054)">colab</text><text x="187.972" y="-49.689" font-family="cmr9" transform="translate(-82.513 155.054)">oradores)</text></g></g><g fill="#f2ecfe" stroke="#8b5cf6"><path d="M150.337 129.355H-18.07a4 4 0 0 0-4 4v22.13a4 4 0 0 0 4 4h168.407a4 4 0 0 0 4-4v-22.13a4 4 0 0 0-4-4Zm-172.407 30.13"/><g fill="#1f2937" stroke="none" font-size="9"><text x="79.051" y="-60.689" font-family="cmtt9" transform="translate(-82.513 201.234)">git</text><text x="96.309" y="-60.689" font-family="cmtt9" transform="translate(-82.513 201.234)">switch</text><text x="127.741" y="-60.689" font-family="cmtt9" transform="translate(-82.513 201.234)">tero</text><text x="149.724" y="-60.689" font-family="cmsy9" transform="translate(-82.513 201.234)">¢</text><text x="155.377" y="-60.689" font-family="cmtt9" transform="translate(-82.513 201.234)">git</text><text x="172.634" y="-60.689" font-family="cmtt9" transform="translate(-82.513 201.234)">merge</text><text x="199.342" y="-60.689" font-family="cmtt9" transform="translate(-82.513 201.234)">main</text><text x="95.643" y="-49.689" font-family="cmr9" transform="translate(-82.513 201.234)">(resolv</text><text x="122.441" y="-49.689" font-family="cmr9" transform="translate(-82.513 201.234)">er</text><text x="133.256" y="-49.689" font-family="cmr9" transform="translate(-82.513 201.234)">con°ictos</text><text x="173.904" y="-49.689" font-family="cmr9" transform="translate(-82.513 201.234)">A</text><text x="180.583" y="-49.689" font-family="cmr9" transform="translate(-82.513 201.234)">QU</text><text x="194.071" y="-51.964" font-family="cmr9" transform="translate(-82.513 201.234)">¶</text><text x="194.714" y="-49.689" font-family="cmr9" transform="translate(-82.513 201.234)">I)</text></g></g><g fill="#f2ecfe" stroke="#8b5cf6"><path d="M150.337 175.535H-18.07a4 4 0 0 0-4 4v21.88a4 4 0 0 0 4 4h168.407a4 4 0 0 0 4-4v-21.88a4 4 0 0 0-4-4Zm-172.407 29.88"/><g fill="#1f2937" stroke="none" font-size="9"><text x="92.405" y="-60.689" font-family="cmtt9" transform="translate(-82.513 247.414)">git</text><text x="109.663" y="-60.689" font-family="cmtt9" transform="translate(-82.513 247.414)">switch</text><text x="141.095" y="-60.689" font-family="cmtt9" transform="translate(-82.513 247.414)">main</text><text x="163.078" y="-60.689" font-family="cmsy9" transform="translate(-82.513 247.414)">¢</text><text x="168.73" y="-60.689" font-family="cmtt9" transform="translate(-82.513 247.414)">git</text><text x="185.988" y="-60.689" font-family="cmtt9" transform="translate(-82.513 247.414)">pull</text><text x="117.214" y="-49.689" font-family="cmtt9" transform="translate(-82.513 247.414)">git</text><text x="134.472" y="-49.689" font-family="cmtt9" transform="translate(-82.513 247.414)">merge</text><text x="161.179" y="-49.689" font-family="cmtt9" transform="translate(-82.513 247.414)">tero</text></g></g><g fill="#f2ecfe" stroke="#8b5cf6"><path d="M150.337 221.465H-18.07a4 4 0 0 0-4 4v14.762a4 4 0 0 0 4 4h168.407a4 4 0 0 0 4-4v-14.762a4 4 0 0 0-4-4ZM-22.07 244.227"/><g fill="#1f2937" stroke="none" font-family="cmtt9" font-size="9"><text x="130.568" y="-60.689" transform="translate(-82.513 295.285)">git</text><text x="147.825" y="-60.689" transform="translate(-82.513 295.285)">push</text></g></g><g stroke-width=".8"><path fill="none" d="M66.133-49.108v12.137"/><path d="m66.133-34.598 1.236-3.26-1.236 1.087-1.235-1.087Z"/></g><g stroke-width=".8"><path fill="none" d="M66.133-10.297V1.841"/><path d="M66.133 4.213 67.37.953l-1.236 1.088L64.898.954Z"/></g><g stroke-width=".8"><path fill="none" d="M66.133 28.515v12.137"/><path d="m66.133 43.024 1.236-3.26-1.236 1.088-1.235-1.087Z"/></g><g stroke-width=".8"><path fill="none" d="M66.133 67.326v12.137"/><path d="m66.133 81.836 1.236-3.26-1.236 1.087-1.235-1.087Z"/></g><g stroke-width=".8"><path fill="none" d="M66.133 113.506v12.137"/><path d="m66.133 128.016 1.236-3.26-1.236 1.087-1.235-1.087Z"/></g><g stroke-width=".8"><path fill="none" d="M66.133 159.686v12.137"/><path d="m66.133 174.196 1.236-3.26-1.236 1.087-1.235-1.087Z"/></g><g stroke-width=".8"><path fill="none" d="M66.133 205.616v12.137"/><path d="m66.133 220.126 1.236-3.26-1.236 1.087-1.235-1.087Z"/></g></g></svg>
+</div>
 
 Cómo le das acceso al remoto a tus colaboradores depende del servicio en la nube de git que uses, y muchas veces **no basta con pasarles el enlace**. Las [instrucciones de GitHub](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/repository-access-and-collaboration/inviting-collaborators-to-a-personal-repository) son bastante directas, pero requieren que tus colaboradores tengan cuenta de GitHub. Si eres colaborador mío, ojalá esta entrada te anime a crearte una cuenta de GitHub y aprender a usar git; y si no, ojalá te sirva para animar a tus colaboradores.
 
 ### Workflow 5: el dictador
+
 Este workflow es un poco más enredado, pero es muy útil cuando tienes muchos colaboradores y, la verdad, es la forma estándar en que colaboran los proyectos gigantescos (piensa en los desarrolladores del kernel de Linux). La idea, en concepto, no es muy complicada, y la incluyo nada más por completitud.
 
-Hay un repositorio central, mantenido y propiedad de *El Dictador*, muchas veces alojado en un servicio en la nube de git. Digamos que quieres colaborar en ese proyecto; lo haces siguiendo estos pasos:
-1. Haces un **fork** del repositorio. Esto quiere decir que creas una copia que ahora es tuya: la puedes modificar, romper y hacer con ella lo que quieras, y no afecta al repositorio original. El primer paso para armar este sitio fue hacer un fork del [repositorio multi-idioma de al-folio](https://github.com/george-gca/multi-language-al-folio). 
+Hay un repositorio central, mantenido y propiedad de _El Dictador_, muchas veces alojado en un servicio en la nube de git. Digamos que quieres colaborar en ese proyecto; lo haces siguiendo estos pasos:
+
+1. Haces un **fork** del repositorio. Esto quiere decir que creas una copia que ahora es tuya: la puedes modificar, romper y hacer con ella lo que quieras, y no afecta al repositorio original. El primer paso para armar este sitio fue hacer un fork del [repositorio multi-idioma de al-folio](https://github.com/george-gca/multi-language-al-folio).
 2. Trabajas en ese repositorio —desde casa, desde la laptop, como quieras— pero manteniendo una branch personal (distinta de `main`) como tu branch más al día. Es decir, tendrás una branch, digamos `mi-branch-personal`, que hará el papel de `main` de los workflows anteriores (y puedes tener varios otros branches si quieres).
-3. Cuando tengas cambios que quieras que El Dictador vea y, ojalá, incluya en el proyecto principal, abres un [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request). O sea, le avisas a El Dictador que hiciste un fork de su repositorio, que trabajaste en él, y que quieres que tome los cambios que hiciste en tu fork. 
+3. Cuando tengas cambios que quieras que El Dictador vea y, ojalá, incluya en el proyecto principal, abres un [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request). O sea, le avisas a El Dictador que hiciste un fork de su repositorio, que trabajaste en él, y que quieres que tome los cambios que hiciste en tu fork.
 4. Como git lleva la cuenta de los cambios, El Dictador podrá revisar lo que hiciste y decidir si lo incorpora al repositorio principal y cómo. Si decide incorporarlo, le hace merge a tu pull request y los cambios de tu fork quedan integrados en el repositorio principal. Si decide que no, simplemente cierra el pull request y no pasa nada.
 5. Si lo lograste, ya puedes actualizar tu fork (por si quieres seguir trabajando en ese repositorio) así:
-	1. Agregas su remoto como un remoto de tu copia local:
-		```bash
-		git remote add upstream https://github.com/ORIGINAL_OWNER/REPO.git
-		```
-	2. Haces **fetch** de los cambios de su repositorio, es decir, te los traes a tu computadora:
-		```bash
-		git fetch upstream
-		```
-	3. Le haces merge a los cambios de su repositorio en tu repositorio local:
-		```bash
-		git switch main
-		git merge upstream/main
-		```
-	4. Haces push de los cambios a tu fork:
-		```bash
-		git push origin main
-		```
+   1. Agregas su remoto como un remoto de tu copia local:
+      ```bash
+      git remote add upstream https://github.com/ORIGINAL_OWNER/REPO.git
+      ```
+   2. Haces **fetch** de los cambios de su repositorio, es decir, te los traes a tu computadora:
+      ```bash
+      git fetch upstream
+      ```
+   3. Le haces merge a los cambios de su repositorio en tu repositorio local:
+      ```bash
+      git switch main
+      git merge upstream/main
+      ```
+   4. Haces push de los cambios a tu fork:
+      ```bash
+      git push origin main
+      ```
 
 Todo el ciclo de hacer fork y abrir pull requests se ve así:
 
-```mermaid
-flowchart LR
-    U[("upstream<br/>repo de El Dictador")] -- "1 · fork" --> F[("origin<br/>tu fork")]
-    F -- "clone" --> L["💻 tu computadora<br/>mi-branch-personal"]
-    L -- "2 · push" --> F
-    F -- "3 · pull request" --> U
-    U -. "4 · merge (El Dictador decide)" .-> U
-    U -- "5 · git fetch upstream<br/>git merge upstream/main" --> L
-```
+<div class="tikz-figure"><!-- tikz:git-es-7 -->
+<svg xmlns="http://www.w3.org/2000/svg" width="572.297" height="195.227" viewBox="-72 -72 429.223 146.42"><g stroke="#6b7280" stroke-miterlimit="10" stroke-width=".4"><g fill="#dbefee" stroke="#0d9488"><path d="M65.781-26.324H-18.07a4 4 0 0 0-4 4V6.664a4 4 0 0 0 4 4H65.78a4 4 0 0 0 4-4v-28.988a4 4 0 0 0-4-4ZM-22.07 10.664"/><g fill="#1f2937" stroke="none" font-size="9"><text x="42.337" y="-18.83" font-family="cmbx9" transform="translate(-40.235 7.482)">upstream</text><text x="23.856" y="-7.83" font-family="cmr9" transform="translate(-40.235 7.482)">rep</text><text x="36.984" y="-7.83" font-family="cmr9" transform="translate(-40.235 7.482)">o</text><text x="44.692" y="-7.83" font-family="cmr9" transform="translate(-40.235 7.482)">de</text><text x="57.029" y="-7.83" font-family="cmr9" transform="translate(-40.235 7.482)">El</text><text x="68.976" y="-7.83" font-family="cmr9" transform="translate(-40.235 7.482)">Dictador</text></g></g><g fill="#dbefee" stroke="#0d9488"><path d="M204.798-26.324H127.44a4 4 0 0 0-4 4V6.664a4 4 0 0 0 4 4h77.358a4 4 0 0 0 4-4v-28.988a4 4 0 0 0-4-4ZM123.44 10.664"/><g fill="#1f2937" stroke="none" font-size="9"><text x="24.303" y="-18.83" font-family="cmbx9" transform="translate(128.378 8.625)">origin</text><text x="23.856" y="-7.83" font-family="cmr9" transform="translate(128.378 8.625)">tu</text><text x="35.675" y="-7.83" font-family="cmr9" transform="translate(128.378 8.625)">fork</text></g></g><g fill="#e8f0fe" stroke="#3b82f6"><path d="M352.753-26.324h-88.74a4 4 0 0 0-4 4V6.664a4 4 0 0 0 4 4h88.74a4 4 0 0 0 4-4v-28.988a4 4 0 0 0-4-4Zm-92.74 36.988"/><g fill="#1f2937" stroke="none" font-size="9"><text x="33.995" y="-18.83" font-family="cmr9" transform="translate(242.003 7.625)">tu</text><text x="45.814" y="-18.83" font-family="cmr9" transform="translate(242.003 7.625)">computadora</text><text x="23.856" y="-7.83" font-family="cmtt9" transform="translate(242.003 7.625)">mi-branch-personal</text></g></g><g stroke-width=".8"><path fill="none" d="M69.981-26.434c19.518-7.333 34.126-6.974 50.037-.086"/><path stroke-width=".7999520000000001" d="m122.195-25.577-2.5-2.429.506 1.566-1.488.701Z"/><g fill="#6b7280" stroke="none" font-size="7"><text x="23.856" y="-7.83" font-family="cmr7" transform="translate(60.128 -27.538)">1</text><text x="30.536" y="-7.83" font-family="cmsy7" transform="translate(60.128 -27.538)">¢</text><text x="35.606" y="-7.83" font-family="cmr7" transform="translate(60.128 -27.538)">fork</text></g></g><g stroke-width=".8"><path fill="none" d="M208.998-23.43c18.401-7.558 31.86-8.108 47.47-3.136"/><path stroke-width=".799968" d="m258.728-25.846-2.73-2.166.66 1.507-1.41.847Z"/><text x="23.856" y="-7.83" fill="#6b7280" stroke="none" font-family="cmr7" font-size="7" transform="translate(201.454 -25.466)">clone</text></g><g stroke-width=".8"><path fill="none" d="M259.813 9.84c-18.954 6.037-32.414 5.488-47.566-.737"/><path stroke-width=".79996" d="m210.052 8.202 2.546 2.381-.536-1.556 1.474-.73Z"/><g fill="#6b7280" stroke="none" font-size="7"><text x="23.856" y="-7.83" font-family="cmr7" transform="translate(196.259 30.327)">2</text><text x="30.536" y="-7.83" font-family="cmsy7" transform="translate(196.259 30.327)">¢</text><text x="35.606" y="-7.83" font-family="cmr7" transform="translate(196.259 30.327)">push</text></g></g><g stroke-width=".8"><path fill="none" d="M123.24 9.464C104.107 17.747 89.5 18.107 73.27 12.01"/><path stroke-width=".79996" d="m71.048 11.175 2.616 2.302-.583-1.538 1.452-.775Z"/><g fill="#6b7280" stroke="none" font-size="7"><text x="23.856" y="-7.83" font-family="cmr7" transform="translate(46.423 32.4)">3</text><text x="30.536" y="-7.83" font-family="cmsy7" transform="translate(46.423 32.4)">¢</text><text x="35.606" y="-7.83" font-family="cmr7" transform="translate(46.423 32.4)">pull</text><text x="51.661" y="-7.83" font-family="cmr7" transform="translate(46.423 32.4)">request</text></g></g><g stroke-dasharray="3.0,3.0" stroke-width=".8"><path fill="none" d="M13.069-26.524c-25.262-43.744 46.835-43.744 23.33-3.042"/><path stroke-dasharray="none" stroke-width=".799976" d="m35.212-27.51 2.7-2.206-1.613.324-.527-1.56Z"/><g fill="#6b7280" stroke="none" font-size="7"><text x="23.856" y="-7.83" font-family="cmr7" transform="translate(-16.27 -56.596)">4</text><text x="30.536" y="-7.83" font-family="cmsy7" transform="translate(-16.27 -56.596)">¢</text><text x="35.606" y="-7.83" font-family="cmr7" transform="translate(-16.27 -56.596)">merge</text></g></g><g stroke-width=".8"><path fill="none" d="M23.856 10.864c96.092 55.479 188.435 55.479 281.486 1.756"/><path stroke-width=".799984" d="m307.396 11.434-3.44.56 1.559.526-.324 1.613Z"/><g fill="#6b7280" stroke="none" font-size="7"><text x="30.529" y="-15.83" font-family="cmr7" transform="translate(103.728 76.897)">5</text><text x="37.21" y="-15.83" font-family="cmsy7" transform="translate(103.728 76.897)">¢</text><text x="42.279" y="-15.83" font-family="cmr7" transform="translate(103.728 76.897)">fetc</text><text x="54.779" y="-15.83" font-family="cmr7" transform="translate(103.728 76.897)">h</text><text x="61.891" y="-15.83" font-family="cmr7" transform="translate(103.728 76.897)">upstream</text><text x="23.856" y="-7.83" font-family="cmr7" transform="translate(103.728 76.897)">merge</text><text x="47.342" y="-7.83" font-family="cmr7" transform="translate(103.728 76.897)">upstream/main</text></g></g></g></svg>
+</div>
 
 ### Comentarios finales y lecturas recomendadas
-Ojalá esta entrada vuelva a git algo menos aterrador de lo que parece. Créeme: si ya escribes artículos o documentos en LaTeX, estás haciendo algo mucho más difícil que usar git. Por favor, no esperes aprender a usarlo en un día; es una herramienta compleja y toma tiempo agarrarle el modo, pero te prometo que vale la pena. Te sugiero que repases los workflows, elijas uno que se ajuste a lo que necesitas, y te quedes con él hasta que se te vuelva automático. Más adelante ya te pasarás a uno más complejo. 
+
+Ojalá esta entrada vuelva a git algo menos aterrador de lo que parece. Créeme: si ya escribes artículos o documentos en LaTeX, estás haciendo algo mucho más difícil que usar git. Por favor, no esperes aprender a usarlo en un día; es una herramienta compleja y toma tiempo agarrarle el modo, pero te prometo que vale la pena. Te sugiero que repases los workflows, elijas uno que se ajuste a lo que necesitas, y te quedes con él hasta que se te vuelva automático. Más adelante ya te pasarás a uno más complejo.
 
 Si quieres profundizar en cómo usar git, te recomiendo lo siguiente:
 

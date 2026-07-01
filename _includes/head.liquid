@@ -185,5 +185,6 @@
 {% endif %}
 
 {% if page.tikzjax %}
-  <link defer rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+  <!-- Computer Modern fonts for pre-rendered TikZ figures (self-hosted) -->
+  <link rel="stylesheet" type="text/css" href="{{ '/assets/css/tikz.css' | relative_url | bust_file_cache }}">
 {% endif %}

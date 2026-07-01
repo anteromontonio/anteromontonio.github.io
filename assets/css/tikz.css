@@ -1,0 +1,53 @@
+/*
+ * Computer Modern fonts for pre-rendered TikZ figures.
+ * Only the faces actually used by the figures are included.
+ * Fonts self-hosted under /assets/fonts/bakoma/ (from the TikZJax bakoma set).
+ * Regenerate figures with: npm run render-tikz
+ */
+@font-face {
+  font-family: cmbx9;
+  src: url("../fonts/bakoma/cmbx9.ttf");
+  font-display: block;
+}
+@font-face {
+  font-family: cmr7;
+  src: url("../fonts/bakoma/cmr7.ttf");
+  font-display: block;
+}
+@font-face {
+  font-family: cmr9;
+  src: url("../fonts/bakoma/cmr9.ttf");
+  font-display: block;
+}
+@font-face {
+  font-family: cmsy7;
+  src: url("../fonts/bakoma/cmsy7.ttf");
+  font-display: block;
+}
+@font-face {
+  font-family: cmsy9;
+  src: url("../fonts/bakoma/cmsy9.ttf");
+  font-display: block;
+}
+@font-face {
+  font-family: cmtt8;
+  src: url("../fonts/bakoma/cmtt8.ttf");
+  font-display: block;
+}
+@font-face {
+  font-family: cmtt9;
+  src: url("../fonts/bakoma/cmtt9.ttf");
+  font-display: block;
+}
+
+/* Center the pre-rendered figures; let very wide ones scroll on small screens. */
+.tikz-figure {
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+.tikz-figure svg {
+  max-width: 100%;
+  height: auto;
+}

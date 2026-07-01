@@ -1,0 +1,20 @@
+\usetikzlibrary{arrows.meta,positioning,calc}
+\definecolor{ink}{HTML}{6B7280}
+\definecolor{boxink}{HTML}{1F2937}
+\definecolor{acc}{HTML}{3B82F6}
+\definecolor{acc2}{HTML}{F59E0B}
+\definecolor{acc3}{HTML}{0D9488}
+\definecolor{acc4}{HTML}{8B5CF6}
+\begin{tikzpicture}[font=\small,text=ink,draw=ink,>={Stealth[length=2mm]}, node distance=5.5mm,
+  box/.style={rounded corners, draw=acc4, fill=acc4!12, text=boxink, align=center, text width=58mm, minimum height=8mm, inner sep=2mm}]
+  \node[box] (a) {\texttt{git switch main} $\cdot$ \texttt{git pull}};
+  \node[box, below=of a] (b) {\texttt{git switch tero}};
+  \node[box, below=of b] (c) {\texttt{git merge main}};
+  \node[box, below=of c] (d) {trabajar $\cdot$ add $\cdot$ commit};
+  \node[box, below=of d] (e) {\texttt{git switch main} $\cdot$ \texttt{git pull}\\(traer el trabajo de los colaboradores)};
+  \node[box, below=of e] (f) {\texttt{git switch tero} $\cdot$ \texttt{git merge main}\\(resolver conflictos AQU\'I)};
+  \node[box, below=of f] (g) {\texttt{git switch main} $\cdot$ \texttt{git pull}\\\texttt{git merge tero}};
+  \node[box, below=of g] (h) {\texttt{git push}};
+  \draw[->,thick] (a)--(b);\draw[->,thick] (b)--(c);\draw[->,thick] (c)--(d);\draw[->,thick] (d)--(e);
+  \draw[->,thick] (e)--(f);\draw[->,thick] (f)--(g);\draw[->,thick] (g)--(h);
+\end{tikzpicture}

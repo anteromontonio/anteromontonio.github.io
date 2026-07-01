@@ -9,24 +9,25 @@ tags:
 language: en-gb
 toc:
   sidebar: left
-mermaid:
-  enabled: true
-  zoomable: false
+tikzjax: true
 giscus_comments: true
 last_updated: 2026-06-10
 ---
+
 Si prefieres leer esta entrada en español, da clic [aquí](https://anteromontonio.github.io/blog/2026/git-para-matematicos).
 
-### Motivation 
+### Motivation
 
 For the purpose of this blogpost I am going to assume that you, beloved reader, write papers collaboratively with other people. More precisely, I am going to assume that you do it using LaTeX. If you don't, you might still get something out of this blogpost, but it is mostly intended for people who somehow write documents using the following set up:
+
 - You have a cloud service (e.g., Dropbox, Google Drive, OneDrive, iCloud) installed on your computer that you use to save, sync and share your files. For the purpose of this post, I am going to talk about the one that I personally use: FlyingCloud.[^1]
 - You write your papers in LaTeX, and you have a folder in your cloud service that you share with your collaborators.
 - You edit your files locally, using programs like Texmaker, TeXstudio, etc. If you use Overleaf, I still think that you should learn git and use overleaf as a remote, more on this [in the overleaf documentation](https://docs.overleaf.com/integrations-and-add-ons/git-integration-and-github-synchronization/git-integration).
 
 If you fit the description above, most likely you have faced (at least) one of the following situations:
+
 - You recognise the following names: `paper.tex`, `paper_1.tex`, `paper_1_afterRevisionsByTero.tex`, `paper_final.tex`, `paper_final_final.tex`, etc.
-- You are constantly creating backups of your files just in case something goes wrong. 
+- You are constantly creating backups of your files just in case something goes wrong.
 - You are working on a file and your colleague is also working on the same file at the same time, resulting in a conflict that you have to solve manually. This happens a lot with FlyingCloud.
 - One of your colleagues (or even yourself) accidentally deletes a file, and you have to recover it from the trash of your cloud service or pray to your favourite IT god that your cloud service has a backup of the file.
 - You have been updating a file but your colleague does not see the changes because of a syncing issue with FlyingCloud.
@@ -37,19 +38,22 @@ All of these are a consequence of essentially two problems: **multi-user synchro
 [^1]: This is a hypothetical cloud service that I invented because this blogpost is not meant to be a rant against anyone in particular; all of them suffer from the problems discussed here.
 
 ### Preliminaries
+
 **Disclaimers:**
+
 1. This is not a tutorial for git. I am not going to explain how to use git in detail but rather walk you through the main concepts, trying to demystify it and remove as much noise as possible. The trade-off of this is that I might not be as precise as I could be, so, experienced git users, forgive me. If you want to go deeper into git, I have a section with further reading at the end of this post.
 2. This blogpost is written using command line commands, but this is not necessary to use git. You can use different graphical environments to interact with git, and I will touch on them at the end. The important part of this post is that you focus on the ideas and concepts needed to navigate git, not on the specific commands.
-3. I will assume that you have git installed. If you use Linux or macOS, you probably already have it; if you use Windows, you can install it from [here](https://git-scm.com/download/win). 
+3. I will assume that you have git installed. If you use Linux or macOS, you probably already have it; if you use Windows, you can install it from [here](https://git-scm.com/download/win).
 
 In short, git is a version control system created by Linus Torvalds (the guy who created Linux) in 2005. It is not the only version control system, but it is definitely the most popular, and it is almost a standard in the software development world. You don't need to be coding heavily or developing software to benefit from git: from git's perspective, writing papers in LaTeX is not so different from writing software in a very complicated programming language.
 
-A natural question when I introduce git to people is: "why do I need git? I already have a cloud service that allows me to share files and have version history". If the problems described at the beginning of this blogpost are not enough reasons for you, let me give you an emotional one: just the same way your mom used that old camera to take pictures of you when you were a kid, and you keep those pictures as a memory of your childhood, git is a tool that allows you to keep a history of your projects. But it is much more, because (unlike your mom's camera) it also allows you to go back in time and change things in the past, giving you full control over your projects. 
+A natural question when I introduce git to people is: "why do I need git? I already have a cloud service that allows me to share files and have version history". If the problems described at the beginning of this blogpost are not enough reasons for you, let me give you an emotional one: just the same way your mom used that old camera to take pictures of you when you were a kid, and you keep those pictures as a memory of your childhood, git is a tool that allows you to keep a history of your projects. But it is much more, because (unlike your mom's camera) it also allows you to go back in time and change things in the past, giving you full control over your projects.
 
-I could give you several reasons why git is better than a cloud service, but I think that the best way to understand it is to see how it works in practice and let you discover them on your own. So, I will use a series of workflows to slowly introduce the basic concepts of git and how to use them. The workflows are ordered from the simplest to the more complex. I suggest you start using one where you feel comfortable (nothing wrong if it's the first one), you get familiar using git and slowly you add layers of complexity, either by following to the next one I propose or even better! by creating your own workflows that fit your specific needs and preferences. The important thing is that you start using git  as soon as possible.
+I could give you several reasons why git is better than a cloud service, but I think that the best way to understand it is to see how it works in practice and let you discover them on your own. So, I will use a series of workflows to slowly introduce the basic concepts of git and how to use them. The workflows are ordered from the simplest to the more complex. I suggest you start using one where you feel comfortable (nothing wrong if it's the first one), you get familiar using git and slowly you add layers of complexity, either by following to the next one I propose or even better! by creating your own workflows that fit your specific needs and preferences. The important thing is that you start using git as soon as possible.
 
 ### Workflow 1: the loner.
-The setup is very basic: you have a personal computer where you keep your work and you do not collaborate with anyone. In this case, even a cloud service sounds like overkill (because you only use it to back up your files online). However, the setup is simple enough to start explaining git concepts. 
+
+The setup is very basic: you have a personal computer where you keep your work and you do not collaborate with anyone. In this case, even a cloud service sounds like overkill (because you only use it to back up your files online). However, the setup is simple enough to start explaining git concepts.
 
 There are two relevant concepts for this set up: **repository** and **commit**. For most purposes a repository is just a synonym for project, but a better way of understanding it is to think of your project as a living entity that grows and changes, and the repository as the photo album that I was talking about before. Every once in a while you need to populate this album with pictures; these pictures are precisely the commits. To be slightly more precise, a commit is a snapshot that registers the state of your project at a particular moment in time. Git does not copy all the files, but rather it keeps track of the changes that you make to your files, and it allows you to go back in time and see how your project evolved.
 
@@ -57,13 +61,9 @@ Each commit has some metadata, like the date and who created it. Moreover, each 
 
 Conceptually, the history of your project looks like a chain of pictures, each one pointing back to the one before it:
 
-```mermaid
-gitGraph
-    commit id: "initial draft"
-    commit id: "add introduction"
-    commit id: "fix proof of Thm 2"
-    commit id: "polish abstract"
-```
+<div class="tikz-figure"><!-- tikz:git-en-1 -->
+<svg xmlns="http://www.w3.org/2000/svg" width="454.72" height="63.037" viewBox="-72 -72 341.04 47.278"><g stroke="#6b7280" stroke-miterlimit="10" stroke-width=".4"><g fill="#cee0fd" stroke="#3b82f6"><path d="M1.418-63.534a8.536 8.536 0 1 0-17.071 0 8.536 8.536 0 0 0 17.071 0Zm-8.536 0"/></g><g fill="#cee0fd" stroke="#3b82f6"><path d="M86.776-63.534a8.536 8.536 0 1 0-17.071 0 8.536 8.536 0 0 0 17.071 0Zm-8.536 0"/></g><g fill="#cee0fd" stroke="#3b82f6"><path d="M172.135-63.534a8.536 8.536 0 1 0-17.072 0 8.536 8.536 0 0 0 17.072 0Zm-8.536 0"/></g><g fill="#cee0fd" stroke="#3b82f6"><path d="M257.493-63.534a8.536 8.536 0 1 0-17.072 0 8.536 8.536 0 0 0 17.072 0Zm-8.536 0"/></g><g fill="#3b82f6" stroke="#3b82f6" stroke-width=".8"><path fill="none" d="M69.505-63.534H5.13"/><path d="m2.757-63.534 3.26 1.235-1.087-1.235 1.087-1.236Z"/></g><g fill="#3b82f6" stroke="#3b82f6" stroke-width=".8"><path fill="none" d="M154.863-63.534H90.488"/><path d="m88.115-63.534 3.26 1.235-1.087-1.235 1.087-1.236Z"/></g><g fill="#3b82f6" stroke="#3b82f6" stroke-width=".8"><path fill="none" d="M240.221-63.534h-64.375"/><path d="m173.474-63.534 3.26 1.235-1.088-1.235 1.087-1.236Z"/></g><g fill="#6b7280" stroke="none" font-family="cmr9" font-size="9"><text x="-7.118" y="-74.534" transform="translate(-11.82 35.21)">initial</text><text x="-5.201" y="-63.534" transform="translate(-11.82 35.21)">draft</text></g><g fill="#6b7280" stroke="none" font-family="cmr9" font-size="9"><text x="10.365" y="-74.534" transform="translate(60.424 35.21)">add</text><text x="-7.118" y="-63.534" transform="translate(60.424 35.21)">in</text><text x=".334" y="-63.534" transform="translate(60.424 35.21)">tro</text><text x="12.431" y="-63.534" transform="translate(60.424 35.21)">duction</text></g><g fill="#6b7280" stroke="none" font-family="cmr9" font-size="9"><text x="-5.33" y="-74.534" transform="translate(151.831 35.21)">¯x</text><text x="7.775" y="-74.534" transform="translate(151.831 35.21)">pro</text><text x="21.413" y="-74.534" transform="translate(151.831 35.21)">of</text><text x="-7.118" y="-63.534" transform="translate(151.831 35.21)">of</text><text x="3.417" y="-63.534" transform="translate(151.831 35.21)">Thm</text><text x="26.028" y="-63.534" transform="translate(151.831 35.21)">2</text></g><g fill="#6b7280" stroke="none" font-family="cmr9" font-size="9"><text x="-2.611" y="-74.534" transform="translate(239.594 35.21)">p</text><text x="2.785" y="-74.534" transform="translate(239.594 35.21)">olish</text><text x="-7.118" y="-63.534" transform="translate(239.594 35.21)">abstract</text></g></g></svg>
+</div>
 
 Now let's go to the practical things. Most likely your project lives in a folder on your computer. To enable git for this project, you need to initialise a repository in that folder. In the command line you do this by running the command
 
@@ -74,184 +74,186 @@ git init
 This will create a hidden folder `.git` in your main folder with the set up for git. You do not need to worry about this folder; git will take care of its contents. Moreover, it is important that you **do not touch this folder yourself** (or via FlyingCloud), because you might mess up your repository.
 
 Now, every time that you want to take a picture, you need to do two steps. For now, do not worry about what each of these steps does; just think of them as a single process that requires two commands.
+
 1. Stage your changes. This tells git which files you want to include in the picture. You can do this by running the command
-	```bash
-	git add <list of files>
-	```
-	In practice, I usually want to include all the new files and all the modified files in the picture, so I just run
-	```bash
-	git add .
-	```
+   ```bash
+   git add <list of files>
+   ```
+   In practice, I usually want to include all the new files and all the modified files in the picture, so I just run
+   ```bash
+   git add .
+   ```
 2. Take the picture. This is the commit step, where you actually take the picture and save it in the album. You can do this by running the command
-	```bash
-	git commit -m "a message describing the changes"
-	```
-	The message is important because it allows you to remember what changes you made in that commit, and it is also useful when you want to go back in time and see the history of your project.
+   ```bash
+   git commit -m "a message describing the changes"
+   ```
+   The message is important because it allows you to remember what changes you made in that commit, and it is also useful when you want to go back in time and see the history of your project.
 
 So the basic loop of working with git looks like this:
 
-```mermaid
-flowchart LR
-    A["Work on your files"] --> B["git add .<br/>(stage changes)"]
-    B --> C["git commit -m '...'<br/>(take the picture)"]
-    C --> A
-```
+<div class="tikz-figure"><!-- tikz:git-en-2 -->
+<svg xmlns="http://www.w3.org/2000/svg" width="452.204" height="111.308" viewBox="-72 -72 339.153 83.481"><g stroke="#6b7280" stroke-miterlimit="10" stroke-width=".4"><g fill="#e8f0fe" stroke="#3b82f6"><path d="M24.718-72.07H-18.07a4 4 0 0 0-4 4v25.226a4 4 0 0 0 4 4h42.788a4 4 0 0 0 4-4V-68.07a4 4 0 0 0-4-4ZM-22.07-38.844"/><g fill="#1f2937" stroke="none" font-family="cmr9" font-size="9"><text x="4.251" y="-66.457" transform="translate(-18.28 7.75)">W</text><text x="12.986" y="-66.457" transform="translate(-18.28 7.75)">ork</text><text x="29.194" y="-66.457" transform="translate(-18.28 7.75)">on</text><text x="3.324" y="-55.457" transform="translate(-18.28 7.75)">y</text><text x="7.949" y="-55.457" transform="translate(-18.28 7.75)">our</text><text x="24.414" y="-55.457" transform="translate(-18.28 7.75)">¯les</text></g></g><g fill="#e8f0fe" stroke="#3b82f6"><path d="M129.83-71.945H61.57a4 4 0 0 0-4 4v24.976a4 4 0 0 0 4 4h68.26a4 4 0 0 0 4-4v-24.976a4 4 0 0 0-4-4ZM57.57-38.969"/><g fill="#1f2937" stroke="none" font-size="9"><text x="13.078" y="-66.457" font-family="cmtt9" transform="translate(61.36 7.125)">git</text><text x="31.978" y="-66.457" font-family="cmtt9" transform="translate(61.36 7.125)">add</text><text x="50.878" y="-66.457" font-family="cmtt9" transform="translate(61.36 7.125)">.</text><text x="3.324" y="-55.457" font-family="cmr9" transform="translate(61.36 7.125)">(stage</text><text x="30.615" y="-55.457" font-family="cmr9" transform="translate(61.36 7.125)">c</text><text x="34.469" y="-55.457" font-family="cmr9" transform="translate(61.36 7.125)">hanges)</text></g></g><g fill="#e8f0fe" stroke="#3b82f6"><path d="M262.683-71.945h-96a4 4 0 0 0-4 4v24.976a4 4 0 0 0 4 4h96a4 4 0 0 0 4-4v-24.976a4 4 0 0 0-4-4Zm-100 32.976"/><g fill="#1f2937" stroke="none" font-size="9"><text x="3.324" y="-66.457" font-family="cmtt9" transform="translate(166.472 7.125)">git</text><text x="22.224" y="-66.457" font-family="cmtt9" transform="translate(166.472 7.125)">commit</text><text x="55.298" y="-66.457" font-family="cmtt9" transform="translate(166.472 7.125)">-m</text><text x="69.473" y="-66.457" font-family="cmtt9" transform="translate(166.472 7.125)">&apos;...&apos;</text><text x="12.48" y="-55.457" font-family="cmr9" transform="translate(166.472 7.125)">(tak</text><text x="28.925" y="-55.457" font-family="cmr9" transform="translate(166.472 7.125)">e</text><text x="36.122" y="-55.457" font-family="cmr9" transform="translate(166.472 7.125)">the</text><text x="52.056" y="-55.457" font-family="cmr9" transform="translate(166.472 7.125)">picture)</text></g></g><g stroke-width=".8"><path fill="none" d="M28.918-55.457h24.94"/><path d="m56.231-55.457-3.26-1.235 1.088 1.235-1.087 1.236Z"/></g><g stroke-width=".8"><path fill="none" d="M134.03-55.457h24.94"/><path d="m161.343-55.457-3.26-1.235 1.088 1.235-1.087 1.236Z"/></g><g stroke-width=".8"><path fill="none" d="M214.683-38.769c0 49.455-211.36 49.58-211.36 3.637"/><path d="m3.324-37.504-1.236 3.26 1.236-1.088 1.235 1.087Z"/><g fill="#6b7280" stroke="none" font-family="cmr7" font-size="7"><text x="3.324" y="-55.457" transform="translate(94.69 61.88)">rep</text><text x="14.636" y="-55.457" transform="translate(94.69 61.88)">eat</text></g></g></g></svg>
+</div>
 
-If I want to be completely honest, I actually have a single command predefined that does both steps at the same time. 
+If I want to be completely honest, I actually have a single command predefined that does both steps at the same time.
 
 How often do you want to run these commands? As often as you want. I usually do it after each work session on the project, often one or two times a day. Keep in mind that if you don't do it, and you just shut down your computer, you have not lost any changes. If nothing goes wrong, your files are on your computer just as you left them. The only issue is that there is no picture in your album.
 
 The workflow is very simple:
+
 1. You work.
 2. You use `git add <list of files>` to stage the changes you want to include in the commit.
 3. You use `git commit -m "a message describing the changes"` to take the picture and save it in the album.
 
-In most graphical interfaces for git, you will find a big button that says "commit", because commit is the most used action in git. You will also find a big button that says "*push*" or "*sync*", but we will talk about it later on.
+In most graphical interfaces for git, you will find a big button that says "commit", because commit is the most used action in git. You will also find a big button that says "_push_" or "_sync_", but we will talk about it later on.
 
 ### Workflow 2: the loner with two computers.
+
 The hypothetical setup is the following: you have two computers, e.g., a desktop and a laptop, and you want to work on the same project from both of them. This is a very common situation for many people; in fact, this was the setup that I had when I first learned to use git in the last year of my PhD. For most people, the cloud service is the solution to this problem. You work a bit on your laptop, FlyingCloud syncs your files to the cloud, then you go to your desktop, and FlyingCloud syncs the files from the cloud to your desktop. However, as I mentioned before, this set up has many problems. Git provides a much better solution to this problem, and it is called **remote repositories**.
 
-A remote repository is a copy of your album that lives somewhere else (often in the cloud). For each of your *local repositories* (the ones on your computers) you can have as many remote repositories as you want, but for the purpose of this workflow, we will assume that you have only one remote repository that lives in a git cloud service like [GitHub](https://github.com/), [GitLab](https://gitlab.com/), [Bitbucket](https://bitbucket.org/), etc. All of them work more or less the same: you create an account and then you create a new repository inside your account. I won't go into the details of how to do this, but it is usually very straightforward. Most likely your online repository will be empty and will have an associated url; for example, the one for this website is `https://github.com/anteromontonio/anteromontonio.github.io`.
+A remote repository is a copy of your album that lives somewhere else (often in the cloud). For each of your _local repositories_ (the ones on your computers) you can have as many remote repositories as you want, but for the purpose of this workflow, we will assume that you have only one remote repository that lives in a git cloud service like [GitHub](https://github.com/), [GitLab](https://gitlab.com/), [Bitbucket](https://bitbucket.org/), etc. All of them work more or less the same: you create an account and then you create a new repository inside your account. I won't go into the details of how to do this, but it is usually very straightforward. Most likely your online repository will be empty and will have an associated url; for example, the one for this website is `https://github.com/anteromontonio/anteromontonio.github.io`.
 
-The situation now looks like a hub with two computers around it: your two *local repositories* talk to each other only through the *remote repository* in the middle.
+The situation now looks like a hub with two computers around it: your two _local repositories_ talk to each other only through the _remote repository_ in the middle.
 
-```mermaid
-flowchart TB
-    R[("origin<br/>remote repository<br/>GitHub / GitLab / …")]
-    D["🖥️ Desktop<br/>local repository"]
-    L["💻 Laptop<br/>local repository"]
-    D -- "git push" --> R
-    R -- "git pull" --> D
-    L -- "git push" --> R
-    R -- "git pull" --> L
-```
+<div class="tikz-figure"><!-- tikz:git-en-3 -->
+<svg xmlns="http://www.w3.org/2000/svg" width="431.395" height="172.614" viewBox="-72 -72 323.546 129.461"><g stroke="#6b7280" stroke-miterlimit="10" stroke-width=".4"><g fill="#dbefee" stroke="#0d9488"><path d="M167.408-72.07H61.598a4 4 0 0 0-4 4v33.881a4 4 0 0 0 4 4h105.81a4 4 0 0 0 4-4V-68.07a4 4 0 0 0-4-4ZM57.598-30.189"/><g fill="#1f2937" stroke="none" font-size="9"><text x="151.424" y="-73.129" font-family="cmbx9" transform="translate(-50.36 13)">origin</text><text x="129.085" y="-62.129" font-family="cmr9" transform="translate(-50.36 13)">remote</text><text x="159.946" y="-62.129" font-family="cmr9" transform="translate(-50.36 13)">rep</text><text x="173.074" y="-62.129" font-family="cmr9" transform="translate(-50.36 13)">ository</text><text x="114.503" y="-51.129" font-family="cmr9" transform="translate(-50.36 13)">(GitHub</text><text x="151.822" y="-51.129" font-family="cmr9" transform="translate(-50.36 13)">/</text><text x="159.53" y="-51.129" font-family="cmr9" transform="translate(-50.36 13)">GitLab</text><text x="191.583" y="-51.129" font-family="cmr9" transform="translate(-50.36 13)">/</text><text x="199.291" y="-51.129" font-family="cmr9" transform="translate(-50.36 13)">.</text><text x="203.402" y="-51.129" font-family="cmr9" transform="translate(-50.36 13)">.</text><text x="207.513" y="-51.129" font-family="cmr9" transform="translate(-50.36 13)">.</text><text x="211.625" y="-51.129" font-family="cmr9" transform="translate(-50.36 13)">)</text></g></g><g fill="#e8f0fe" stroke="#3b82f6"><path d="M53.598 22.848H-18.07a4 4 0 0 0-4 4V52.99a4 4 0 0 0 4 4h71.668a4 4 0 0 0 4-4V26.848a4 4 0 0 0-4-4ZM-22.07 56.99"/><g fill="#1f2937" stroke="none" font-family="cmr9" font-size="9"><text x="129.234" y="-62.129" transform="translate(-128.006 98.799)">Desktop</text><text x="114.503" y="-51.129" transform="translate(-128.006 98.799)">lo</text><text x="121.954" y="-51.129" transform="translate(-128.006 98.799)">cal</text><text x="136.343" y="-51.129" transform="translate(-128.006 98.799)">rep</text><text x="149.471" y="-51.129" transform="translate(-128.006 98.799)">ository</text></g></g><g fill="#e8f0fe" stroke="#3b82f6"><path d="M247.076 22.848h-71.668a4 4 0 0 0-4 4V52.99a4 4 0 0 0 4 4h71.668a4 4 0 0 0 4-4V26.848a4 4 0 0 0-4-4ZM171.408 56.99"/><g fill="#1f2937" stroke="none" font-family="cmr9" font-size="9"><text x="131.317" y="-62.129" transform="translate(65.472 98.749)">Laptop</text><text x="114.503" y="-51.129" transform="translate(65.472 98.749)">lo</text><text x="121.954" y="-51.129" transform="translate(65.472 98.749)">cal</text><text x="136.343" y="-51.129" transform="translate(65.472 98.749)">rep</text><text x="149.471" y="-51.129" transform="translate(65.472 98.749)">ository</text></g></g><g stroke-width=".8"><path fill="none" d="M17.764 22.648C23.583-9.547 33.766-28.504 54.86-48.701"/><path stroke-width=".7999520000000001" d="m56.575-50.342-3.209 1.362 1.64.14.069 1.645Z"/><text x="114.503" y="-51.129" fill="#6b7280" stroke="none" font-family="cmr7" font-size="7" transform="translate(-101.42 30.54)">push</text></g><g stroke-width=".8"><path fill="none" d="M57.397-51.13C51.58-18.934 41.395.023 20.3 20.22"/><path stroke-width=".7999520000000001" d="m18.587 21.86 3.208-1.362-1.64-.14-.069-1.645Z"/><text x="114.503" y="-51.129" fill="#6b7280" stroke="none" font-family="cmr7" font-size="7" transform="translate(-68.843 46.738)">pull</text></g><g stroke-width=".8"><path fill="none" d="M211.242 22.648c-5.819-32.195-16.003-51.152-37.097-71.349"/><path stroke-width=".7999520000000001" d="m172.431-50.342 1.5 3.147.07-1.644 1.639-.14Z"/><text x="114.503" y="-51.129" fill="#6b7280" stroke="none" font-family="cmr7" font-size="7" transform="translate(85.002 30.54)">push</text></g><g stroke-width=".8"><path fill="none" d="M171.608-51.13c5.82 32.195 16.003 51.152 37.098 71.349"/><path stroke-width=".7999520000000001" d="m210.42 21.86-1.5-3.147-.07 1.644-1.64.14Z"/><text x="114.503" y="-51.129" fill="#6b7280" stroke="none" font-family="cmr7" font-size="7" transform="translate(55.482 46.738)">pull</text></g></g></svg>
+</div>
 
-You work, say in your office (desktop), you do the two steps to take a picture (stage and commit), but now you want to upload this picture to the cloud so you can access it from your laptop later on. This action is called *push*, and it does exactly that: it pushes your local commits to the remote repository.
+You work, say in your office (desktop), you do the two steps to take a picture (stage and commit), but now you want to upload this picture to the cloud so you can access it from your laptop later on. This action is called _push_, and it does exactly that: it pushes your local commits to the remote repository.
 
 The first time you do it you need to tell git where your remote repository is. You do this by running the command
+
 ```bash
 git remote add origin <url of your remote repository>
 ```
+
 The word `origin` is just a name that you give to your remote repository; you can call it whatever you want, but `origin` is the standard name for the main remote repository. After this, you can push your commits to the remote repository by running the command
+
 ```bash
 git push origin main
 ```
+
 This tells git to push your commits to the remote repository called `origin` and to the branch called `main`. We will talk about branches later on, but for now, just assume that `main` is the default branch where you want to keep your commits. You can configure git to 'track' the remote repository so you don't have to specify `origin main` every time; you do this by running the command
+
 ```bash
 git push -u origin main
 ```
+
 After this, you can just run `git push` and git will know where to push your commits.
 
-Now you move to your laptop and you want to get your project there. First, we need to bring the project to your laptop; this is called *cloning*, and it is the standard way you get repositories from the cloud to your computer. You do this by running the command
+Now you move to your laptop and you want to get your project there. First, we need to bring the project to your laptop; this is called _cloning_, and it is the standard way you get repositories from the cloud to your computer. You do this by running the command
+
 ```bash
 git clone <url of your remote repository>
 ```
+
 This will create a new folder on your computer with the same name as your repository, and it will copy all the files from the remote repository to that folder. Keep in mind that cloning is actually copying a repository (it can be yours or someone else's). Now you can work, and when you are ready, you do `git add` and `git commit` as before, and to upload your changes to the cloud you do `git push` as before. Observe that if you clone a repository, it already knows where to push (the place where you cloned it from). If the repository is not yours, then GitHub (or the git cloud service of your choice) won't let you push, or will ask you for authentication.
 
-When you go back to your office, you want to get the changes that you made on your laptop onto your desktop. This action is called *pull*, and it does exactly that: it pulls the commits from the remote repository to your local repository. You do this by running the command
+When you go back to your office, you want to get the changes that you made on your laptop onto your desktop. This action is called _pull_, and it does exactly that: it pulls the commits from the remote repository to your local repository. You do this by running the command
+
 ```bash
 git pull origin main
 ```
+
 Most likely, git already knows where to pull from, so you can just run `git pull` and git will get the changes from the remote repository and merge them with your local repository.
 
 Once you have a local repository on your laptop and a local repository on your desktop, both set up to track your remote repository (following the steps above), the workflow goes as follows:
 
 1. You work on one of your computers (say the desktop), you do `git add` and `git commit` to take a picture of your project, and then you do `git push` to upload this picture to the cloud.
 2. You move to your other computer (laptop) and you do `git pull` to get the changes that you made on your desktop. You work on your laptop, you do `git add` and `git commit` to take a picture of your project, and then you do `git push` to upload this picture to the cloud.
-3. You move back to your desktop and you do `git pull` to get the changes that you made on your laptop. 
+3. You move back to your desktop and you do `git pull` to get the changes that you made on your laptop.
 
-It is important to say that **you have to push and pull manually**. Unlike FlyingCloud, git does not automatically sync your files to the cloud; you have to do it manually by running the commands. This is actually a good thing because it gives you more control over your files and it prevents syncing issues. Moreover, it forces you to think about when you want to upload your changes to the cloud and when you want to get the changes from the cloud, which is important for collaboration (we will talk about this later on). It is also important to mention that git works offline. Unlike FlyingCloud, you can work completely offline and locally, you only need internet for a few seconds when you do push and pull. 
+It is important to say that **you have to push and pull manually**. Unlike FlyingCloud, git does not automatically sync your files to the cloud; you have to do it manually by running the commands. This is actually a good thing because it gives you more control over your files and it prevents syncing issues. Moreover, it forces you to think about when you want to upload your changes to the cloud and when you want to get the changes from the cloud, which is important for collaboration (we will talk about this later on). It is also important to mention that git works offline. Unlike FlyingCloud, you can work completely offline and locally, you only need internet for a few seconds when you do push and pull.
 
-Needless to say, if you only work on a single device, you can easily adapt this workflow to get the online backup that FlyingCloud provides. You just manually push your commits to the remote once in a while (I do it after a day of work). This is a good point to mention that git and git remotes are great for backup but not really for everywhere-access synchronisation. I still have a FlyingCloud folder for projects where I put files that I want to have access to everywhere (my laptop and my phone) but I do not want to keep a history of, for example, PDFs or handwritten notes. Indeed, git is great for keeping the history of code files (like your `.tex` files), but not so much for keeping the history of binary files, that is, files that are generated from your code (like `.pdf`s). For LaTeX specifically, I suggest you use tools like [latexdiff](https://ctan.org/pkg/latexdiff), which allows you to compare two versions of a LaTeX file and see the differences between them. Latexdiff integrates wonderfully with git, and maybe another day I will show you how. 
+Needless to say, if you only work on a single device, you can easily adapt this workflow to get the online backup that FlyingCloud provides. You just manually push your commits to the remote once in a while (I do it after a day of work). This is a good point to mention that git and git remotes are great for backup but not really for everywhere-access synchronisation. I still have a FlyingCloud folder for projects where I put files that I want to have access to everywhere (my laptop and my phone) but I do not want to keep a history of, for example, PDFs or handwritten notes. Indeed, git is great for keeping the history of code files (like your `.tex` files), but not so much for keeping the history of binary files, that is, files that are generated from your code (like `.pdf`s). For LaTeX specifically, I suggest you use tools like [latexdiff](https://ctan.org/pkg/latexdiff), which allows you to compare two versions of a LaTeX file and see the differences between them. Latexdiff integrates wonderfully with git, and maybe another day I will show you how.
 
 ### Workflow 3: the distracted loner
-The setup is the same as before but closer to reality. Since git does not sync automatically, you might forget to push your changes to the cloud, and then you go to your other computer and you do not see the changes that you made. This is a very common situation, and even though it is a bit annoying (that's why you have to be disciplined and intentional when you use git), it also has its advantages. For example, it is almost impossible for you or your collaborators to delete a file by accident, since you would need to delete it *and* push that deletion; even when you pull afterwards, if the file was not deleted on the other computer, it will still be there.
 
-If you are in the situation I described above (you forgot to push your changes and you don't see them on your other computer) I have bad news and good news for you. The bad news is that you have to go back to the computer where you made the changes and push them to the cloud. There is no simple way to get your files from the other computer if you do not intentionally transfer or push them into the remote. The good news is that you have not lost any work: your files are still on your computer just as you left them, and you can get them to the cloud whenever you want. But there is a natural problem in this situation: what if you want to work on a file that has unsynced changes on the other computer? The answer to this is **branches**, which is arguably git's most powerful feature. 
+The setup is the same as before but closer to reality. Since git does not sync automatically, you might forget to push your changes to the cloud, and then you go to your other computer and you do not see the changes that you made. This is a very common situation, and even though it is a bit annoying (that's why you have to be disciplined and intentional when you use git), it also has its advantages. For example, it is almost impossible for you or your collaborators to delete a file by accident, since you would need to delete it _and_ push that deletion; even when you pull afterwards, if the file was not deleted on the other computer, it will still be there.
+
+If you are in the situation I described above (you forgot to push your changes and you don't see them on your other computer) I have bad news and good news for you. The bad news is that you have to go back to the computer where you made the changes and push them to the cloud. There is no simple way to get your files from the other computer if you do not intentionally transfer or push them into the remote. The good news is that you have not lost any work: your files are still on your computer just as you left them, and you can get them to the cloud whenever you want. But there is a natural problem in this situation: what if you want to work on a file that has unsynced changes on the other computer? The answer to this is **branches**, which is arguably git's most powerful feature.
 
 Git supports parallel timelines for your project. Coming back to the photo album analogy, it is as if the spacetime splits at a given point and sudently there are two different versions of you each of you with your own photo album. Each of this albums grow independently and in the future you can merge them together if you want. Branches is exactly the way git admins these different timelines.
 I will try not to get too technical, but you can think of a branch as a coloured frame that you put around your pictures in the album, and that moves from one picture to another. By default, you have a branch called `main` (or `master` in older repositories), and all your commits are in that branch; that is, you have only one frame, and whenever you create a new commit, the frame moves to this new commit (usually from its parent). Now, if you want to work on a file that has unsynced changes on the other computer, you can create a new branch and work on that branch. This way, you can have two different versions of your project (one on the `main` branch and one on the new branch) and then merge them together when you want. You can create a new branch by running the command
+
 ```bash
 git switch -c desktop
 ```
+
 This will create a new branch called `desktop` and it will switch to that branch. Now you have a new coloured frame, `desktop`, and you can work on your files and create commits on that branch, moving the coloured frame each time (but the frame on `main` will stay on the same commit). I should mention that the **timelines exist regardless of the branches**, the branches are just the way git knows over which timeline keep building the project history. In mundane words: the timelines are all the pictures that at some point had the coloured frame on them, not the frames themselves. This is important because it is a common practice in git to create and delete branches. When you delete a branch you do not delete the history or the timeline, you just get rid of the (rather cheap) coloured frame.
 
 Coming back at were we were, when you push your changes to the cloud, you need to specify the branch you want to push, for example
+
 ```bash
 git push origin desktop
 ```
+
 Now, when you are back on your laptop and you want to get the changes that you made on your desktop, you need to pull the branch that you created, for example
+
 ```bash
 git pull origin desktop
 ```
+
 This will get the changes from the `desktop` branch and merge them with your local repository. Now on your laptop you have two branches (`main` and `desktop`) and you can switch between them by running the command
+
 ```bash
 git switch <name of the branch you want to switch to>
 ```
+
 and when you do it, you get the version of the files that are on each of the respective branches (it works like magic!). Most likely you don't want to have two timelines for your project for a long period of time; when you are ready, you can **merge** the branches. Merging is the process of taking the changes from one branch and applying them to another branch. You can do this by running the command
+
 ```bash
 git switch main   # so that we know we are sitting on main
 git merge desktop # we merge the changes from desktop into main
 ```
+
 This will take the changes from the `desktop` branch and apply them to the `main` branch.
 
 Visually, creating a branch, working on it, and merging it back looks like this:
 
-```mermaid
-gitGraph
-    commit id: "shared start"
-    branch desktop
-    checkout desktop
-    commit id: "work A"
-		checkout main
-    commit id: "work B"
-    checkout desktop
-    commit id: "work C"
-    checkout main
-    merge desktop id: "merge commit"
-    commit id: "carry on"
-```
+<div class="tikz-figure"><!-- tikz:git-en-4 -->
+<svg xmlns="http://www.w3.org/2000/svg" width="441.04" height="129.727" viewBox="-72 -72 330.78 97.295"><g stroke="#6b7280" stroke-miterlimit="10" stroke-width=".4"><text x="35.772" y="-6.283" fill="#3b82f6" stroke="none" font-family="cmtt8" font-size="8" transform="translate(-48.334 2.444)">main</text><text x="35.772" y="-6.283" fill="#f59e0b" stroke="none" font-family="cmtt8" font-size="8" transform="translate(-54.709 -41.124)">desktop</text><g fill="#cee0fd" stroke="#3b82f6"><path d="M44.308-6.283a8.536 8.536 0 1 0-17.072 0 8.536 8.536 0 0 0 17.072 0Zm-8.536 0"/></g><g fill="#fce2b6" stroke="#f59e0b"><path d="M101.213-48.962a8.536 8.536 0 1 0-17.071 0 8.536 8.536 0 0 0 17.071 0Zm-8.536 0"/></g><g fill="#cee0fd" stroke="#3b82f6"><path d="M129.666-6.283a8.536 8.536 0 1 0-17.072 0 8.536 8.536 0 0 0 17.072 0Zm-8.536 0"/></g><g fill="#fce2b6" stroke="#f59e0b"><path d="M169.5-48.962a8.536 8.536 0 1 0-17.072 0 8.536 8.536 0 0 0 17.071 0Zm-8.536 0"/></g><g fill="#cee0fd" stroke="#3b82f6"><path d="M209.334-6.283a8.536 8.536 0 1 0-17.072 0 8.536 8.536 0 0 0 17.072 0Zm-8.536 0"/></g><g fill="#cee0fd" stroke="#3b82f6"><path d="M249.167-6.283a8.536 8.536 0 1 0-17.071 0 8.536 8.536 0 0 0 17.071 0Zm-8.536 0"/></g><g fill="#3b82f6" stroke="#3b82f6" stroke-width=".8"><path fill="none" d="M112.394-6.283H48.02"/><path d="m45.647-6.283 3.26 1.236-1.088-1.236 1.087-1.235Z"/></g><g fill="#f59e0b" stroke="#f59e0b" stroke-width=".8"><path fill="none" d="m85.689-43.72-40.12 30.089"/><path stroke-width=".799976" d="m43.671-12.208 3.35-.967-1.611-.336.128-1.64Z"/></g><g fill="#f59e0b" stroke="#f59e0b" stroke-width=".8"><path fill="none" d="M152.228-48.962h-47.303"/><path d="m102.552-48.962 3.26 1.236-1.087-1.236 1.087-1.235Z"/></g><g fill="#3b82f6" stroke="#3b82f6" stroke-width=".8"><path fill="none" d="M192.062-6.283h-58.684"/><path d="m131.005-6.283 3.26 1.236-1.087-1.236 1.087-1.235Z"/></g><g fill="#f59e0b" stroke="#f59e0b" stroke-width=".8"><path fill="none" d="m194.837-12.669-25.517-27.34"/><path stroke-width=".799984" d="m167.701-41.743 1.321 3.226.162-1.638 1.645-.048Z"/></g><g fill="#3b82f6" stroke="#3b82f6" stroke-width=".8"><path fill="none" d="M231.896-6.283h-18.85"/><path d="m210.673-6.283 3.26 1.236-1.088-1.236 1.087-1.235Z"/></g><g fill="#6b7280" stroke="none" font-family="cmr7" font-size="7"><text x="35.772" y="-14.283" transform="translate(-11.334 27.975)">shared</text><text x="38.841" y="-6.283" transform="translate(-11.334 27.975)">start</text></g><g fill="#6b7280" stroke="none" font-family="cmr7" font-size="7"><text x="35.772" y="-6.283" transform="translate(44.204 -57.793)">w</text><text x="41.265" y="-6.283" transform="translate(44.204 -57.793)">ork</text><text x="55.272" y="-6.283" transform="translate(44.204 -57.793)">A</text></g><g fill="#6b7280" stroke="none" font-family="cmr7" font-size="7"><text x="35.772" y="-6.283" transform="translate(72.813 19.975)">w</text><text x="41.265" y="-6.283" transform="translate(72.813 19.975)">ork</text><text x="55.272" y="-6.283" transform="translate(72.813 19.975)">B</text></g><g fill="#6b7280" stroke="none" font-family="cmr7" font-size="7"><text x="35.772" y="-6.283" transform="translate(112.588 -57.793)">w</text><text x="41.265" y="-6.283" transform="translate(112.588 -57.793)">ork</text><text x="55.272" y="-6.283" transform="translate(112.588 -57.793)">C</text></g><g fill="#6b7280" stroke="none" font-family="cmr7" font-size="7"><text x="38.411" y="-14.283" transform="translate(151.991 26.128)">merge</text><text x="35.772" y="-6.283" transform="translate(151.991 26.128)">commit</text></g><g fill="#6b7280" stroke="none" font-family="cmr7" font-size="7"><text x="35.772" y="-6.283" transform="translate(190.314 18.128)">carry</text><text x="56.459" y="-6.283" transform="translate(190.314 18.128)">on</text></g></g></svg>
+</div>
 
-If the timelines are compatible, that is, if the changes that you made on the `desktop` branch do *not* contradict the changes that you made on the `main` branch, then git will merge them automatically and you will have a single timeline again (this is usually the case). However, if the changes that you made on the `desktop` branch *do* contradict the changes that you made on the `main` branch, then git will not be able to merge them automatically and it will ask you to solve the conflict manually. This is a bit more complicated but it is not that bad: you just need to open the files that have conflicts and look for the **conflict markers**. They look like this:
+If the timelines are compatible, that is, if the changes that you made on the `desktop` branch do _not_ contradict the changes that you made on the `main` branch, then git will merge them automatically and you will have a single timeline again (this is usually the case). However, if the changes that you made on the `desktop` branch _do_ contradict the changes that you made on the `main` branch, then git will not be able to merge them automatically and it will ask you to solve the conflict manually. This is a bit more complicated but it is not that bad: you just need to open the files that have conflicts and look for the **conflict markers**. They look like this:
+
 ```
-<<<<<<< HEAD # that is, your working place 
+<<<<<<< HEAD # that is, your working place
 changes that you made in the main branch
 ======= # this is the separation between the two branches
 changes that you made in the desktop branch
 >>>>>>>
 ```
+
 Now you need to decide which changes you want to keep. After you have solved the conflicts, you **need to stage the changes and commit them as usual**. This effectively creates a new commit on the `main` branch that has two parents: the last commit on the `main` branch and the last commit on the `desktop` branch. This is what is called a merge commit, and it is the point where the two branches merge together. After this, you can delete the `desktop` branch if you want, since all its changes are now on the `main` branch. You can do this by running the command
+
 ```bash
 git branch -d desktop
 ```
-Deleting a branch does not delete files; you just get rid of the coloured frame. 
+
+Deleting a branch does not delete files; you just get rid of the coloured frame.
 
 I know that you must have a headache at this point, so I will clean up what I just explained above with a simple workflow that is actually the one that I use in most of my projects and that often avoids conflicts. The workflow is the following:
 
-1. You will have three branches: `desktop`, `laptop` and `main`. 
-2. You will never work while on `main`, but this will be the most up-to-date branch, so the first thing that you do before starting to work is `git switch main` (to make sure you are on `main`) and then `git pull` to get the most recent changes. 
-3. You will work on `desktop` (or `laptop`) depending on where you are, so now you need to move to this branch: `git switch desktop`. 
+1. You will have three branches: `desktop`, `laptop` and `main`.
+2. You will never work while on `main`, but this will be the most up-to-date branch, so the first thing that you do before starting to work is `git switch main` (to make sure you are on `main`) and then `git pull` to get the most recent changes.
+3. You will work on `desktop` (or `laptop`) depending on where you are, so now you need to move to this branch: `git switch desktop`.
 4. Now you bring in the most recent changes from `main`: `git merge main` (this is important because it will prevent conflicts later on).
-5. You work, stage changes and commit, as many times as necessary. 
+5. You work, stage changes and commit, as many times as necessary.
 6. When you are done, you switch back to `main` and you merge the working session on `desktop`: `git switch main` and then `git merge desktop`.
 7. You push the changes to the cloud: `git push`.
 8. When you are back on your laptop you repeat the same steps but using the branch `laptop`.
 
 Here is the same disciplined loop as a diagram (shown for `desktop`; the laptop side is identical with `laptop` in place of `desktop`):
 
-```mermaid
-flowchart TD
-    A["git switch main<br/>git pull"] --> B["git switch desktop"]
-    B --> C["git merge main<br/>(bring in the latest)"]
-    C --> D["work · add · commit<br/>(as many times as needed)"]
-    D --> E["git switch main<br/>git merge desktop"]
-    E --> F["git push"]
-    F --> A
-```
+<div class="tikz-figure"><!-- tikz:git-en-5 -->
+<svg xmlns="http://www.w3.org/2000/svg" width="421.283" height="346.33" viewBox="-72 -72 315.962 259.747"><g stroke="#6b7280" stroke-miterlimit="10" stroke-width=".4"><g fill="#e8f0fe" stroke="#3b82f6"><path d="M116.194-72.07H-18.07a4 4 0 0 0-4 4v21.881a4 4 0 0 0 4 4h134.264a4 4 0 0 0 4-4V-68.07a4 4 0 0 0-4-4ZM-22.07-42.189"/><g fill="#1f2937" stroke="none" font-family="cmtt9" font-size="9"><text x="80.708" y="-57.129" transform="translate(-65.441 -3.75)">git</text><text x="97.966" y="-57.129" transform="translate(-65.441 -3.75)">switch</text><text x="129.398" y="-57.129" transform="translate(-65.441 -3.75)">main</text><text x="96.424" y="-46.129" transform="translate(-65.441 -3.75)">git</text><text x="113.682" y="-46.129" transform="translate(-65.441 -3.75)">pull</text></g></g><g fill="#e8f0fe" stroke="#3b82f6"><path d="M116.194-24.717H-18.07a4 4 0 0 0-4 4V-3.11a4 4 0 0 0 4 4h134.264a4 4 0 0 0 4-4v-17.607a4 4 0 0 0-4-4ZM-22.07.89"/><g fill="#1f2937" stroke="none" font-family="cmtt9" font-size="9"><text x="73.621" y="-57.129" transform="translate(-65.441 46.966)">git</text><text x="90.878" y="-57.129" transform="translate(-65.441 46.966)">switch</text><text x="122.311" y="-57.129" transform="translate(-65.441 46.966)">desktop</text></g></g><g fill="#e8f0fe" stroke="#3b82f6"><path d="M116.194 18.362H-18.07a4 4 0 0 0-4 4v22.13a4 4 0 0 0 4 4h134.264a4 4 0 0 0 4-4v-22.13a4 4 0 0 0-4-4ZM-22.07 48.492"/><g fill="#1f2937" stroke="none" font-size="9"><text x="83.07" y="-57.129" font-family="cmtt9" transform="translate(-65.441 86.682)">git</text><text x="100.328" y="-57.129" font-family="cmtt9" transform="translate(-65.441 86.682)">merge</text><text x="127.036" y="-57.129" font-family="cmtt9" transform="translate(-65.441 86.682)">main</text><text x="74.381" y="-46.129" font-family="cmr9" transform="translate(-65.441 86.682)">(bring</text><text x="102.151" y="-46.129" font-family="cmr9" transform="translate(-65.441 86.682)">in</text><text x="112.943" y="-46.129" font-family="cmr9" transform="translate(-65.441 86.682)">the</text><text x="128.876" y="-46.129" font-family="cmr9" transform="translate(-65.441 86.682)">latest)</text></g></g><g fill="#e8f0fe" stroke="#3b82f6"><path d="M116.194 65.964H-18.07a4 4 0 0 0-4 4v22.882a4 4 0 0 0 4 4h134.264a4 4 0 0 0 4-4V69.964a4 4 0 0 0-4-4ZM-22.07 96.846"/><g fill="#1f2937" stroke="none" font-size="9"><text x="73.383" y="-57.129" font-family="cmr9" transform="translate(-65.441 135.034)">w</text><text x="79.806" y="-57.129" font-family="cmr9" transform="translate(-65.441 135.034)">ork</text><text x="96.014" y="-57.129" font-family="cmsy9" transform="translate(-65.441 135.034)">¢</text><text x="101.666" y="-57.129" font-family="cmr9" transform="translate(-65.441 135.034)">add</text><text x="119.652" y="-57.129" font-family="cmsy9" transform="translate(-65.441 135.034)">¢</text><text x="125.304" y="-57.129" font-family="cmr9" transform="translate(-65.441 135.034)">commit</text><text x="60.719" y="-46.129" font-family="cmr9" transform="translate(-65.441 135.034)">(as</text><text x="75.672" y="-46.129" font-family="cmr9" transform="translate(-65.441 135.034)">man</text><text x="92.888" y="-46.129" font-family="cmr9" transform="translate(-65.441 135.034)">y</text><text x="100.853" y="-46.129" font-family="cmr9" transform="translate(-65.441 135.034)">times</text><text x="125.574" y="-46.129" font-family="cmr9" transform="translate(-65.441 135.034)">as</text><text x="136.93" y="-46.129" font-family="cmr9" transform="translate(-65.441 135.034)">needed)</text></g></g><g fill="#e8f0fe" stroke="#3b82f6"><path d="M116.194 114.317H-18.07a4 4 0 0 0-4 4v21.881a4 4 0 0 0 4 4h134.264a4 4 0 0 0 4-4v-21.88a4 4 0 0 0-4-4ZM-22.07 144.198"/><g fill="#1f2937" stroke="none" font-family="cmtt9" font-size="9"><text x="80.708" y="-57.129" transform="translate(-65.441 182.637)">git</text><text x="97.966" y="-57.129" transform="translate(-65.441 182.637)">switch</text><text x="129.398" y="-57.129" transform="translate(-65.441 182.637)">main</text><text x="75.983" y="-46.129" transform="translate(-65.441 182.637)">git</text><text x="93.241" y="-46.129" transform="translate(-65.441 182.637)">merge</text><text x="119.949" y="-46.129" transform="translate(-65.441 182.637)">desktop</text></g></g><g fill="#e8f0fe" stroke="#3b82f6"><path d="M116.194 161.67H-18.07a4 4 0 0 0-4 4v17.607a4 4 0 0 0 4 4h134.264a4 4 0 0 0 4-4V165.67a4 4 0 0 0-4-4ZM-22.07 187.277"/><g fill="#1f2937" stroke="none" font-family="cmtt9" font-size="9"><text x="96.424" y="-57.129" transform="translate(-65.441 233.353)">git</text><text x="113.682" y="-57.129" transform="translate(-65.441 233.353)">push</text></g></g><g stroke-width=".8"><path fill="none" d="M49.062-41.989v13.56"/><path d="m49.062-26.057 1.235-3.26-1.235 1.088-1.236-1.087Z"/></g><g stroke-width=".8"><path fill="none" d="M49.062 1.09v13.56"/><path d="m49.062 17.023 1.235-3.26-1.235 1.087-1.236-1.087Z"/></g><g stroke-width=".8"><path fill="none" d="M49.062 48.693v13.56"/><path d="m49.062 64.625 1.235-3.26-1.235 1.088-1.236-1.087Z"/></g><g stroke-width=".8"><path fill="none" d="M49.062 97.046v13.56"/><path d="m49.062 112.978 1.235-3.26-1.235 1.087-1.236-1.087Z"/></g><g stroke-width=".8"><path fill="none" d="M49.062 144.398v13.56"/><path d="m49.062 160.33 1.235-3.259-1.235 1.087-1.236-1.087Z"/></g><g stroke-width=".8"><path fill="none" d="M120.394 174.474c99.35 0 99.35-231.603 3.511-231.603"/><path d="m121.533-57.13 3.26 1.236-1.088-1.235 1.087-1.236Z"/><g fill="#6b7280" stroke="none" font-family="cmr7" font-size="7"><text x="49.062" y="-57.129" transform="translate(149.578 118.156)">next</text><text x="67.055" y="-57.129" transform="translate(149.578 118.156)">session</text></g></g></g></svg>
+</div>
 
 Notice that the branch `desktop` never makes it to the laptop computer and vice versa; this is by design and it is very useful to avoid conflicts, but it is not strictly necessary. You can have a single branch for both computers (that is what I usually have, and this branch is often called `dev-tero`) and you just merge it into `main` when you are done. Of course, you need to become disciplined when doing this.
 
 ### Workflow 4: the collaborator
+
 In the previous workflow, it is almost irrelevant that the person working on the laptop and the person working on the desktop are the same. The only relevant point is that this makes sure that the `main` branch is not updated by the person in front of the laptop while you are working on the desktop. This workflow can be easily modified to collaborate with other people, as long as you all agree that the `main` branch is the most up-to-date branch and that you will never work while on `main`. The workflow is the following:
 
 1. Each collaborator will have their own personal branch, e.g., `tero`, `alice`, `bob`, etc., and these usually won't make it to the remote (although they could).
@@ -264,62 +266,52 @@ In the previous workflow, it is almost irrelevant that the person working on the
 8. Once conflicts are resolved (if any), the collaborator switches back to `main`, pulls again to make sure they have the most recent changes, and then merges their personal branch into `main`: `git switch main`, `git pull` and then `git merge tero`. This process should be mostly conflict-free because `tero` and a (potentially) slightly old version of `main` already agree, so git will know how to handle the merge.
 9. Finally, the collaborator pushes the changes to the cloud: `git push`.
 
-The key idea is that all the risky merging happens on your *personal* branch, so `main` stays clean and every collaborator pulls before they push:
+The key idea is that all the risky merging happens on your _personal_ branch, so `main` stays clean and every collaborator pulls before they push:
 
-```mermaid
-flowchart TD
-    A["git switch main · git pull"] --> B["git switch tero"]
-    B --> C["git merge main"]
-    C --> D["work · add · commit"]
-    D --> E["git switch main · git pull<br/>(grab collaborators' work)"]
-    E --> F["git switch tero · git merge main<br/>(resolve conflicts HERE)"]
-    F --> G["git switch main · git pull<br/>git merge tero"]
-    G --> H["git push"]
-```
+<div class="tikz-figure"><!-- tikz:git-en-6 -->
+<svg xmlns="http://www.w3.org/2000/svg" width="287.234" height="422.263" viewBox="-72 -72 215.426 316.697"><g stroke="#6b7280" stroke-miterlimit="10" stroke-width=".4"><g fill="#f2ecfe" stroke="#8b5cf6"><path d="M138.956-72.07H-18.07a4 4 0 0 0-4 4v14.762a4 4 0 0 0 4 4h157.026a4 4 0 0 0 4-4V-68.07a4 4 0 0 0-4-4ZM-22.07-49.308"/><g fill="#1f2937" stroke="none" font-size="9"><text x="81.024" y="-60.689" font-family="cmtt9" transform="translate(-76.822 1.75)">git</text><text x="98.282" y="-60.689" font-family="cmtt9" transform="translate(-76.822 1.75)">switch</text><text x="129.714" y="-60.689" font-family="cmtt9" transform="translate(-76.822 1.75)">main</text><text x="151.697" y="-60.689" font-family="cmsy9" transform="translate(-76.822 1.75)">¢</text><text x="157.349" y="-60.689" font-family="cmtt9" transform="translate(-76.822 1.75)">git</text><text x="174.607" y="-60.689" font-family="cmtt9" transform="translate(-76.822 1.75)">pull</text></g></g><g fill="#f2ecfe" stroke="#8b5cf6"><path d="M138.956-33.259H-18.07a4 4 0 0 0-4 4v14.762a4 4 0 0 0 4 4h157.026a4 4 0 0 0 4-4v-14.762a4 4 0 0 0-4-4ZM-22.07-10.497"/><g fill="#1f2937" stroke="none" font-family="cmtt9" font-size="9"><text x="103.47" y="-60.689" transform="translate(-76.822 40.561)">git</text><text x="120.728" y="-60.689" transform="translate(-76.822 40.561)">switch</text><text x="152.161" y="-60.689" transform="translate(-76.822 40.561)">tero</text></g></g><g fill="#f2ecfe" stroke="#8b5cf6"><path d="M138.956 5.552H-18.07a4 4 0 0 0-4 4v14.763a4 4 0 0 0 4 4h157.026a4 4 0 0 0 4-4V9.552a4 4 0 0 0-4-4ZM-22.07 28.315"/><g fill="#1f2937" stroke="none" font-family="cmtt9" font-size="9"><text x="105.833" y="-60.689" transform="translate(-76.822 79.372)">git</text><text x="123.09" y="-60.689" transform="translate(-76.822 79.372)">merge</text><text x="149.798" y="-60.689" transform="translate(-76.822 79.372)">main</text></g></g><g fill="#f2ecfe" stroke="#8b5cf6"><path d="M138.956 44.364H-18.07a4 4 0 0 0-4 4v14.762a4 4 0 0 0 4 4h157.026a4 4 0 0 0 4-4V48.364a4 4 0 0 0-4-4ZM-22.07 67.126"/><g fill="#1f2937" stroke="none" font-size="9"><text x="96.145" y="-60.689" font-family="cmr9" transform="translate(-76.822 119.559)">w</text><text x="102.568" y="-60.689" font-family="cmr9" transform="translate(-76.822 119.559)">ork</text><text x="118.776" y="-60.689" font-family="cmsy9" transform="translate(-76.822 119.559)">¢</text><text x="124.429" y="-60.689" font-family="cmr9" transform="translate(-76.822 119.559)">add</text><text x="142.414" y="-60.689" font-family="cmsy9" transform="translate(-76.822 119.559)">¢</text><text x="148.067" y="-60.689" font-family="cmr9" transform="translate(-76.822 119.559)">commit</text></g></g><g fill="#f2ecfe" stroke="#8b5cf6"><path d="M138.956 83.175H-18.07a4 4 0 0 0-4 4v22.13a4 4 0 0 0 4 4h157.026a4 4 0 0 0 4-4v-22.13a4 4 0 0 0-4-4Zm-161.026 30.13"/><g fill="#1f2937" stroke="none" font-size="9"><text x="81.024" y="-60.689" font-family="cmtt9" transform="translate(-76.822 155.054)">git</text><text x="98.282" y="-60.689" font-family="cmtt9" transform="translate(-76.822 155.054)">switch</text><text x="129.714" y="-60.689" font-family="cmtt9" transform="translate(-76.822 155.054)">main</text><text x="151.697" y="-60.689" font-family="cmsy9" transform="translate(-76.822 155.054)">¢</text><text x="157.349" y="-60.689" font-family="cmtt9" transform="translate(-76.822 155.054)">git</text><text x="174.607" y="-60.689" font-family="cmtt9" transform="translate(-76.822 155.054)">pull</text><text x="84.397" y="-49.689" font-family="cmr9" transform="translate(-76.822 155.054)">(grab</text><text x="109.084" y="-49.689" font-family="cmr9" transform="translate(-76.822 155.054)">collab</text><text x="132.979" y="-49.689" font-family="cmr9" transform="translate(-76.822 155.054)">orators&apos;</text><text x="166.988" y="-49.689" font-family="cmr9" transform="translate(-76.822 155.054)">w</text><text x="173.412" y="-49.689" font-family="cmr9" transform="translate(-76.822 155.054)">ork)</text></g></g><g fill="#f2ecfe" stroke="#8b5cf6"><path d="M138.956 129.355H-18.07a4 4 0 0 0-4 4v22.13a4 4 0 0 0 4 4h157.026a4 4 0 0 0 4-4v-22.13a4 4 0 0 0-4-4Zm-161.026 30.13"/><g fill="#1f2937" stroke="none" font-size="9"><text x="67.67" y="-60.689" font-family="cmtt9" transform="translate(-76.822 201.234)">git</text><text x="84.928" y="-60.689" font-family="cmtt9" transform="translate(-76.822 201.234)">switch</text><text x="116.36" y="-60.689" font-family="cmtt9" transform="translate(-76.822 201.234)">tero</text><text x="138.343" y="-60.689" font-family="cmsy9" transform="translate(-76.822 201.234)">¢</text><text x="143.995" y="-60.689" font-family="cmtt9" transform="translate(-76.822 201.234)">git</text><text x="161.253" y="-60.689" font-family="cmtt9" transform="translate(-76.822 201.234)">merge</text><text x="187.961" y="-60.689" font-family="cmtt9" transform="translate(-76.822 201.234)">main</text><text x="87.291" y="-49.689" font-family="cmr9" transform="translate(-76.822 201.234)">(resolv</text><text x="114.089" y="-49.689" font-family="cmr9" transform="translate(-76.822 201.234)">e</text><text x="121.286" y="-49.689" font-family="cmr9" transform="translate(-76.822 201.234)">con°icts</text><text x="157.309" y="-49.689" font-family="cmr9" transform="translate(-76.822 201.234)">HERE)</text></g></g><g fill="#f2ecfe" stroke="#8b5cf6"><path d="M138.956 175.535H-18.07a4 4 0 0 0-4 4v21.88a4 4 0 0 0 4 4h157.026a4 4 0 0 0 4-4v-21.88a4 4 0 0 0-4-4Zm-161.026 29.88"/><g fill="#1f2937" stroke="none" font-size="9"><text x="81.024" y="-60.689" font-family="cmtt9" transform="translate(-76.822 247.414)">git</text><text x="98.282" y="-60.689" font-family="cmtt9" transform="translate(-76.822 247.414)">switch</text><text x="129.714" y="-60.689" font-family="cmtt9" transform="translate(-76.822 247.414)">main</text><text x="151.697" y="-60.689" font-family="cmsy9" transform="translate(-76.822 247.414)">¢</text><text x="157.349" y="-60.689" font-family="cmtt9" transform="translate(-76.822 247.414)">git</text><text x="174.607" y="-60.689" font-family="cmtt9" transform="translate(-76.822 247.414)">pull</text><text x="105.833" y="-49.689" font-family="cmtt9" transform="translate(-76.822 247.414)">git</text><text x="123.09" y="-49.689" font-family="cmtt9" transform="translate(-76.822 247.414)">merge</text><text x="149.798" y="-49.689" font-family="cmtt9" transform="translate(-76.822 247.414)">tero</text></g></g><g fill="#f2ecfe" stroke="#8b5cf6"><path d="M138.956 221.465H-18.07a4 4 0 0 0-4 4v14.762a4 4 0 0 0 4 4h157.026a4 4 0 0 0 4-4v-14.762a4 4 0 0 0-4-4ZM-22.07 244.227"/><g fill="#1f2937" stroke="none" font-family="cmtt9" font-size="9"><text x="119.187" y="-60.689" transform="translate(-76.822 295.285)">git</text><text x="136.444" y="-60.689" transform="translate(-76.822 295.285)">push</text></g></g><g stroke-width=".8"><path fill="none" d="M60.443-49.108v12.137"/><path d="m60.443-34.598 1.235-3.26-1.235 1.087-1.236-1.087Z"/></g><g stroke-width=".8"><path fill="none" d="M60.443-10.297V1.841"/><path d="m60.443 4.213 1.235-3.26-1.235 1.088L59.207.954Z"/></g><g stroke-width=".8"><path fill="none" d="M60.443 28.515v12.137"/><path d="m60.443 43.024 1.235-3.26-1.235 1.088-1.236-1.087Z"/></g><g stroke-width=".8"><path fill="none" d="M60.443 67.326v12.137"/><path d="m60.443 81.836 1.235-3.26-1.235 1.087-1.236-1.087Z"/></g><g stroke-width=".8"><path fill="none" d="M60.443 113.506v12.137"/><path d="m60.443 128.016 1.235-3.26-1.235 1.087-1.236-1.087Z"/></g><g stroke-width=".8"><path fill="none" d="M60.443 159.686v12.137"/><path d="m60.443 174.196 1.235-3.26-1.235 1.087-1.236-1.087Z"/></g><g stroke-width=".8"><path fill="none" d="M60.443 205.616v12.137"/><path d="m60.443 220.126 1.235-3.26-1.235 1.087-1.236-1.087Z"/></g></g></svg>
+</div>
 
 How your collaborators get access to the remote depends on the git cloud service that you are using, and often **it is not enough just to share the link with them**. The [instructions for GitHub](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/repository-access-and-collaboration/inviting-collaborators-to-a-personal-repository) are fairly straightforward, but they require that your collaborators have a GitHub account. If you are a collaborator of mine, I hope this blogpost motivates you to create a GitHub account and learn how to use git; otherwise, I hope you can use this blogpost to motivate your collaborators.
 
 ### Workflow 5: the dictator
+
 This workflow is a bit more complicated, but it is very useful when you have a lot of collaborators, and to be honest, this is the standard way in which gigantic projects (think of the Linux kernel developers) collaborate. The idea is conceptually not very complicated, and I will include it just for completeness.
 
-There is a central repository, maintained and owned by *The Dictator* and often hosted on a git cloud service. Let's say that you want to collaborate on this project; you do it following the steps below:
-1. You **fork** the repository. This means you create a copy of this repository that is now your own; you can modify it, break it and do whatever you want with it, and it will not affect the original repository. The first step to build this website was to fork the [al-folio multi-language repository](https://github.com/george-gca/multi-language-al-folio). 
+There is a central repository, maintained and owned by _The Dictator_ and often hosted on a git cloud service. Let's say that you want to collaborate on this project; you do it following the steps below:
+
+1. You **fork** the repository. This means you create a copy of this repository that is now your own; you can modify it, break it and do whatever you want with it, and it will not affect the original repository. The first step to build this website was to fork the [al-folio multi-language repository](https://github.com/george-gca/multi-language-al-folio).
 2. You work on this repository — from home, from your laptop, however you want — but keeping a personal branch (different from `main`) as your most up-to-date branch. This means you will have a branch, say `my-personal-branch`, that will play the role of `main` in the previous workflows (and you can have several other branches if you want).
-3. When you have produced changes that you want The Dictator to see and potentially include in the main project, you [create a pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request). That is, you inform The Dictator that you forked their repository, that you have worked on it, and that you want them to pull the changes that you made in your forked repository. 
+3. When you have produced changes that you want The Dictator to see and potentially include in the main project, you [create a pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request). That is, you inform The Dictator that you forked their repository, that you have worked on it, and that you want them to pull the changes that you made in your forked repository.
 4. Since git keeps track of changes, The Dictator will be able to track the changes that you made and decide if and how to incorporate them into the main repository. If The Dictator decides to incorporate your changes, they will merge your pull request and the changes that you made in your forked repository will be merged into the main repository. If The Dictator decides not to incorporate your changes, they will just close the pull request and nothing will happen.
 5. If you were successful, you can now update your forked copy (in case you want to continue working on this repository) by doing the following:
-	1. Add their remote as a remote to your local copy:
-		```bash
-		git remote add upstream https://github.com/ORIGINAL_OWNER/REPO.git
-		```
-	2. **Fetch** the changes from their repository, that is, bring the changes to your computer:
-		```bash
-		git fetch upstream
-		```
-	3. Merge the changes from their repository into your local repository:
-		```bash
-		git switch main
-		git merge upstream/main
-		```
-	4. Push the changes to your forked repository:
-		```bash
-		git push origin main
-		```
+   1. Add their remote as a remote to your local copy:
+      ```bash
+      git remote add upstream https://github.com/ORIGINAL_OWNER/REPO.git
+      ```
+   2. **Fetch** the changes from their repository, that is, bring the changes to your computer:
+      ```bash
+      git fetch upstream
+      ```
+   3. Merge the changes from their repository into your local repository:
+      ```bash
+      git switch main
+      git merge upstream/main
+      ```
+   4. Push the changes to your forked repository:
+      ```bash
+      git push origin main
+      ```
 
 The whole fork-and-pull-request cycle looks like this:
 
-```mermaid
-flowchart LR
-    U[("upstream<br/>The Dictator's repo")] -- "1 · fork" --> F[("origin<br/>your fork")]
-    F -- "clone" --> L["💻 your computer<br/>my-personal-branch"]
-    L -- "2 · push" --> F
-    F -- "3 · pull request" --> U
-    U -. "4 · merge (Dictator decides)" .-> U
-    U -- "5 · fetch upstream<br/>merge upstream/main" --> L
-```
+<div class="tikz-figure"><!-- tikz:git-en-7 -->
+<svg xmlns="http://www.w3.org/2000/svg" width="571.697" height="195.227" viewBox="-72 -72 428.773 146.42"><g stroke="#6b7280" stroke-miterlimit="10" stroke-width=".4"><g fill="#dbefee" stroke="#0d9488"><path d="M65.191-26.324H-18.07a4 4 0 0 0-4 4V6.664a4 4 0 0 0 4 4H65.19a4 4 0 0 0 4-4v-28.988a4 4 0 0 0-4-4ZM-22.07 10.664"/><g fill="#1f2937" stroke="none" font-size="9"><text x="41.747" y="-18.83" font-family="cmbx9" transform="translate(-39.94 7.482)">upstream</text><text x="23.56" y="-7.83" font-family="cmr9" transform="translate(-39.94 7.482)">The</text><text x="42.578" y="-7.83" font-family="cmr9" transform="translate(-39.94 7.482)">Dictator&apos;s</text><text x="85.687" y="-7.83" font-family="cmr9" transform="translate(-39.94 7.482)">rep</text><text x="98.816" y="-7.83" font-family="cmr9" transform="translate(-39.94 7.482)">o</text></g></g><g fill="#dbefee" stroke="#0d9488"><path d="M204.503-26.324h-77.358a4 4 0 0 0-4 4V6.664a4 4 0 0 0 4 4h77.358a4 4 0 0 0 4-4v-28.988a4 4 0 0 0-4-4Zm-81.358 36.988"/><g fill="#1f2937" stroke="none" font-size="9"><text x="28.643" y="-18.83" font-family="cmbx9" transform="translate(123.743 7.75)">origin</text><text x="23.56" y="-7.83" font-family="cmr9" transform="translate(123.743 7.75)">y</text><text x="28.185" y="-7.83" font-family="cmr9" transform="translate(123.743 7.75)">our</text><text x="44.651" y="-7.83" font-family="cmr9" transform="translate(123.743 7.75)">fork</text></g></g><g fill="#e8f0fe" stroke="#3b82f6"><path d="M352.303-26.324h-88.43a4 4 0 0 0-4 4V6.664a4 4 0 0 0 4 4h88.43a4 4 0 0 0 4-4v-28.988a4 4 0 0 0-4-4Zm-92.43 36.988"/><g fill="#1f2937" stroke="none" font-size="9"><text x="36.514" y="-18.83" font-family="cmr9" transform="translate(242.003 7.268)">y</text><text x="41.139" y="-18.83" font-family="cmr9" transform="translate(242.003 7.268)">our</text><text x="57.604" y="-18.83" font-family="cmr9" transform="translate(242.003 7.268)">computer</text><text x="23.56" y="-7.83" font-family="cmtt9" transform="translate(242.003 7.268)">my-personal-branch</text></g></g><g stroke-width=".8"><path fill="none" d="M69.391-26.315c19.608-7.42 34.295-7.093 50.328-.197"/><path stroke-width=".7999520000000001" d="m121.899-25.575-2.507-2.423.51 1.565-1.486.705Z"/><g fill="#6b7280" stroke="none" font-size="7"><text x="23.56" y="-7.83" font-family="cmr7" transform="translate(59.968 -27.512)">1</text><text x="30.241" y="-7.83" font-family="cmsy7" transform="translate(59.968 -27.512)">¢</text><text x="35.311" y="-7.83" font-family="cmr7" transform="translate(59.968 -27.512)">fork</text></g></g><g stroke-width=".8"><path fill="none" d="M208.703-23.43c18.466-7.559 31.965-8.093 47.625-3.083"/><path stroke-width=".79996" d="m258.588-25.79-2.728-2.17.659 1.508-1.412.845Z"/><text x="23.56" y="-7.83" fill="#6b7280" stroke="none" font-family="cmr7" font-size="7" transform="translate(201.537 -25.454)">clone</text></g><g stroke-width=".8"><path fill="none" d="M259.673 9.783c-19.005 6.08-32.504 5.546-47.72-.683"/><path stroke-width=".79996" d="m209.757 8.2 2.549 2.379-.538-1.555 1.474-.732Z"/><g fill="#6b7280" stroke="none" font-size="7"><text x="23.56" y="-7.83" font-family="cmr7" transform="translate(196.341 30.315)">2</text><text x="30.241" y="-7.83" font-family="cmsy7" transform="translate(196.341 30.315)">¢</text><text x="35.311" y="-7.83" font-family="cmr7" transform="translate(196.341 30.315)">push</text></g></g><g stroke-width=".8"><path fill="none" d="M122.945 9.464c-19.26 8.284-33.946 8.61-50.27 2.434"/><path stroke-width=".79996" d="m70.456 11.058 2.612 2.309-.58-1.54 1.454-.77Z"/><g fill="#6b7280" stroke="none" font-size="7"><text x="23.56" y="-7.83" font-family="cmr7" transform="translate(46.262 32.373)">3</text><text x="30.241" y="-7.83" font-family="cmsy7" transform="translate(46.262 32.373)">¢</text><text x="35.311" y="-7.83" font-family="cmr7" transform="translate(46.262 32.373)">pull</text><text x="51.366" y="-7.83" font-family="cmr7" transform="translate(46.262 32.373)">request</text></g></g><g stroke-dasharray="3.0,3.0" stroke-width=".8"><path fill="none" d="M12.774-26.524c-25.262-43.744 46.835-43.744 23.33-3.042"/><path stroke-dasharray="none" stroke-width=".799976" d="m34.917-27.51 2.7-2.206-1.614.324-.526-1.56Z"/><g fill="#6b7280" stroke="none" font-size="7"><text x="23.56" y="-7.83" font-family="cmr7" transform="translate(-16.27 -56.596)">4</text><text x="30.241" y="-7.83" font-family="cmsy7" transform="translate(-16.27 -56.596)">¢</text><text x="35.311" y="-7.83" font-family="cmr7" transform="translate(-16.27 -56.596)">merge</text></g></g><g stroke-width=".8"><path fill="none" d="M23.56 10.864c96.093 55.479 188.436 55.479 281.487 1.756"/><path stroke-width=".799984" d="m307.101 11.434-3.44.56 1.559.526-.324 1.613Z"/><g fill="#6b7280" stroke="none" font-size="7"><text x="30.234" y="-15.83" font-family="cmr7" transform="translate(103.728 76.897)">5</text><text x="36.915" y="-15.83" font-family="cmsy7" transform="translate(103.728 76.897)">¢</text><text x="41.984" y="-15.83" font-family="cmr7" transform="translate(103.728 76.897)">fetc</text><text x="54.484" y="-15.83" font-family="cmr7" transform="translate(103.728 76.897)">h</text><text x="61.595" y="-15.83" font-family="cmr7" transform="translate(103.728 76.897)">upstream</text><text x="23.56" y="-7.83" font-family="cmr7" transform="translate(103.728 76.897)">merge</text><text x="47.047" y="-7.83" font-family="cmr7" transform="translate(103.728 76.897)">upstream/main</text></g></g></g></svg>
+</div>
 
 ### Concluding remarks and further reading
-I really hope that this blogpost turns git into something less scary than it seems. Believe me, if you already write papers or documents in LaTeX, you are doing something much more difficult than using git. Please, do not expect to learn how to use git in a day; it is a complex tool and it takes time to get used to it, but I promise you that it is worth it. I suggest that you go over the workflows, pick one that satisfies your needs, and stick to it until it becomes automatic. You can later move on to a more complex one. 
+
+I really hope that this blogpost turns git into something less scary than it seems. Believe me, if you already write papers or documents in LaTeX, you are doing something much more difficult than using git. Please, do not expect to learn how to use git in a day; it is a complex tool and it takes time to get used to it, but I promise you that it is worth it. I suggest that you go over the workflows, pick one that satisfies your needs, and stick to it until it becomes automatic. You can later move on to a more complex one.
 
 If you want to dig deeper into how to use git, I suggest the following:
 

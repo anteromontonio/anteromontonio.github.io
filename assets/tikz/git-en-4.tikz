@@ -1,0 +1,31 @@
+\usetikzlibrary{arrows.meta,positioning,calc}
+\definecolor{ink}{HTML}{6B7280}
+\definecolor{boxink}{HTML}{1F2937}
+\definecolor{acc}{HTML}{3B82F6}
+\definecolor{acc2}{HTML}{F59E0B}
+\definecolor{acc3}{HTML}{0D9488}
+\definecolor{acc4}{HTML}{8B5CF6}
+\begin{tikzpicture}[font=\small,text=ink,draw=ink,>={Stealth[length=2mm]},
+  mc/.style={circle, draw=acc, fill=acc!25, minimum size=6mm, inner sep=0pt},
+  dc/.style={circle, draw=acc2, fill=acc2!30, minimum size=6mm, inner sep=0pt}]
+  \node[font=\footnotesize,text=acc] at (-1.4,0) {\texttt{main}};
+  \node[font=\footnotesize,text=acc2] at (-1.4,1.5) {\texttt{desktop}};
+  \node[mc] (c0) at (0,0) {};
+  \node[dc] (A) at (2,1.5) {};
+  \node[mc] (B) at (3,0) {};
+  \node[dc] (C) at (4.4,1.5) {};
+  \node[mc] (M) at (5.8,0) {};
+  \node[mc] (D) at (7.2,0) {};
+  \draw[->,thick,acc] (B)--(c0);
+  \draw[->,thick,acc2] (A)--(c0);
+  \draw[->,thick,acc2] (C)--(A);
+  \draw[->,thick,acc] (M)--(B);
+  \draw[->,thick,acc2] (M)--(C);
+  \draw[->,thick,acc] (D)--(M);
+  \node[below=1mm of c0,font=\scriptsize,align=center]{shared\\start};
+  \node[above=1mm of A,font=\scriptsize]{work A};
+  \node[below=1mm of B,font=\scriptsize]{work B};
+  \node[above=1mm of C,font=\scriptsize]{work C};
+  \node[below=1mm of M,font=\scriptsize,align=center]{merge\\commit};
+  \node[below=1mm of D,font=\scriptsize]{carry on};
+\end{tikzpicture}

@@ -1,6 +1,10 @@
 {
+  "scripts": {
+    "render-tikz": "node bin/render-tikz.mjs"
+  },
   "devDependencies": {
     "@shopify/prettier-plugin-liquid": "^1.10.0",
+    "node-tikzjax": "^1.0.5",
     "prettier": "^3.8.1"
   }
 }

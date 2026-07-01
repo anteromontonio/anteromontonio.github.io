@@ -1,0 +1,21 @@
+\usetikzlibrary{arrows.meta,positioning,calc}
+\definecolor{ink}{HTML}{6B7280}
+\definecolor{boxink}{HTML}{1F2937}
+\definecolor{acc}{HTML}{3B82F6}
+\definecolor{acc2}{HTML}{F59E0B}
+\definecolor{acc3}{HTML}{0D9488}
+\definecolor{acc4}{HTML}{8B5CF6}
+\begin{tikzpicture}[font=\small,text=ink,draw=ink,>={Stealth[length=2mm]},
+  commit/.style={circle, draw=acc, fill=acc!25, minimum size=6mm, inner sep=0pt}]
+  \node[commit] (c1) at (0,0) {};
+  \node[commit] (c2) at (3,0) {};
+  \node[commit] (c3) at (6,0) {};
+  \node[commit] (c4) at (9,0) {};
+  \draw[->,thick,acc] (c2)--(c1);
+  \draw[->,thick,acc] (c3)--(c2);
+  \draw[->,thick,acc] (c4)--(c3);
+  \node[below=2mm of c1,align=center]{initial\\draft};
+  \node[below=2mm of c2,align=center]{add\\introduction};
+  \node[below=2mm of c3,align=center]{fix proof\\of Thm 2};
+  \node[below=2mm of c4,align=center]{polish\\abstract};
+\end{tikzpicture}

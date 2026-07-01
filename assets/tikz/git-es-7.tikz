@@ -1,0 +1,20 @@
+\usetikzlibrary{arrows.meta,positioning,calc}
+\definecolor{ink}{HTML}{6B7280}
+\definecolor{boxink}{HTML}{1F2937}
+\definecolor{acc}{HTML}{3B82F6}
+\definecolor{acc2}{HTML}{F59E0B}
+\definecolor{acc3}{HTML}{0D9488}
+\definecolor{acc4}{HTML}{8B5CF6}
+\begin{tikzpicture}[font=\small,text=ink,draw=ink,>={Stealth[length=2mm]},
+  repo/.style={rounded corners, draw=acc3, fill=acc3!15, text=boxink, align=center, minimum height=13mm, minimum width=30mm, inner sep=2mm},
+  comp/.style={rounded corners, draw=acc, fill=acc!12, text=boxink, align=center, minimum height=13mm, minimum width=34mm, inner sep=2mm}]
+  \node[repo] (u) at (0,0) {\textbf{upstream}\\repo de El Dictador};
+  \node[repo] (f) at (5,0) {\textbf{origin}\\tu fork};
+  \node[comp] (l) at (10,0) {tu computadora\\\texttt{mi-branch-personal}};
+  \draw[->,thick] (u) to[bend left=22] node[above,font=\scriptsize]{1 $\cdot$ fork} (f);
+  \draw[->,thick] (f) to[bend left=20] node[above,font=\scriptsize]{clone} (l);
+  \draw[->,thick] (l) to[bend left=20] node[below,font=\scriptsize]{2 $\cdot$ push} (f);
+  \draw[->,thick] (f) to[bend left=22] node[below,font=\scriptsize]{3 $\cdot$ pull request} (u);
+  \draw[->,thick,dashed] (u) to[out=120,in=60,looseness=6] node[above,font=\scriptsize]{4 $\cdot$ merge} (u);
+  \draw[->,thick] (u.south) to[bend right=30] node[below,font=\scriptsize,align=center]{5 $\cdot$ fetch upstream\\merge upstream/main} (l.south);
+\end{tikzpicture}
