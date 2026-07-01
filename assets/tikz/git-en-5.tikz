@@ -1,0 +1,19 @@
+\usetikzlibrary{arrows.meta,positioning,calc}
+\definecolor{ink}{HTML}{6B7280}
+\definecolor{boxink}{HTML}{1F2937}
+\definecolor{acc}{HTML}{3B82F6}
+\definecolor{acc2}{HTML}{F59E0B}
+\definecolor{acc3}{HTML}{0D9488}
+\definecolor{acc4}{HTML}{8B5CF6}
+\begin{tikzpicture}[font=\small,text=ink,draw=ink,>={Stealth[length=2mm]}, node distance=6mm,
+  box/.style={rounded corners, draw=acc, fill=acc!12, text=boxink, align=center, text width=46mm, minimum height=9mm, inner sep=2mm}]
+  \node[box] (a) {\texttt{git switch main}\\\texttt{git pull}};
+  \node[box, below=of a] (b) {\texttt{git switch desktop}};
+  \node[box, below=of b] (c) {\texttt{git merge main}\\(bring in the latest)};
+  \node[box, below=of c] (d) {work $\cdot$ add $\cdot$ commit\\(as many times as needed)};
+  \node[box, below=of d] (e) {\texttt{git switch main}\\\texttt{git merge desktop}};
+  \node[box, below=of e] (f) {\texttt{git push}};
+  \draw[->,thick] (a)--(b); \draw[->,thick] (b)--(c); \draw[->,thick] (c)--(d);
+  \draw[->,thick] (d)--(e); \draw[->,thick] (e)--(f);
+  \draw[->,thick] (f.east) to[out=0,in=0,looseness=1.1] node[right,font=\scriptsize]{next session} (a.east);
+\end{tikzpicture}

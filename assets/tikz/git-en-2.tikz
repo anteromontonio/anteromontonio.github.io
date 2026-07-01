@@ -1,0 +1,16 @@
+\usetikzlibrary{arrows.meta,positioning,calc}
+\definecolor{ink}{HTML}{6B7280}
+\definecolor{boxink}{HTML}{1F2937}
+\definecolor{acc}{HTML}{3B82F6}
+\definecolor{acc2}{HTML}{F59E0B}
+\definecolor{acc3}{HTML}{0D9488}
+\definecolor{acc4}{HTML}{8B5CF6}
+\begin{tikzpicture}[font=\small,text=ink,draw=ink,>={Stealth[length=2mm]}, node distance=10mm,
+  box/.style={rounded corners, draw=acc, fill=acc!12, text=boxink, align=center, minimum height=10mm, inner sep=2.5mm}]
+  \node[box] (work) {Work on\\your files};
+  \node[box, right=of work] (add) {\texttt{git add .}\\(stage changes)};
+  \node[box, right=of add] (commit) {\texttt{git commit -m '\ldots'}\\(take the picture)};
+  \draw[->,thick] (work)--(add);
+  \draw[->,thick] (add)--(commit);
+  \draw[->,thick] (commit) to[out=-90,in=-90,looseness=0.6] node[below,font=\scriptsize]{repeat} (work);
+\end{tikzpicture}
