@@ -171,6 +171,11 @@ ninja.data = [{
           description: "",
           section: "Noticias",handler: () => {
               window.location.href = "/es-mx/news/2605_matematicniPregovori/";
+            },},{id: "news-i-am-attending-the-conference-sigmap-2026-in-brussells-be",
+          title: 'I am attending the conference SIGMAP 2026 in Brussells, BE 🇧🇪',
+          description: "",
+          section: "Noticias",handler: () => {
+              window.location.href = "/es-mx/news/2607_sigmap/";
             },},{id: "projects-projeto-1",
           title: 'projeto 1',
           description: "com imagem de fundo",
