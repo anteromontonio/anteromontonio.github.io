@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>R4M census — cumulative growth</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <h1>R4M census — cumulative growth</h1>
+  <p class="lede">Cumulative counts of rank-4 maniplexes vs. <strong>n</strong>, the number of flags. Hover a chart for exact values at a given n; use "table" to see the underlying rows.</p>
+
+  <div class="glossary">
+    <span class="term"><b>P</b> — Polytopal</span>
+    <span class="term"><b>F</b> — Faithful</span>
+    <span class="term"><b>U</b> — Unfaithful</span>
+    <span class="term"><b>O</b> — Orientably regular</span>
+    <span class="term"><b>N</b> — Non-orientable (regular)</span>
+    <span class="term"><b>C</b> — Chiral</span>
+  </div>
+
+  <div class="scale-controls">
+    <span class="scale-label">x-axis (n)</span>
+    <div class="segmented" data-axis="x">
+      <button data-value="linear" class="active">linear</button>
+      <button data-value="log">log</button>
+    </div>
+    <span class="scale-label">y-axis (cumulative count)</span>
+    <div class="segmented" data-axis="y">
+      <button data-value="linear">linear</button>
+      <button data-value="log" class="active">log</button>
+    </div>
+  </div>
+
+  <h2 class="section">By maniplex class — P / F / U breakdown</h2>
+  <p class="section-note">For each of the three classes of maniplexes (Orientably regular, Non-orientable, Chiral), the cumulative counts of Polytopal / Faithful / Unfaithful maniplexes, plus the class total.</p>
+  <div class="grid" id="grid-by-class"></div>
+
+  <h2 class="section">By P / F / U — O / N / C breakdown</h2>
+  <p class="section-note">For each of Polytopal / Faithful / Unfaithful, the cumulative counts split by maniplex class (O / N / C), plus the total. R4M-P/F/U have cumulative formulas computed only up to n = 5000 in the source workbook (vs. n = 10000 for R4M-O/N/C) — their curves stop earlier for that reason, not because the underlying census does.</p>
+  <div class="grid" id="grid-by-pfu"></div>
+</div>
+<script src="data.js"></script>
+<script src="chart.js"></script>
+</body>
+</html>
