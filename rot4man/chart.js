@@ -296,7 +296,7 @@ const CHART_SPECS = [
   { grid: 'grid-by-pfu', key: 'R4M-U', letter: 'U', sub: 'O / N / C breakdown vs n' },
 ];
 
-const scaleState = { x: 'linear', y: 'log' };
+const scaleState = { x: 'linear', y: 'linear' };
 
 function renderAll() {
   ['grid-by-class', 'grid-by-pfu'].forEach(id => { document.getElementById(id).innerHTML = ''; });

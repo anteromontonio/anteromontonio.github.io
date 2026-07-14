@@ -166,6 +166,7 @@ search:
 selected_publications: Publicaciones seleccionadas
 site_description: Un sitio diseñado para académicos; basado en [*folio](https://github.com/bogoli/-folio).
 conferences:
+  sigmap26: 7º congreso "Symmetries in Graphs, Maps and Polytopes" (SIGMAP 2026).
   matPog: Ciclo "Matematični pogovori" (Conversaciones matemáticas).
   csd11: Congreso "Computers in Scientific Discovery 11"
   mesecMatPEF: Ciclo "Mesec matematike na PEF" (Mes de las matemáticas en PEF).
@@ -211,6 +212,7 @@ talkTypes:
   Invited speaker: Ponente invitado
   By invitation: Por invitación
 locations:
+  brusselsBE: Bruselas, BEL 🇧🇪
   aguascalientesMX: Aguascalientes, Ags. MEX 🇲🇽
   aucklandNZ: Auckland, NZL 🇳🇿
   bledSI: Bled, SVN 🇸🇮
@@ -235,6 +237,7 @@ locations:
   villahermosaMX: Villahermosa, Tab. MEX 🇲🇽
   westMalvernGB: West Malvern, GBR 🇬🇧
 venues:
+  ULB: Universidad Libre de Bruselas
   ccmUNAM: Centro de Ciencias Matemáticas, UNAM
   cimat: Centro de Investigación en Matemáticas (CIMAT)
   clavijero: Palacio Clavijero

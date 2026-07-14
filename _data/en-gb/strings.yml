@@ -166,6 +166,7 @@ search:
 selected_publications: Selected publications
 site_description: A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
 conferences:
+  sigmap26: 8th Workshop "Symmetries in Graphs, Maps and Polytopes" (SIGMAP 2026).
   matPog: Cycle "Matematični pogovori" (Mathematical conversations).
   csd11: Conference "Computers in Scientific Discovery 11"
   dmfa25: Cycle “Poljudnih predavanj iz matematike,fizike in  astronomije” (Popular lectures in mathematics, physics and astronomy).
@@ -211,6 +212,7 @@ talkTypes:
   Invited speaker: Invited speaker
   By invitation: By invitation
 locations:
+  brusselsBE: Brussels, BEL 🇧🇪
   aguascalientesMX: Aguascalientes, Ags. MEX 🇲🇽
   aucklandNZ: Auckland, NZL 🇳🇿
   bledSI: Bled, SVN 🇸🇮
@@ -235,6 +237,7 @@ locations:
   villahermosaMX: Villahermosa, Tab. MEX 🇲🇽
   westMalvernGB: West Malvern, GBR 🇬🇧
 venues:
+  ULB: Université Libre de Bruxelles
   ccmUNAM: Centro de Ciencias Matemáticas, UNAM
   cimat: Centro de Investigación en Matemáticas (CIMAT)
   clavijero: Clavijero Palace
