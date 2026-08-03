@@ -7,7 +7,7 @@ description: Todas mis publicaciones agrupadas por tipo y listadas en orden cron
 nav: true
 nav_order: 2
 ---
-{% assign hidden_preprints = 1 %} 
+{% assign hidden_preprints = 0 %} 
 
 {% capture papers_count %}
   {% bibliography_count -f papers --query @article %}
