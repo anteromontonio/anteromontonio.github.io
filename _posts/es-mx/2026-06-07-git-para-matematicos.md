@@ -11,7 +11,7 @@ toc:
   sidebar: left
 tikzjax: true
 giscus_comments: true
-last_updated: 2026-06-10
+last_updated: 2026-07-08
 ---
 
 You can read the English version of this post [here](https://anteromontonio.github.io/blog/2026/git-for-mathematicians).
@@ -313,6 +313,7 @@ Ojalá esta entrada vuelva a git algo menos aterrador de lo que parece. Créeme:
 
 Si quieres profundizar en cómo usar git, te recomiendo lo siguiente:
 
+- [Learn git branching](https://learngitbranching.js.org/) - Un "juego", donde puedes aprender qué hacen los distintos comandos de git. 
 - [Git Will Finally Make Sense After This](https://www.youtube.com/watch?v=Ala6PHlYjmw) – Un video de YouTube que explica git de forma muy amigable para principiantes; se nota su influencia en esta entrada.
 - [Git for mathematicians](https://g4m.code4math.org/g4m.html) – Un libro de [Steven Clontz](https://clontz.org/) que explica git para matemáticos. Está muy bien escrito y es un gran recurso para aprender git a fondo. Además es gratis en línea.
 - Las notas de Software Carpentry sobre git, disponibles en [inglés](https://swcarpentry.github.io/git-novice) y en [español](https://swcarpentry.github.io/git-novice-es/) (y quizá en otros idiomas, no estoy seguro). Están diseñadas para completos principiantes y totalmente disponibles en linea.
