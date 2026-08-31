@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-08-10'
+  last_updated: '2026-08-31'
 papers:
   GEJHkg0AAAAJ:9yKSN-GCB0IC:
     citations: 1
@@ -45,3 +45,7 @@ papers:
     citations: 4
     title: 'Regular polyhedra in the 3-torus: Dedicated to Enrique Rodriguez Castillo, a beloved friend and colleague whom we all are going to miss'
     year: '2018'
+  GEJHkg0AAAAJ:ufrVoPGSRksC:
+    citations: 0
+    title: Faithfulness in maniplexes
+    year: '2026'
