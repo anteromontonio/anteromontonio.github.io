@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-07-06'
+  last_updated: '2026-08-31'
 papers:
   GEJHkg0AAAAJ:9yKSN-GCB0IC:
     citations: 1
@@ -10,11 +10,11 @@ papers:
     title: Proper locally spherical hypertopes of hyperbolic type
     year: '2022'
   GEJHkg0AAAAJ:Tyk-4Ss8FVUC:
-    citations: 5
+    citations: 6
     title: Voltage operations on maniplexes, polytopes and maps
     year: '2023'
   GEJHkg0AAAAJ:W7OEmFMy1HYC:
-    citations: 0
+    citations: 1
     title: Symmetries of voltage operations on polytopes, maps and maniplexes
     year: '2025'
   GEJHkg0AAAAJ:Y0pCki6q_DkC:
@@ -45,3 +45,7 @@ papers:
     citations: 4
     title: 'Regular polyhedra in the 3-torus: Dedicated to Enrique Rodriguez Castillo, a beloved friend and colleague whom we all are going to miss'
     year: '2018'
+  GEJHkg0AAAAJ:ufrVoPGSRksC:
+    citations: 0
+    title: Faithfulness in maniplexes
+    year: '2026'
