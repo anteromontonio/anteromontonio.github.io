@@ -166,6 +166,7 @@ search:
 selected_publications: Publicaciones seleccionadas
 site_description: Un sitio diseñado para académicos; basado en [*folio](https://github.com/bogoli/-folio).
 conferences:
+  pregunton: Seminario "Preguntón" del Instituto de Matemáticas, UNAM-Juriquilla.
   sigmap26: 8º congreso "Symmetries in Graphs, Maps and Polytopes" (SIGMAP 2026).
   matPog: Ciclo "Matematični pogovori" (Conversaciones matemáticas).
   csd11: Congreso "Computers in Scientific Discovery 11"
@@ -219,6 +220,7 @@ locations:
   cuernavacaMX: Cuernavaca, Mor. MEX 🇲🇽
   guanajuatoMX: Guanajuato, Gto. MEX 🇲🇽
   habanaCU: La Habana, CUB 🇨🇺
+  juriquillaMX: Juriquilla, Qro. MEX 🇲🇽
   koperSI: Koper, SVN 🇸🇮
   kranjSI: Kranj, SVN 🇸🇮
   kranjskaGoraSI: Kranjska Gora, SVN 🇸🇮
@@ -248,6 +250,7 @@ venues:
   fmfUL: Facultad de Matemáticas y Física, Universidad de Ljubljana
   giraluna: Bar Giraluna
   imUNAM: Instituto de Matemáticas, UNAM
+  imJuriquilla: Instituto de Matemáticas, UNAM - Juriquilla
   hotelChelsea: Hotel Chelsea
   hotelPlanja: Hotel Planja
   hotelKompas: Hotel Kompas

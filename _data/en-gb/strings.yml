@@ -207,6 +207,7 @@ conferences:
   smm12: 45th National Conferences of the Mexican Mathematical Society (SMM).
   vnl12: 27th Colloquium “Victor Neumann-Lara” of graph theory, combinatorics and its applications.
   mesecMatPEF: Cycle "Mesec matematike na PEF" (Mathematics month at PEF).
+  pregunton: Seminar "Preguntón" of the Institute of Mathematics, UNAM-Juriquilla.
 talkTypes:
   Contributed: Contributed
   Invited speaker: Invited speaker
@@ -219,6 +220,7 @@ locations:
   cuernavacaMX: Cuernavaca, Mor. MEX 🇲🇽
   guanajuatoMX: Guanajuato, Gto. MEX 🇲🇽
   habanaCU: Havana, CUB 🇨🇺
+  juriquillaMX: Juriquilla, Qro. MEX 🇲🇽
   koperSI: Koper, SVN 🇸🇮
   kranjSI: Kranj, SVN 🇸🇮
   kranjskaGoraSI: Kranjska Gora, SVN 🇸🇮
@@ -237,7 +239,6 @@ locations:
   villahermosaMX: Villahermosa, Tab. MEX 🇲🇽
   westMalvernGB: West Malvern, GBR 🇬🇧
 venues:
-  ULB: Université Libre de Bruxelles
   ccmUNAM: Centro de Ciencias Matemáticas, UNAM
   cimat: Centro de Investigación en Matemáticas (CIMAT)
   clavijero: Clavijero Palace
@@ -248,6 +249,7 @@ venues:
   fmfUL: Faculty of Mathematics and Physics, University of Ljubljana
   giraluna: Pub Giraluna
   imUNAM: Institute of Mathematics, UNAM
+  imJuriquilla: Institute of Mathematics, UNAM - Juriquilla
   hotelChelsea: Chelsea Hotel
   hotelPlanja: Hotel Planja
   hotelKompas: Hotel Kompas
@@ -265,4 +267,5 @@ venues:
   ucimUNAM: Unidad Cuernavaca del Instituto de Matemáticas, UNAM
   ujat: Juárez Autonomous University of Tabasco
   uHabana: University of Havana
+  ULB: Université Libre de Bruxelles
   uaYuc: Autonomous University of Yucatan
