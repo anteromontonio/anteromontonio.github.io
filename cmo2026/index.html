@@ -486,9 +486,9 @@
 /* ============================================================
    CONFIG — fill these in before deploying
    ============================================================ */
-const JSONBIN_KEY      = "$2a$10$sf/esGAW7TXaRowPUWgf9OGnMaX8vbBf6J2zclyzxQvmx98LGZNVG"; // Paste your JSONBin key here
+const JSONBIN_KEY      = "$2a$10$RsGdIJRBbgmFrQN/8GYyqu2U1celBREuhPTgHeBA9BrcN87veslgW"; // Paste your JSONBin key here
 const JSONBIN_KEY_TYPE = "access";                          // "access" (recommended) or "master"
-const JSONBIN_BIN_ID   = "6a3e5cfaf5f4af5e2933bcc2";    // The ID of your private bin
+const JSONBIN_BIN_ID   = "6aa46741ac6210605ac22a07";    // The ID of your private bin
 
 /* RECOMMENDED: use a scoped Access Key, not your account Master Key.
    The key is visible to anyone who views this page's source, so limit what it can do.
@@ -510,7 +510,16 @@ const JSONBIN_BIN_ID   = "6a3e5cfaf5f4af5e2933bcc2";    // The ID of your privat
    To change the password later: empty the bin (set its content to {}) and
    re-bootstrap with a new password. */
 
-const REFRESH_MS = 600000;          // Auto-refresh interval (30 seconds)
+/* REQUEST BUDGET — the JSONBin free tier meters REQUESTS (10,000/month), not
+   bytes. Background polling is what exhausts it: a single tab left open at a
+   10-minute interval spends ~144 requests/day by itself, so a handful of
+   participants drain a month's allowance in under two weeks.
+   There is therefore NO interval poll. The list reloads on unlock, on the
+   "Refresh now" button, after your own add/delete (free — we already hold the
+   updated record), and when you return to a tab that has been away a while. */
+const FOCUS_REFRESH_MS = 600000;   // Min gap between refocus-triggered reloads
+const HIDDEN_MIN_MS    = 120000;   // Ignore a refocus unless the tab was away this long
+const STALE_HINT_MS    = 900000;   // After this, nudge the user toward "Refresh now"
 const WINDOW_MIN = 60;             // Grouping window size in minutes
 const PBKDF2_ITERATIONS = 200000;  // Key-derivation cost
 const VERIFIER_MARKER = "taxi-share-v1"; // Plaintext token used to validate the password
@@ -531,7 +540,10 @@ const PW_KEY = "taxiSharePw";              // sessionStorage: keep unlocked with
 let entries = [];                          // latest DECRYPTED entries (each includes id)
 let cryptoKey = null;                      // derived AES-GCM key (in memory only)
 let saltB64 = null;                        // base64 salt the current key was derived from
-let refreshTimer = null;
+let staleTimer = null;                     // nudges the user to refresh by hand
+let lastFetchAt = 0;                       // when the record we're showing was fetched
+let hiddenSince = 0;                       // when this tab was last backgrounded
+let pendingRecord = null;                  // record already fetched by attemptUnlock
 let view = "arrival";                      // active list view: "arrival" | "departure"
 
 /* ---------- Tiny helpers ---------- */
@@ -651,9 +663,18 @@ function windowFor(d) {
    Record shape:
    { v:1, salt:"<b64>", verifier:{iv,ct}, entries:[ {id, iv, ct}, ... ] }
    ============================================================ */
+// Turn a JSONBin HTTP status into something a participant can act on.
+function httpMsg(status, what) {
+  if (status === 403 || status === 429) {
+    return "The shared list has used up this month's request allowance — please tell the organiser.";
+  }
+  if (status === 401) return "The list's access key was rejected — please tell the organiser.";
+  return what + " failed (" + status + ")";
+}
+
 async function readRecord() {
   const res = await fetch(BASE + "/latest", { headers: HEADERS, cache: "no-store" });
-  if (!res.ok) throw new Error("Read failed (" + res.status + ")");
+  if (!res.ok) throw new Error(httpMsg(res.status, "Read"));
   const json = await res.json();
   let rec = json.record;
   if (Array.isArray(rec)) rec = { entries: rec };       // tolerate a bare array
@@ -668,7 +689,7 @@ async function writeRecord(rec) {
     headers: HEADERS,
     body: JSON.stringify(rec),
   });
-  if (!res.ok) throw new Error("Save failed (" + res.status + ")");
+  if (!res.ok) throw new Error(httpMsg(res.status, "Save"));
   return true;
 }
 
@@ -783,7 +804,7 @@ function passwordChanged(rec) {
 }
 
 function forceRelock(msg) {
-  clearInterval(refreshTimer);
+  clearTimeout(staleTimer);
   sessionStorage.removeItem(PW_KEY);
   cryptoKey = null; saltB64 = null; entries = [];
   $("app").classList.add("hidden");
@@ -792,14 +813,32 @@ function forceRelock(msg) {
   $("pw").focus();
 }
 
+// Render a record we already hold — costs no request.
+async function applyRecord(rec) {
+  if (passwordChanged(rec)) { forceRelock("The shared password was changed. Please unlock again."); return false; }
+  entries = await decryptEntries(rec);
+  lastFetchAt = Date.now();
+  render();
+  setSync("ok", "Updated " + fmtTime(new Date()));
+  scheduleStaleHint();
+  return true;
+}
+
+// Once the list has been on screen a while without a reload, say so plainly
+// rather than letting a stale list pass for a live one.
+function scheduleStaleHint() {
+  clearTimeout(staleTimer);
+  staleTimer = setTimeout(() => {
+    if (cryptoKey && lastFetchAt) {
+      setSync("", "Last updated " + fmtTime(new Date(lastFetchAt)) + " — tap Refresh now for newer entries");
+    }
+  }, STALE_HINT_MS);
+}
+
 async function refresh(silent) {
   setSync("syncing", silent ? "Syncing…" : "Refreshing…");
   try {
-    const rec = await readRecord();
-    if (passwordChanged(rec)) { forceRelock("The shared password was changed. Please unlock again."); return; }
-    entries = await decryptEntries(rec);
-    render();
-    setSync("ok", "Updated " + fmtTime(new Date()));
+    await applyRecord(await readRecord());
   } catch (err) {
     setSync("error", "Connection problem");
     if (!silent) toast(err.message || "Could not load entries.", true);
@@ -843,10 +882,8 @@ async function addEntry(ev) {
     rec.entries.push({ id, iv: blob.iv, ct: blob.ct });
     await writeRecord(rec);
     addMine(id);
-    entries = await decryptEntries(rec);
-    render();
+    await applyRecord(rec);
     $("entryForm").reset();
-    setSync("ok", "Updated " + fmtTime(new Date()));
     toast("Added — others can now see you 🚕");
   } catch (err) {
     setSync("error", "Save failed");
@@ -867,9 +904,7 @@ async function deleteEntry(id) {
     rec.entries = rec.entries.filter((e) => e.id !== id);
     await writeRecord(rec);
     removeMine(id);
-    entries = await decryptEntries(rec);
-    render();
-    setSync("ok", "Updated " + fmtTime(new Date()));
+    await applyRecord(rec);
     toast("Entry deleted.");
   } catch (err) {
     setSync("error", "Delete failed");
@@ -883,6 +918,7 @@ async function deleteEntry(id) {
 // Validates (or bootstraps) the password. Returns true on success.
 async function attemptUnlock(password) {
   const rec = await readRecord();
+  pendingRecord = rec;
 
   if (rec.salt && rec.verifier) {
     // Existing list: derive the key and check it against the stored verifier.
@@ -907,6 +943,7 @@ async function attemptUnlock(password) {
   await writeRecord(newRec);
   cryptoKey = key;
   saltB64 = newRec.salt;
+  pendingRecord = newRec;   // hand startApp the record we just wrote, not the empty one we read
   return true;
 }
 
@@ -921,13 +958,30 @@ function startApp() {
   $("f-arrival").value = d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate()) +
                          "T" + pad(d.getHours()) + ":" + pad(d.getMinutes());
 
-  clearInterval(refreshTimer);
-  refresh(false);
-  refreshTimer = setInterval(() => refresh(true), REFRESH_MS);
+  // attemptUnlock already fetched the record — render that instead of paying
+  // for a second identical read on every single page load.
+  if (pendingRecord) {
+    const rec = pendingRecord;
+    pendingRecord = null;
+    applyRecord(rec);
+  } else {
+    refresh(false);
+  }
 
-  document.addEventListener("visibilitychange", () => {
-    if (!document.hidden && cryptoKey) refresh(true);
-  });
+  document.removeEventListener("visibilitychange", onVisibility);
+  document.addEventListener("visibilitychange", onVisibility);
+}
+
+// Reload on returning to the tab, but only after a real absence and at most
+// once per FOCUS_REFRESH_MS — phones fire this on every app switch.
+function onVisibility() {
+  if (document.hidden) { hiddenSince = Date.now(); return; }
+  if (!cryptoKey) return;
+  const away = hiddenSince ? Date.now() - hiddenSince : 0;
+  hiddenSince = 0;
+  if (away < HIDDEN_MIN_MS) return;
+  if (Date.now() - lastFetchAt < FOCUS_REFRESH_MS) return;
+  refresh(true);
 }
 
 $("lockForm").addEventListener("submit", async (ev) => {
